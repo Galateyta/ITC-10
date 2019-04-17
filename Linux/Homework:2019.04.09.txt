@@ -1,0 +1,7 @@
+Task 1. This method of Init is using your OS (SysV, systemd, upstart). Done.
+ My OS method of init is systemd.
+command  stat /sbin/init
+
+Task 2. What loader is used on your OS?. Done.
+ My OS loader is Grub 2
+command grub-install -V.  
