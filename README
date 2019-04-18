@@ -5,6 +5,6 @@
 5.
 
 *****
-my Hook file is in .git/hooks/pre-commiti.
-This file on commit finds *.cpp files, and checks whether "print()" statemant exist in them.
-In that case error message is printed and commmit is aborted)
+my Hook file is in .git/hooks/pre-commit.
+This file on commit finds *.cpp files, and checks whether "p r i n t ()" statemant exist in them.
+In that case error message is p r i n t ed and commmit is aborted)
