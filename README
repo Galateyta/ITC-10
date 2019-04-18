@@ -1,3 +1,7 @@
-1.
-2.
-3.
+Hook file
+my hook file ---- > .git/hooks/pre-commit
+
+That script aborts the commit if it finds any whitespace errors,
+as defined by the git diff-index command (trailing whitespace,
+lines with only whitespace, and a space followed by a tab inside
+the initial indent of a line are considered errors by default).
