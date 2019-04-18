@@ -1,0 +1,5 @@
+1.record vim
+2.Write scripts,what can make directory A, and make a.txt file in that directory
+3.Change default pos ~/Documents
+4.bash scrpt run methods
+5.animation
