@@ -18,6 +18,9 @@ using namespace web;
 using namespace web::http;
 using namespace web::http::client;
 using namespace concurrency::streams;
+using namespace concurrency::streams;
+using namespace concurrency::streams;
+using namespace concurrency::streams;
 
 /*
                 "account":"http://host_auto_ip4:6502/v1/mafclub/api",
