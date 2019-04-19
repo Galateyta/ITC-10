@@ -1,41 +1,13 @@
 #!/bin/bash
 
-arr=( 
-'****   *
- ***   **
- **   ***
- ***   **
- ****   *'
-'****  * 
- ***  ** 
- **  *** 
- ***  ** 
- ****  * '
-'**** *  
- *** **  
- *****  
- *** **  
- **** *  '
-'*****  
- *****  
- *****  
- *****  
- *****  ' )
+arr=( Oooooo oOoooo ooOooo oooOoo ooooOo oooooO )
 
 while [ 1 ]
 do 
-	for((i=0; i<=3; i++))
+	for i in ${arr[@]}
 	do
-		echo -ne "${arr[$i]}\n"
-		sleep 0.5
-		printf "\033[5A"
-	done
-
-	for((i=2; i>=0; i--))
-	do
-		echo -ne "${arr[$i]}\n"
-		sleep 0.5
-		printf "\033[5A"
+		echo -ne "\r$i"
+		sleep 0.1
 	done
 
 done
