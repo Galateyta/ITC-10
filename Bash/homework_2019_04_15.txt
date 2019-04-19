@@ -1,0 +1,21 @@
+1)method
+./example.sh
+2)method
+/user/example.sh
+3)method 
+bash example.ah
+4)method
+sh example.sh
+5)method 
+../example
+
+The first method is as simple as specifying the filename of the script itself. In fact the first and the second method are both identical. 
+The first method executes the script by using ./example_script, which means you are expected to be located in the same directory where the script is located. 
+
+
+The third method (shown previosly), specifies the interpreter in the command line itself. If you are specifying the interpreter in the command line while executing the script(ie: the third method above, /bin/bash example_script.sh OR /bin/bash /path/to/example_script.sh) then the shebang will be ignored. In this case the interpreter specified in the command line will be used instead. 
+
+
+Fouth method is exactly similar to the third method. This is because sh interpreter used in this method(sh example_script.sh) is most of the times symlinked to /bin/bash. 
+
+The fifth method of executing the shell script is . ./example_script.sh.
