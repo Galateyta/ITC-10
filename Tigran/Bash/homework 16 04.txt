@@ -1,2 +1,0 @@
-﻿1. Tic Tac Toe: Done: tic_tac_toe.txt/sh
-2. Chess:  Done: chess.txt/sh
