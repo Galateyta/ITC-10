@@ -1,5 +1,3 @@
-#include <cpprest/http_client.h>
-#include <cpprest/filestream.h>
 #include <fstream>
 #include <string>
 #include <iostream>
@@ -58,7 +56,7 @@ int main()
         uri_builder creatGroup(U("/account/creatGroup"));
         uri_builder deleteGroup(U("/account/deleteGroup?clientId=u1&groupId=g1"));
         uri_builder getGroupInfo(U("/account/getGroupInfo?clientId=u1&groupId=g1"));
-        uri_builder getGroupShortInfo(U("/account/getGroupShortInfo?clientId=u1&groupId=g1"));
+
         uri_builder updateGroupInfo(U("/account/updateGroupInfo?clientId=u1"));
         uri_builder groupRemoveUser(U("/account/groupRemoveUser"));
         uri_builder updateUserInfo(U("/account/updateUserInfo?clientId=u1"));
