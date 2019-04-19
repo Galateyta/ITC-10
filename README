@@ -1,3 +1,5 @@
+Narek_Jilavyan/Homeworks
+
 1. mkdir ~/bin
 
 2. mv commit_animation ~/bin
@@ -7,3 +9,9 @@
 4. mv pre-commit .git/hooks/
 
 5. chmod u+x .git/hooks/pre-commit
+
+*****
+
+my Hook file is in .git/hooks/pre-commit.
+This file on commit finds *.cpp files, and checks whether "p r i n t ()" statemant exist in them.
+In that case error message is p r i n t ed and commmit is aborted)
