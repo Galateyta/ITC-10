@@ -8,28 +8,128 @@ starts() {
 	echo " "
 	echo "Chechk figures " 
 	echo "
-King  -> 1
+King    -> 1
 Queen   -> 2
-Bishop -> 3
+Bishop  -> 3
 Knight  -> 4
-Rook   -> 5"
+Rook    -> 5"
 	echo " "
 	inputs
 }
  
 inputs() {
-	echo "For example 1 2 3 (1->King its cordinats will be (2:3)) "
+	echo "For example: 1 2 a (1->King its cordinats will be (2:a)) "
 	echo "Enter first figur and its coordinats " 
-	read q1 x1 y1
+	read q1 x1 a1
 	echo "Enter second figur and its coordinats " 
-	read q4 x2 y2
+	read q4 x2 a2
 	echo "Enter third figur and its coordinats "
-	read q7 x3 y3
-
+	read q7 x3 a3
+	coordinats $a1 $x1
+	coordinats $a2 $x2
+	coordinats $a3 $x3
 	newinit $q1 $x1
 	newinit $q4 $x2
 	newinit $q7 $x3
 	game
+}
+coordinats() {
+	y=$1
+	x=$2
+	case $y in 
+		a)	
+		if ((x==x1))
+		then
+			y1=0
+		elif ((x==x2))
+		then
+			y2=0
+		else
+			y3=0
+		fi
+		;;
+		b)
+                if ((x==x1))
+                then
+                	y1=1
+                elif ((x==x2))
+		then
+                	y2=1
+                else
+                	y3=1
+		fi
+                ;;
+		c) 
+                if ((x==x1))
+                then
+                	y1=2
+                elif ((x==x2))
+		then
+                	y2=2
+                else
+                	y3=2
+		fi
+                ;; 
+		d)
+                if ((x==x1))
+                then
+                	y1=3
+                elif ((x==x2))
+		then
+                	y2=3
+                else
+                	y3=3
+		fi
+                ;; 
+		e)
+                if ((x==x1))
+                then
+                	y1=4
+                elif ((x==x2))
+		then
+                	y2=4
+                else
+                	y3=4
+		fi
+                ;; 
+		f)
+                if ((x==x1))
+                then
+                	y1=5
+                elif ((x==x2))
+		then
+                	y2=5
+                else
+                	y3=5
+		fi
+                ;; 
+		g)
+                if ((x==x1))
+                then
+                	y1=6
+                elif ((x==x2))
+		then
+                	y2=6
+                else
+                	y3=6
+		fi
+                ;;
+		h)
+                if ((x==x1))
+                then
+                	y1=7
+                elif ((x==x2))
+		then
+                	y2=7
+                else
+                	y3=7
+		fi
+                ;; 
+		*)
+		echo "Invalid coordinats"
+		;;
+	esac
+ 
 }
 
 newinit(){
@@ -126,7 +226,7 @@ case $qar in
 		;;
 	3)
 		bishop
-		if ((num3))
+		if ((num3==1))
 		then
 			echo " "
 			echo " Bishop ate"
