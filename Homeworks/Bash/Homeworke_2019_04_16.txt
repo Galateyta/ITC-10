@@ -1,0 +1,55 @@
+1)Record vim
+
+1.  vim 1.txt
+2.  gg
+3.  press i (for insert mod)
+4.  write 1. in the first line
+5.  press esc (for normal mod)
+6.  press q then a (start recording)
+7.  press j (next line)
+8.  press i (for insert mod)
+9.  press ctrl+y
+10. press ctrl+y
+11. press esc (for normal mod)
+12. press ctrl+a (for increment)
+13. press q (for end recording)
+
+2)Done
+
+3)vim /home/username/.profile
+$HOME=$HOME+"Documents"
+
+4)Run methods
+
+a1)method
+./example.sh
+2)method
+/user/example.sh
+3)method 
+bash example.ah
+4)method
+sh example.sh
+5)method 
+../example
+6) method
+sintax
+source filename [arguments]
+source functions.sh
+source /path/to/functions.sh arg1 arg2
+source functions.sh WWWROOT=/apache.jail PHPROOT=/fastcgi.php_jail
+
+
+The first method is as simple as specifying the filename of the script itself. In fact the first and the second method are both identical. 
+The first method executes the script by using ./example_script, which means you are expected to be located in the same directory where the script is located. 
+
+
+The third method (shown previosly), specifies the interpreter in the command line itself. If you are specifying the interpreter in the command line while executing the script(ie: the third method above, /bin/bash example_script.sh OR /bin/bash /path/to/example_script.sh) then the shebang will be ignored. In this case the interpreter specified in the command line will be used instead. 
+
+
+Fouth method is exactly similar to the third method. This is because sh interpreter used in this method(sh example_script.sh) is most of the times symlinked to /bin/bash. 
+
+The fifth method of executing the shell script is . ./example_script.sh.
+
+    The source command can be used to load any functions file into the current shell script or a command prompt.
+    It read and execute commands from given FILENAME and return.
+    The pathnames in $PATH are used to find the directory containing FILENAME. If any ARGUMENTS are supplied, they become the positional parameters when FILENAME is executed.
