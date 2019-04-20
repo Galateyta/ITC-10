@@ -1,0 +1,1 @@
+Add a post-commit file in the .git/hooks folder, and after each commit will run the script.
