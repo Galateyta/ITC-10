@@ -18,10 +18,38 @@ read -p "Enter the second figurine: "  f2
 read -p "Enter the row figurine2: "  r2
 read -p "Enter the col figurine2: "  c2
 
+read -p "Enter the thre figurine: "  f3
+read -p "Enter the row figurine3: "  r3
+read -p "Enter the col figurine3: "  c3
+
+#menak navaki meja tarnacrac bayc aranqin figuri depqum chisht chi ashxatum
 changeHitR() {
-    if (( $1 == $3 || $2 == $4 ))
+    if (( $1 == $3 ))
     then
+        if(( $1 != $5 ))
+        then
         echo 1
+        elif(( $6 < $2 || $6 > $4 ))
+        then
+            echo 1
+        elif
+        then
+            echo 0
+        fi
+    fi
+    elif (( $2 == $4 ))
+    then
+        if(( $2 != $6 ))
+        then
+        echo 1
+        elif(( $5 < $1 || $5 > $3 ))
+        then
+            echo 1
+	elif
+        then
+             echo 0
+
+        fi
     else
         echo 0
     fi
@@ -59,16 +87,16 @@ then
 checkid() {
 case "$1" in
     "r")
-        echo $(changeHitR $2 $3 $4 $5)
+        echo $(changeHitR $2 $3 $4 $5 $6 $7)
         ;;
     "k")
 	echo $(changeHitR $2 $3 $4 $5)
         ;;
     "b")
-        echo $(changeHitR $2 $3 $4 $5)
+        echo $(changeHitR $2 $3 $4 $5 $6 $7)
         ;;
     "q")
-        echo $(changeHitR $2 $3 $4 $5)
+        echo $(changeHitR $2 $3 $4 $5 $6 $7)
         ;;
 
     *)
@@ -77,10 +105,10 @@ case "$1" in
 esac
 }
 
-res1=$(checkid $f1 $r1 $c1 $r2 $c2)
+res1=$(checkid $f1 $r1 $c1 $r2 $c2 $r3 $c3)
 echo $res1
 
-res2=$(checkid $f2 $r2 $c2 $r1 $c1)
+res2=$(checkid $f2 $r2 $c2 $r1 $c1 $r3 $c3)
 #echo $res2
 
 
