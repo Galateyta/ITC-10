@@ -156,5 +156,4 @@ while [[ ( $status =~ "OK" ) ]]; do
 		sleep 3
 		exit
 	fi
-
 done

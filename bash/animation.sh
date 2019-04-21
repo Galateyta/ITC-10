@@ -1,17 +1,14 @@
 #!/bin/bash
 
-
 function print_spaces() {
 	str=$(printf "%-$1s" " ")
 	echo -n "${str// / }"
 }
 
-
 function print_asterisks() {
 	str=$(printf "%-$1s" "*")
 	echo -n "${str// / *}"
 }
-
 
 function print_base_line() {
 	number_of_asterisks=$1
@@ -29,7 +26,6 @@ function print_base_line() {
 	fi
 }
 
-
 function print_line() {
 	spaces=$1
 	distance=$2
@@ -43,7 +39,6 @@ function print_line() {
 	print_spaces $spaces_inside_triangle
 	echo "*"
 }
-
 
 function print_shape() {
 	height=$1
@@ -72,7 +67,6 @@ function print_shape() {
 	done
 }
 
-
 function animate() {
 	height=$1
 	width=$2
@@ -97,7 +91,6 @@ function animate() {
 		sleep 0.5
 	done
 }
-
 
 for ((;;))
 do
