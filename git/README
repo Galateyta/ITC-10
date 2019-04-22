@@ -1,0 +1,8 @@
+My hook file in this place.
+.git/hooks/post-commit
+
+My hook file do:
+Print GIT_AUTHOR_NAME and GIT_AUTHOR_DATE and displays the full path from the root directory to the current working directory.
+
+To learn hook I enjoyed from this site.
+https://www.digitalocean.com/community/tutorials/how-to-use-git-hooks-to-automate-development-and-deployment-tasks?fbclid=IwAR2V955jqazk38hJ88d0ShASt1gA-Z8IZ7CvjfIEQIQkY65B4quOWyfH3P0#setting-up-a-repository

@@ -1,0 +1,5 @@
+#!/bin/bash
+echo Running $BASH_SOURCE
+echo $GIT_AUTHOR_NAME
+echo $GIT_AUTHOR_DATE
+echo PWD is $PWD
