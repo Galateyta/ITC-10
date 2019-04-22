@@ -1,0 +1,44 @@
+Task 1. Extract the full name of your operating system into a separate file. Done
+
+     hostnamectl | head -n 7 | tail -n 1 >>name.txt
+
+Task 2. In the / home / username section, extract the contents of the folder into a separate file / home section. In progress
+  
+
+Task 3.What kind of pre-rendering will be printed for the / var / log / syslog file, with what command can it be seen? Done.
+
+ less /var/log/syslog
+
+Task 4.Remove the first and last 5 lines of any file. Done.
+  
+head -5 file_name
+tail -n file_name
+
+Task 5.How can I sort the content of the file with the alphabetical list? Done
+ 
+ sort file_name
+
+Task 6.Use the ls command to extract the / home / username snippet except those starting with D. Done.
+ 
+ ls /home/user | grep -v 'D' >> temp.txt
+
+Task 7.Find all of your files with over 200 MB in your operating system. Done
+
+    find / -size +200M
+
+Task 8.Create a file in which you can enter 9 lines of text and create 3 separate files in one order, each containing 3 lines of 9 lines. Done.
+ split -l 3 text.txt
+
+Task 9.How many options of umask can be set to the newly created file with the following permissions r-- -w- r--. Done
+  
+ 0242 , 0353, 0243, 0352, 0252, 0343, 0253, 0352
+  
+Task 10.Create a conveyor that transfers the following to one another: will generate a file with the following 123456, and then rotate numbers by 654321, take the first 3 characters, and it will fit at a given time and put it in the terminal. Done.
+
+
+Task 11.Write the echo HelloLinux on the terminal and give the result a different command that will handle HeLoLinux. Done
+ echo 'HelloLinux' | tr -s 'll' 'L'
+
+Task 12.Creating a file in which each line in 5 lines will write Linux and retrieve the contents of the file in such a way as to replace all the lines in addition to the 3rd line and write Ubuntu. Done.
+ 
+ sed '1,2 s/Linux/Ubuntu/; 4,5 s/Linux/Ubuntu/' test.txt
