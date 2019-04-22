@@ -1,2 +1,0 @@
-1.tic-tac-toe game
-2.chess
