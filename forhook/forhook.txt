@@ -1,0 +1,7 @@
+
+Hook-file's path :  ./git/hooks/pre-commit
+
+
+In my hook file, I put a check that checks the content of the commit message.
+
+If the message is empty, the text is displayed in the terminal which warns that the message cannot be empty.
