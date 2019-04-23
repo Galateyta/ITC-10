@@ -1,0 +1,124 @@
+#!/bin/bash
+
+num_rows=8
+num_columns=8
+t=''
+kX=-1
+kY=-1
+qX=-1
+qY=-1
+fX=-1
+fY=-1
+
+function board() {
+    f1="%$((${#num_rows}+1))s"
+    f2=" %1s"
+
+    printf "$f1" ''
+    for i in {A..H}
+    do
+        printf "$f2" $i
+    done
+    echo
+    for ((j=1;j<=num_columns;j++)) do
+        printf "$f1" $j
+        for ((i=1;i<=num_rows;i++)) do
+            if [ "$qX" -eq $i ] && [ "$qY" -eq $j ] ; then
+                printf "$f2" 'Q'
+            elif [ "$kX" -eq $i ] && [ "$kY" -eq $j ]; then
+                printf "$f2" 'K'
+            elif [ "$fX" -eq $i ] && [ "$fY" -eq $j ]; then
+                printf "$f2" 'F'
+            else
+                printf "$f2" ' '
+            fi
+        done
+        echo
+    done
+    printf "$f1" ''
+    for i in {A..H}
+    do
+        printf "$f2" $i
+    done
+    echo
+}
+
+
+function readPosition() {
+    while : 
+    do
+        read -n 1 t <&1
+        if [[ $t == [1-8] ]]
+        then
+            echo
+            break;
+        fi
+        echo "Position should be [1-8]"
+    done
+}
+
+echo "Give me K position: column"
+readPosition
+kX=$t
+echo "Give me K position: row"
+readPosition
+kY=$t
+echo "Give me Queen position: column"
+readPosition
+qX=$t
+echo "Give me Queen position: row"
+readPosition
+qY=$t
+
+echo "King position is $kX $kY"
+echo "Queen position is $qX $qY"
+
+let dX=$kX-$qX
+let dY=$kY-$qY
+
+if [ "$dY" == "$dX" ] || [ $dX = 0 ] || [ $dY = 0 ]
+then
+    shakh=true
+else
+    shakh=false
+fi
+
+#echo $shakh
+
+if [ "$shakh" == false ]
+then
+    echo "NO SHAKH !!!"
+    board
+    exit
+fi
+
+echo "Give me Figure position: column"
+readPosition
+fX=$t
+echo "Give me Figure position: row"
+readPosition
+fY=$t
+echo "Figure position is $fX $fY"
+
+let dX=$kX-$fX
+let dY=$kY-$fY
+
+if [ "$dY" == "$dX" ] || [ $dX = 0 ] || [ $dY = 0 ]
+then
+    shakh=true
+else
+    shakh=false
+fi
+
+echo $shakh
+
+if [ "$shakh" == true ]
+then
+    status="NO SHAKH !!!"
+else
+    status="SHAKH !!!"
+fi
+echo $status
+
+
+board
