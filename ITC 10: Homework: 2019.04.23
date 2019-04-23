@@ -1,0 +1,122 @@
+Task 1: Types Software documentation.
+      				
+	All software documentation can be divided into two main categories:
+					
+   				  Software  documentation
+				   /	  	       \				
+			
+                 Product documentation	               Process documentation
+		 /               \ 		 	
+System documentation		User documentation	 Plans
+				  /        \	 	 Estimates
+ Requirement document	      End User   System		 Schedules
+ Design and Architecture		 Administrators	 Reports
+ Source Code		      				 Working papers
+ Validation,Verification and	      			 Standarts
+ Testing
+ Maintenance or help guide
+
+
+ Product documentation describes the product that is being developed and provides instructions on how to perform various tasks with it.
+
+ System documentation represents documents that describe the system itself and its parts. It includes requirements documents, design decisions, architecture descriptions, program source code, and help guides.
+
+ User documentation covers manuals that are mainly prepared for end-users of the product and system administrators. User documentation includes tutorials, user guides, troubleshooting manuals, installation, and reference manuals.
+
+
+ Process documentation represents all documents produced during development and maintenance that describe… well, process. The common examples of process documentation are project plans, test schedules, reports, standards, meeting notes, or even business correspondence.
+
+System documentations 
+
+1.Requirement document
+
+ A requirements document provides information about the system functionality. Generally, requirements are the statements of what a system should do. It contains business rules, user stories, use cases, etc. This document should be clear and shouldn’t be an extensive and solid wall of text. It should contain enough to outline the product’s purpose, its features, functionalities, and behavior.
+
+2.Design and Architecture document
+
+ Principles of architecture and design. It is necessary to emphasize the guidelines of architecture and design, with the help of which we will design the product. For example, if we plan to structure our solution using the microservice architecture, we should not forget to mention it.
+
+A very important part of the Database Design Document (DDD). It contains Conceptual, Logical, and Physical Design Elements. The DDD includes the formal information. It’s a funky way to make it. The potential users are:
+
+Database designer
+Database developer
+Database administrator
+Application designer
+Application developer
+
+
+3. Source Code document
+  
+ A source code document is a technical section that explains how the code works. While it’s not necessary, the aspects that have the greatest potential to confuse should be covered. The main users of the source code documents are software engineers.
+
+4. Testing document
+
+ Test documentation is documentation of artifacts created before or during the testing of software. It helps the testing team to estimate testing effort needed, test coverage, resource tracking, execution progress, etc. It is a complete suite of documents that allows you to describe and document test planning, test design, test execution, test results that are drawn from the testing activity.
+
+User documentation 
+ 
+ As the name suggests, user documentation is created for product users. However, their categories may also differ. So, we should structure user documentation according to the different user tasks and different levels of their experience. Generally, user documentation is aimed at two large categories:
+
+  1. End-users
+  2. System administrators
+
+
+1. End-users document
+
+ The documentation created for end-users should explain in the shortest way possible how the software can help solve their problems. Some parts of user documentation, such as tutorials and onboarding, in many large customer-based products are replaced with onboarding training. Nevertheless, there are still complex systems remaining that require documented user guides.
+
+
+2. System administrators document
+ System administrators documents don’t need to provide information about how to operate the software. Usually, administration docs cover installation and updates that help a system administrator with product maintenance. Here are standard system administrators documents:
+
+  -Functional description — describes the functionalities of the product. Most parts of this document are produced after consultation with a user or an owner.
+  -System admin guide — explains different types of behaviors of the system in different environments and with other systems. It also should provide instructions how to deal with malfunction situations.
+
+
+
+
+
+
+
+
+
+
+
+Task 2: Software Documentation Tools.
+
+
+1. Software Documentation Tools to Create End-User Documentation
+   1. StepShot Guides
+   2. MadCap Flare
+   3. SAP Enable Now
+   4. Oracle UPK
+
+2. Software Documentation Tools for Gathering and Managing Requirements
+   1. Jira
+   2. StoriesOnBoard
+   3. Smartdraw
+   4. Trello
+
+3. Software Documentation Tools for Writing Software Architecture Documentation
+   1. Read the Docs
+   2. GenMyModel
+
+4. Software Documentation Tools for Writing APIs
+   1. Doxygen
+   2. Swagger
+   3. Slate
+
+5. Software Documentation Tools to Document Databases
+   1. Dataedo
+   2. dbdesc
+   3. SchemaSpy
+
+6. Software Documentation Tools for QA Testing and Test Management
+   1. Xray for Jira
+   2. TestRail
+   3. TestLink
+
+7. Software Documentation Tools for Marketers
+   1. Lucidchart
+   2. Visio
+   3. Podio
