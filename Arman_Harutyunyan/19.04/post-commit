@@ -1,0 +1,59 @@
+#!/bin/bash -f
+
+#Clear the terminal
+clear
+
+#First  loop
+for range in 20 19 18 17 16 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1
+do
+
+#Second loop
+for ast in 3 2 1 2 3
+do
+
+#Always print 3 asterisks at the beginning of each row
+printf ***
+
+#Print left asterisks angle
+for i in 1 2 3
+do
+if [ $i -le $ast ]
+then 
+printf *
+fi
+done
+
+#Print s
+for i in 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20
+do
+if [ $i -lt $range ]
+then 
+printf " "
+fi
+done
+
+#Print right asterisks angle
+for i in 1 2 3 4
+do
+if [ $i -ge $ast ]
+then 
+printf *
+fi
+done
+
+#go to the next row
+echo
+
+#second loop's end
+done
+
+#wait for 0.1 seconds after each iteration
+sleep 0.1s
+#clear the terminal after each iteration
+clear
+
+#first loop's end
+done 
+
+
+
