@@ -1,0 +1,9 @@
+File must be used in ~/bin/ directory.
+
+For runing the game must be used command.
+./tic_tac_toe <gammer1> <gammer2>
+
+For stopping the game must be used key.
+CTRL + C
+
+Insert the cell coordinates on the same line, seperated with a space.

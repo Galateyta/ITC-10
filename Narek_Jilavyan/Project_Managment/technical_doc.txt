@@ -1,0 +1,12 @@
+Has "print" "checking" "beforeChecking" Functions.
+
+Print function.
+	Prints platform of game (Platform is uniformly array).
+
+Before chacking.
+	Desides whether to check  column and a row or diagonal depending on the cell and calls checking function.
+
+Checking function.
+	Checks if the all 3 given cells have the same symbol and if so passes "winner" to the 4th variable, which is the winner's name.
+
+The program works via loop. Every time after inserting the cell coordinates beforeChecking function is called, and it gets the cell with the inserted coordinates. After checking the game can be over (if there is a winner) or the loop gets finished. The loop gets repeated 9 times.
