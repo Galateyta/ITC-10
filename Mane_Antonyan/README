@@ -1,0 +1,18 @@
+/***************************************************/
+/*                                                 */
+/*   Welcome to Mane Antonyan's homeworks folder   */
+/*                                                 */
+/***************************************************/
+
+
+Directory structure:
+
+.
+├── bash
+│   ├── animation.sh
+│   ├── chess.sh
+│   └── tic_tac_toe.sh
+├── hook
+│   ├── pre-commit
+│   └── README
+└── README
