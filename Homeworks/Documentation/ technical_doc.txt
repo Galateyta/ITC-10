@@ -1,0 +1,29 @@
+
+
+
+1 /**
+2 * Calculate the ratio of two  numbers.
+3 * Unlike the division operation x / y, if the denominator is
+4 * is zero, an return message .
+5 *
+6 * param x
+7 *   numerator  
+8 * param y
+9 *   denominator
+10 * return
+11 *  result of division operation
+12 *
+13 * echo 
+14 * if the denominator is zero
+15 */
+16 
+17 	if (y == 0) {
+18 		echo" Division by zero"
+19 	}
+20 	else {
+21 		echo "$x : $y = $(($x/$y))"
+22 	}
+
+
+
+
