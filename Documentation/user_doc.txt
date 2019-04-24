@@ -1,8 +1,0 @@
-
-
-
-The user needs to process the execut file
-Then user will enter a number for numerator , afther for denominator
-After the program has been running, 
-the user can see the ratio result for the numbers entered by them
-
