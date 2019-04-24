@@ -5,7 +5,6 @@ read x
 echo "Please enter the number of denominator "
 read y
 
-
 	if ((y==0))
 	then	
 		echo " Division by zero"
@@ -13,4 +12,3 @@ read y
 		#div=x/y
 		echo "$x : $y = $(($x/$y))"
 	fi
-
