@@ -1,0 +1,20 @@
+{
+	"Project name" : "Stack",
+	"Project parts" : ["class description", "functions description", "usage"],
+	"More info" : {
+		"class descripion" : "contain function's names, and element's names",
+		"functions description" : "contain function's descriptions",
+		"usage" : "present how works functions"
+	},
+
+	"Functions" : {
+		"Stack" : "Make instance of that class",
+		"~Stack" : "Delete instance of that class",
+		"push" : "adds element to stack top",
+		"pop" : "remove last added element",
+		"top" : "return last added element",
+		"erase" : "clear all stack, remove all stack's elemennts",
+		"print" : "Show all stack's elements",
+		"isEmpty" : "Check is the stack empty"
+	}
+}

@@ -1,0 +1,10 @@
+{
+	"Project name" : "Stack",
+	"Project lenguage" : "C++",
+	"parts" : "3",
+	"information" : "In computer science, a stack is an abstract data type that serves as a collection of elements",
+	"classes" : {
+		"Stack" : "The class has 3 members, and 8 member functions",
+		"TODO" : "May need to be updated later"
+	}
+}

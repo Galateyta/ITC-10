@@ -1,0 +1,9 @@
+{
+	"Project name" : "Stack",
+	"How to use" : {
+		"Description" : "Easy to use",
+		"use in termianl" : "run commands:\ng++ stack.cpp stackMain.cpp -o stack\n./stack",
+		"use in other case" : "You can execute and run in visual studio, codeBlocks and other",
+		"NOTE" : "You can change stackMain.cpp and use functuions in other orders"
+	}
+}
