@@ -1,0 +1,19 @@
+1. pingpong localhost 2> error.txt
+
+2. ping localhost | head -n 5 > output.txt && cat output.txt
+
+3. sudo renice -n -20 -u narek
+
+4. ps aux | cut -b 1-14,65-
+
+5. inxi
+
+6. */5 */2 1+*/2  4-6,9  * echo Command_Time
+
+7. 
+
+8. getent passwd
+
+9. less /etc/default/useradd
+
+	Default values for useradd(8)
