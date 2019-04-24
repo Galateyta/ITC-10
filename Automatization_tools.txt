@@ -1,0 +1,29 @@
+                   Types of software documentation tools
+
+
+1. Requirements documentation tools
+
+    1) Jira
+	2) StoriesOnBoard
+	3) Smartdraw
+	4) Trello
+
+2.  Architecture documentattion tools
+
+    1) Read the Docs
+	2) GenMyModel
+	3) Dataedo
+	4) dbdesc
+	
+3. Tools for writing  APIs
+   
+    1) Doxygen
+	2) Swagger
+	3) Slate 
+	
+4. User documentation tools
+    
+    1) StepShot Guides
+	2) MadCap Flare
+	3) SAP Enable Now
+    4) Oracle UPK
