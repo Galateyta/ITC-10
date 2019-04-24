@@ -1,0 +1,22 @@
+Project name : Stack
+Infpormation : [
+	"In computer science, a stack is an abstract data type that serves as a collection of elements",
+	"Stacks provide a unique way to work with contiguous memory",
+	"Very similar to Arrays and Lists, Stacks provide a way for users to access different pieces of contiguous data in a Last In First Out manner.Imagine if you were looking at a stack of books. Whenever you wanted to add a book to the stack, it would be very easy to put it on top. Likewise, if you wanted to grab a book from the stack, it would be very easy just to grab the book on top.",
+	"Stack is an important data structure"
+]
+
+Advantages : [
+	"Easy to use",
+	"Easier debugging/fixing of production code"
+	"Easier training of team members"
+	"Stack is a simple data structure for storing data"
+	"Less Hardware Requirement"
+	"In array we can't allocate memory dynamically so to remove this drawback we use stack. In stack we can allocate memory dynamically"
+	"In array it take lots of effort to add new element or remove an element. In stack we can easily add or remove elements from stack"
+]
+
+Dis advantages : [
+	"not flexible"
+	"Unable to Copy & Paste"
+]

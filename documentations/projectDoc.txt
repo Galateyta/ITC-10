@@ -1,0 +1,8 @@
+Project name : Stack
+Project lenguage : "c++"
+parts : 3 parts
+information : "In computer science, a stack is an abstract data type that serves as a collection of elements"
+classes : {
+	Stack : "Class have 3 elements, and 8 functions"
+	//for the future can be updated
+}
