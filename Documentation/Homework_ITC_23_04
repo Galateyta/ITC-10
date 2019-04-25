@@ -1,0 +1,85 @@
+1. There are 4 types of Software documentations:
+
+-Architectural / Design
+ 
+A software review that includes a description of the working environment and principles that should be used when creating software.
+
+-Technical
+
+Documentation for code, algorithms, interfaces, API.
+
+-User Guide
+Guides for end users, system administrators and other personnel.
+
+-Marketing
+
+Description for marketing part of software.
+
+
+2. I found 4 more popular automate documentation generators:
+
+StepShot Guides, MadCap Flare, SAP Enable Now, Oracle UPK. 
+
+
+3. Documentation templates for every types:
+
+-Super Mario Bros ( User Guide )
+
+As shown by these documents, originally, the controls for Super Mario Bros. were quite different from the final release. If you’ve played Super Mario Bros., you know the following controls:
+
+Up: Nothing
+Down: Crouch
+Left: Walk left
+Right: Walk right
+A Button: Jump / Swim
+B Button: Accelerate / Throw fireballs
+
+-Super Mario Bros ( Architectural / Design )
+
+Game Concept
+-Introduction
+-Bakground
+-Genre
+-Plaform
+
+Game Mechanics
+-Core Game PLay
+-Modes of Play
+-Scoring
+-Types of Move
+-Game Flow
+-Types of Character
+-Collectable Items
+-Game Play Elements
+
+Game Physics & Statistics
+-Movements
+-Damage and Recovery
+-General Physics Model
+-AI Features
+
+User Inerface
+-Screen HUD
+-Flow Chart
+-Game Flow Hierarchy
+
+Arthwork
+-Aims and Objectives
+-Marketing and Package Art
+
+Sound and Music
+-Sound Effects
+-Music
+
+Story
+-Game Story
+
+Level Requirements
+-Level Design
+-Level Structure
+
+
+
+
+
+
