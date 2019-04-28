@@ -1,0 +1,53 @@
+Task 1) Vim֊ում record mode-ի միջոցով համարակալել ֆայլի տողերը (առանց օգտագործելու setnumber հրամանը): Done
+
+	[vim newFile.txt]		Open the file
+	[i]						entering Insert mode
+	[1.]						
+	[Esc]						entering Normal mode
+	[qa] 						start recording
+	[0]  						go to beginning of the current row
+	[v]						entering Visual mode
+	[right arrow]			to select
+	[y]						copy
+	[down arrow]
+	[P]    					to paste
+	[left arrow]
+	[Ctrl-a]   				to increase the number under mouse pointer by 1
+	[q]						stop recording
+
+	[15@a]					to play the recording by 15 times (instead of 15 type the number of rows minus 2 as we have given numbers to first and second rows during recording process.
+	
+Task 2) Գրել սկրիպտ, որը ընթացիկ դիրեկտորիայում կստեղծի A թղթապանակ, դրա մեջ՝ a ֆայլ, եթե A թղթապանակը գոյություն ունի, մտնի դրա մեջ և ստեղծի a ֆայլը, իսկ եթե a ֆայլն էլ գոյություն ունի, ջնջի այն և նորից ստեղծի a անունով ֆայլ։ Done
+
+#!/bin/bash
+
+if [ -d A ]
+	then
+	cd A
+	if [ ! -f a ]
+		then
+		touch a
+	else
+		rm a
+		touch a
+	fi		
+else
+	mkdir A
+	cd A
+	touch a
+fi
+
+Task 3) Documents թղթապանակը սահմանել որպես տերմինալի default դիրեկտորիա։ Done
+
+	1. [sudo gedit .bashrc]		բացել .bashrc ֆայլը
+	2. .bashrc ֆայլում որևէ ազատ տողում ավելացնել "cd Documents/", պահպանել փոփոխությունը։
+
+Task 4) Քանի՞ ձևով կարելի է աշխատեցնել bash սկրիպտները, որո՞նք են դրանց տարբերությունները։ Done
+
+	1. [sh /home/arman/script.sh], [bash /home/arman/script.sh],	սկրիպտի անվանումից առաջ նշելով ինտերպրետատորի անվանումը
+	2․	[sh ./script.sh], [bash ./script.sh],	գտնվելով տվյալ դիրեկտորիայում	
+	3․	[chmod a+x script.sh], սկրիպտի համար ավելացնելով "execute permision", որից հետո կարող ենք աշխատեցնել սկրիպտը առանց նշելու ինտերպրետատորը՝ 	[./script.sh] կամ [/home/arman/script.sh] :
+
+Task 5) Ստեղծել անիմացիայի էֆեկտ bash սկրիպտով։ Done
+
+	Տե՛ս animation.sh ֆայլը
