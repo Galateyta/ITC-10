@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <form action="/action_page.php">
+             <fieldset>
+                     <legend>Sign up:</legend>
+                     Email: <input type="email" name="mail" value="" required><br>
+                     Phone: <input type="tel" min="11" max="13" name="phone" value="+" pattern="[0-9]{3}\-[0-9]{2}\-[0-9]{2}\-[0-9]{2}\-[0-9]{2}" required><br>
+                     Name:  <input type="text" name="name"  placeholder="name" required> <br>
+                     Password: <input type="password" name="pass" value="" required><br>
+                     <input type="reset" value="Cancel">
+                     <input type="submit" value="Submit">
+                      </fieldset>
+        </form>
+    </body>
+</html>
