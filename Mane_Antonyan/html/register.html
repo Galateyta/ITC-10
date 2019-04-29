@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Registration Form</title>
+		</style>
+	</head>
+	<body>
+		<h2>REGISTRATION</h2>
+		<form action="">
+			<fieldset style="width:270px; background-color:#f5f1f1">
+				<legend color="#19a1a4">Sign up</legend> 
+				<form action="">
+					<label style="margin: 20px 0 5px 0; display: block">
+						User name
+						<span style="color: red">*</span>
+					</label>
+					<input name="user" required placeholder="Your name" maxlength=30>
+
+					<label style="margin: 20px 0 5px 0; display: block">Surname</label>
+					<input name="surname" placeholder="Your surname" maxlength=40>
+
+					<label style="margin: 20px 0 5px 0; display: block">
+						E-mail
+						<span style="color: red">*</span>
+					</label>
+					<input name="email" required placeholder="example@mail.com">
+
+					<label style="margin: 20px 0 5px 0; display: block">Phone</label>
+					<div>
+						<span>+</span>
+						<input type=tel placeholder="###" maxlength=3 style="margin-left: 5px; width:30px"></input>
+						<input type=tel placeholder="###" maxlength=3 style="margin-left: 5px; width:30px"></input>
+						<input type=tel placeholder="###" maxlength=3 style="margin-left: 5px; width:30px"></input>
+						<input type=tel placeholder="###" maxlength=3 style="margin-left: 5px; width:30px"></input>
+					</div>
+
+					<div style="margin: 20px 0">
+						<form action="">
+							<input type="radio" name="male" value="male"> Male</input> <br>
+							<input type="radio" name="female" value="female" > Female</input> <br>
+							<input type="radio" name="other" value="other" >Other</input>
+							<select name="select" disabled>
+								<option value="volvo">1</option> 
+								<option value="saab">2</option>
+								<option value="mercedes">3</option>
+							</select>
+							</input>
+
+						</form>
+					</div>
+
+
+					<label style="margin: 20px 0 5px 0; display: block">
+						Password
+						<span style="color: red">*</span>
+					</label>
+					<input name="password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!/+-]).{6,40}$" required placeholder="Enter password" type="password">
+
+					<label style="margin: 20px 0 5px 0; display: block">
+						Repeat Password
+						<span style="color: red">*</span>
+					</label>
+					<input name="re-password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!/+-]).{6,40}$" required placeholder="Repeat password" type="password">
+					<div>
+						<input type="submit" value="Send" style="display: inline-block; width: 117px; margin: 10px 6px 0 0;"/>
+						<input type="submit" value="Close" style="display: inline-block; width: 117px; margin: 10px 0 0 0;"/>
+						<script>
+						function myFunction() {
+							document.getElementByName("user").value = "";
+							document.getElementByName("surname").value = "";
+							document.getElementByName("email").value = "";
+						}
+
+						</script>
+					</div>
+				</form>
+			</fieldset>
+		</form>
+	</body>
+</html>
