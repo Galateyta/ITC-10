@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+<form>
+	<fieldset style="width:300px">
+		<legend>Sign Up</legend>
+		<pre>email*:   <input type='email' required> </pre>
+		phone:  	<span>+ <input type="tel" pattern="[0-9]{3}" maxlength="3" style="width:23px" placeholder="000"> <span>- <input type="tel" pattern="[0-9]{3}" maxlength="3" placeholder="000" style="width:23px"> <span>- <input type="tel" pattern="[0-9]{3}" placeholder="000" style="width:23px" maxlength="3"> <span>- <input type="tel" pattern="[0-9]{3}" placeholder="000" maxlength="3" style="width:23px"> <br>
+		<div>gender: <input type="radio" name="gender" value="male" checked> Male <input type="radio" name="gender" value="female">
+<snap> Female 	<select value="other">
+			<option Value = "other" selected> Other </option>	 		
+			<option value="1">Մատներդ կոտրվեր՝ չնշեիր այդ տարբերակը</option>
+		</select>
+		</div>		
+		<pre>name*:    <input maxlength="50" required> </pre>
+		<pre>password:<input type="password"pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!/+-]).{6,40}$" required placeholder="password" >
+		<pre><input type='submit'>	<input type='reset'  value="cansel"></pre>
+	 </fieldset>
+</form>
+
+</body>
+</html>
