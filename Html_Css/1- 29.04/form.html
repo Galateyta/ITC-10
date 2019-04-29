@@ -1,0 +1,49 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+    <head>
+        <title> Form </title>
+	<style> 
+	    .input {
+		position: absolute; 
+		left: 15%;
+	    }
+	    #hidden {
+		display: none;
+	    }
+	</style>
+	<script type="text/javascript">
+		function clickFunc() {
+		    document.getElementById('hidden').style.display = 'block'; 
+                }
+        </script>
+    </head>
+    <body>
+        <form  border="1px">
+            <fieldset> 
+                <legend> Sign up </legend>
+                <label> Email* </label> 
+                <input required type="email" class="input"> <br> <br>
+        	<label> Phone </label> 
+                <input type="tel" maxlength="13" minlength="11" class="input" > <br> <br>
+           	<label> Name* </label> 
+                <input required type="text" maxlength="50" class="input"> <br> <br>
+	        <label> Password* </label> 
+                <input required type="password" maxlength="50" class="input"
+                       patern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"><br> <br>
+	        <input type="radio" name="gender" value="male"> Male
+		<input type="radio" name="gender" value="female"> Female
+                <select name="Other">
+		    <option value="option1">Option1</option>
+		    <option value="option2">Option2</option>
+		    <option value="option3">Option3</option>
+		    <option value="other" selected onClick="clickFunc();">Add my version</option>
+		</select>
+                <br> <br>
+		<input type="text" placeholder="Add your version" id="hidden">
+		<br> <br>
+		<input type="submit" value="Sign in">
+                <input type="reset" value="Cancel">
+            </fieldset>
+        </form> 
+    </body>
+</html>
