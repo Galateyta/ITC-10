@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="index.css" rel="stylesheet">    
+    <title>Registration List</title>
+</head> 
+<body> 
+    <form action="">
+        <fieldset>
+            <legend>Sign up:</legend>
+            Email:  <br><input type="email" name="mail" placeholder="mail" required maxlength="30" /><br><br>
+            <div>
+                Phone: <br><span>+</span>
+                <input min="9" max="12"  type="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" name="phone" placeholder="phone" /><br><br>
+                <span></span>
+            </div>
+            Name: <br><input type="text" name="name" maxlength="20"  placeholder="name" required /> <br><br>
+            Password:  <br><input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="pass" placeholder="password" maxlength="20" required /> <br><br>                
+        <div>   
+            <input type="radio" value="Male" name="gender" />Male<br>
+            <input type="radio" value="Female" name="gender" />Female<br>
+            <input type="radio" value="other"  name="gender" id="h" onclick="select()" />Other
+                
+            <select name="select" id="close"> 
+                <option value="value1" >value 1</option> 
+                <option value="value2"  selected>value 2</option>
+                <option value="value3"  id="hide" onclick="b()">Your version
+                    <input type="text"  value="your version" id="a1" style="width:120px;margin-left:5px"/>
+                    <button onclick="add()">Ok</button>
+                </option>
+            </select>   
+        </div>
+        <br>
+        <input type="reset" value="Cancel" />  
+        <input type="submit" value="Submit" />
+        </fieldset>
+    </form>
+    <script>       
+function add() {
+//var foo = document.getElementById('h').nextSibling.data = document.getElementById("a1").value;
+    var foo = document.getElementById('hide').textContent = 
+              document.getElementById("a1").value;
+}
+</script>
+
+</body> 
+</html>
+
