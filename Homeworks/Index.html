@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Form</title>
+</head>
+<body>    
+    <script type="text/javascript">
+        function ShowDropdown() {
+            var chk = document.getElementById("chk");
+            var gender = document.getElementById("gender");
+            gender.style.display = chk.checked ? "block" : "none";
+        }
+        function ShowInput() {        
+            var inpText = document.getElementById("inpText");
+            if (inpText.style.display === "none") {
+                inpText.style.display = "block";
+            }                   
+        }       
+    </script>
+    <form border="1px">
+        <fieldset>
+            <legend>Sign in</legend>
+            <label>Email*</label>
+            <input required type="email"><br>
+            <label>Phone</label>
+            <input type="tel" maxlength="13" minlength="11"> <br />
+            <label>Name*</label>
+            <input required type="text" maxlength="50"> <br />
+            <label>Gender</label>            
+                <input type="radio" name=" "/>Male
+                <input type="radio" name=" "/>Female
+                <input type="radio" id="chk" name=" " onclick="ShowDropdown()"/>Other          
+            <br />
+            <select id="gender" style="display: none" onchange="ShowInput()">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>Other</option>
+            </select>
+            <input type="text" id="inpText" style="display: none" />
+            <label>Password*</label>
+            <input required type="password" maxlength="50" patern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"><br>
+            <input type="submit" value="Sign in">
+            <input type="reset" value="Cancel">
+        </fieldset>
+    </form>
+</body>
+</html>
