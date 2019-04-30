@@ -1,8 +1,0 @@
-
-
-This program is designed for 
-
-Calculate the ratio of two numbers.
-Unlike the division operation x / y, if the denominator is
-is zero, an return message , else return result of x / y,
-

@@ -1,5 +1,0 @@
-POST-HOOK
-
-my hook file is in .git/hooks/post-coomit
-
-That  hook after doing commit draw  animation 
