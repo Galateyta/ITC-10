@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<body>
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+<h2>REGISTRATION</h2>
+
+<form action="">
+<fieldset style="width:400px">
+<legend>Sign up</legend> 
+
+<form action="">
+	<p/><label>Email<br />
+	<input type="email" name="email" required peattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"  placeholder="exe@exe.com">
+	<p/></label><br/>
+
+	Phone: 	<span>+ 
+			<input type="tel" pattern="[0-9]{1,3}" maxlength="3" style="width:23px" placeholder="000"> 
+		<span>- 
+			<input type="tel" pattern="[0-9]{2,3}" maxlength="3" placeholder="000" style="width:23px"> 
+		<span>- 
+			<input type="tel" pattern="[0-9]{3}" placeholder="000" style="width:23px" maxlength="3"> 
+		<span>- 
+			<input type="tel" pattern="[0-9]{3}" placeholder="000" maxlength="3" style="width:23px"> <br>
+	</label><br />
+
+	<p/><label>Gender<br />
+	<input type="radio" name="gender" value="1"> Male<br>
+        <input type="radio" name="gender" value="2"> Female<br>
+        <input type="radio" name="gender" value="3"> Other<br>
+	
+	<p/><select name="select" id="select" style="display:none">
+		<option disabled>Select option</option>
+		<option value="1">1</option>
+    		<option value="2">2</option>
+    		<option value="3">3</option>
+    		<option value="4">Your version</option>
+	</select>
+	<input id="input" type="text" name="input" style="display:none"  placeholder="Your text">
+
+	<script>
+		$("input[name^='gender']").on('change', function(){
+   			if($(this).val() == 3){
+        			$("#select").show();
+    			} else {
+   			        $("#select").hide();
+   		 	}
+		})
+	</script>
+	
+	<script>
+		$("#select").on('change', function(){
+			if($(this).val() == 4){
+				$("#input").show();
+			} else {
+        			$("#input").hide();
+    			}
+		})
+
+	</script>
+	
+	<p/><label >Name<br/></label>
+        <input name="user" minlength="1" maxlength="50" required placeholder="Your name">
+
+	<p/><label >Password<br /></label>
+	<input type="password" name="pw" pattern="(?=.*\d)(?=.*[+,!,-,/])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and one symbol  +,-,! or / , and at least 8 or more characters" required placeholder="Enter password" type="password" >
+	<pre><input type="submit" value="Sign Up">       <input type='reset'  value="Cansel"></pre>
+</form>
+</fieldset>
+</body>
+</html>
