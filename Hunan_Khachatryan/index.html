@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>RESUME</title>
+ </head>
+ 
+ <style>
+ .first_part{
+	width:20%;
+	height:100%;
+	background-color:#42f4a4;
+}
+.resum{ 
+	height:8%;
+	background-color:#42f4a4;
+	text-align:center;
+}
+	
+
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+writing-mode:bt-lr;
+  -webkit-appearance: none;
+  width: 90%;
+  height: 10px;
+  border-radius: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #4CAF50;
+  cursor: pointer;
+}
+
+.slidecontainer2 {
+    background-color:#42f4a4;
+    margin: 0px;
+    padding: 0px;
+    float: left;
+    text-align: center;
+    max-width: 33.33%
+}
+
+input[type=range].range {
+    cursor: pointer;
+	margin-top:55px;
+	margin-bottom:55px;
+    width: 100px !important;
+    -webkit-appearance: none;
+    z-index: 200;
+    width: 5px;
+    border: 1px solid #e6e6e6;
+    background-color: #e6e6e6;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#d2d2d2));
+    background-image: -webkit-linear-gradient(right, #e6e6e6, #d2d2d2);
+    background-image: -moz-linear-gradient(right, #e6e6e6, #d2d2d2);
+    background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2);
+    background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2)
+}
+
+input[type=range].range:focus {
+    border: 0 !important;
+    outline: 0 !important
+}
+
+input[type=range].range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background-color: #555;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4ddbff), to(#0cf));
+    background-image: -webkit-linear-gradient(right, #4ddbff, #0cf);
+    background-image: -moz-linear-gradient(right, #4ddbff, #0cf);
+    background-image: -ms-linear-gradient(right, #4ddbff, #0cf);
+    background-image: -o-linear-gradient(right, #4ddbff, #0cf)
+}
+
+input[type=range].round {
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px
+}
+
+input[type=range].round::-webkit-slider-thumb {
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -o-border-radius: 5px
+}
+
+.vertical-lowest-first {
+    -webkit-transform: rotate(90deg);
+    -moz-transform: rotate(90deg);
+    -o-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg)
+}
+
+.vertical-heighest-first {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+
+ol,
+ul {
+  list-style: none;
+}
+li {
+  display: flex;
+  flex-flow: row;
+  min-height: 100px;
+  position: relative;
+}
+span.number {
+  margin-right: 100px;
+  text-align: center;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: black;
+  border-radius: 50%;
+ 
+}
+span.line {
+  position:absolute ;
+  height: 200%;
+  border: solid black 1px;
+  top: 0.40m;
+  left: 0.20em;
+}
+
+li:last-child span.line {
+  display: none;
+}
+}
+
+ </style>
+ 
+ 
+ <body>
+ <div style="float:left;width:20%;height:1300px;background-color:#42f4a4">
+ 
+<div  style="height:5%;background-color:#42f4a4;text-align:center">
+<p style="padding-bottom:-10px;padding-top:10px;color:white;font-size:18px">RESUME</p>
+</div>
+<div style="height:25%;background-color:#c8d1cd;text-align:center">
+    <img style= "width:100px;height:100px"src="icon_user-48.png">
+	<h3 style="text-align:center,bold;margin-bottom:-15px">MARTIN DOE</h3>
+	<p style="padding-bottom:5px">Accountant <br style="margin-bottom:10px"> Contact<br>+123 486 789<br>jhondoepro@freepik.com<br>1234 Park Ave 17XX,East 4432</p>
+	
+</div>
+
+<div style="background-color:#42f4a4;margin-top:-16px;text-align:center;padding-top:12px">
+    <img src="settings-7-32.png">
+	<p style="color:white;margin-top:-2px">SKILLS</p>
+
+</div>
+
+<div class="slidecontainer">
+<p>SKILL 01</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+ 
+<p>SKILL 02</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+<p>SKILL 03</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+<p>SKILL 04</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+<p>SKILL 05</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+
+<p>SKILL 06</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+<p>SKILL 07</p>
+  <input type="range" min="1" max="100" value="50" class="slider" id="myRange">
+    
+</div>
+
+  <div style="text-align:center;margin-top:65px;padding-bottom:1px;">
+  <img src="icon.png">
+  <p style="font-size:18px; margin-bottom:-35px">LANGUAGE</p>
+  </div>
+
+
+<div class="slidecontainer2" style="margin-right: 0px;">
+    <br><br>
+	<p>ENGLISH</p>
+    <input class="range vertical-lowest-first round" type="range" min="0" max="1" step="0.1" value="1">
+    <br><br><br>
+</div>
+
+<div class="slidecontainer2">
+    <br><br>
+	<p>RUSSIAN</p>
+    <input class="range vertical-lowest-first round" type="range" min="0" max="1" step="0.1" value="1">
+    <br><br><br>
+</div>
+
+
+<div class="slidecontainer2" style="margin-right: 0px">
+    <br><br>
+	<p>CHINESE</p>
+    <input class="range vertical-heighest-first round" type="range" min="0" max="1" step="0.1" value="1">
+    <br><br><br>
+</div>
+
+</div>
+
+
+ <div style="margin-left:190px;width:90%;height:100%;background-color:white;display:block">
+ <div style="margin-left:120px;width:90%;height100%;background-color:white;display:block">
+ <img style="margin-left:10px;padding-top:15px;padding-right:5px;float:left"src="person.png">
+ <h2 style="color:#4CAF50;padding-top:25px">About Me </h2> 
+ <p >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+ Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+ Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. </p>
+ <hr>
+  </div>
+  <div style="margin-left:120px;width:90%;height100%;background-color:white;display:block">
+ <img style="margin-left:10px;padding-top:15px;padding-right:5px;float:left;width:35px;height:35px"src="img_534156.png">
+ <h2 style="color:#4CAF50;padding-top:25px">PROFFESIONAL EXPERIENCE </h2> 
+ 
+ <ul >
+  <li><span class='line'></span><span class='number'></span>
+    <div style="margin-left:-50px;"class="blob">2014-2015</div>
+	
+	<h4 style="padding-left:25px;margin-top:-3px">JOB TITLES<br>COMPANY <p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+	
+	
+	
+	
+  </li>
+  <li><span class="number"></span>
+    <div style="margin-left:-50px"class='blob'>2014-2015</div>
+	<h4 style="padding-left:25px;margin-top:-3px">JOB TITLES<br>COMPANY<p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+  </li>
+  <li><span class='number'></span>
+    <div style="margin-left:-50px"class="blob">2014-2015</div>
+	<h4 style="padding-left:25px;margin-top:-3px">JOB TITLES<br>COMPANY<p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+  </li>
+  
+</ul>
+<hr>
+<div style="margin-left:0px;width:90%;height100%;background-color:white;display:block">
+ <img style="margin-left:10px;padding-top:15px;padding-right:5px;float:left;width:35px;height:35px"src="icons8-graduation-cap-48.png">
+ <h2 style="color:#4CAF50;padding-top:25px">FORMAL EDUCATION </h2> 
+ 
+ <ul >
+  <li><span class='line'></span><span class='number'></span>
+    <div style="margin-left:-50px;"class="blob">2014-2015</div>
+	
+	<h4 style="padding-left:25px;margin-top:-3px">DEGREE TITLES<br>INSTITUTION <p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+	
+	
+	
+	
+  </li>
+  <li><span class="number"></span>
+    <div style="margin-left:-50px"class='blob'>2014-2015</div>
+	<h4 style="padding-left:25px;margin-top:-3px">DEGREE TITLES<br>INSTITUTION<p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur adipiscing do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+  </li>
+  <li><span class='number'></span>
+    <div style="margin-left:-50px"class="blob">2014-2015</div>
+	<h4 style="padding-left:25px;margin-top:-3px">DEGREE TITLES<br>INSTITUTION<p style="font-weight:normal" >Lorem ipsum dolor sit amet, consectetur  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  </p></h4>
+  </li>
+  
+</ul>
+<hr>
+ </div>
+ <div style="margin-left:0px;width:90%;height100%;background-color:white;display:block">
+ <img style="margin-left:10px;padding-top:15px;padding-right:5px;float:left;width:35px;height:35px"src="trophy-2-32.png">
+ <h2 style="color:#4CAF50;padding-top:25px">AWARDS/CERTIFICATES </h2> 
+ <div style="margin-left:50px">
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+ <p> -LOREN IPSUM DOLOR SIT AMET, CONSECTETUR ADIPISCING ELIT </p>
+</div>
+ </div>
+ </div>
+ </div>
+</body>
+</html>
