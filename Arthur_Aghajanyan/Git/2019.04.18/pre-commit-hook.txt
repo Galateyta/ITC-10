@@ -1,0 +1,2 @@
+1)Ավելացնենք pre-commit ֆայլը մեր .git/hooks դիրեկտորայում
+2)commit անելու ժամանակ եթե մեր branc-ը Arthur_Aghajanyan/Homeworks սա լինի կստանանք հաղորդագրություն 
