@@ -1,0 +1,66 @@
+body {
+	display: flex;
+	margin: 0;
+}
+.left {
+	width: 30%;
+	background: #94cccd;
+	display: inline-block;
+	text-align: center;
+	font-family: sans-serif;
+}
+.right {
+	width: 70%;
+	display: inline-block;
+	background: white;
+	margin: 15px;
+	font-family: sans-serif
+}
+img {
+    margin: 7px;
+    border-radius: 50%;
+}
+.personal {
+	background: #e7e7e9;
+}
+.skills {
+	background: #94cccd;
+}
+.fa-cogs:before {
+    content: "\f085";
+    color: white;
+}
+.fa-comment-dots:before {
+    content: "\f085";
+    color: white;
+}
+
+.skillcontainer {
+    width: 80%;
+    background-color: black;
+    display: -webkit-inline-box;
+}
+
+.skill {
+    text-align: -webkit-auto;
+    padding: 5px; 
+    color: white;
+}
+.one {width: 85%; background-color: white;}
+.two {width: 72%; background-color: white;} 
+.three {width: 84%; background-color: white;} 
+.four {width: 68%; background-color: white;} 
+.five {width: 75%; background-color: white;} 
+.six {width: 67%; background-color: white;} 
+.seven {width: 73%; background-color: white;} 
+input[type=range][orient=vertical]
+{
+    writing-mode: bt-lr;
+    -webkit-appearance: slider-vertical;
+    width: 8px;
+    height: 175px;
+    padding: 0 5px;
+}
+
+
+
