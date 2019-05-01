@@ -1,0 +1,210 @@
+﻿.title-resume {
+	color: white;
+}
+h1 {
+	text-align: center;
+	margin: 7px;
+	font-weight: normal;
+	font-family: sans-serif;
+	font-size: 30px;
+}
+
+h2 {
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 10px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+h3 {
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 5px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+h4 {
+	margin: 0px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+h5 {
+	text-align: center;
+	margin: 0px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+.div-circle {
+	padding: 20px;
+	padding-bottom: 10px;
+}
+
+img {
+	border-radius: 50%;
+}
+
+p {
+	font-size: 16px;
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+th {
+	font-family: sans-serif;
+	margin-bottom: 4px;
+	color: #59595b;
+}
+
+li {
+	margin-bottom: 6px;
+}
+
+.header-about {
+	color: #4c9793; 
+	font-weight: 600;
+	text-align: start;
+	margin-top: 10px;
+}
+
+.main-container {
+	width: 100vw;
+	height: 100%;
+}
+
+.div-range {
+	display: inline-block;
+	width: 30%;
+	text-align: center;
+	justify-content: space-around;
+}
+
+.left-bordered {
+	border-left: 2px solid black;
+	padding-left: 1vw;
+	margin-left: 1%;
+}
+
+.w3-blue {
+	color: #4c5447!important;
+    background-color: #fefdeb!important;
+}
+
+.w3-container{
+    padding: 0.01em 2px;
+    height: 10px;
+}
+
+.w3-round-xlarge {
+    border-radius: 16px;
+}
+
+.w3-light-grey {
+    color: #fefdeb!important;
+    background-color: #4c5447!important;
+    margin-bottom: 14px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+
+
+.left_part {
+    float:left;
+    width:26%;
+    background-color:#8bcaca
+}
+
+.text {
+    font-size: 14px;
+	font-family: sans-serif;
+	/*color: #59595b;*/
+}
+
+.right_part {
+    width:70%;
+    padding-left: 2%;
+}
+
+.slider-wrapper {
+  display: inline-block;
+  width: 20px;
+  height: 150px;
+  padding: 0px;
+  margin-right: 8px;
+  margin-top: -20px;
+  transform-origin: 75px 75px;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg)
+}
+
+.divider {
+	height: 2px;
+	background-color: #bdbcc1;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* For working in Chrome 
+	By AnnaHarutyunyan10 - github.com/AnnaHarutyunyan10
+	Thank you! 
+*/
+.vertical-range {
+    -webkit-appearance: none;
+    width: 120px;
+    margin: auto;
+    display: block;
+    height: 7.5px;
+    outline: none;
+    border-radius: 18px;
+    margin: 10px;
+   
+}
+.vertical-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #4c9793;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.vertical-range::-moz-range-thumb {
+    -webkit-appearance: none;
+    background-color: #4c9793;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0;
+
+.vertical-range1 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 85%, #4c5447 85%, #4c5447 100%);
+}
+.vertical-range2 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 45%, #4c5447 45%, #4c5447 100%);
+}
+.vertical-range3 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 65%, #4c5447 65%, #4c5447 100%);
+}
+/* End -chrome-*/
