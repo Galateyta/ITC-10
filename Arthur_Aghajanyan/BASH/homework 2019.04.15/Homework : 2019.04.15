@@ -1,0 +1,22 @@
+1)open file
+2)i(insert mode)
+3)add 1.
+4)left
+5)left
+6)esc(command mode)
+7)q,a(record mode)
+8)down
+9)i(insert mode)
+10)ctr+y
+11)add .
+12)left
+13)left
+14)esc(command mode)
+15)ctr+a
+16)q
+
+run command(7@a)
+Numbering 7 lines
+
+    
+
