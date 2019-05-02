@@ -3,84 +3,80 @@
     <head>
         <link rel="stylesheet" type="text/css" href="style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     </head>
     <body>
         <div class="main-container">
-            <div style="float: left; width: 26%; height: 100%; display: inline-block">
-                <div style="height: 5.3%; background-color: #94cccd">
-                    <div style="height: 1px"></div>
+            <div id="block-left">
+                <div class="light-green-div">
                     <h1 class="title-resume">RESUME</h1>
                 </div>
-                <div style="height: 37%; background-color: #e7e7e9" align="center">
-                    <div style="height: 1px"></div>
+                <div class="profile-info" align="center">
                     <div class="div-circle">
                         <img src="./images/avatar.jpg" alt="Avatar" width="90%" height="90%">
                     </div>
-                    <h1 style="margin-bottom: 0px">MARTIN DOE</h1>
+                    <h1>MARTIN DOE</h1>
                     <h3>Accountant</h3>
-                    <h4>Contact</h4>
-                    <h4>+123 456 789</h4>
-                    <h4>Jhondoepro@freepik.com</h4>
-                    <h4 style="margin-bottom: 15px">1234 Park Ave 17XX, East 4432</h4>
+                    <span>Contact</span>
+                    <span>+123 456 789</span>
+                    <span>Jhondoepro@freepik.com</span>
+                    <span>1234 Park Ave 17XX, East 4432</span>
                 </div>
-                <div style="height: 60%; background-color: #94cccd">
-                    <div>
-                        <i class="fa fa-cogs" style="color: #FFFFFF; float: right; width: 52%; font-size: 20px; margin-top: 5px;"></i><br>
-                        <h3 style="margin-top: 7px;">
-                        SKILLS</h3>
-                        <div style="padding: 1px 10% 1px 10%; text-align: left">
-                            <h4>SKILL 01</h4>
+                <div class="light-green-div">
+                    <div id="skills">
+                        <i class="fa fa-cogs"></i>
+                        <h3>SKILLS</h3>
+                        <div id="skills-bars">
+                            <span>SKILL 01</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:85%"></div>
                             </div>
-                            <h4>SKILL 02</h4>
+                            <span>SKILL 02</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:70%"></div>
                             </div>
-                            <h4>SKILL 03</h4>
+                            <span>SKILL 03</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:85%"></div>
                             </div>
-                            <h4>SKILL 04</h4>
+                            <span>SKILL 04</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:65%"></div>
                             </div>
-                            <h4>SKILL 05</h4>
+                            <span>SKILL 05</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:80%"></div>
                             </div>
-                            <h4>SKILL 06</h4>
+                            <span>SKILL 06</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:65%"></div>
                             </div>
-                            <h4>SKILL 07</h4>
+                            <span>SKILL 07</span>
                             <div class="w3-light-grey w3-round-xlarge">
                                 <div class="w3-container w3-blue w3-round-xlarge" style="width:80%"></div>
                             </div>
                         </div>
                     </div>
-                    <div style="margin-top: 20px; width: 100%;">
+                    <div id="languages">
                         <div>
-                            <i class="fa fa-commenting-o" style="color: #FFFFFF; float: right; width: 52%; font-size: 20px; margin-top: 5px;"></i><br>
-                            <h3 style="margin-top: 7px;">LANGUAGES</h3>
+                            <i class="fa fa-commenting-o"></i><br>
+                            <h3>LANGUAGES</h3>
                         </div>
-                        <div style="margin-left: 5%">
+                        <div id="vertical-ranges">
                             <div class="div-range">
-                                <h5>ENGLISH</h5>
+                                <span>ENGLISH</span>
                                 <div class="slider-wrapper">
                                     <input type="range" value="85" class="vertical-range vertical-range1 vertical" oninput="range_v1(1)">
                                 </div>
                                 <!-- <input class="range vertical-heighest-first round" type="range" name="range"> -->
                             </div>
                             <div class="div-range">
-                                <h5>RUSSIAN</h5>
+                                <span>RUSSIAN</span>
                                 <div class="slider-wrapper">
                                     <input type="range" value="45" class="vertical-range vertical-range2 vertical" oninput="range_v1(2)">
                                 </div>
                             </div>
                             <div class="div-range">
-                                <h5>CHINESE</h5>
+                                <span>CHINESE</span>
                                 <div class="slider-wrapper">
                                     <input type="range" value="65" class="vertical-range vertical-range3 vertical" oninput="range_v1(3)">
                                 </div>
@@ -90,7 +86,7 @@
                 </div>
             </div>
             <!-------------------------------------------- RIGHT PART ------------------------------------------------->
-            <div style="display: inline-block; margin: 10px; width: 70%">
+            <div id="block-right">
                 <div class="right_part" style="display: inline-block; width: 100%">
                     <div style="border-block-end: 1px solid #bdbcc1; padding-block-end: 20px;">
                         <h3 class="header-about">
@@ -234,16 +230,16 @@
                         <li class="text">LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT</li>
                         <li class="text">LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT</li>
                         <li class="text">LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT</li>
-                        <li class="text">LOREM IPSUM DOLOR SIT AMET CONSECTETUR ADIPISICING ELIT</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script>
     function range_v1(index) {
     var val = $('.vertical-range'+index).val();
-    $('.vertical-range'+index).css({'background':'-webkit-linear-gradient(left ,#fff 0%,#fff '+val+'%,#4c5447 '+val+'%, #4c5447 100%)'});
+    $('.vertical-range'+index).css({'background':'-webkit-linear-gradient(left ,#fefdeb 0%,#fefdeb '+val+'%,#4c5447 '+val+'%, #4c5447 100%)'});
     }
     </script>
 </body>

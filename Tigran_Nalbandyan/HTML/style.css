@@ -1,5 +1,6 @@
-﻿.title-resume {
+﻿h1.title-resume {
 	color: white;
+	padding-top: 10px;
 }
 h1 {
 	text-align: center;
@@ -63,6 +64,72 @@ li {
 	margin-bottom: 6px;
 }
 
+i {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px!important;
+	margin-top: 5px;
+	margin-bottom: 7px;
+	width: 100%;
+}
+
+#block-right i {
+	text-align: left;
+	width: 24px;
+	margin: 0px;
+}
+
+div.main-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+#block-left {
+	width: 26%
+}
+
+#block-right {
+	margin: 10px;
+	width: 70%;
+}
+
+div.profile-info {
+	padding-bottom: 20px;
+	background-color: #e7e7e9;
+}
+
+div.profile-info span {
+	margin: 0px;
+	font-weight: normal;
+	font-family: sans-serif;
+	display: block;
+}
+
+div.profile-info h1 {
+	margin: 0px;
+}
+
+div.light-green-div {
+	display: grid;
+	background-color: #94cccd;
+}
+
+#skills-bars {
+	padding: 1px 10% 1px 10%;
+	text-align: left;
+}
+
+#skills-bars span {
+	font-family: sans-serif;
+}
+
+#languages {
+	margin-top: 20px;
+	padding-bottom: 25px;
+	align-content: center;
+	justify-content: center;
+}
+
 .header-about {
 	color: #4c9793; 
 	font-weight: 600;
@@ -70,16 +137,19 @@ li {
 	margin-top: 10px;
 }
 
-.main-container {
-	width: 100vw;
-	height: 100%;
+#vertical-ranges {
+	display: flex;
 }
 
 .div-range {
 	display: inline-block;
-	width: 30%;
 	text-align: center;
 	justify-content: space-around;
+}
+
+.div-range span {
+    font-size: 14px;
+	font-family: sans-serif;
 }
 
 .left-bordered {
@@ -200,12 +270,12 @@ li {
 }
 
 .vertical-range1 {
-    background: -webkit-linear-gradient(left, #fff 0%, #fff 85%, #4c5447 85%, #4c5447 100%);
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 85%, #4c5447 85%, #4c5447 100%);
 }
 .vertical-range2 {
-    background: -webkit-linear-gradient(left, #fff 0%, #fff 45%, #4c5447 45%, #4c5447 100%);
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 45%, #4c5447 45%, #4c5447 100%);
 }
 .vertical-range3 {
-    background: -webkit-linear-gradient(left, #fff 0%, #fff 65%, #4c5447 65%, #4c5447 100%);
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 65%, #4c5447 65%, #4c5447 100%);
 }
 /* End -chrome-*/
