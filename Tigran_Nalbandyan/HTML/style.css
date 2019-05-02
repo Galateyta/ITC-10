@@ -158,6 +158,11 @@ div.light-green-div {
 	margin-left: 1%;
 }
 
+.end-bordered {
+    padding-block-end: 20px;
+    border-block-end: 1px solid #bdbcc1
+}
+
 .w3-blue {
 	color: #4c5447!important;
     background-color: #fefdeb!important;
@@ -180,7 +185,9 @@ div.light-green-div {
     width: 100%;
 }
 
-
+.right-list {
+    padding-inline-start: 2px;
+}
 
 .left_part {
     float:left;
@@ -188,15 +195,36 @@ div.light-green-div {
     background-color:#8bcaca
 }
 
-.text {
-    font-size: 14px;
-	font-family: sans-serif;
-	/*color: #59595b;*/
+.list-text {
+    font-weight: inherit
 }
 
-.right_part {
+#first-right-text {
+    margin-left: 30px
+}
+
+.list-head {
+    width: 20%
+}
+
+.text {
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #59595b;
+}
+
+.right-part {
+    display: inline-block;
     width:70%;
     padding-left: 2%;
+}
+
+#first-right-div {
+    border-block-end: 1px solid #bdbcc1
+}
+
+.right-icons {
+    color: #4c9793
 }
 
 .slider-wrapper {
