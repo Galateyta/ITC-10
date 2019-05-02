@@ -1,4 +1,4 @@
-* {
+*{
     padding: 0;
     margin: 0;
 }
@@ -12,7 +12,7 @@
 }
 .flex1-1 {
     background: #e7e7e9;
-    padding-bottom: 5%;
+    padding-bottom: 10px;
 }
 .flex1-1 h3 {
     color: #FFF;
@@ -21,12 +21,10 @@
     font-weight: normal;
     text-align: center;
     font-size: 160%;
-    padding: 3%;
-    margin-bottom: 4%;
+    padding: 6px;
 }
 .flex1-1 p, h2, h4 {
     text-align: center;
-    margin: 2%;
     font-family: sans-serif;
     font-weight: normal;
     transparent: 0.7;
@@ -36,26 +34,27 @@
     margin-left: auto;
     margin-right: auto;
     width: 70%;
-    padding-bottom: 5%;
+    padding: 10px;
 }
-.flex1-2 {    
-    padding: 3% 10% 10% 10%;
+.flex1-2, .flex1-3 {    
+    padding: 6px 20px 20px 20px;
 }
-.flex1-2 img {
+.flex1-2 i, .flex1-3 i {
+    color: #FFF;
     display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 10%;
+    margin: auto;
+    width: 5px;
+    font-size: 30px;
 }
 .flex1-2 p {
-    margin-top: 3%;
+    margin-top: 6px;
 }
 progress {
     height: 8px;
     width: 90%;
     border-radius: 25px;
     background: #777;
-    margin: 3%;
+    margin: 6px;
 }
 progress::-webkit-progress-value {
     background: #fff; 
@@ -65,19 +64,10 @@ progress::-moz-progress-bar {
      border-radius: 25px;
      background: #fff;
 }
-.flex1-3 {
-    padding: 3% 10% 10% 10%;
-}
 .flex1-3 p, h4 {
     color: #000;
     opacity: 0.7;
     font-family: sans-serif;
-}
-.flex1-3 img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    width: 10%;
 }
 .ranges {
     display: flex;
@@ -88,10 +78,10 @@ progress::-moz-progress-bar {
 
 input[type="range"] {
     display: block;
-    margin: 10% auto 10% auto;
-    background: transparent;
+    margin: 20px auto 20px auto;
+    background: #777;
+    width: 3px;
 }
-
 input[type="range"]::-moz-range-track {
     background: #777; /*activeTrackColor*/
 }
@@ -99,7 +89,6 @@ input[type="range"]::-moz-range-track {
 input[type="range"]::-moz-range-thumb {
     background: #4c9793;
 }
-
 input[type="range"]::-moz-range-progress {
     background: #FFF; /*activeThumbColor*/
 }
@@ -109,21 +98,13 @@ input[type="range"]::-moz-range-progress {
     flex: 2;
     background: #fff;
 }
-.flex2-1 {
-    padding: 3% 2%;
+.flex2-1, .flex2-2, .flex2-3, .flex2-4 {
+    padding: 20px 10px;
 }
-.flex2-2 {
-    padding: 3% 2%;
-}
-.flex2-3 {
-    padding: 3% 2%;
-}
-.flex2-4 {
-    padding: 3% 2%;
-}
-.flex2 img {
+.flex2 i {
+    color: #4c9793;
     display: inline;
-    width: 5%;
+    font-size: 30px;
 }
 .flex2 h2 {
     display: inline;
@@ -132,32 +113,30 @@ input[type="range"]::-moz-range-progress {
     font-family: sans-serif;
     font-size: small;
     color: #777;
-    margin-left: 15%;
     text-align: justify;
 }
-.flex2-3 p {
-     color: #000;
+.flex2-1 p {
+    padding: 10px 30px;
 }
 .flex2 h2 {
     color: #4c9793;
-    margin-top: 5%;
-    margin-bottom: 0%;
+    margin-top: 10px;
+    margin-bottom: 0px;
     font-family: sans-serif;
 }
-.flex2 pre {
-    opacity: 0.7;
-    font-weight: bold;
+.flex2-2 p, h5+h5, .flex2-3 p, h5+h5 {
+    padding-left: 80px;   
 }
 hr {
     width: 90%;
-    margin: 2% auto 1% auto;
+    margin: 4px auto 2px auto;
     color: #dcdee2;
 }
 ul {
-    padding-left: 5%;
+    padding: 10px 30px;
 }
 ul li {
-    margin-top: 3%;
+    margin-top: 5px;
     position: relative;
 }
 ul li::before {
@@ -167,19 +146,18 @@ ul li::before {
     position: absolute;
     top: 8%;
     left: -12px;
-    width: 0.3%;
-    height: 120%;
+    width: 1px;
+    height: 100%;
 }
 ul li:last-child::before {
   display: none;
 }
 ol {
-    padding-left: 5%;
+    padding-left: 30px;
 }
 ol li {
-    margin-top: 2%;
+    margin: 5px;
     list-style: none;
     color: #777;
     font-family: sans-serif;
 }
- 
