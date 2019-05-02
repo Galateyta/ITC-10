@@ -2,10 +2,8 @@
     padding: 0;
     margin: 0;
 }
-
 .container {
     display: flex;
-
 }
 /*Left*/
 .flex1 {
@@ -19,23 +17,26 @@
 .flex1-1 h3 {
     color: #FFF;
     background: #94cccd;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
+    font-weight: normal;
     text-align: center;
     font-size: 160%;
     padding: 3%;
     margin-bottom: 4%;
 }
-.flex1-1 p, h5, h4 {
+.flex1-1 p, h2, h4 {
     text-align: center;
-    margin: 1%;
-    font-family: Arial, Helvetica, sans-serif;
+    margin: 2%;
+    font-family: sans-serif;
+    font-weight: normal;
+    transparent: 0.7;
 }
 .flex1-1 img {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
-    
+    width: 70%;
+    padding-bottom: 5%;
 }
 .flex1-2 {    
     padding: 3% 10% 10% 10%;
@@ -54,6 +55,7 @@ progress {
     width: 90%;
     border-radius: 25px;
     background: #777;
+    margin: 3%;
 }
 progress::-webkit-progress-value {
     background: #fff; 
@@ -66,6 +68,11 @@ progress::-moz-progress-bar {
 .flex1-3 {
     padding: 3% 10% 10% 10%;
 }
+.flex1-3 p, h4 {
+    color: #000;
+    opacity: 0.7;
+    font-family: sans-serif;
+}
 .flex1-3 img {
     display: block;
     margin-left: auto;
@@ -77,20 +84,15 @@ progress::-moz-progress-bar {
     justify-content: space-around;
 }
 
-.ranges p {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: small;
-}
 /*Ranges styles*/
 
 input[type="range"] {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 10% auto 10% auto;
     background: transparent;
 }
-input[type="range"]:hover::-moz-range-track,
-input[type="range"]:focus::-moz-range-track {
+
+input[type="range"]::-moz-range-track {
     background: #777; /*activeTrackColor*/
 }
 /* range thumb*/
@@ -127,21 +129,28 @@ input[type="range"]::-moz-range-progress {
     display: inline;
 }
 .flex2 p {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: sans-serif;
     font-size: small;
     color: #777;
-    margin-left: 10%;
+    margin-left: 15%;
+    text-align: justify;
 }
-
+.flex2-3 p {
+     color: #000;
+}
 .flex2 h2 {
     color: #4c9793;
-    margin-bottom: 5%;
+    margin-top: 5%;
+    margin-bottom: 0%;
     font-family: sans-serif;
-
+}
+.flex2 pre {
+    opacity: 0.7;
+    font-weight: bold;
 }
 hr {
     width: 90%;
-    margin: auto;
+    margin: 2% auto 1% auto;
     color: #dcdee2;
 }
 ul {
@@ -149,19 +158,28 @@ ul {
 }
 ul li {
     margin-top: 3%;
-   /* list-style: none;*/
+    position: relative;
 }
-.vl {
-    border-left: 2px solid gray;
-    height: 193px;
+ul li::before {
+    background:#000;
+    opacity: 0.5;
+    content: "";
     position: absolute;
-    left: 36%;
-    margin-top: 3%;
+    top: 8%;
+    left: -12px;
+    width: 0.3%;
+    height: 120%;
 }
-.flex2-4 ul {
+ul li:last-child::before {
+  display: none;
+}
+ol {
     padding-left: 5%;
 }
-.flex2-4 ul li {
-    margin-top: 3%;
+ol li {
+    margin-top: 2%;
     list-style: none;
-} 
+    color: #777;
+    font-family: sans-serif;
+}
+ 
