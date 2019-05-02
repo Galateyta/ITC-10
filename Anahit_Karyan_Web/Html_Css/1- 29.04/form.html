@@ -4,17 +4,28 @@
         <title> Form </title>
 	<style> 
 	    .input {
-		position: absolute; 
-		left: 15%;
+	    	position: absolute; 
+	    	left: 15%;
 	    }
 	    #hidden {
-		display: none;
+    		display: none;
 	    }
+        #hiddenSelect {
+            display: none;
+        }
 	</style>
 	<script type="text/javascript">
 		function clickFunc() {
 		    document.getElementById('hidden').style.display = 'block'; 
-                }
+        }
+        function clickRadioFunc() {
+            document.getElementById('hiddenSelect').style.display = 'block'; 
+        }
+        function resetFunc() {
+            document.getElementById('hiddenSelect').style.display = 'none'; 
+            document.getElementById('hidden').style.display = 'none';
+        }
+
         </script>
     </head>
     <body>
@@ -22,26 +33,31 @@
             <fieldset> 
                 <legend> Sign up </legend>
                 <label> Email* </label> 
-                <input required type="email" class="input"> <br> <br>
-        	<label> Phone </label> 
-                <input type="tel" maxlength="13" minlength="11" class="input" > <br> <br>
-           	<label> Name* </label> 
-                <input required type="text" maxlength="50" class="input"> <br> <br>
-	        <label> Password* </label> 
-                <input required type="password" maxlength="50" class="input"
-                       patern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$"><br> <br>
-	        <input type="radio" name="gender" value="male"> Male
-		<input type="radio" name="gender" value="female"> Female
-                <select name="Other">
-		    <option value="option1">Option1</option>
-		    <option value="option2">Option2</option>
-		    <option value="option3">Option3</option>
-		    <option value="other" selected onClick="clickFunc();">Add my version</option>
-		</select>
+                <input required type="email" class="input">
                 <br> <br>
-		<input type="text" placeholder="Add your version" id="hidden">
-		<br> <br>
-		<input type="submit" value="Sign in">
+            	<label> Phone </label> 
+                <input type="tel"  pattern="[0-9]{11-13}"  class="input">
+                <br> <br>
+               	<label> Name* </label> 
+                <input required type="text" maxlength="50" class="input"> 
+                <br> <br>
+	            <label> Password* </label> 
+                <input required type="password" maxlength="50" class="input"
+                       patern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
+                <br> <br>
+	            <input type="radio" name="gender" value="male" onClick="resetFunc()"> Male
+		        <input type="radio" name="gender" value="female" onClick="resetFunc()"> Female
+                <input type="radio" name="gender" value="female" onClick="clickRadioFunc()"> Other   
+                <select name="Other" id="hiddenSelect">
+		            <option value="option1">Option1</option>
+	    	        <option value="option2">Option2</option>
+		            <option value="option3">Option3</option>
+		            <option value="other" selected onClick="clickFunc();">Add my version</option>
+    		    </select>
+                <br> <br>
+        		<input type="text" placeholder="Add your version" id="hidden">
+		        <br> <br>
+	        	<input type="submit" value="Sign in">
                 <input type="reset" value="Cancel">
             </fieldset>
         </form> 
