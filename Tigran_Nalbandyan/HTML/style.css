@@ -197,6 +197,7 @@ li {
     border-radius: 50%;
     cursor: pointer;
     border: 0;
+}
 
 .vertical-range1 {
     background: -webkit-linear-gradient(left, #fff 0%, #fff 85%, #4c5447 85%, #4c5447 100%);
