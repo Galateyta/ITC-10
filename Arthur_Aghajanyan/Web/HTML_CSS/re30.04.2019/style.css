@@ -1,0 +1,313 @@
+body {
+    display: flex;
+    height: 100%;
+    width: 99%;
+    background-color: #eae8e7;
+
+}
+
+.flex-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+/*LEFT part*/
+
+/*Left container*/
+.flex-container > .left {
+    display: inline;
+    justify-content: flex-start;
+    width: 35%;
+    height: 100%;
+    background-color: #96CBC8;
+}
+
+/*Account information part*/
+.info {
+    background-color: #EBEBED;
+    padding-bottom:1px;
+}
+/*Resume text view*/
+.fontResume {
+    font-weight: 500;
+    color:#fff;
+    font-family: 'Helvian', sans-serif;
+    text-align: center;
+}
+.photoImg {
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding-top: 7%;
+}
+/*Name text view*/
+.fontInfoName {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+}
+/*Account text view*/
+.fontInfoAccount {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+    height:5px;
+    margin-top:-20px;
+}
+/*Data text view*/
+.fontInfoData {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+}
+/*Skill tytle*/
+.fontInfoSkill {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+    height:22px;
+    margin-top: 5px;
+}
+/*Skill icon setting*/
+.skillIcon {
+    display: block;
+    margin: auto;
+    padding-left: 15%;
+    width: 25%;
+    height: 25%;
+}
+/*Skills text view*/
+.fontSkill {
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+}
+/*Skills setting*/
+.skillList {
+    width: 80%;
+    display: block;
+    margin:auto;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+.skillsData {
+    padding-top: 4%;
+}
+p {
+    margin-bottom: -0.1%;
+    color: #000000;
+}
+/*Skills range setting*/
+input[class=firstGroupSlider] {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 10px;
+    width: 90%;
+    cursor: pointer;
+    border-radius: 70px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: black;
+}
+input[class=firstGroupSlider]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    box-shadow: -100vw 6vw 0 100vw white;
+    border-radius: 50%;
+}
+/*Message for icon setting*/
+.messageIcon {
+    display: block;
+    margin: auto;
+    width: 10%;
+    height: 10%;
+}
+/*Lenguage text setting*/
+.fontLanguage {
+    text-align: center;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #000000;
+    margin-top:1%;
+    margin-bottom:0.5%;
+}
+
+.flex-container-second {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.secondGroupSlider  {
+    display: inline;
+    justify-content: flex-start;
+}
+
+.sliderDiv {
+    margin-left: 5%;
+}
+/*Language rang setting*/
+input[class=secondGroupSlider] {
+    margin-top: 90%;
+    -webkit-appearance: none;
+    border: 1px solid white;
+    width: 150%;
+    -webkit-transform: rotate(270deg);
+}
+
+input[class=secondGroupSlider]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: white;
+    border: none;
+    border-radius: 1px;
+}
+
+input[class=secondGroupSlider]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #44918b;
+    margin-top: -7px;
+}
+/*Language range position*/
+.languageList {
+    margin-left:-12%;
+    padding-bottom: 40%;
+}
+.languageElement {
+    font-weight: 500;
+    color: #000000;
+    font-family: 'Helvian', sans-serif;
+    text-align: center;
+    margin-left:45%
+}
+/*RIHHT part*/
+
+/*Right container*/
+.flex-container > .right {
+    display: inline;
+    justify-content: flex-end;
+    width: 64%;
+    height: 100%;
+    background-color: #fff;
+}
+/*User part*/
+.userIcon {
+    display: block;
+    width: 3%;
+    height: 4%;
+    margin-left: 2%;
+    margin-top: 6%;
+}
+.userText {
+    font-weight: 800;
+    font-family: 'Helvian', sans-serif;
+    color:#43938a;
+}
+.aboutMeText {
+    margin-left: 5.5%;
+    font-family: 'Helvian', sans-serif;
+}
+.settingHr {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 5%;
+    height: 2px;
+    background-color: #eae8e7;
+}
+/*Suitcase part and suitcaseText part*/
+.suitcaseIcon {
+    display: block;
+    width: 4%;
+    height: 5%;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: 0.5%;
+}
+.suitcaseText {
+    margin-top: 50%;
+    font-weight: 800;
+    font-family: 'Helvian', sans-serif;
+    color:#43938a;
+}
+/*Timeline part*/
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    margin-top: 5px;
+    left: 29px;
+    width: 3px;
+    height: 73%;
+    z-index: 400;
+}
+ul.timeline > li {
+    font-family: 'Helvian', sans-serif;
+
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    margin-top: 5px;
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    left: 27px;
+    width: 1px;
+    height: 1px;
+    z-index: 400;
+}
+.time {
+    font-family: 'Helvian', sans-serif;
+    margin-left:2px;
+    margin-right:20px;
+}
+.company {
+    margin-left: 15%;
+    margin-top: -0.2%;
+}
+.otherTextFirst{
+    margin-top: -2%;
+    margin-left: 15%;
+}
+.otherText {
+    color: #717171;
+    margin-top: -2%;
+    margin-left: 15%;
+}
+.studentsCapIcon {
+    display: block;
+    width: 4%;
+    height: 5%;
+    margin-left: 2%;
+    margin-top: 2%;
+    margin-bottom: -1.5%;
+}
+.certificatesInfo {
+    margin-left: 7%;
+    margin-bottom: 8%;
+    font-weight: 500;
+    font-family: 'Helvian', sans-serif;
+    color: #717171;
+}
+.otherClassForInline {
+    display: inline;
+}
