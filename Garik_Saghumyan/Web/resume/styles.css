@@ -1,6 +1,7 @@
 body {
 	display: flex;
 	margin: 0;
+    padding: 0;
 }
 .left {
 	width: 30%;
@@ -16,6 +17,7 @@ body {
 	margin: 15px;
 	font-family: sans-serif
 }
+*{box-sizing: border-box;}
 img {
     margin: 7px;
     border-radius: 50%;
@@ -39,12 +41,21 @@ img {
     width: 80%;
     background-color: black;
     display: -webkit-inline-box;
+    border-radius:100px;
 }
 
 .skill {
     text-align: -webkit-auto;
     padding: 5px; 
     color: white;
+    border-radius: 70px;
+}
+.skill-text {
+    width: 42%;
+    display: flex;
+    justify-content: center;
+    font-size: 30px;
+    margin: 8px;
 }
 .one {width: 85%; background-color: white;}
 .two {width: 72%; background-color: white;} 
@@ -55,12 +66,96 @@ img {
 .seven {width: 73%; background-color: white;} 
 input[type=range][orient=vertical]
 {
-    writing-mode: bt-lr;
     -webkit-appearance: slider-vertical;
     width: 8px;
-    height: 175px;
+    height: 22vh;
     padding: 0 5px;
 }
 
 
-
+.resume h2 {
+    color: white;
+    font-weight: 100; 
+}
+.about {
+    margin: 25px;
+}
+.about h2 {
+    color: #4c9793;
+}
+.about span {
+    font-size: larger;
+}
+.about h2 i {
+    margin: 5px;
+}
+.languages {
+    padding: 15px;
+    margin: 25px;
+}
+.english {
+    display: inline-block; 
+    margin: 5px;
+}
+.english p {
+    font-size: 22px;
+}
+.russian {
+    display: inline-block;
+    margin: 5px;
+}
+.russian p {
+    font-size: 22px;
+}
+.chinese {
+    display: inline-block;
+    margin: 5px;
+}
+.chinese p {
+    font-size: 22px;
+}
+.prof h2 {
+    color: #4c9793;
+    margin: 20px;
+}
+.prof h2 i {
+    margin: 5px;
+}
+.education h2 {
+    color: #4c9793;
+    margin: 20px;
+}
+.prof-period {
+    display: flex;
+}
+.prof-period-years {
+    display: inline-block;
+    width: 15%;
+    font-size: larger;
+}
+.prof-period-content {
+    display: inline-block;
+    width: 85%;
+    font-size: larger;
+}
+.awards ul li {
+    font-size: larger;
+    margin: 10px;
+}
+.awards h2 {
+    color: #4c9793;
+    margin: 20px;
+}
+.awards h2 i {
+   margin: 5px:;
+}
+.prof ul {
+    border-left-style: solid;
+    padding: 11px;
+    margin: 25px;
+}
+.education ul {
+    border-left-style: solid;
+    padding: 11px;
+    margin: 25px;
+}
