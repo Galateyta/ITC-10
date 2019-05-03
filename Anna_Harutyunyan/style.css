@@ -1,0 +1,279 @@
+* {
+    box-sizing: border-box;
+}
+#first_block { /*Divide by 2 blocks*/
+    flex: 1;
+}
+#second_block {
+    flex: 2;   
+}
+#contenier {
+    width: 100%;
+    display: flex;
+}
+/*--*/
+.resume {
+    text-align: center;
+    color: white;
+}
+.name {
+    text-align: center;
+    line-height: 0.3; 
+}
+div[name="color"] {
+    background-color: #94cccd;
+}
+img {
+     width: 70%;
+     margin: auto;
+     display: block;
+     border-radius: 50%;
+     padding: 25px;
+}
+.account {/*background around image and contacts*/
+    background-color: #e7e7e9;
+    width: 100%;
+}
+.contact {    
+    padding: 5px;
+    text-align: center;
+    line-height: 0.3;
+}
+.right-icons {
+    text-align: center;
+    line-height: 0;
+   /* padding: 5px;*/
+}
+.skill_size {
+    padding-left: 10%;
+    font-size: 16px;
+    line-height: 0;
+}
+/*Here the style for input/range for work in mozilla*/
+div>input[name=horizontal]::-moz-range-track {
+    -moz-appearance: none;
+    border: 1px solid #d4d4d4;
+    background: -moz-linear-gradient(left, #fff 0%, #fff 25%, #000 25%, #000 100%);
+    width: 80%;
+    margin: auto;
+    display: block;
+    height: 10px;
+    outline: none;
+}
+div>input[name=horizontal]::-moz-range-thumb {
+    -moz-appearance: none;
+    background-color: #d4d4d4;
+    width: 0px;
+    height: 0px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+
+.range1 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 90%, #000 90%, #000 100%);
+}
+.range2 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 75%, #000 75%, #000 100%);
+}
+.range3 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 88%, #000 88%, #000 100%);
+}
+.range4 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 68%, #000 68%, #000 100%);
+}
+.range5 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 80%, #000 80%, #000 100%);
+}
+.range6 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 65%, #000 65%, #000 100%);
+}
+.range7 {
+    background: -moz-linear-gradient(left, #fff 0%, #fff 78%, #000 78%, #000 100%);
+}
+/* vertical inputs for mozilla */
+/*end -moz-*/
+
+/*Here the style for input/range for work in Chrome*/
+div>input[name=horizontal] {
+    -webkit-appearance: none;
+    border: 1px solid #d4d4d4;
+    width: 80%;
+    margin: auto;
+    display: block;
+    height: 10px;
+    outline: none;
+    border-radius: 20px;
+}
+div>input[name=horizontal]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #d4d4d4;
+    width: 0px;
+    height: 0px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+.range1 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 90%, #000 90%, #000 100%);
+}
+.range2 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 75%, #000 75%, #000 100%);
+}
+.range3 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 88%, #000 88%, #000 100%);
+}
+.range4 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 68%, #000 68%, #000 100%);
+}
+.range5 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 80%, #000 80%, #000 100%);
+}
+.range6 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 65%, #000 65%, #000 100%);
+}
+.range7 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 78%, #000 78%, #000 100%);
+}
+/* End -chrome-*/
+
+/*style for vertical input/range for choosing the languages level*/
+/* For working in Chrome */
+.vertical-range {
+    -webkit-appearance: none;
+    border: 1px solid #d4d4d4;
+    width: 100px;
+    margin: auto;
+    display: block;
+    height: 8px;
+    outline: none;
+    border-radius: 20px;
+    margin: 20px;   
+}
+.vertical-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #4c9793;
+    width: 12px;
+    height: 12px;
+    border-radius: 18px;
+    cursor: pointer;
+}
+.vertical-range1 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 65%, #000 65%, #000 100%);
+}
+.vertical-range2 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 50%, #000 50%, #000 100%);
+}
+.vertical-range3 {
+    background: -webkit-linear-gradient(left, #fff 0%, #fff 90%, #000 90%, #000 100%);
+}
+/* End -chrome-*/
+
+.vertical {
+    -webkit-transform: rotate(270deg);
+    -moz-transform: rotate(270deg);
+    -o-transform: rotate(270deg);
+    -ms-transform: rotate(270deg);
+    transform: rotate(270deg)
+}
+.vert-input {
+    float: right;
+    display: inline-block;
+    width: 33%;
+}
+.block-left {
+    background-color:  #94cccd;
+    padding-bottom: 50px;    
+}
+.city {
+    text-align: center;
+    padding-bottom:25px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.fa-cogs:before, .fa-commenting {
+    color: #fff;
+    padding-top: 15px;
+}
+
+/* Stayling for the second block---2 */
+.fa-user, .fa-suitcase, .fa-graduation-cap, .fa-trophy {
+    color: #4c9793;
+    padding-left: 15px;
+}
+hr {
+    width: 96%;
+    margin-bottom: 30px;
+}
+li {
+    padding-right: 25px;
+}
+span[name=title] {
+   font-size: 22px;
+   font-weight: bold;
+   padding-bottom: 5px;
+   padding-left: 10px;
+   color: #4c9793;
+}
+.about-me {
+    padding-top: 60px;
+    line-height: 1;
+}
+.text-about-me {
+    text-align: justify;
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 14px;
+}
+.border {
+    border-left: 1px solid black;
+    margin-left: 25px;  
+}
+.distance {
+    margin-top: 30px; 
+    line-height: 0;
+}
+.year {
+    margin-left: 11%;
+    line-height: 1;
+    font-size: 14px;
+}
+li span {
+    font-weight: bold;
+}
+li p {
+    padding-left: 40px; 
+}
+.job {
+    padding-left: 20px;
+    font-size: 14px; 
+}
+ul>li { 
+    font-size: 14px;
+    list-style: square inside url("data:image/gif;base64,R0lGODlhBQAKAIABAAAAAP///yH5BAEAAAEALAAAAAAFAAoAAAIIjI+ZwKwPUQEAOw==");
+}
+
+
+/* small screen version */
+/*
+@media (max-width: 768px) {
+    #contenier {
+        display: block;
+    }
+  }
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
