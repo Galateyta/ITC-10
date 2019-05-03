@@ -80,7 +80,8 @@ input[type="range"] {
     display: block;
     margin: 20px auto 20px auto;
     background: #777;
-    width: 3px;
+    width: 6px;
+    border-radius: 25px;:
 }
 input[type="range"]::-moz-range-track {
     background: #777; /*activeTrackColor*/
@@ -91,6 +92,8 @@ input[type="range"]::-moz-range-thumb {
 }
 input[type="range"]::-moz-range-progress {
     background: #FFF; /*activeThumbColor*/
+    width: 6px;
+    border-radius: 25px;
 }
 
 /*Right*/
@@ -144,7 +147,7 @@ ul li::before {
     opacity: 0.5;
     content: "";
     position: absolute;
-    top: 8%;
+    top: 15%;
     left: -12px;
     width: 1px;
     height: 100%;
