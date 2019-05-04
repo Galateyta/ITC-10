@@ -1,0 +1,30 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+
+.card-body {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card-body p.collapse:not(.show) {
+    height: 42px !important;
+    overflow: hidden;
+  
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;  
+}
+
+.card-body p.collapsing {
+    min-height: 42px !important;
+}
+
+.card-body a.collapsed:after  {
+    content: '+ Read More';
+}
+
+.card-body a:not(.collapsed):after {
+    content: '- Read Less';
+}
