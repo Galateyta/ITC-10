@@ -1,0 +1,12 @@
+1. Setup
+2.
+3.
+4.
+5.
+
+*****
+my Hook file is in .git/hooks/pre-commit.
+This file on commit finds *.cpp files, and checks whether "p r i n t ()" statemant exist in them.
+In that case error message is p r i n t ed and commmit is aborted)
+And every time, when commited, you will see animation)
+for working pre-commit pre-commit mast be moved to folder .git/hooks/ .

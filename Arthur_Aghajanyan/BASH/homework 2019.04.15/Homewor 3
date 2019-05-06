@@ -1,0 +1,6 @@
+3.
+Open vim ~/.bashrc file
+Add the following line  cd /home/username/Desktop/ save and close
+Run command source ~/.bashrc
+
+ 
