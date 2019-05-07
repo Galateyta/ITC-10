@@ -1,0 +1,46 @@
+
+.first-part{
+ background-image: url("picture1.png");
+   
+ 
+  height: 500px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+}
+
+.leter-space{
+
+  letter-spacing: 2px;
+}
+.btn {
+  border: 2px solid black;
+  color: black;
+  border-color: #ff9800;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+
+.white {
+  border-color: #FFFFFF;
+  color: white;
+}
+
+.white:hover {
+  background-color: #FFFFFF;
+  color: black ;
+}
+
+.warning {
+  border-color: #ff9800;
+  color: orange;
+}
+
+.warning:hover {
+  background: #ff9800;
+  color: white;
+}
+
