@@ -1,0 +1,59 @@
+body {
+	font-family: "Oswald", arial, sans-serif!important;
+}
+
+.main-wrapper {
+	background-color: grey
+}
+
+.main-container {
+	margin: 0 10%
+}
+
+.navbar-nav {
+	align-items: center;
+}
+
+.navbar-nav>li {
+	padding: 10px 5px;
+}
+
+.btn-primary {
+	background-color: #fd7e14!important;
+	border-color: #fd7e14!important;
+}
+
+.card {
+	margin: 0 0px;
+	box-shadow: 4px;
+}
+
+.bg-img {
+	padding: 270px 0;
+}
+
+.bg-orange {
+	background-color: #fd7e14;
+}
+
+.btn-outline-primary {
+	border-color: white!important;
+	color: white!important;
+	background-color: #fd7e14!important;
+}
+
+.bg-black {
+	background-color: #1e1e1c;
+}
+
+.small-span {
+	font-size: 14px;
+}
+
+.list {
+	padding: 0;
+}
+
+.list>li {
+	padding: 4px 0px;
+}
