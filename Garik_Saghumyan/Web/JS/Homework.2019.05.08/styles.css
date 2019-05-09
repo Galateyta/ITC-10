@@ -1,0 +1,14 @@
+body {
+    background: #333;
+    font-family: arial;
+}
+#input {
+    outline: none;
+    font-size: x-large;
+    padding: 15px;
+}
+.container {
+	display: flex;
+    justify-content: center;
+	margin-top: 200px;
+}
