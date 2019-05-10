@@ -1,0 +1,27 @@
+
+#c1 {
+  width: 400px;
+  height: 200px;
+  border: 3px solid black;
+  margin: 40px;
+}
+#vertex, #distance , #graph {
+  font-size: 30px;
+  font-weight: bold;
+}
+.container {
+  margin: 0 50px;
+}
+.btn {
+  padding: 10px;
+  outline: none;
+  border: 3px groove rgb(51, 41, 75);
+  color: white;
+  background-color: rgb(60, 75, 124);
+  margin-top: 20px;
+  width: 200px;
+  border-radius: 25px;
+}
+
+
+
