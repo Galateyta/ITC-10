@@ -1,0 +1,256 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+		
+		<link rel="stylesheet" href="css/style.css">
+		<title>Number Converter</title>
+	</head>
+	<body>
+		<div class="main-container container bg-light py-5">
+			<div class="container-fluid">
+				<h2 class="font-weight-bold">Number Converter</h2>
+			</div>
+			<div class="container-fluid">
+				<div class="py-5">
+					<h4 class="pl-3 pb-2">Decimal to Binary</h4>
+					<div class="form-inline">
+						<div class="input-group col col-sm-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Decimal</span>
+							</div>
+							<input class="form-control" id="number-d2b" type="text" name="number-d2b" placeholder="Decimal number">
+						</div>
+						<button class="btn btn-primary col-sm-1 col-4 ml-5" type="button" onclick="onClick('d2b')">Convert</button>
+					</div>
+				</div>
+				<div class="pl-3 pb-3">
+					<h5>Conversion steps:</h5>
+					<ol>
+						<li>Divide the number by 2.</li>
+						<li>Get the integer quotient for the next iteration.</li>
+						<li>Get the remainder for the binary digit.</li>
+						<li>Repeat the steps until the quotient is equal to 0.</li>
+					</ol>
+				</div>
+				<div class="form-inline">
+					<table id="table-d2b" class="mx-4">
+						
+					</table>
+					<div class="row col-auto" id="hidden-d2b" hidden>
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Binary</span>
+							</div>
+							<div class="form-control" id="result-d2b" type="text" name="number" readonly></div>
+							<div class="input-group-append">
+								<button type="button" class="btn btn-default" onclick="copyToClipboard('d2b')" title="Copy to clipboard">
+								<!-- icon from google's material design library -->
+								<svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+								</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container-fluid mt-3">
+				<div class="py-5">
+					<h4 class="pl-3 pb-2">Binary to Hex</h4>
+					<div class="form-inline">
+						<div class="input-group col col-sm-4">
+							<div class="input-group-prepend">
+								<span class="input-group-text" id="basic-addon1">Binary</span>
+							</div>
+							<input class="form-control" id="number-b2h" type="text" name="number-b2h" placeholder="Binary number" pattern="^[0-1]{1,1000}">
+						</div>
+						<button class="btn btn-primary col-sm-1 col-4 ml-5" type="button" onclick="onClick('b2h')">Convert</button>
+					</div>
+				</div>
+				<div class="pl-3 pb-3">
+					<p>Divide binary number by 4 binary in each digit:<p>
+						<span id="binary-b2h"></span>
+						<p>Convert each 4 binary digits to hex digit  according to this <a data-toggle="collapse" href="#collapse-b2h" role="button" aria-expanded="false" aria-controls="collapse-b2h">table:</a></p>
+						<table class="collapse" id="collapse-b2h">
+							<tbody>
+								<tr>
+									<th>Binary</th>
+									<th>Hex</th>
+								</tr>
+								<tr>
+									<td>0000</td>
+									<td>0</td>
+								</tr>
+								<tr>
+									<td>0001</td>
+									<td>1</td>
+								</tr>
+								<tr>
+									<td>0010</td>
+									<td>2</td>
+								</tr>
+								<tr>
+									<td>0011</td>
+									<td>3</td>
+								</tr>
+								<tr>
+									<td>0100</td>
+									<td>4</td>
+								</tr>
+								<tr>
+									<td>0101</td>
+									<td>5</td>
+								</tr>
+								<tr>
+									<td>0110</td>
+									<td>6</td>
+								</tr>
+								<tr>
+									<td>0111</td>
+									<td>7</td>
+								</tr>
+								<tr>
+									<td>1000</td>
+									<td>8</td>
+								</tr>
+								<tr>
+									<td>1001</td>
+									<td>9</td>
+								</tr>
+								<tr>
+									<td>1010</td>
+									<td>A</td>
+								</tr>
+								<tr>
+									<td>1011</td>
+									<td>B</td>
+								</tr>
+								<tr>
+									<td>1100</td>
+									<td>C</td>
+								</tr>
+								<tr>
+									<td>1101</td>
+									<td>D</td>
+								</tr>
+								<tr>
+									<td>1110</td>
+									<td>E</td>
+								</tr>
+								<tr>
+									<td>1111</td>
+									<td>F</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="form-inline">
+						<table id="table-b2h" class="mx-4">
+							
+						</table>
+						<div class="row col-auto" id="hidden-b2h" hidden>
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">Hex</span>
+								</div>
+								<div class="form-control" id="result-b2h" type="text" name="number" placeholder="Binary number" readonly></div>
+								<div class="input-group-append">
+									<button type="button" class="btn btn-default" onclick="copyToClipboard('b2h')" title="Copy to clipboard">
+									<!-- icon from google's material design library -->
+									<svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+									</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container-fluid mt-3">
+					<div class="py-5">
+						<h4 class="pl-3 pb-2">Binary to Octal</h4>
+						<div class="form-inline">
+							<div class="input-group col col-sm-4">
+								<div class="input-group-prepend">
+									<span class="input-group-text" id="basic-addon1">Binary</span>
+								</div>
+								<input class="form-control" id="number-b2o" type="text" name="number-b2o" placeholder="Binary number" pattern="^[0-1]{1,1000}">
+							</div>
+							<button class="btn btn-primary col-sm-1 col-4 ml-5" type="button" onclick="onClick('b2o')">Convert</button>
+						</div>
+					</div>
+					<div class="pl-3 pb-3">
+						<p>Divide binary number by 3 binary in each digit:<p>
+							<span id="binary-b2o"></span>
+							<p>Convert each 3 binary digits to octal digit  according to this <a data-toggle="collapse" href="#collapse-b2o" role="button" aria-expanded="false" aria-controls="collapse-b2o">table:</a></p>
+							<table class="collapse" id="collapse-b2o">
+								<tbody>
+									<tr>
+										<th>Binary</th>
+										<th>Octal</th>
+									</tr>
+									<tr>
+										<td>000</td>
+										<td>0</td>
+									</tr>
+									<tr>
+										<td>001</td>
+										<td>1</td>
+									</tr>
+									<tr>
+										<td>010</td>
+										<td>2</td>
+									</tr>
+									<tr>
+										<td>011</td>
+										<td>3</td>
+									</tr>
+									<tr>
+										<td>100</td>
+										<td>4</td>
+									</tr>
+									<tr>
+										<td>101</td>
+										<td>5</td>
+									</tr>
+									<tr>
+										<td>110</td>
+										<td>6</td>
+									</tr>
+									<tr>
+										<td>111</td>
+										<td>7</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="form-inline">
+							<table id="table-b2o" class="mx-4">
+								
+							</table>
+							<div class="row col-auto" id="hidden-b2o" hidden>
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1">Octal</span>
+									</div>
+									<div class="form-control" id="result-b2o" type="text" name="number" readonly></div>
+									<div class="input-group-append">
+										<button type="button" class="btn btn-default" onclick="copyToClipboard('b2o')" title="Copy to clipboard">
+										<!-- icon from google's material design library -->
+										<svg class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="24" height="24" viewBox="0 0 24 24"><path d="M17,9H7V7H17M17,13H7V11H17M14,17H7V15H14M12,3A1,1 0 0,1 13,4A1,1 0 0,1 12,5A1,1 0 0,1 11,4A1,1 0 0,1 12,3M19,3H14.82C14.4,1.84 13.3,1 12,1C10.7,1 9.6,1.84 9.18,3H5A2,2 0 0,0 3,5V19A2,2 0 0,0 5,21H19A2,2 0 0,0 21,19V5A2,2 0 0,0 19,3Z" /></svg>
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<script src="js/convertToBinary.js" type="text/javascript" charset="utf-8"></script>
+					<script src="js/convertToHex.js" type="text/javascript" charset="utf-8"></script>
+					<script src="js/convertToOctal.js" type="text/javascript" charset="utf-8"></script>
+					<script src="js/copyToClipboard.js" type="text/javascript" charset="utf-8"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+					<script src="https://cdn.linearicons.com/free/1.0.0/svgembedder.min.js"></script>
+				</body>
+			</html>
