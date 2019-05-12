@@ -1,0 +1,7 @@
+#myUL {
+    padding: 0;
+}
+#myUL li a {
+    text-decoration: none;
+    color: black;
+}

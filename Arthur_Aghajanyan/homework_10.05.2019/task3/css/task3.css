@@ -1,0 +1,13 @@
+.my_stile_button {
+    height: 50px;
+    width: 150px;
+    background-color: yellow;
+    position:relative;
+    left:45%;
+}
+#pId {
+    display:flex;
+    position:relative;
+    left:49%;
+
+}
