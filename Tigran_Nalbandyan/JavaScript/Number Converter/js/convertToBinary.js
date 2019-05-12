@@ -1,7 +1,7 @@
 ﻿function decimalToBinary(n) {
     n = parseInt(n);
 
-    let arr = [];
+    const arr = [];
     let steps = [];
     let old_n = n;
     let rem = 0;
@@ -72,10 +72,10 @@ function createTable(steps, id, headers) {
 }
 
 function createResult(n, bits, id) {
-    const hiddenDiv = document.getElementById('hidden-' + id);
+    const hiddenDiv = document.getElementById(`hidden-${id}`);
     hiddenDiv.removeAttribute('hidden');
 
-    const div = document.getElementById('result-' + id);
+    const div = document.getElementById(`result-${id}`);
     div.focus();
 
     while (div.firstChild) {
@@ -106,8 +106,8 @@ function convertToBinary(n) {
     const id = 'd2b';
     const tableHeaders = ['Division by 2', 'Quotient', 'Remainder'];
 
-    let convertResult = decimalToBinary(n);
-    let number = convertResult[0];
+    const convertResult = decimalToBinary(n);
+    const number = convertResult[0];
     let steps = convertResult[1];
 
     let bits = createTable(steps, id, tableHeaders);
@@ -117,7 +117,7 @@ function convertToBinary(n) {
 
 
 function onClick(id) {
-    let input = document.getElementById('number-' + id);
+    const input = document.getElementById(`number-${id}`);
 
     if (id == 'd2b') {
         convertToBinary(input.value);

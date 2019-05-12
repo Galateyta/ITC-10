@@ -47,8 +47,8 @@ function zip(arr1, arr2) {
 }
 
 function createBinary(binaryArr, id) {
-    let span = document.getElementById('binary-' + id);
-    span.textContent = 'Result: ' + binaryArr.join(' ');
+    let span = document.getElementById(`binary-${id}`);
+    span.textContent = `Result: ${binaryArr.join(' ')}`;
 }
 
 function convertToHex(n) {
