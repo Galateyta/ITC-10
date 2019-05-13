@@ -1,0 +1,14 @@
+#div1 {
+  width: 200px;
+  height: 200px;
+  background-color: red; 
+  padding: 50px;
+}
+
+#div2 {
+  width: 100%;
+  height: 100%;
+  background-color: black; 
+  margin: 0 auto;
+}
+        
