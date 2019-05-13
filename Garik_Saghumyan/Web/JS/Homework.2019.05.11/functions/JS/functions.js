@@ -4,12 +4,12 @@
  * clone of the current array 
  */
 function copyArray(arr) {
-    let newArray = [];
+    const newArray = [];
     for (let i = 0; i < arr.length; i++){
         if(arr[i].length > 1){
             newArray[i] = arr[i].slice();
-        }else{
-            let temp = arr[i];
+        } else {
+            const temp = arr[i];
             newArray.push(temp);
         }
     }
