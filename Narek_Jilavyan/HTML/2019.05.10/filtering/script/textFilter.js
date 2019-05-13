@@ -10,9 +10,9 @@ function search(searchingText){
         start();
 	const len = searchingText.length;
 	for (let i = 0; i < p.length; i++) {
-		console.log(p[i].textContent.substr(0, len+1));
+		console.log(p[i].textContent.substr(0, len + 1));
 		console.log(searchingText);
-  		if(p[i].textContent.substr(0, len) != searchingText) {
+  		if(p[i].textContent.substr(0, len) !== searchingText) {
   			p[i].style.display = 'none';
   		} 
 	}

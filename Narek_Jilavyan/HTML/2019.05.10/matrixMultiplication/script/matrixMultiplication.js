@@ -1,5 +1,5 @@
 var matrix1 = [[1, , 3], [4, 5, 6], [7, 8, 9]];
-var matrix2 = [[1, 2, 3, 4], [5, , 7, 8], [9, 10, 11, 12], [9, 10, 11, 12]];
+var matrix2 = [[1, 2, 3], [5, , 7], [9, 10, 11], [12, 13, 14]];
 
 console.log(matrix1);
 console.log(matrix2);
@@ -10,7 +10,7 @@ function copy (matrix1, matrix2) {
     var resultRow = new Array();
     for (let k = 0; k < matrix2[0].length; k++) {
       let multy = 0;
-      for (let j = 0; j < matrix2.length; j++) {
+      for (let j = 0; j < matrix1[0].length; j++) {
         if (matrix1[i][j] === undefined) {
           matrix1[i][j] = 1;
         }
@@ -19,9 +19,9 @@ function copy (matrix1, matrix2) {
         }
         multy += (matrix1[i][j] * matrix2[j][k]);  
       }
-      let count = resultRow.push(multy);
+      resultRow.push(multy);
     }
-    let count = result.push(resultRow);
+    result.push(resultRow);
   }
   return result
 }
