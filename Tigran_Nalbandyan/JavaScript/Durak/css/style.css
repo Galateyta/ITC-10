@@ -6,10 +6,16 @@
 	justify-content: center;
 	align-items: center;
 	border-radius: 5%;
+	margin: 4px;
+}
+
+.cards {
+	display: flex;
+	justify-content: center;
 }
 
 span {
-	font-size: 22px;
+	font-size: 24px;
 	color: white;
 }
 
