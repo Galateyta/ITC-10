@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <title>Registration Page</title>
+ </head>
+
+<body>
+ <form>
+  <table>
+
+  <tr>
+  <td>
+    E-mail:  
+  </td>
+  
+  <td>
+    <input type="email" placeholder="Email" name="Email" pattern="[a-zA-Z0-9.-_]{1,}@[a-zA-Z]{2,}[.]{1}[a-zA-Z]{2,}"  required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    Name:
+  </td>
+  <td>
+    <input type="text" name="name" placeholder="Name" pattern="[A-Za-z]{3,}"required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    Surename:
+  </td>
+  <td>
+    <input type="text" name="surename" placeholder="Surename" pattern="[A-Za-z]{3,}"required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+  Gender:
+  </td>
+  <td>
+  <input type="radio" name="gender"required>Male
+  <input type="radio" name="gender"required>Female
+  <input type="radio" name="gender"required>Other
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    Phone:
+  </td>
+  <td>
+    <input type="Phone" name="phone" placeholder="+374****" pattern="[+]{1}[0-9]{11}"required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    User name:
+  </td>
+  <td>
+    <input type="text" name="username" placeholder="Name" pattern="[A-Za-z0-9]{8,}" required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    Password:
+  </td>
+  <td>
+    <input type="password" id="password1" name="password"pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+    Confirm Password:
+  </td>
+  <td>
+    <input type="password" id="password2" onfocusout="Validate()" required>
+  </td>
+  </tr>
+
+  <tr>
+  <td>
+   <input type="Submit" value="Submit">
+   <input type="reset" value="Cancle">
+  </td>
+  </tr>
+
+ </table>
+<script >
+    function Validate() {
+        var password = document.getElementById("password1").value;
+        var confirmPassword = document.getElementById("password2").value;
+        if (password != confirmPassword) {
+            alert("Passwords do not match."); 
+	         return false;
+        }
+        return true;
+    }
+</script>
+
+</form>
+</body>
+</html>
