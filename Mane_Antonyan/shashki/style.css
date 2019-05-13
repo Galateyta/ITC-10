@@ -1,0 +1,86 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+.line {
+    display: flex;
+}
+
+body {
+    background-color: #590902;
+}
+
+.white {
+    background-color: #D93E30;
+    width: 70px;
+    height: 70px;
+}
+
+.white :hover {
+    background-color: #D93E30;
+    width: 70px;
+    height: 70px;
+    opacity: 0.7;
+}
+
+.black {
+    background-color: #8C0E03;
+    width: 70px;
+    height: 70px;
+}
+
+.black :hover {
+    background-color: #8C0E03;
+    width: 70px;
+    height: 70px;
+    opacity: 0.7;
+}
+
+.main {
+    margin: 2% 30%;
+    display: inline-block;
+}
+
+.bg {
+    background-color: black;
+    border: none;
+    padding: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 90%;
+    height: 90%;
+}
+
+.bg:hover {
+    background-color: black;
+    border: none;
+    padding: 0;
+    margin: auto;
+    border-radius: 50%;
+    width: 90%;
+    height: 90%;
+    opacity: 0.5;
+}
+
+.wg {
+    background-color: white;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+}
+
+.wg:hover {
+    background-color: white;
+    border: none;
+    padding: 0;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5%;
+}
+
+.none {
+    display: none;
+}
