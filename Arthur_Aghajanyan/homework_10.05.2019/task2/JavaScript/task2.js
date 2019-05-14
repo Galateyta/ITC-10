@@ -1,9 +1,10 @@
 function start(){
 
     function cutString(string) {
+            
         while (string.indexOf('G',0) != -1) {
 
-            var indexG = string.indexOf('G', 0);
+            const indexG = string.indexOf('G', 0);
 
             let indexg = string.lastIndexOf('g', indexG);
 
