@@ -7,6 +7,7 @@
 	align-items: center;
 	border-radius: 5%;
 	margin: 4px;
+	border: 2px solid grey;
 }
 
 .cards {
@@ -14,9 +15,22 @@
 	justify-content: center;
 }
 
-span {
+.card > span {
 	font-size: 24px;
 	color: white;
+}
+
+#middle {
+	display: flex;
+}
+
+#trump {
+	align-self: flex-start;
+}
+
+#table {
+	width: 100%;
+	justify-self: center;
 }
 
 #player-2 {
