@@ -10,7 +10,7 @@
 	border: 2px solid grey;
 }
 
-.cards {
+.cards, .buttons{
 	display: flex;
 	justify-content: center;
 }

@@ -1,143 +1,240 @@
-﻿// Array Remove - By John Resig (MIT Licensed)
+// Array Remove - By John Resig (MIT Licensed)
 Array.prototype.remove = function(from, to) {
     var rest = this.slice((to || from) + 1 || this.length);
     this.length = from < 0 ? this.length + from : from;
     return this.push.apply(this, rest);
 };
 
-function Player(id) {
+/**
+ * Shuffles array in place. ES6 version
+ * @param {Array} a items An array containing the items.
+ */
+function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function Player(id, game) {
     this.id = id;
     this.name = '';
+    this.game = game;
 
-    this.playerCardsElements = [];
     this.playerCards = [];
     this.playableCards = [];
 
     this.checkPlayableCards = function(tableCards) {
-        this.syncCards();
         this.playableCards = [];
-        if (tableCards.length === 0) {
-            this.playableCards = this.playerCards;
-        } else {
-            for (let card of this.playerCards) {
-                if (card.split(' ')[0] === tableCards[0].textContent.split(' ')[0]) {
-                    this.playableCards.push(card);
-                }
+
+        for (const playerCard of this.playerCards) {
+            if (tableCards.length === 0 || (playerCard.suit === tableCards[0].suit && parseInt(playerCard.value) > parseInt(tableCards[tableCards.length - 1].value))) {
+                this.playableCards.push(playerCard);
             }
         }
+        if (this.playableCards.length === 0) {
+
+            this.takeCard();
+            return this.checkPlayableCards(tableCards);
+        }
+
+
         return this.playableCards;
     }
 
-    this.syncCards = function() {
-        this.playerCards = [];
-        for (const card of this.playerCardsElements) {
-            this.playerCards.push(card.textContent);
-        }
+    this.takeCard = function() {
+        const card = this.game.getRandomCard(this.game.cards);
+        this.playerCards.push(card);
+        this.game.drawPlayerCards(this);
     }
-}
-
-function getRandomItem(items) {
-    return items[Math.floor(Math.random() * items.length)]
-}
-
-function getRandomCard(cards) {
-    const card = getRandomItem(cards);
-    cards.remove(cards.indexOf(card));
-
-    return card;
-}
-
-function getSixCards(cards) {
-    const arr = [];
-    for (let i = 0; i < 6; i++) {
-        let card = getRandomItem(cards);
-        arr.push(card)
-        cards.remove(cards.indexOf(card));
-    }
-
-    return arr;
-}
-
-function makeMove(table) {
-    // Computer makes move
-    const playableCards = this.game.player2.checkPlayableCards(table.children);
-    // TODO :  if no playableCards => get 1 card
-    for (let card of this.game.player2.playerCardsElements) {
-        if (playableCards.indexOf(card.textContent) != -1) {
-            table.appendChild(card.cloneNode(true));
-            this.game.player2.playerCardsElements.remove(this.game.player2.playerCardsElements.indexOf(card));
-            card.remove();
-            this.game.turn = 1;
-
-            break
-        }
-    }
-}
-
-function clickCard(card) {
-    const table = document.getElementById('table');
-    if (this.game.turn === 1) {
-        const playableCards = this.game.player1.checkPlayableCards(table.children);
-        console.log(playableCards);
-        if (playableCards.indexOf(card.textContent) != -1) {
-            table.appendChild(card.cloneNode(true));
-            this.game.player1.playerCardsElements.remove(this.game.player1.playerCardsElements.indexOf(card));
-            card.remove();
-
-            this.game.turn = 2;
-
-            setTimeout(makeMove, 1000, table);
-        }
-    }
-}
-
-function drawPlayerCards(player) {
-    const divPlayer1 = document.getElementById(`player-${player.id}`);
-    const length = player.playerCards.length;
-    for (let i = 0; i < length; i++) {
-        const card = document.createElement('div');
-        card.className = 'card';
-
-        card.addEventListener('click', function() {
-            clickCard(this);
-        });
-
-        const span = document.createElement('span');
-        span.textContent = player.playerCards[i];
-        card.appendChild(span);
-        divPlayer1.appendChild(card);
-
-        player.playerCardsElements.push(card);
-    }
-}
-
-function drawTrump(trump) {
-    const card = document.getElementById('trump');
-    const span = document.createElement('span');
-    span.textContent = trump;
-    card.appendChild(span);
-}
-
-function drawCards(player1, player2, trump) {
-    drawPlayerCards(player1);
-    drawPlayerCards(player2);
-    drawTrump(trump);
 }
 
 function Game() {
-    this.player1 = new Player(1);
-    this.player2 = new Player(2);
-
-    this.cards = ["♠ A", "♥ A", "♦ A", "♣ A", "♠ 6", "♥ 6", "♦ 6", "♣ 6", "♠ 7", "♥ 7", "♦ 7", "♣ 7", "♠ 8", "♥ 8", "♦ 8", "♣ 8", "♠ 9", "♥ 9", "♦ 9", "♣ 9", "♠ 10", "♥ 10", "♦ 10", "♣ 10", "♠ J", "♥ J", "♦ J", "♣ J", "♠ Q", "♥ Q", "♦ Q", "♣ Q", "♠ K", "♥ K", "♦ K", "♣ K"];
-
     this.run = function() {
-        this.trump = getRandomCard(this.cards);
-        this.player1.playerCards = getSixCards(this.cards);
-        this.player2.playerCards = getSixCards(this.cards);
+        this.player1 = new Player(1, this);
+        this.player2 = new Player(2, this);
 
-        drawCards(this.player1, this.player2, this.trump);
+        const suits = ["♠", "♥", "♦", "♣"];
+        const values = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
+        this.cards = [];
+        for (const suit of suits) {
+            for (const value of values) {
+                this.cards.push({
+                    'suit': suit,
+                    'value': this.changeValue(value),
+                    'name': `${suit} ${value}`,
+                });
+            }
+        }
+        shuffle(this.cards);
+        this.tableCards = [];
+
+        this.trump = this.getRandomCard(this.cards);
+        this.player1.playerCards = this.getSixCards(this.cards);
+        this.player2.playerCards = this.getSixCards(this.cards);
+
+        this.drawCards(this.player1, this.player2, this.trump);
 
         this.turn = 1;
+
+        document.getElementById('button-trash').addEventListener('click', this.clearTableCards.bind(this));
+    }
+
+    // this.getRandomItem = function(items) {
+    //     return items[Math.floor(Math.random() * items.length)]
+    // }
+
+    this.changeValue = function(value) {
+        switch (value) {
+            case 'J':
+                return '11';
+            case 'Q':
+                return '12';
+            case 'K':
+                return '13';
+            case 'A':
+                return '14';
+            default:
+                return value;
+        }
+    }
+
+    this.clearTableCards = function() {
+        this.tableCards = [];
+        this.drawTable(this.tableCards);
+    }
+
+    this.getRandomCard = function(cards) {
+        console.log(cards.length)
+            // const card = getRandomItem(cards);
+        if (cards.length) {
+            const card = cards.pop();
+            // cards.remove(cards.indexOf(card));
+
+            return card;
+        } else {
+            window.game.end();
+        }
+    }
+
+    this.getSixCards = function(cards) {
+        const arr = [];
+        for (let i = 0; i < 6; i++) {
+            const card = this.getRandomCard(cards);
+            arr.push(card)
+        }
+
+        return arr;
+    }
+
+    this.drawTable = function(tableCards) {
+        const table = document.getElementById('table');
+        this.removeChildren(table);
+        for (const card of tableCards) {
+            table.appendChild(card.node.cloneNode(true));
+        }
+    }
+
+    this.makeMove = function() {
+        // Computer makes move
+        const playableCards = this.game.player2.checkPlayableCards(this.game.tableCards);
+        for (let card of this.game.player2.playerCards) {
+            if (playableCards.indexOf(card) != -1) {
+                this.game.tableCards.push(card);
+                this.game.drawTable(this.game.tableCards);
+                this.game.removeFromCards(card.node, this.game.player2.playerCards);
+                card.node.remove();
+                this.game.turn = 1;
+
+                break;
+            }
+        }
+        this.game.player1.checkPlayableCards(this.game.tableCards);
+    }
+
+    this.clickCard = function(card) {
+        const table = document.getElementById('table');
+        if (this.turn === 1) {
+            const playableCards = this.player1.checkPlayableCards(this.tableCards);
+            console.log(playableCards);
+            const playableCard = this.checkCardInPlayableCards(card, playableCards);
+            if (playableCard) {
+                this.tableCards.push(playableCard);
+                this.drawTable(this.tableCards);
+                this.removeFromCards(card, this.player1.playerCards);
+                card.remove();
+
+                this.turn = 2;
+
+                setTimeout(this.makeMove, 1000, table);
+            }
+        }
+    }
+
+    this.checkCardInPlayableCards = function(card, playableCards) {
+        for (const playableCard of playableCards) {
+            if (playableCard.node == card) {
+                return playableCard;
+            }
+        }
+        return false;
+    }
+
+    this.removeFromCards = function(card, cards) {
+        for (let _card of cards) {
+            if (_card.node == card) {
+                cards.remove(cards.indexOf(_card));
+            }
+        }
+    }
+
+    this.removeChildren = function(node) {
+        // removes all children
+        while (node.firstChild) {
+            node.removeChild(node.firstChild);
+        }
+    }
+
+    this.drawPlayerCards = function(player) {
+        const divPlayer1 = document.getElementById(`player-${player.id}`);
+        // delete all children to redraw
+        this.removeChildren(divPlayer1);
+
+        const length = player.playerCards.length;
+        for (let i = 0; i < length; i++) {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.addEventListener('click', () => this.clickCard(card));
+
+            const span = document.createElement('span');
+            span.textContent = player.playerCards[i].name;
+            card.appendChild(span);
+            divPlayer1.appendChild(card);
+
+            player.playerCards[i].node = card;
+        }
+    }
+
+    this.drawTrump = function(trump) {
+        const card = document.getElementById('trump');
+        const span = document.createElement('span');
+        span.textContent = trump.name;
+        card.appendChild(span);
+    }
+
+    this.drawCards = function(player1, player2, trump) {
+        this.drawPlayerCards(player1);
+        this.drawPlayerCards(player2);
+        this.drawTrump(trump);
+    }
+
+    this.end = function() {
+        // Tigran always wins!!! :D
+        console.log('Tigran WINS!');
+        alert('Tigran WINS!')
+        return 1;
     }
 }
 
