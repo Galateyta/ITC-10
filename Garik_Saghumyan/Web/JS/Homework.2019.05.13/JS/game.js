@@ -1,55 +1,64 @@
-function Card(value, suit){
-    this.value = value;
-    this.suit = suit;
-    this.name = () => {return this.value + 'of' + this.suit};
+
+class Card {
+    constructor(value, suit){
+        this.value = value;
+        this.suit = suit;
+    }
 }
 
-function Deck(){
-    this.deck = [];
-    this.createDeck = function() {
-        const values = ['A', 6, 7, 8, 9, 10,  'J', 'Q', 'K'];
-        const suits =  ['Clubs', 'Diamonds', 'Hears', 'Spades'];
-        const sLen = suits.length;
-        const vLen = values.length;
-        for (let i = 0; i < sLen; i++) {
-            for (let j = 0; j < vLen; j++) {
-                this.deck.push(`${values[j]} of ${suits[i]}`);
+class Deck {
+    constructor() {
+        this.deck = [];
+        const suits = ['Hearts', 'Spades', 'Clubs', 'Diamonds'];
+        const values = ['Ace', 6, 7, 8, 9, 10, 'Jack', 'Queen', 'King'];
+        for (let suit in suits) {
+            for (let value in values) {
+              const card = new Card(values[value], suits[suit]);
+              this.deck.push(card);
             }
+        }         
+    }
+   
+    shuffle(){
+        const deck  = this.deck;
+        let m = deck.length
+        for ( let i = 0; i < m; i++ ){
+            i = Math.floor(Math.random() * m--);
+            [ deck[m], deck[i]] = [deck[i], deck[m]];
         }
         return this.deck;
-    };
-    this.shuffle = function() {
-        let n;
-        const dLen = deck.length;
-        for (let i = 0; i < n; i++) {
-            for (let j = 0; j < this.dLen; j++) {
-                k = Math.floor(Math.random() * this.dLen);
-                let temp = this.deck[j];
-                this.deck[j] = this.deck[k];
-                this.deck[k] = temp;
-            }
+    }
+    deal(){
+        return this.deck.pop();
+    }
+
+}
+
+class Player {
+    constructor (id){
+        this.id = id;
+    }
+    playerCards(){
+        this.pldeck = new Deck();
+        this.shuffledDeck = this.pldeck.shuffle();
+        this.plCards = [];
+        for (let i = 0; i < 6; i++){
+            const card = this.shuffledDeck.pop();
+            this.plCards.push(card);
         }
-    };
+        this.pldeck = this.shuffledDeck;
+        return this.plCards;
+    }
+}
+class Game {
+    constructor(){
+        this.player1 = new Player(1);
+        this.player2 = new Player(2);
+        this.deck = new Deck();
+    }
 }
 
-function Player(name){
-    this.name = name;
-    this.cards = [];
-    this.go = function(){
-        //TODO
-    };
-    this.answer = function(){
-        //TODO
-    }
-    this.out = function(){
-        //TODO
-    };
-}
-function Game(){
-    this.deck = new Deck();
-    this.players = [];
-    this.status = function(){
-        //TODO
-    }
 
-}
+const game = new Game();
+console.log(game.player1.playerCards());
+console.log(game.player2.playerCards());
