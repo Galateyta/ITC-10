@@ -1,33 +1,33 @@
 .chessboard {
-        width: 480px;
-        height: 480px;
-        padding: 2px;
-        border: 2px solid black;
-    }
+    width: 480px;
+    height: 480px;
+    padding: 2px;
+    border: 2px solid black;
+}
 
 table {
-  border-collapse: collapse;
+    border-collapse: collapse;
 }
 
 table, td {
-  border: 1px solid black;
+    border: 1px solid black;
 }
 
-    .white, .silver {
-        float: left;
-        width: 60px;
-        height: 60px;
-        font-size:50px;
-        text-align:center;
-        display: table-cell;
-        vertical-align:middle;
+.white, .silver {
+    float: left;
+    width: 60px;
+    height: 60px;
+    font-size:50px;
+    text-align:center;
+    display: table-cell;
+    vertical-align:middle;
 
-    }
+}
 
-    .white {
-        background-color: white;
-    }
+.white {
+    background-color: white;
+}
 
-    .silver {
-        background-color: silver;
-    }
+.silver {
+    background-color: silver;
+}
