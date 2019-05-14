@@ -1,8 +1,9 @@
-.chessboard {
-    width: 480px;
-    height: 480px;
-    padding: 2px;
-    border: 2px solid black;
+
+#chessboard{
+    text-align:center;
+}
+.chessTable{
+    margin: auto;
 }
 
 table {
@@ -15,8 +16,8 @@ table, td {
 
 .white, .silver {
     float: left;
-    width: 60px;
-    height: 60px;
+    width: 55px;
+    height: 55px;
     font-size:50px;
     text-align:center;
     display: table-cell;
@@ -30,4 +31,19 @@ table, td {
 
 .silver {
     background-color: silver;
+}
+#playerIndex {
+    background-color: yellow;
+    margin:auto;
+    display:block;
+    height: 25px;
+
+}
+#start {
+    height: 25px;
+    width: 50px;
+    background-color: blue;
+    margin:auto;
+    display:block;
+
 }

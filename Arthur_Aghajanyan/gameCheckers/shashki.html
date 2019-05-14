@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-
 <html>
     <head>
         <link rel="stylesheet" href="css/style.css">
         <script src="JavaScript/script.js"></script>
     </head>
     <body>
-        <button id='start' onClick='start()'>Start</button>
-        <div id='chessboard'></div>
-
-
-
+        <button id = "start" onClick="start()">Start</button>
+        <div id = "chessboard" style="display: none"><button id='playerIndex' onClick="playerIndex()">FINISHED MOVE</button>
+            <p id = "finishMove" style="display: none">Enter a FINISHED MOVE button after step</p>
+            <p id = "playerStep" style="display: none" >White player step</p>
+        </div>
     </body>
 </html>
