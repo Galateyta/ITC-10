@@ -150,7 +150,7 @@ function Game() {
         return newValue;
     }
 
-    this.clearTableCards = function(player, hard=false) {
+    this.clearTableCards = function(player, m, hard) {
         if (this.state.attack.id === player.id || hard) {
             this.tableCards.length = 0;
             this.drawTable(this.tableCards);
