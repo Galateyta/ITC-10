@@ -17,6 +17,15 @@ function shuffle(a) {
     return a;
 }
 
+function sleep(milliseconds) {
+    var start = new Date().getTime();
+    for (var i = 0; i < 1e7; i++) {
+        if ((new Date().getTime() - start) > milliseconds) {
+            break;
+        }
+    }
+}
+
 function Player(id, game) {
     this.id = id;
     this.name = '';
@@ -29,8 +38,10 @@ function Player(id, game) {
         this.playableCards = [];
 
         for (const playerCard of this.playerCards) {
-            if (tableCards.length === 0 || (playerCard.suit === tableCards[0].suit && parseInt(playerCard.value) > parseInt(tableCards[tableCards.length - 1].value))) {
+            if (tableCards.length === 0 || ((playerCard.suit === tableCards[0].suit || playerCard.suit === this.game.trump.suit) && parseInt(playerCard.value) > parseInt(tableCards[tableCards.length - 1].value))) {
                 this.playableCards.push(playerCard);
+            } else {
+                console.log(playerCard);
             }
         }
         if (this.playableCards.length === 0) {
@@ -44,9 +55,11 @@ function Player(id, game) {
     }
 
     this.takeCard = function() {
+        // sleep(500); 
         const card = this.game.getRandomCard(this.game.cards);
         this.playerCards.push(card);
-        this.game.drawPlayerCards(this);
+        // this.game.drawPlayerCards(this);
+        this.game.drawCards();
     }
 }
 
@@ -62,19 +75,25 @@ function Game() {
             for (const value of values) {
                 this.cards.push({
                     'suit': suit,
-                    'value': this.changeValue(value),
+                    'value': value,
                     'name': `${suit} ${value}`,
                 });
             }
         }
         shuffle(this.cards);
+
+        console.log(this.cards);
+        for (let card of this.cards) {
+            card.value = this.changeValue(card.suit, card.value, this.cards[this.cards.length - 1].suit);
+        }
+
         this.tableCards = [];
 
         this.trump = this.getRandomCard(this.cards);
         this.player1.playerCards = this.getSixCards(this.cards);
         this.player2.playerCards = this.getSixCards(this.cards);
 
-        this.drawCards(this.player1, this.player2, this.trump);
+        this.drawCards();
 
         this.turn = 1;
 
@@ -85,19 +104,28 @@ function Game() {
     //     return items[Math.floor(Math.random() * items.length)]
     // }
 
-    this.changeValue = function(value) {
+    this.changeValue = function(suit, value, trumpSuit) {
+        let newValue;
         switch (value) {
             case 'J':
-                return '11';
+                newValue = '11';
+                break
             case 'Q':
-                return '12';
+                newValue = '12';
+                break
             case 'K':
-                return '13';
+                newValue = '13';
+                break
             case 'A':
-                return '14';
+                newValue = '14';
+                break
             default:
-                return value;
+                newValue = value;
         }
+        if (suit == trumpSuit) {
+            newValue = (parseInt(newValue) + 9).toString();
+        }
+        return newValue;
     }
 
     this.clearTableCards = function() {
@@ -219,15 +247,16 @@ function Game() {
 
     this.drawTrump = function(trump) {
         const card = document.getElementById('trump');
+        this.removeChildren(card);
         const span = document.createElement('span');
         span.textContent = trump.name;
         card.appendChild(span);
     }
 
-    this.drawCards = function(player1, player2, trump) {
-        this.drawPlayerCards(player1);
-        this.drawPlayerCards(player2);
-        this.drawTrump(trump);
+    this.drawCards = function() {
+        this.drawPlayerCards(this.player1);
+        this.drawPlayerCards(this.player2);
+        this.drawTrump(this.trump);
     }
 
     this.end = function() {
