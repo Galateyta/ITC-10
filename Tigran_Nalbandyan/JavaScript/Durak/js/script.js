@@ -16,7 +16,7 @@ function shuffle(a) {
     }
     return a;
 }
-
+// Debil lezu
 function sleep(milliseconds) {
     var start = new Date().getTime();
     for (var i = 0; i < 1e7; i++) {
@@ -34,72 +34,94 @@ function Player(id, game) {
     this.playerCards = [];
     this.playableCards = [];
 
+    this.checkTakeCards = function() {
+        if (this.playerCards.length < 6) {
+            const status = this.takeCard();
+            if (status) {
+                return this.checkTakeCards();
+            }
+        } else {
+            return 1;
+        }
+    }
+
     this.checkPlayableCards = function(tableCards) {
+        function checkCardValueOnTable(playerCard) {
+            for (const tableCard of tableCards) {
+                if (tableCard.name.split(' ')[1] == playerCard.name.split(' ')[1]) {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         this.playableCards = [];
 
-        for (const playerCard of this.playerCards) {
-            if (tableCards.length === 0 || ((playerCard.suit === tableCards[0].suit || playerCard.suit === this.game.trump.suit) && parseInt(playerCard.value) > parseInt(tableCards[tableCards.length - 1].value))) {
-                this.playableCards.push(playerCard);
+        if (tableCards.length === 0) {
+            if (game.state.attack.id === this.id) {
+                this.playableCards = this.playerCards;
+                return this.playableCards;
             } else {
-                console.log(playerCard);
+                return [];
+            }
+        }
+        const attacker = game.state.attack.id === this.id;
+        for (const playerCard of this.playerCards) {
+            if ((attacker && checkCardValueOnTable(playerCard)) || (!attacker && (playerCard.suit === tableCards[tableCards.length - 1].suit || playerCard.suit === this.game.trump.suit) && parseInt(playerCard.value) > parseInt(tableCards[tableCards.length - 1].value))) {
+                this.playableCards.push(playerCard);
             }
         }
         if (this.playableCards.length === 0) {
-
-            this.takeCard();
-            return this.checkPlayableCards(tableCards);
+            if (this.id === 2) {
+                if (attacker) {
+                    this.game.clearTableCards(this);
+                } else {
+                    if (this.playerCards.length === 0) {
+                        this.game.clearTableCards(this, true);
+                    } else {
+                        this.takeTableCards();
+                    }
+                }
+            }
         }
 
-
+        console.log(this.id, this.playableCards);
         return this.playableCards;
     }
 
     this.takeCard = function() {
-        // sleep(500); 
-        const card = this.game.getRandomCard(this.game.cards);
-        this.playerCards.push(card);
-        // this.game.drawPlayerCards(this);
-        this.game.drawCards();
+        // sleep(500); Debil lezu
+        try {
+            const card = this.game.getRandomCard(this.game.cards);
+            this.playerCards.push(card);
+            this.game.drawCardsCount();
+            return 1;
+        } catch (e) {
+            return 0;
+        }
+    }
+
+    this.takeTableCards = function() {
+        if (game.state.cover.id === this.id) {
+            this.playerCards = this.playerCards.concat(this.game.tableCards);
+            this.game.tableCards.length = 0;
+            this.game.state.attack.checkTakeCards();
+            this.game.nextStep();
+        } else {
+            alert(`Can't take cards. Click "To trash" to remove cards on the table.`);
+        }
+    }
+}
+
+class Card {
+    constructor(suit, value, name) {
+        this.suit = suit;
+        this.value = value;
+        this.name = name;
     }
 }
 
 function Game() {
-    this.run = function() {
-        this.player1 = new Player(1, this);
-        this.player2 = new Player(2, this);
-
-        const suits = ["♠", "♥", "♦", "♣"];
-        const values = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
-        this.cards = [];
-        for (const suit of suits) {
-            for (const value of values) {
-                this.cards.push({
-                    'suit': suit,
-                    'value': value,
-                    'name': `${suit} ${value}`,
-                });
-            }
-        }
-        shuffle(this.cards);
-
-        console.log(this.cards);
-        for (let card of this.cards) {
-            card.value = this.changeValue(card.suit, card.value, this.cards[this.cards.length - 1].suit);
-        }
-
-        this.tableCards = [];
-
-        this.trump = this.getRandomCard(this.cards);
-        this.player1.playerCards = this.getSixCards(this.cards);
-        this.player2.playerCards = this.getSixCards(this.cards);
-
-        this.drawCards();
-
-        this.turn = 1;
-
-        document.getElementById('button-trash').addEventListener('click', this.clearTableCards.bind(this));
-    }
-
     // this.getRandomItem = function(items) {
     //     return items[Math.floor(Math.random() * items.length)]
     // }
@@ -128,9 +150,14 @@ function Game() {
         return newValue;
     }
 
-    this.clearTableCards = function() {
-        this.tableCards = [];
-        this.drawTable(this.tableCards);
+    this.clearTableCards = function(player, hard=false) {
+        if (this.state.attack.id === player.id || hard) {
+            this.tableCards.length = 0;
+            this.drawTable(this.tableCards);
+            this.nextStep(true);
+        } else {
+            alert(`Can't clear the table. Click "Take" to take cards from the table.`);
+        }
     }
 
     this.getRandomCard = function(cards) {
@@ -159,33 +186,49 @@ function Game() {
     this.drawTable = function(tableCards) {
         const table = document.getElementById('table');
         this.removeChildren(table);
+        let relative = false;
         for (const card of tableCards) {
-            table.appendChild(card.node.cloneNode(true));
+            if (relative === true) {
+                const cardCopy = card.node.cloneNode(true);
+                cardCopy.classList.add('card-relative');
+                table.appendChild(cardCopy);
+            } else {
+                table.appendChild(card.node.cloneNode(true));
+            }
+            relative = !relative;
         }
+    }
+
+    this.swapTurn = function() {
+        if (this.state.turn === 0) {
+            this.state.turn = 1;
+        } else {
+            this.state.turn = 0;
+        }
+    }
+
+    this.swapPlayerState = function() {
+        [this.state.attack, this.state.cover] = [this.state.cover, this.state.attack];
     }
 
     this.makeMove = function() {
         // Computer makes move
-        const playableCards = this.game.player2.checkPlayableCards(this.game.tableCards);
-        for (let card of this.game.player2.playerCards) {
-            if (playableCards.indexOf(card) != -1) {
-                this.game.tableCards.push(card);
-                this.game.drawTable(this.game.tableCards);
-                this.game.removeFromCards(card.node, this.game.player2.playerCards);
-                card.node.remove();
-                this.game.turn = 1;
+        const playableCards = this.player2.checkPlayableCards(this.tableCards);
+        for (let card of this.player2.playableCards) {
+            this.tableCards.push(card);
+            this.drawTable(this.tableCards);
+            this.removeFromCards(card.node, this.player2.playerCards);
+            card.node.remove();
 
-                break;
-            }
+            break;
         }
-        this.game.player1.checkPlayableCards(this.game.tableCards);
+        this.nextStep();
     }
 
     this.clickCard = function(card) {
         const table = document.getElementById('table');
-        if (this.turn === 1) {
+        if (this.state.turn === 0) {
             const playableCards = this.player1.checkPlayableCards(this.tableCards);
-            console.log(playableCards);
             const playableCard = this.checkCardInPlayableCards(card, playableCards);
             if (playableCard) {
                 this.tableCards.push(playableCard);
@@ -193,9 +236,7 @@ function Game() {
                 this.removeFromCards(card, this.player1.playerCards);
                 card.remove();
 
-                this.turn = 2;
-
-                setTimeout(this.makeMove, 1000, table);
+                this.nextStep();
             }
         }
     }
@@ -257,6 +298,12 @@ function Game() {
         this.drawPlayerCards(this.player1);
         this.drawPlayerCards(this.player2);
         this.drawTrump(this.trump);
+        this.drawTable(this.tableCards);
+    }
+
+    this.drawCardsCount = function() {
+        const span = document.getElementById('cards-count');
+        span.textContent = `Cards left: ${this.cards.length}`;
     }
 
     this.end = function() {
@@ -264,6 +311,59 @@ function Game() {
         console.log('Tigran WINS!');
         alert('Tigran WINS!')
         return 1;
+    }
+
+    this.run = function() {
+        this.player1 = new Player(1, this);
+        this.player2 = new Player(2, this);
+
+        const suits = ["♠", "♥", "♦", "♣"];
+        const values = ['A', 'K', 'Q', 'J', '10', '9', '8', '7', '6'];
+        this.cards = [];
+        for (const suit of suits) {
+            for (const value of values) {
+                this.cards.push(new Card(suit, value, `${suit} ${value}`));
+            }
+        }
+        shuffle(this.cards);
+
+        console.log(this.cards);
+        for (let card of this.cards) {
+            card.value = this.changeValue(card.suit, card.value, this.cards[this.cards.length - 1].suit);
+        }
+
+        this.tableCards = [];
+
+        this.trump = this.getRandomCard(this.cards);
+        this.player1.playerCards = this.getSixCards(this.cards);
+        this.player2.playerCards = this.getSixCards(this.cards);
+
+        this.drawCards();
+        this.drawCardsCount();
+
+        this.state = {
+            'turn': 0,
+            'attack': this.player1,
+            'cover': this.player2,
+        }
+
+        document.getElementById('button-trash').addEventListener('click', this.clearTableCards.bind(this, this.player1));
+        document.getElementById('button-take').addEventListener('click', this.player1.takeTableCards.bind(this.player1));
+    }
+
+    this.nextStep = function(swapPlayerStateBool) {
+        this.drawCards();
+        this.swapTurn();
+        if (swapPlayerStateBool) {
+            this.state.attack.checkTakeCards();
+            this.state.cover.checkTakeCards();
+            this.swapPlayerState();
+        }
+        console.log('swaped')
+
+        if (this.state.turn === 1) {
+            setTimeout(this.makeMove.bind(this), 1000);
+        }
     }
 }
 
