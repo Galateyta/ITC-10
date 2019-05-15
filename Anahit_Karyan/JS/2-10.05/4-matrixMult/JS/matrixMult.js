@@ -10,7 +10,7 @@ const matrix2 = [
 				];
 //Checks the number of rows and columns
 function check (matrix1, matrix2) {
-	if(matrix1.length != matrix2[0].length) {
+	if(matrix1.length !== matrix2[0].length) {
 		return false;
 	} else {
 		return true;
