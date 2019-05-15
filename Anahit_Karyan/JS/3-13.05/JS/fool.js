@@ -2,11 +2,12 @@
 
 let step = true;//um hertna
 let cardId = 0;
-const cardStandartSize = 6;
-let cardHolder = ['cross', 'heart', 'diamond', 'spades'];
-let cardValue = [6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 'V', 'V', 'V', 'V', 'D', 'D', 'D', 'D', 'K', 'K', 'K', 'K', 'T', 'T', 'T', 'T']; 
+const CardStandartSize = 6;
+
 const cardSection = document.getElementsByClassName('cardSection');
+
 function valueGenerator() { 
+	let cardValue = [6, 6, 6, 6, 7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 10, 10, 10, 10, 'V', 'V', 'V', 'V', 'D', 'D', 'D', 'D', 'K', 'K', 'K', 'K', 'T', 'T', 'T', 'T']; 
 	let result; 
 	const charactersLength = cardValue.length; 
 	const index = (Math.floor(Math.random() * charactersLength));
@@ -14,17 +15,14 @@ function valueGenerator() {
 	cardValue.splice(index, 1) ;
 	return result ;
 } 
-//der petqa stugel vor ed mastov ed qaric eli exac chlini
-
 function holderGenerator() { 
+	const cardHolder = ['cross', 'heart', 'diamond', 'spades'];
 	let result = ''; 
 	const charactersLength = cardHolder.length; 
 	const index = (Math.floor(Math.random() * charactersLength));
 	result = cardHolder[index];
-	//cardHolder.splice(index, 1) ;
 	return result ;
 } 
-
 function Card () {
 	this.holder = holderGenerator();
 	this.value = valueGenerator();
@@ -35,44 +33,67 @@ function createCard() {
 	return new Card();
 }
 
-
-function Player () {
-	const cards = [];
-	let comdition ;//kargavichak (cackoxn es te gnacox@)
-	this.cardInitialization = function () {
-		for(let i = 0; i < cardStandartSize; ++i) {
-			cards[i] = createCard();
-		}	
+function Game (player11, player22) {
+	const cardsSize = 36;
+	const cardsCalod = [];
+	const player1 = player11;
+	const player2 = player22;
+	let cozyr;
+	this.initializationCalod = function () {	
+		for(let i = 0; i < cardsSize; ++i) {
+			const carentCard = createCard();
+			let isTrue = true;
+			cardsCalod.forEach(function(item){
+				if(item.holder === carentCard.holder && item.value === carentCard.value) {
+					isTrue = false;
+				}
+			});
+			isTrue === true ? cardsCalod[i] = carentCard : i--;
+		}
+		cozyr = cardsCalod.pop();
 	}
-	this.paintPlayerCards = function (cardStandartSize) {
-		for(let i = 0; i < cardStandartSize; ++i) {
-			const cardItem = paintCard(cards[i]);
-			step === true ? cardSection[0].appendChild(cardItem) : cardSection[2].appendChild(cardItem);
+	//karcum em petq chi mka xarna generaxrel skzbum arden-------------------------------???????????
+	// this.shuffle = function() {
+	//     for (let i = this.cardsCalod.length - 1; i > 0; i--) {
+	//         let j = Math.floor(Math.random() * (i + 1));
+	//         let temp = this.cardsCalod[i];
+	//         this.cardsCalod[i] = this.cardsCalod[j];
+	//         this.cardsCalod[j] = temp;
+	//     }
+	//     return this.cardsCalod;
+	// }
+
+	this.giveCard = function (player) {
+		player.playerCards.push(cardsCalod.pop());
+	}
+	// this.returnCalod = function() {
+	// 	return cardsCalod ;
+	// }
+}
+
+function Player (playerName, comd) {
+	const name = playerName;
+	this.playerCards = [];
+	this.comdition = comd;//kargavichak (cackoxn es te gnacox@)
+	this.paintPlayerCards = function () {
+		for(let i = 0; i < CardStandartSize; ++i) {
+			const cardItem = paintCard(this.playerCards[i]);
+			name === 'player1' ? cardSection[0].appendChild(cardItem) : cardSection[2].appendChild(cardItem);
 		}
 	}
-	// this.step = function() {
-
-	// }
-	// this.collect = function() {
-
-	// }
+	// this.play = function() {
 }
 
 function cardClick (e) {
 	const cardInHtml = e.target; 
  	const id = cardInHtml.id;
  	const cardInJs = document.getElementById(e.target.id);
- 	
- 	//const cardItem = paintCard(cards[i]);
 	cardSection[1].appendChild(cardInJs);
  	//if(id.parentElement.id === p1-section comdition ===1 ) gnacoxn es voch te cackox@
  	const divPlayer1 = document.createElement('div');
  	divPlayer1.appendChild(cardInJs);
  	cardSection[1].appendChild(divPlayer1);
  	let step = false;
- 	
- 	//cardInJs.parentNode.removeChild(cardInJs);
- 	//else {comdition ===0}
  }
  //id tvox funkcia
 function giveIdAndOnClick (element , id) {
@@ -91,8 +112,7 @@ function paintCard(card) {
 	const img = document.createElement('img');
 	img.setAttribute('class', 'card-img-center img-fluid'); //qani vor iran click aneluc cher ashxatum clicki funkcian
 	giveIdAndOnClick (img, card.id);
-
-	//stex uzeci `${}-` -ov grem chstavec-----------------------?????????????????
+	//stex uzeci `${}-` -ov grem chstavec----------------------------------?????????????????
 	switch(card.holder) {
 	  case 'cross':
 	    img.setAttribute('src', './Resurses/cross.png'); 
@@ -111,20 +131,54 @@ function paintCard(card) {
 	} 
 	cardDiv.appendChild(h3);
 	cardDiv.appendChild(img);
-
 	return cardDiv;
-	//cardSection[0].appendChild(card);
+}
+
+
+
+
+
+//starti meja gnalu
+
+const player1 = new Player('player1', 1);//xaxi skzbum gnacoxna
+	const player2 = new Player('player2', 0);//xaxi skzbum cackoxna
+	const game = new Game(player1, player2);
+	game.initializationCalod();
+	for(let i = 0; i < CardStandartSize; ++i) {
+		game.giveCard(player1);
+		game.giveCard(player2);
+	}
+	player1.paintPlayerCards();
+	player2.paintPlayerCards();
+
+function calodClick() {
+	if(step ) {
+		//while(player1.playerCards.length !== 5)
+		game.giveCard(player1);
+		const cardItem = paintCard(player1.playerCards[player1.playerCards.length - 1]);
+		cardSection[0].appendChild(cardItem);
+	} else {
+		//while(player2.playerCards.length !== 5)
+		game.giveCard(player2);
+		const cardItem = paintCard(player2.playerCards[player2.playerCards.length - 1]);
+		cardSection[2].appendChild(cardItem);
+	}
 
 }
-function start () {
-	const player1 = new Player();
-	player1.cardInitialization();
-	player1.paintPlayerCards(cardStandartSize);
-	player1.comdition = 1;//gnacox@ skzbum player1-na
-	step = false;
-	const player2 = new Player();
-	player2.cardInitialization();
-	player2.paintPlayerCards(cardStandartSize);
 
+function collect () {
+
+}
+function bita () {
+	while (cardSection[1].firstChild) {
+    	cardSection[1].removeChild(cardSection[1].firstChild);
+    	
+	}
+}
+
+
+
+function start () {
+	
 }
 
