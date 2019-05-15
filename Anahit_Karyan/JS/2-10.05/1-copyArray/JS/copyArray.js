@@ -15,16 +15,16 @@ function copyArray(array) {
 }
 //--------------------------------------------------
 function start() {
-	const array = prompt("Enter your array separating elements by ','").split(",");
+	const array = prompt("Enter your array separating elements by ','").split(',');
 	const array2 = copyArray(array);
 
-	const divs = document.getElementsByTagName("div");
-	const firstH4 = document.createElement("h4");
+	const divs = document.getElementsByTagName('div');
+	const firstH4 = document.createElement('h4');
 	const hText1 = document.createTextNode(array);
 	firstH4.appendChild(hText1);
 	divs[0].appendChild(firstH4);
 
-	const secondH4 = document.createElement("h4");
+	const secondH4 = document.createElement('h4');
 	const hText2 = document.createTextNode(array2);
 	secondH4.appendChild(hText2);
 	divs[1].appendChild(secondH4);
