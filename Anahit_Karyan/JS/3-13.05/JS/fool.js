@@ -38,7 +38,7 @@ function Game (player11, player22) {
 	const cardsCalod = [];
 	const player1 = player11;
 	const player2 = player22;
-	let cozyr;
+	this.cozyr;
 	this.initializationCalod = function () {	
 		for(let i = 0; i < cardsSize; ++i) {
 			const carentCard = createCard();
@@ -50,7 +50,7 @@ function Game (player11, player22) {
 			});
 			isTrue === true ? cardsCalod[i] = carentCard : i--;
 		}
-		cozyr = cardsCalod.pop();
+		this.cozyr = cardsCalod.pop();
 	}
 	//karcum em petq chi mka xarna generaxrel skzbum arden-------------------------------???????????
 	// this.shuffle = function() {
@@ -140,16 +140,10 @@ function paintCard(card) {
 
 //starti meja gnalu
 
+
 const player1 = new Player('player1', 1);//xaxi skzbum gnacoxna
-	const player2 = new Player('player2', 0);//xaxi skzbum cackoxna
-	const game = new Game(player1, player2);
-	game.initializationCalod();
-	for(let i = 0; i < CardStandartSize; ++i) {
-		game.giveCard(player1);
-		game.giveCard(player2);
-	}
-	player1.paintPlayerCards();
-	player2.paintPlayerCards();
+const player2 = new Player('player2', 0);//xaxi skzbum cackoxna
+const game = new Game(player1, player2);
 
 function calodClick() {
 	if(step ) {
@@ -166,19 +160,37 @@ function calodClick() {
 
 }
 
-function collect () {
+function collect () {	
+	if(step) {//aysinqn arajinn er gnacox erkrodn havaqelua
+		while (cardSection[1].firstChild) {//cardSection[1].removeChild(cardSection[1].firstChild);
+	    	cardSection[2].appendChild(cardSection[1].firstChild)
+		}
+	} else {
+		while (cardSection[1].firstChild) {
+			cardSection[0].appendChild(cardSection[1].firstChild)
+		}
+	}
 
 }
 function bita () {
 	while (cardSection[1].firstChild) {
     	cardSection[1].removeChild(cardSection[1].firstChild);
-    	
 	}
 }
 
-
-
 function start () {
 	
+	game.initializationCalod();
+	for(let i = 0; i < CardStandartSize; ++i) {
+		game.giveCard(player1);
+		game.giveCard(player2);
+	}
+	player1.paintPlayerCards();
+	player2.paintPlayerCards();
+
+	const cardCozyr = paintCard(game.cozyr);
+	const divCozyr = document.getElementsByClassName('calod')[0];
+	divCozyr.appendChild(cardCozyr);
+
 }
 
