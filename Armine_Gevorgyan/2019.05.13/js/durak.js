@@ -1,10 +1,3 @@
-/*
-let cards = [   '6ch', '7ch', '8ch', '9ch', '10ch', 'Jch', 'Qch', 'Kch', 'Ach',
-                '6pi', '7pi', '8pi', '9pi', '10pi', 'Jpi', 'Qpi', 'Kpi', 'Api',
-                '6kr', '7kr', '8kr', '9kr', '10kr', 'Jkr', 'Qkr', 'Kkr', 'Akr',
-                '6bu', '7bu', '8bu', '9bu', '10bu', 'Jbu', 'Qbu', 'Kbu', 'Abu',
-			];//all cards
-*/
 //xar,xach,qarpich,sirt
 let cards = [   '1c', '2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c',
                 '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', 
@@ -38,7 +31,7 @@ let indexArr = [];
 console.log(cards);
 
 let arr = [];
-	let arr1 = [];
+let arr1 = [];
 //genarate cards for  gamers (called 2* )
 function generateCard(){
 	let indexID=[];
@@ -52,8 +45,6 @@ function generateCard(){
 			indexArr.push(index);
 			indexID.push(index);
 			tmpArr.push(cards[index]);
-			//console.log('index',index);
-			//console.log('gg',tmpArr);
 			cardNumber++;
 		} else {
 			//console.log('krknvuma');
@@ -189,28 +180,6 @@ function mast(card1,card2) {
 				return false;
 			}
 		}
-//	} 
-	/*else {
-		if(isKozer(card2)){
-			if(isKozer(card1)) {
-				if(card2[0] > card1[0]) {
-					console.log('2 ne kozr u cackecin irar');
-				} else {
-					console.log('1rdi kozr@ cacra chi kara cacki');
-				}
-			} else {
-				console.log('1rd@ kozr chi chi kara cacki');
-			}
-		} else {
-			if(isKozer(card1)) {
-				console.log('1rd@ kozra kccacki');
-			} else if (card1[0] > card2[0]) {
-				console.log('voch mek kozr chi 1rd@ kcacki arajinin');
-			} else {
-				console.log('voch mek kozr chi  1rd@ cacra chi kara cacki');
-			}
-		}
-	}*/
 }
 
 function newCardForGamer(){
@@ -231,76 +200,8 @@ function newCardForGamer(){
 	return newCard;
 }
 
-/*
-function newCardInTable (passage) {
-	/*let flag = false;
-	if(passage === 1) {
-		//card gamer1
-		while(!flag) {
-			let indexCardInTable = Math.floor(Math.random()* (gamer1Cnt) + 1);
-			gamer1Cnt--;
-			flag = true;
-			newCardForTable = gamer1[indexCardInTable];
-			//gamer1.splice(indexCardInTable, 1);//delete card in gamer1
-			}
-	} else if(passage === 2){
-		//card gamer2
-		while(!flag) {
-			let indexNewCard = Math.floor(Math.random()* (calodaCnt) + 1);
-			if(indexArr.indexOf(indexNewCard) === -1) {
-				indexArr.push(indexNewCard);
-				calodaCnt--;
-				flag = true;
-				newCard = caloda[indexNewCard];
-				//caloda.splice(indexNewCard, 1);//delete card in caloda
-			} else {
-				//console.log('krknvuma');
-			}		
-		}
-	}//stex petqa pakox astxanishov com lini
-	
-	if(passage === 1) {
-		//card gamer1
-		
-	} else if(passage === 2){
-		//card gamer2
-		
-	}
-	
-}
 
-function getID() {
-	let indexId;
-	return indexID;
-}
 
-//gamer1 qayl@
-function gamer1progress() {
-	//get clicked button's id
-	let indexG1 = getID();
-	return gamer1[indexG1];
-}
-
-function gamer2progress() {
-	let indexG2 = getID();
-	return gamer2[indexG1];
-}
-
-function progress( passage) {
-	if(passage === 1) {
-		gamer1progress();
-	} else {
-		gamer2progress();
-	}
-	mast(gamer1[gamer1index], gamer2[gamer2Index], passage);
-	
-}
-
-//gamer pick cards //havaqel
-function pick () {
-	game(passage);
-}
-*/
 function bita() {
 	tableCaloda = [];
 	tableCnt = 0;
@@ -312,34 +213,11 @@ function bita() {
 }
 
 
-
-/*
-function game(passage) {
-	if(passage === 1) {
-		//game start first gamer
-		startGame();
-	} else {
-		//game start second gamer
-		startGame();
-	}
-	
-}
-
-function startGame() {
-	if(passage === 1) {
-		//game start first gamer
-		gamer1progress();
-	} else {
-		//game start second gamer
-		gamer2progress();
-	}
-}
-
-*/
 	
 function startGame(){
 
 }
+
 function xod() {
 	
 	const eventId = event.target.id ;
