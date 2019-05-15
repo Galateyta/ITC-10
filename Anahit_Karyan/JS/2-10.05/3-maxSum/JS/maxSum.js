@@ -31,16 +31,16 @@ function maxSumOfDigits (arr) {
 }
 //............................................................
 function start() {
-	const array = prompt("Enter your variables ','").split(",");
+	const array = prompt("Enter your variables ','").split(',');
 	const array2 = maxSumOfDigits(array);
 
-	const divs = document.getElementsByTagName("div");
-	const firstH4 = document.createElement("h4");
+	const divs = document.getElementsByTagName('div');
+	const firstH4 = document.createElement('h4');
 	const hText1 = document.createTextNode(array);
 	firstH4.appendChild(hText1);
 	divs[0].appendChild(firstH4);
 
-	const secondH4 = document.createElement("h4");
+	const secondH4 = document.createElement('h4');
 	const hText2 = document.createTextNode(array2);
 	secondH4.appendChild(hText2);
 	divs[1].appendChild(secondH4);
@@ -49,17 +49,17 @@ function start() {
 function maxSumOfDigits1 ( num1, num2, num3, num4) {
 	let maximum = maxSum(arguments[0]);
 	let array = [arguments[0]];
-	for (i = 1; i < arguments.length; i++) {
+	for (let i = 1; i < arguments.length; i++) {
 		if(!isNumber(arguments[i])){
 			return 'Write only numbers';
 		} else if (maxSum(arguments[i]) > maximum) {
-    		array = [arguments[i]];
-    		maximum = maxSum(arguments[i]);
-    	} else if (maxSum(arguments[i]) === maximum) {
-    		array.push(arguments[i]);
-    	} 
-    }
-    return array;
+    		    array = [arguments[i]];
+    		    maximum = maxSum(arguments[i]);
+    	        } else if (maxSum(arguments[i]) === maximum) {
+    		    array.push(arguments[i]);
+    	        } 
+        }
+        return array;
 }
 
 console.log(125, 11, 23, 230, 210, 800, 404)
