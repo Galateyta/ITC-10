@@ -2,7 +2,7 @@ function start() {
     document.getElementById('start').style.display = 'none';
     document.getElementById('playerStep').style.display = 'block';
     document.getElementById('finishMove').style.display = 'block';
-    document.getElementById('chessboard').style.display = 'block';  
+    document.getElementById('chessboard').style.display = 'block';
     createForm();
 }
 //char code for 3 elements
@@ -22,10 +22,12 @@ const emptyFigureCharCode = '&#8226';
 //function for creating tabla
 
 function createForm() {
+    let row = 8;
+    let col = 8;
     let table = "<table class='chessTable'>";
-    for (let i = 0; i < 8; ++i) {
+    for (let i = 0; i < row; ++i) {
         table += '<tr>';
-        for (let j = 0; j < 8; ++j) {
+        for (let j = 0; j < col; ++j) {
             if ((i % 2 === 0 && j % 2 === 0) || (i % 2 !== 0 && j % 2 !== 0)) {
                 table += "<td onclick='clickFigure(this)' class='white' id='" + i.toString() +j.toString() + "'>";   //create id for each <td>
                 if (i < 3) {
@@ -45,7 +47,7 @@ function createForm() {
     document.getElementById('chessboard').innerHTML += table;
 }
 
-var Figure = function(i,j,charCode,clickedIndex) {
+var Figure = function(i, j, charCode) {
     this.i = i;
     this.j = j;
     this.charCode = charCode;
@@ -82,46 +84,48 @@ function clickFigure(element) {
     row = element.parentNode.rowIndex;      //parentNode for use row(tr)
     col = element.cellIndex;
 
-    let id = row.toString() + col.toString();
-
+    let id = row + col.toString();
     //create objects at the time of the click, using <getCharCodeById> function
-    if(getCharCodeById(id) == '9920' && (index % 2 === 1)){
-        whiteFigure = new Figure(row,col,'9920');
-
-    }else if(getCharCodeById(id) == '9922' && (index % 2 === 0)){
-        blackFigure = new Figure(row,col,'9922');
-
-    }else if((getCharCodeById(id) == '8226') && ((whiteFigure !== null) || (blackFigure !== null))){
-        emptyFigure = new Figure(row,col,'8226');
+    switch(getCharCodeById(id)){
+        case Number('9920'):
+            if(index % 2 === 1){
+                whiteFigure = new Figure(row,col,'9920');
+            }
+            break;
+        case Number('9922'):
+            if(index % 2 === 0){
+                blackFigure = new Figure(row,col,'9922');
+            }
+            break;
+        case Number('8226'):
+            if((whiteFigure !== null) || (blackFigure !== null)){
+                emptyFigure = new Figure(row,col,'8226');
+            }
+            break;
     }
-    //check to the first not to click click empti <td> , and as a result we call the corresponding function
-
-    if((whiteFigure !== null) && (emptyFigure !== null)  ){
-        let temp = emptyFigure;
-        checkStepForWhiteFigure(whiteFigure,temp);
+    if((whiteFigure !== null) && (emptyFigure !== null)){
+        checkStepForWhiteFigure(whiteFigure, emptyFigure);
 
     }else if((blackFigure !== null) && (emptyFigure !== null) ){
-        let temp = emptyFigure;
-        checkStepForBlackFigure(blackFigure,temp);
+        checkStepForBlackFigure(blackFigure, emptyFigure);
     }
 }
 
 function getCharCodeById(id){
     return document.getElementById (id).innerText.charCodeAt();
 }
-
 //go for white figure
-function drawElementWhite(obj1I,obj1J,obj2I,obj2J){
-    document.getElementById(obj2I.toString() + obj2J.toString()).innerHTML = whiteFigureCharCode;
-    document.getElementById(obj1I.toString() + obj1J.toString()).innerHTML = emptyFigureCharCode;
+function drawElementWhite(obj1I, obj1J, obj2I, obj2J){
+    document.getElementById(obj2I + obj2J.toString()).innerHTML = whiteFigureCharCode;
+    document.getElementById(obj1I + obj1J.toString()).innerHTML = emptyFigureCharCode;
 }
 //go for black figure
-function drawElementBlack(obj1I,obj1J,obj2I,obj2J){
-    document.getElementById(obj2I.toString() + obj2J.toString()).innerHTML = blackFigureCharCode;
-    document.getElementById(obj1I.toString() + obj1J.toString()).innerHTML = emptyFigureCharCode;
+function drawElementBlack(obj1I, obj1J, obj2I, obj2J){
+    document.getElementById(obj2I + obj2J.toString()).innerHTML = blackFigureCharCode;
+    document.getElementById(obj1I + obj1J.toString()).innerHTML = emptyFigureCharCode;
 }
 
-function checkStepForWhiteFigure(obj1,obj2) {
+function checkStepForWhiteFigure(obj1, obj2) {
     let obj1I = obj1.getI();
     let obj1J = obj1.getJ();
     let obj2I = obj2.getI();
@@ -139,36 +143,36 @@ function checkStepForWhiteFigure(obj1,obj2) {
     //move part
 
     if((obj2I - obj1I) === 1 && (((obj2J - obj1J) === 1) || ((obj2J - obj1J) === -1))){
-        drawElementWhite(obj1I,obj1J,obj2I,obj2J);
+        drawElementWhite(obj1I, obj1J, obj2I, obj2J);
     }
     //forward fire
     if((obj2I - obj1I) === 2 && (obj2J - obj1J) === 2){
-        let id = fireForwardI1.toString() + fireForwardJ1.toString()
-            if(getCharCodeById(id) == '9922'){
-                drawElementWhite(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireForwardI1.toString() + fireForwardJ1.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireForwardI1 + fireForwardJ1.toString()
+            if(getCharCodeById(id) === Number('9922')){
+                drawElementWhite(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireForwardI1 + fireForwardJ1.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     if((obj2I - obj1I) === 2 && (obj2J - obj1J) === -2){
-        let id = fireForwardI1.toString() + fireForwardJ2.toString()
-            if(getCharCodeById(id) == '9922'){
-                drawElementWhite(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireForwardI1.toString() + fireForwardJ2.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireForwardI1 + fireForwardJ2.toString()
+            if(getCharCodeById(id) === Number('9922')){
+                drawElementWhite(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireForwardI1 + fireForwardJ2.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     //back fire
     if((obj1I - obj2I) === 2 && (obj1J - obj2J) === 2){
-        let id = fireWithI1.toString() + fireWithJ1.toString()
-            if(getCharCodeById(id) == '9922'){
-                drawElementWhite(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireWithI1.toString() + fireWithJ1.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireWithI1 + fireWithJ1.toString()
+            if(getCharCodeById(id) === Number('9922')){
+                drawElementWhite(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireWithI1 + fireWithJ1.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     if((obj1I - obj2I) === 2 && (obj2J - obj1J) === 2){
-        let id = fireWithI1.toString() + fireWithJ2.toString()
-            if(getCharCodeById(id) == '9922'){
-                drawElementWhite(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireWithI1.toString() + fireWithJ2.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireWithI1 + fireWithJ2.toString()
+            if(getCharCodeById(id) === Number('9922')){
+                drawElementWhite(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireWithI1 + fireWithJ2.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     whiteFigure = null;
@@ -177,8 +181,7 @@ function checkStepForWhiteFigure(obj1,obj2) {
 }
 
 //go for black figure
-
-function checkStepForBlackFigure(obj1,obj2) {
+function checkStepForBlackFigure(obj1, obj2) {
 
     let obj1I = obj1.getI();
     let obj1J = obj1.getJ();
@@ -198,32 +201,32 @@ function checkStepForBlackFigure(obj1,obj2) {
     }
     //forward fire
     if((obj1I - obj2I) === 2 && (obj1J - obj2J) === 2){
-        let id = fireForwardI1.toString() + fireForwardJ1.toString();
-        if(getCharCodeById(id) == '9920'){
-            drawElementBlack(obj1I,obj1J,obj2I,obj2J);
-            document.getElementById(fireForwardI1.toString() + fireForwardJ1.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireForwardI1 + fireForwardJ1.toString();
+        if(getCharCodeById(id) === Number('9920')){
+            drawElementBlack(obj1I, obj1J, obj2I, obj2J);
+            document.getElementById(fireForwardI1 + fireForwardJ1.toString()).innerHTML = emptyFigureCharCode;
         }
     }
     if((obj1I - obj2I) === 2 && (obj1J - obj2J) === -2){
-        let id = fireForwardI1.toString() + fireForwardJ2.toString()
-            if(getCharCodeById(id) == '9920'){
-                drawElementBlack(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireForwardI1.toString() + fireForwardJ2.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireForwardI1 + fireForwardJ2.toString()
+            if(getCharCodeById(id) === Number('9920')){
+                drawElementBlack(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireForwardI1 + fireForwardJ2.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     //back fire
     if((obj2I - obj1I) === 2 && (obj1J - obj2J) === 2){
-        let id = fireWithI1.toString() + fireWithJ1.toString()
-            if(getCharCodeById(id) == '9920'){
-                drawElementBlack(obj1I,obj1J,obj2I,obj2J);
-                document.getElementById(fireWithI1.toString() + fireWithJ1.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireWithI1 + fireWithJ1.toString()
+            if(getCharCodeById(id) === Number('9920')){
+                drawElementBlack(obj1I, obj1J, obj2I, obj2J);
+                document.getElementById(fireWithI1 + fireWithJ1.toString()).innerHTML = emptyFigureCharCode;
             }
     }
     if((obj2I - obj1I) === 2 && (obj2J - obj1J) === 2){
-        let id = fireWithI1.toString() + fireWithJ2.toString();
-        if(getCharCodeById(id) == '9920'){
-            drawElementBlack(obj1I,obj1J,obj2I,obj2J);
-            document.getElementById(fireWithI1.toString() + fireWithJ2.toString()).innerHTML = emptyFigureCharCode;
+        let id = fireWithI1 + fireWithJ2.toString();
+        if(getCharCodeById(id) === Number('9920')){
+            drawElementBlack(obj1I, obj1J, obj2I, obj2J);
+            document.getElementById(fireWithI1 + fireWithJ2.toString()).innerHTML = emptyFigureCharCode;
         }
     }
     whiteFigure = null;
