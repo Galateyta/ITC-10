@@ -1,10 +1,3 @@
-/*
-let cards = [   '6ch', '7ch', '8ch', '9ch', '10ch', 'Jch', 'Qch', 'Kch', 'Ach',
-                '6pi', '7pi', '8pi', '9pi', '10pi', 'Jpi', 'Qpi', 'Kpi', 'Api',
-                '6kr', '7kr', '8kr', '9kr', '10kr', 'Jkr', 'Qkr', 'Kkr', 'Akr',
-                '6bu', '7bu', '8bu', '9bu', '10bu', 'Jbu', 'Qbu', 'Kbu', 'Abu',
-			];//all cards
-*/
 //xar,xach,qarpich,sirt
 let cards = [   '1c', '2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c',
                 '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', 
@@ -209,50 +202,7 @@ function newCardForGamer(){
 	return newCard;
 }
 
-/*
-function newCardInTable (passage) {
-	/*let flag = false;
-	if(passage === 1) {
-		//card gamer1
-		while(!flag) {
-			let indexCardInTable = Math.floor(Math.random()* (gamer1Cnt) + 1);
-			gamer1Cnt--;
-			flag = true;
-			newCardForTable = gamer1[indexCardInTable];
-			//gamer1.splice(indexCardInTable, 1);//delete card in gamer1
-			}
-	} else if(passage === 2){
-		//card gamer2
-		while(!flag) {
-			let indexNewCard = Math.floor(Math.random()* (calodaCnt) + 1);
-			if(indexArr.indexOf(indexNewCard) === -1) {
-				indexArr.push(indexNewCard);
-				calodaCnt--;
-				flag = true;
-				newCard = caloda[indexNewCard];
-				//caloda.splice(indexNewCard, 1);//delete card in caloda
-			} else {
-				//console.log('krknvuma');
-			}		
-		}
-	}//stex petqa pakox astxanishov com lini
-	
-	if(passage === 1) {
-		//card gamer1
-		
-	} else if(passage === 2){
-		//card gamer2
-		
-	}
-	
-}
 
-function getID() {
-	let indexId;
-	return indexID;
-}
-
-*/
 function bita() {
 	tableCaloda = [];
 	tableCnt = 0;
@@ -268,9 +218,6 @@ function bita() {
 
 }
 
-function startGame(){
-
-}
 function xod() {
 	
 	const eventId = event.target.id ;
@@ -382,10 +329,6 @@ function xod() {
 		} else {
 			//alert("bita");
 		}
-		//alert('index');
-		//alert(indexG);
-		console.log('gaaaaaaaam',gamer1);
-		console.log('gaaaaaaaam222',gamer2);
 }
 
 function getCards() {//alert('get');
@@ -418,12 +361,9 @@ function getCards() {//alert('get');
 		
 		size1 = gamer1.length;
 	}
-	//alert(size1);//alert('card');
-			//alert(gamer2[size1-1]);	
+	
 	for(let k = 0; k < size1; k++) {
-		let button1 = document.createElement('button');		
-		//let text = document.createTextNode(gamer1[k]);
-		//indeid = caloda.indexOf(gamer1[k]);
+		let button1 = document.createElement('button');	
 		button1.style.margin = '-10px';
 		button1.style.width = '5vw';
 		if(passage === 1) {
@@ -481,21 +421,20 @@ function start() {
 	console.log('caloda',caloda);
 		
 	for (let i = 0; i < 2; i++){
-				let text1;
-				let button2 = document.createElement('button');
-				if(i === 0) {
-					text1 = document.createTextNode('bita');
-					button2.style.margin = '100px';button2.addEventListener('click',bita);
-				} else {
-					text1 = document.createTextNode('get');button2.addEventListener('click',getCards);
-					//button2.style.margin = '50px';
-				}
-				button2.style.background = 'lightblue';			
-				button2.style.width = '5vw';
-				button2.appendChild(text1);
-				document.getElementById('div2_2').appendChild(button2);
-			}
-	//startGame();
+		let text1;
+		let button2 = document.createElement('button');
+		if(i === 0) {
+			text1 = document.createTextNode('bita');
+			button2.style.margin = '100px';button2.addEventListener('click',bita);
+		} else {
+			text1 = document.createTextNode('get');button2.addEventListener('click',getCards);
+			//button2.style.margin = '50px';
+		}
+		button2.style.background = 'lightblue';			
+		button2.style.width = '5vw';
+		button2.appendChild(text1);
+		document.getElementById('div2_2').appendChild(button2);
+	}
 }
 
 
