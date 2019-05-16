@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8"/>
+        <script src="script.js" defer></script>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <button id="start" onClick="start()">Play Game</button>
+        <div id="board">
+            <button id="changePlayer" onClick="change()">Done</button>
+            <div id = "step" value="White player step"></div>
+        </div>
+        
+        <div class="main" id="00">
+            <div class="line" style="display: flex;">
+                <div class="black" id="11" onclick="enter(1, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="12" onclick="enter(1, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="13" onclick="enter(1, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="14" onclick="enter(1, 4)"></div>
+                <div class="white"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="white"></div>
+                <div class="black" id="21" onclick="enter(2, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="22" onclick="enter(2, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="23" onclick="enter(2, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="24" onclick="enter(2, 4)"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="black" id="31" onclick="enter(3, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="32" onclick="enter(3, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="33" onclick="enter(3, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="34" onclick="enter(3, 4)"></div>
+                <div class="white"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="white"></div>
+                <div class="black" id="41" onclick="enter(4, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="42" onclick="enter(4, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="43" onclick="enter(4, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="44" onclick="enter(4, 4)"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="black" id="51" onclick="enter(5, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="52" onclick="enter(5, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="53" onclick="enter(5, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="54" onclick="enter(5, 4)"></div>
+                <div class="white"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="white"></div>
+                <div class="black" id="61" onclick="enter(6, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="62" onclick="enter(6, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="63" onclick="enter(6, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="64" onclick="enter(6, 4)"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="black" id="71" onclick="enter(7, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="72" onclick="enter(7, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="73" onclick="enter(7, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="74" onclick="enter(7, 4)"></div>
+                <div class="white"></div>
+            </div>
+            <div class="line" style="display: flex;">
+                <div class="white"></div>
+                <div class="black" id="81" onclick="enter(8, 1)"></div>
+                <div class="white"></div>
+                <div class="black" id="82" onclick="enter(8, 2)"></div>
+                <div class="white"></div>
+                <div class="black" id="83" onclick="enter(8, 3)"></div>
+                <div class="white"></div>
+                <div class="black" id="84" onclick="enter(8, 4)"></div>
+            </div>
+        </div>
+    </body>
+</html>
