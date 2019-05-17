@@ -5,10 +5,10 @@ function ITC(url) {
   return new Promise(function(resolve, reject) {
 
     let xhr = new XMLHttpRequest();
-    xhr.open('POST', url, true);
+    xhr.open('GET', url, true);
 
     xhr.onload = function() {
-      if (this.status < 500 && this.status > 400) {
+      if (this.status < 400) {
         resolve(this.response);
       } else {
         let error = new Error(this.statusText);
