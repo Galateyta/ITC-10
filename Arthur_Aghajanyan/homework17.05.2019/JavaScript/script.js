@@ -16,7 +16,7 @@ for (let i = 0; i < length; i++) {
     element.setAttribute('id',i);
     element.setAttribute('data-number', i);
     element.setAttribute('data-tag-name', element.tagName);
-    element.setAttribute('data-similar-tags',`similar ${i}`);
+    element.setAttribute('data-similar-tags',document.body.getElementsByTagName(element.tagName).length);
     element.setAttribute('data-parents-count', getParentElementCount(i));
 }
 
