@@ -1,0 +1,28 @@
+.App {
+  width: auto;
+  height: auto;
+  border: 1px solid salmon;
+  background-color: fuchsia;
+  margin : 0;
+  padding: 10px;
+}
+
+.Red {
+  color: red;
+  margin: 10px;
+}
+
+.Black {
+  color: black;
+  margin: 10px;
+}
+
+.Grey {
+  color: Grey;
+  margin: 10px;
+} 
+
+.Yellow {
+  color: yellow;
+  margin: 10px;
+} 
