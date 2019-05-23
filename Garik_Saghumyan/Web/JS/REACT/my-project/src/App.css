@@ -1,0 +1,20 @@
+.App {
+  width: 20%;
+  background-color: grey;
+  padding: 5px;
+}
+.green {
+  color: green;
+  margin: 5px;
+  background-color: white;
+}
+.red {
+  color: red;
+  margin: 5px;
+  background-color: white;
+}
+.blue {
+  color: blue;
+  margin: 5px;
+  background-color: white;
+}
