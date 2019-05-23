@@ -7,9 +7,10 @@ class App extends React.Component {
     super(props);
     this.state = { items: [{title: 'To Do #1',
                             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur dictum scelerisque ultricies. Nulla interdum suscipit nisl ut molestie. Donec feugiat mattis orci nec molestie. Sed accumsan lacus vitae maximus pretium. Morbi feugiat, ipsum in lacinia fermentum, libero tellus congue massa, id mollis libero massa sit amet diam. Cras sollicitudin scelerisque ante sed feugiat. Pellentesque sed libero lacus. Vivamus vel elementum metus. Sed ullamcorper quam vel tortor tempus suscipit et in massa. Aenean finibus rhoncus lacus vitae vestibulum.',
-                            date: '12.12.2012',
+                            date: '12-12-2012',
                             id: Date.now(),
-                          }], title: '', description: '', date: ''};
+                            priority: '1'
+                          }], title: '', description: '', date: '', priority: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,29 +20,45 @@ class App extends React.Component {
       <div id="App">
         <List items={this.state.items} removeItem={this.removeItem} />
         <form onSubmit={this.handleSubmit}>
-          <input
-            id="title"
-            onChange={this.handleChange}
-            value={this.state.title}
-            required
-          />
-          <input
+          <div>
+            <input
+              id="title"
+              onChange={this.handleChange}
+              value={this.state.title}
+              placeholder="Title"
+              required
+            />
+            <input
+              id="date"
+              onChange={this.handleChange}
+              value={this.state.date}
+              placeholder="Date"
+              type="date"
+              min="1"
+              required
+            />
+            <input
+              id="priority"
+              onChange={this.handleChange}
+              value={this.state.priority}
+              placeholder="Priority"
+              type="number"
+              min="1"
+              required
+            />
+            <button>
+              Add
+            </button>
+          </div>
+          <div>
+            <textarea
             id="description"
             onChange={this.handleChange}
             value={this.state.description}
+            placeholder="Description"
             required
-          />
-          <input
-            id="date"
-            onChange={this.handleChange}
-            value={this.state.date}
-            type="number"
-            min="1"
-            required
-          />
-          <button>
-            Add
-          </button>
+            />
+          </div>
         </form>
       </div>
     );
@@ -54,6 +71,8 @@ class App extends React.Component {
       this.setState({ description: e.target.value });
      } else if (e.target.id === 'date') {
       this.setState({ date: e.target.value });
+    } else if (e.target.id === 'priority') {
+      this.setState({ priority: e.target.value });
     }
   }
 
