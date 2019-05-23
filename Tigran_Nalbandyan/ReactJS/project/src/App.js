@@ -81,13 +81,9 @@ class App extends React.Component {
   }
 
   removeItem = (index) => {
-    console.log('delete')
-    this.setState(
-      (state) => {
-        state.items.splice(index, 1);
-      }
-    );
-    console.log(this.state.items)
+    const newItems = this.state.items;
+    newItems.splice(index, 1);
+    this.setState({ items: newItems });
   }
 }
 

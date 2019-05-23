@@ -2,12 +2,11 @@ import React from 'react';
 import { MdClose } from 'react-icons/md';
 
 class List extends React.Component {
-  state = {items: this.props.items}
-
   render() {
+    console.log('render')
     return (
       <div id="cards">
-        {this.state.items.map((item, index) => (
+        {this.props.items.map((item, index) => (
           <div className="card" key={item.id}>
             <div className="close-icon"><MdClose size="20px" onClick={() => this.props.removeItem(index)} /></div>
             <h2>{item.title}</h2>
