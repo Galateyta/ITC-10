@@ -3,10 +3,6 @@
 	justify-content: center;
 }
 
-input {
-  margin-right: 10px;
-}
-
 textarea {
 	margin-top: 10px;
 	max-width: 50%;
@@ -16,9 +12,21 @@ textarea {
 form {
 	position: fixed;
 	bottom: 10px;
-	left: 25%;
 	background-color: white;
 	border: 2px solid black;
+	padding: 10px 25px;
+  left: 20%;
+  right: 20%;
+}
+
+table {
+  margin: 20px;
+	border-collapse: collapse;
+	border-spacing: 0;
+  text-align: center;
+}
+
+th, td {
 	padding: 10px;
 }
 
@@ -40,7 +48,8 @@ form {
 }
 
 .close-icon {
-	text-align: right;
+  align-items: center;
+  display: grid;
 }
 
 .close-icon > *:hover {
