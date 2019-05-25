@@ -1,0 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+.collect , .bita {
+	height: 40px; 
+	float: right;
+	margin: 5px;
+}
+.img-cards {
+	width: 20%;
+}
+.myCards {
+	width: 120px;
+	height: 200px;
+}
+.cardSection, div {
+	padding: 15px;
+}
+div h1 {
+	margin-left: 30%;
+}
