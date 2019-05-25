@@ -1,0 +1,12 @@
+#redDiv {
+    background-color: red;
+    height: 200px;
+    width: 200px;
+}
+#blackDiv {
+    background-color: black;
+    margin: auto;
+    margin-top: 30px;
+    height: 100px;
+    width: 100px;
+}
