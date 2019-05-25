@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+  }
+#container {
+    display: flex;
+}
+/*for task 5*/
+#first {
+    background-color: red;
+    border: 2px solid black;
+    width: 200px;
+    height: 100px;
+    text-align: center;
+    margin: 50px 100px;
+    padding-left: 50px;
+    flex: 0.5;
+}
+#second {
+    width: 100px;
+    height: 50px;
+    background-color: black;
+    text-align: center;
+    color: white;
+    border: 2px solid black;
+    margin: 20px;   
+}
+/*for task 6*/
+form {
+    flex: 2;
+    margin-left: 100px;
+    margin-top: 40px;
+}
+p {
+    font-weight: bold;
+    margin: 10px 20px;
+}
+p~div {
+    margin-left: 20px;
+}
+.autocomplete-items {
+    width: 300px;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+}
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #a1a6ad; 
+}
+.autocomplete-items div:hover {
+    background-color: rgb(195, 206, 209); 
+}
+.autocomplete-active {
+    background-color: rgb(137, 144, 151); 
+    color: #ffffff; 
+}
+.autocomplete {
+    position: relative;
+    display: inline-block;
+}
+input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+input[type=text] {
+    background-color: #f1f1f1;
+    width: 300px;
+}
+input[type=submit] {
+    background-color: DodgerBlue;
+    color: #fff;
+    cursor: pointer;
+}
+  
