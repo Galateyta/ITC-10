@@ -1,0 +1,17 @@
+#div1 {
+  background-color: blue;
+  position: relative;
+  width: 150px;
+  height: 150px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#div2 {
+  background-color: white;
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  width: 100px;  
+  height: 100px;
+}
