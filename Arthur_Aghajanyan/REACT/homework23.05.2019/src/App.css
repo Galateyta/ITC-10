@@ -1,36 +1,10 @@
+
 .App{
-    background-color: #fefbd8;
-    text-align: center;
+  background-color: #fefbd8;
+  text-align: center;
 }
 input {
-    border: 2px solid blue;
-    padding: 12px 20px;
-    margin: 8px 0;
-}
-.class-text{
-    background-color: lightblue;
-    margin: 25px 25px 25px 25px;
-    padding-left: 10px;
-    border: 4px double black;
-    text-align: left;
-}
-#buttonForClose {
-    background-color: orange;
-    margin-left: 98%;
-}
-.style-date {
-    text-align: center;
-    color: red;
-}
-.text-overflow{
-    height: 25em;
-    overflow: auto;
-}
-.button-class {
-    margin-left: 3.5%;
-    background-color: orange;
-    height: 3em;
-}
-#date {
-    width: 5.5%;
+  border: 2px solid blue;
+  padding: 12px 20px;
+  margin-right: 2em;
 }
