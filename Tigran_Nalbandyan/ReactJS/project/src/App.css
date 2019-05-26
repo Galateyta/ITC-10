@@ -1,6 +1,8 @@
 #App {
+  padding: 20px 0;
   display: grid;
 	justify-content: center;
+  font-family: sans-serif;
 }
 
 textarea {
@@ -9,14 +11,21 @@ textarea {
 	max-height: 100px;
 }
 
-form {
+.form {
 	position: fixed;
 	bottom: 10px;
 	background-color: white;
-	border: 2px solid black;
+	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 	padding: 10px 25px;
-  left: 20%;
-  right: 20%;
+  left: 16%;
+  right: 16%;
+  transition: 0.4s;
+  padding-right: 10px;
+}
+
+.form:hover {
+  box-shadow: 0 16px 32px 8px rgba(0,0,0,0.4);
+  transition: 0.4s;
 }
 
 table {
@@ -28,6 +37,10 @@ table {
 
 th, td {
 	padding: 10px;
+}
+
+th:hover {
+  text-decoration: underline;
 }
 
 #cards {
@@ -48,11 +61,47 @@ th, td {
 }
 
 .close-icon {
-  align-items: center;
-  display: grid;
+  display: flex;
+  justify-content: space-between;
+}
+
+.close-icon > * {
+  height: 20px;
 }
 
 .close-icon > *:hover {
+  transition: 0.5s;
+}
+
+.close-icon > *:nth-child(1):hover {
 	background-color: rgba(255,0,0,0.7);
-	transition: 0.5s;
+}
+
+.close-icon > *:nth-child(2):hover {
+	background-color: #4CAF50;
+}
+
+.close-icon > *:nth-child(2) > svg {
+  position: relative;
+  bottom: 5px;
+}
+
+.triangle {
+	width: 10px;
+	height: 5px;
+
+	&--hidden {
+		visibility: hidden;
+
+		@at-root .filter:hover & {
+			visibility: visible;
+		}
+	}
+}
+
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
 }

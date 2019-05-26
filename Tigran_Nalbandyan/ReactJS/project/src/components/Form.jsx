@@ -1,60 +1,41 @@
-import React from "react";
+import React, { Component } from 'react';
 import {
   Button,
   Input,
-  Select,
   Row,
   InputGroup,
   InputGroupAddon,
   Col
-} from "reactstrap";
+} from 'reactstrap';
 
-class Form extends React.Component {
+class Form extends Component {
   render() {
-    return (
+    return (<div className={this.props.mode === 'general' ? 'form' : 'pr-3'}>
       <form onSubmit={this.props.handleSubmit}>
         <Row>
           <InputGroup>
-            <Col>
-              <Input
-                id="name"
-                onChange={this.props.handleChange}
-                value={this.props.state.name}
-                placeholder="Name"
-                required
-              />
+            <Col className={this.props.mode === 'general' ? 'col-5' : 'col-6'}>
+              <Input id="name" onChange={this.props.handleChange} value={this.props.state.name} placeholder="Name" required="required"/>
             </Col>
-            <Col>
-              <Input
-                id="date"
-                onChange={this.props.handleChange}
-                value={this.props.state.date}
-                placeholder="Date"
-                type="date"
-                required
-              />
+            <Col className="col-3">
+              <Input id="date" onChange={this.props.handleChange} value={this.props.state.date} placeholder="Date" type="date" required="required"/>
             </Col>
-            <Col>
-              <Input
-                id="priority"
-                onChange={this.props.handleChange}
-                value={`${this.props.state.priority.value} ${this.props.state.priority.text}`}
-                placeholder="Priority"
-                type="select"
-                required
-              >
+            <Col className="col-2">
+              <Input id="priority" onChange={this.props.handleChange} value={`${this.props.state.priorityValue} ${this.props.state.priorityText}`} placeholder="Priority" type="select" required="required">
                 <option value="2 High">High</option>
                 <option value="1 Medium">Medium</option>
                 <option value="0 Low">Low</option>
               </Input>
             </Col>
-            <InputGroupAddon addonType="append">
-              <Button color="primary">Add</Button>
-            </InputGroupAddon>
+            {this.props.mode === 'general' ? <Col className="col-1">
+              <InputGroupAddon addonType="append">
+                <Button color="primary">Add</Button>
+              </InputGroupAddon>
+            </Col> : ''}
           </InputGroup>
         </Row>
       </form>
-    );
+    </div>);
   }
 }
 
