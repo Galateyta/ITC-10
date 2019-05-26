@@ -58,6 +58,7 @@ class Modal extends Component {
       priorityValue: this.state.priorityValue,
       id: this.props.item.id,
       n: this.props.item.n,
+      visible: this.props.item.visible,
     }
     this.props.changeItem(newItem, this.props.index)
     this.toggle();

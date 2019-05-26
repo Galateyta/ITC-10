@@ -25,8 +25,18 @@ class App extends Component {
           priorityText: 'Low',
           n: 2,
           visible: true
-        }
+        },
+        {
+          name: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
+          date: '2012-12-12',
+          id: Date.now() + 2,
+          priorityValue: '1',
+          priorityText: 'Medium',
+          n: 3,
+          visible: true
+        },
       ],
+      itemsVisible: [],
       name: '',
       date: '',
       priorityText: 'High',
@@ -34,8 +44,11 @@ class App extends Component {
       sortedBy: '',
       sortDirection: 'up',
       filterValue: '',
-      visible: true
+      visible: true,
     };
+
+    this.index = 3;
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.onSort = this.onSort.bind(this);
@@ -74,14 +87,15 @@ class App extends Component {
     if (!this.state.name.length) {
       return null;
     }
-
+    this.index++;
     const newItem = {
       name: this.state.name,
       date: this.state.date,
       priorityValue: this.state.priorityValue,
       priorityText: this.state.priorityText,
       id: Date.now(),
-      n: this.state.items.length + 1
+      n: this.index,
+      visible: true,
     };
     this.setState((state) => {
       state.items.push(newItem);
@@ -91,9 +105,9 @@ class App extends Component {
 
   removeItem = (index) => {
     const newItems = this.state.items;
-    delete newItems[index];
+    // delete newItems[index];
     // comment the line above and uncomment the line below if you want to fill empty N#'s
-    // newItems.splice(index, 1);
+    newItems.splice(index, 1);
     this.setState({items: newItems});
   };
 
@@ -122,7 +136,6 @@ class App extends Component {
   }
 
   changeItem(newItem, index) {
-    // TODO
     const newItems = this.state.items;
     newItems[index] = newItem;
     this.setState({items: newItems});
