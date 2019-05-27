@@ -175,8 +175,8 @@ const Field = ({ label = "", name = "", value = "", onChange }) => {
 const Select = ({ label = "", name = "", value = "", onChange }) => {
    return (
       <div className="field">
-         <label htmlFOR={name} class="lebel">{label}</label>
          <select name={name} onChange={onChange}>
+         <option value="null">priority</option>
             <option value="low">Low</option>
             <option value="high">High</option>
             <option value="medium">Medium</option>
