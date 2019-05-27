@@ -1,5 +1,6 @@
 .table {
    width: 100%;
+   max-height: 600px;
    display: flex;
    flex-wrap: wrap;
    border: 1px solid black;
@@ -8,6 +9,7 @@
    font-size: 20px;
    font-weight: 400;
    line-height: 1.5;
+   overflow: scroll;
 }
 
 .table-body {
