@@ -10,26 +10,28 @@ class App extends Component {
     super(props);
     this.state = {
      worksInList: [],
+     filteredList: [],
      work: '' ,
      priority: '',
      date: '',
    };
-   this.nameChange = this.nameChange.bind(this);
    this.priorityChange = this.priorityChange.bind(this);
    this.dateChange = this.dateChange.bind(this);
    this.addWork = this.addWork.bind(this);
    this.deleteWork = this.deleteWork.bind(this);
-   this.search = this.search.bind(this);
    this.sortByName = this.sortByName.bind(this);
    this.sortByPriority = this.sortByPriority.bind(this);
    this.sortByDate = this.sortByDate.bind(this);
    this.DATA = this.state.worksInList;
   }
-  render () {    
+  render () {
+  	const list = this.state.searchText ? this.state.filteredList : this.state.worksInList;
+
+  	}
     return (
       <div className="App">
-        <input  placeholder="Enter the search text" onKeyUp={this.search}/>
-        <List works={this.state.worksInList}
+        <input  placeholder="Enter the search text" value={this.state.searchText} onChange={this.search}/>
+        <List works={list}
               deleteWork={this.deleteWork}
               nameChange={this.state.nameChange} 
               priorityChange={this.state.priority} 
@@ -60,7 +62,7 @@ class App extends Component {
     );
   }
 
-  nameChange(e){ 
+  nameChange = (e) => { 
   	this.setState({work: e.target.value});
   } 
   priorityChange(e){ 
@@ -97,16 +99,13 @@ class App extends Component {
 
   }
   
-  search(e){
+  search = (e) => {
+  	  console.log('changeee', e.target);
       const searchString = e.target.value;
       this.setState({
-          worksInList: this.DATA
+        filteredList: this.state.worksInList.filter((item) => item.work.toLowerCase().match(searchString)),
+        searchText: searchString
       });
-      if(searchString.length > 0){
-          this.setState({
-              worksInList: this.state.worksInList.filter((item) => item.work.toLowerCase().match(searchString))
-          });
-      }
 
   }  
   sortByName(){
