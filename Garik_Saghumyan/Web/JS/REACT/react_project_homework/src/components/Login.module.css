@@ -1,0 +1,10 @@
+.Login {
+    padding: 60px 0;
+    background-color: gray;
+    text-align: center;
+  }
+
+.form {
+    margin: 0 auto;
+    max-width: 320px;
+}
