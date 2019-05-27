@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="index.css" rel="stylesheet">    
+    <title>Registration List</title>
+</head> 
+<style>
+    .btn {
+        background-color: rgb(158, 184, 174);
+        border: 1px solid black;
+        border-radius: 3px;
+    }
+    input {
+        background-color: beige;
+    }
+</style>
+<body> 
+    <form action="">
+        <fieldset>
+            <legend>Sign up:</legend>
+            Email:  <br><input type="email" name="mail" placeholder="mail" required maxlength="30" /><br><br>
+            <div>
+                Phone: <br><span>+</span>
+                <input min="9" max="12"  type="tel" name="tel" pattern="[0-9]{3}-[0-9]{3}-[0-9]{3}-[0-9]{3}" name="phone" placeholder="phone" /><br><br>
+                <span></span>
+            </div>
+            Name: <br><input type="text" name="name" maxlength="20"  placeholder="name" required /> <br><br>
+            Password:  <br><input type="password" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*" name="pass" placeholder="password" maxlength="20" required /> <br><br>                
+        <div>   
+            <input type="radio" value="Male" name="gender" onchange="hide()" />Male<br>
+            <input type="radio" value="Female" name="gender" onchange="hide()" />Female<br>
+            <input type="radio" value="other"  name="gender" id="h" onchange="show()" />Other
+                
+            <select name="select" id="close" style="display: none"> 
+                <option value="value1" >value 1</option> 
+                <option value="value2"  selected>value 2</option>
+                <option value="value3"  id="hide" onclick="b()">Your version
+                    <br>
+                    <div style="position: fixed;float:left">
+                    <input type="text"  value="your version" id="a1" style="margin-top:3px" />
+                    <button onclick="add()" class="btn">Ok</button>
+                    </div>
+                </option>
+            </select>   
+        </div>
+        <br>
+        <input type="reset" value="Cancel" class="btn" />  
+        <input type="submit" value="Submit" class="btn" />
+        </fieldset>
+    </form>
+<script>       
+    function add() {
+        //var foo = document.getElementById('h').nextSibling.data = document.getElementById("a1").value;
+        var foo = document.getElementById('hide').textContent = 
+                document.getElementById("a1").value;
+    }
+
+    function show() {
+        document.getElementById('close').style.display='block';
+    }
+    function hide() {
+        document.getElementById('close').style.display='none';
+    }
+
+</script>
+
+</body> 
+</html>

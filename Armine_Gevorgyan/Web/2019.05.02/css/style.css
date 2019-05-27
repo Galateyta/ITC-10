@@ -1,0 +1,273 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+.content{
+	width:80%;
+	margin: 0 auto;
+	overflow: hidden;
+}
+.left-side{
+	width: 33%;
+	float:left;
+	background:#8bcaca;
+}
+
+#resume {
+	background: #8bcaca;
+	padding:15px;
+}
+
+#resume h2 {
+	background:#8bcaca;
+	color:#ffffff;
+	text-align:center;
+}
+
+#user-photo {
+	background:#e2e2e2;
+	margin-top:0 10px;
+}
+
+#photo{
+	width:80%;
+	margin: 0 auto;	
+}
+
+#photo img {
+	width:80%;
+	padding-bottom:0%;
+	background-position:center;
+	background-image:URL("images/user.jpg");
+	background-repeat:no-repeat;
+	border-radius:50%;
+	background-size:cover;
+	padding:25px;
+}
+
+.info {
+	background:#e2e2e2;
+	text-align:center;	
+	padding:0 0 20px 0;
+}
+
+#scills{
+	background:#8bcaca;
+}
+
+.top{	
+	padding-top:10px; 
+	text-align:center;
+	color:#ffffff;
+}
+.top h1{	
+	text-align:center;
+	color:#000000;
+}
+
+.far {
+	color:#ffffff;
+}
+#skill{
+	margin-top:0;
+	padding:25px;
+	text-align:left;
+}
+
+#skill p{	
+	padding-left:10px;
+	margin-top:7px;
+}
+
+
+.skilles {
+	left:10px;
+    	margin: auto;
+    	-webkit-appearance: none;
+    	position: relative;
+    	overflow: hidden;
+    	height: 7px;
+    	width: 90%;
+    	cursor: pointer;
+    	border-radius: 70px;	
+}
+input[type=range]::-webkit-slider-runnable-track {
+   	background: black;
+}
+input[class=skilles]::-webkit-slider-thumb {
+    	-webkit-appearance: none;
+    	width: 10px;
+    	height: 7px;
+    	background: white;
+    	box-shadow: -100vw 6vw 0 100vw white;
+    	border-radius: 50%;
+}
+
+.langs{
+	overflow:hidden;
+	position: relative;
+	padding:15vh 0 15vh 0;
+	heth:100%;
+}
+.lang{
+	width: 18px;
+	float:left;
+	margin-left:30px;
+	position: relative;
+}
+
+.lang-1:before{
+	content: "English";
+    	position: absolute;
+    	top: -85px;
+    	left: 3.5vw;
+   	z-index: 99;
+}
+
+.lang-2:before{
+	content: "Russian";
+	position: absolute;
+	top: -85px;
+	left: 4.5vw;
+        z-index: 99;
+}
+
+.lang-3:before{
+	content: "Chines";
+        position: absolute;
+        top: -85px;
+        left: 5.5vw;
+        z-index: 99;
+}
+
+.langs input{
+        cursor: pointer;
+        width: 19vh !important;
+        -webkit-appearance: none; 
+        z-index: 200; 
+        border: 1px solid #88bbd3; 
+        background-color: #88bbd3; 
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#e6e6e6), to(#d2d2d2)); 
+        background-image: -webkit-linear-gradient(right, #e6e6e6, #d2d2d2); 
+        background-image: -moz-linear-gradient(right, #e6e6e6, #d2d2d2); 
+        background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2); 
+        background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2);
+	margin:20px 20px 20px 20px;
+}
+
+.language {
+        -webkit-appearance: none;
+        position: relative;
+        overflow: hidden;
+        height: 12px;
+        border-radius: 50px;	
+	background:#88bbd3;
+        -webkit-transform:rotate(270deg); 
+        -moz-transform:rotate(270deg); 
+        -o-transform:rotate(270deg); 
+        -ms-transform:rotate(270deg); 
+        transform:rotate(270deg); 
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+    	background: black;
+}
+
+input[class=language]::-webkit-slider-thumb {
+	-webkit-appearance: none; ;
+    	background: white;
+    	box-shadow: -100vw 6vw 0 100vw white;
+    	border-radius: 50%;
+}
+
+input[class=language]::-webkit-slider-thumb{
+    	-webkit-appearance: none; 
+    	width: 15px; 
+    	height: 15px; 
+	border-radius:80%;
+	background-color: #88bbd3; 
+   	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4ddbff), to(#0cf));
+    	background-image: -webkit-linear-gradient(right, #4DDBFF, #00CCFF); 
+    	background-image: -moz-linear-gradient(right, #4DDBFF, #00CCFF); 
+    	background-image: -ms-linear-gradient(right, #4DDBFF, #00CCFF); 
+    	background-image: -o-linear-gradient(right, #4DDBFF, #00CCFF); 
+}
+
+.right-side{
+	width: 67%;
+	float:left;
+}
+
+.right-info h2{
+	margin-top:20px;
+	color:#8bcaca;
+}
+
+.right-info{
+	padding:13px;
+}
+
+.right-info p{
+	font-size:13px;
+	margin:5px 0;
+	padding:5px 5px 30px 30px;
+}
+
+.right-info h6{
+	float:left;
+	margin:10px 0;
+	padding:0 15px;
+}
+
+.right-side hr{
+	margin:	20px 0;
+}
+
+.experience > p{
+	margin:40px;
+	width:100%;
+	
+}
+
+.experience-item {	
+	position:relative;
+}
+
+.experience-item div{
+	overflow:hidden;
+}
+
+.experience-item p{
+	float:left;	
+	padding:0 0 0 8.2vw;
+	font-size:12px;
+}
+
+.experience-item:before{
+	content: " ";
+    	border-left: 1px solid #000;
+    	position: absolute;
+    	z-index: 99;
+   	left: 0;
+    	top: 9%;
+    	height: 100%;
+}
+
+.experience-item:after{
+	content: " ";
+    	width: 10px;
+    	height: 10px;
+    	background: black;
+    	border-radius: 80px;
+    	position: absolute;
+    	z-index: 99;
+    	left: -4px;
+    	top: 9%;
+}
+
+.awards p{
+	overflow:hidden;
+	font-size:15px;
+	margin:5px;
+	padding:0 30px;
+}
