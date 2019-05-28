@@ -48,22 +48,9 @@ class App extends Component {
     };
 
     this.index = 3;
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-    this.onSort = this.onSort.bind(this);
-    this.changeItem = this.changeItem.bind(this);
   }
 
-  render() {
-    return (<div id="App">
-      <Filter state={this.state} handleChange={this.handleChange}/>
-      <Table state={this.state} removeItem={this.removeItem} onSort={this.onSort} changeItem={this.changeItem}/>
-      <Form state={this.state} mode="general" handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
-    </div>);
-  }
-
-  handleChange(e) {
+  handleChange = (e) => {
     if (e.target.id === 'name') {
       this.setState({name: e.target.value});
     } else if (e.target.id === 'date') {
@@ -82,7 +69,7 @@ class App extends Component {
     }
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
     if (!this.state.name.length) {
       return null;
@@ -97,10 +84,9 @@ class App extends Component {
       n: this.index,
       visible: true,
     };
-    this.setState((state) => {
-      state.items.push(newItem);
-      return {name: '', date: '', priorityTtext: 'High', priorityValue: '2'};
-    });
+    const items = this.state.items;
+    items.push(newItem)
+    this.setState({items, name: '', date: '', priorityTtext: 'High', priorityValue: '2'})
   }
 
   removeItem = (index) => {
@@ -111,7 +97,7 @@ class App extends Component {
     this.setState({items: newItems});
   };
 
-  onSort(event, sortKey) {
+  onSort = (event, sortKey) => {
     const items = this.state.items;
     let sortedBy = this.state.sortedBy;
     let sortDirection = this.state.sortDirection;
@@ -135,7 +121,7 @@ class App extends Component {
     this.setState({items: items, sortedBy: sortedBy, sortDirection: sortDirection});
   }
 
-  changeItem(newItem, index) {
+  changeItem = (newItem, index) => {
     const newItems = this.state.items;
     newItems[index] = newItem;
     this.setState({items: newItems});
@@ -154,6 +140,14 @@ class App extends Component {
       }
     }
     this.setState({items: items});
+  }
+
+  render() {
+    return (<div id="App">
+      <Filter state={this.state} handleChange={this.handleChange}/>
+      <Table state={this.state} removeItem={this.removeItem} onSort={this.onSort} changeItem={this.changeItem}/>
+      <Form state={this.state} mode="general" handleChange={this.handleChange} handleSubmit={this.handleSubmit}/>
+    </div>);
   }
 }
 
