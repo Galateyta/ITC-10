@@ -7,11 +7,18 @@
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
 	padding: 10px 15px;
   transition: 0.4s;
-  margin: 10px 30%;
+  margin: 10px 35%;
   border-radius: 10px;
 }
 
 .login:hover {
   box-shadow: 0 12px 24px 4px rgba(0,0,0,0.4);
   transition: 0.4s;
+}
+
+list: {
+  width: 250
+},
+fullList: {
+  width: 'auto'
 }
