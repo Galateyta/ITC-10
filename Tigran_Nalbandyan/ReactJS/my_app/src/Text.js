@@ -1,8 +1,7 @@
 import React from 'react';
 
 function Text(props) {
-  const text = props.text;
-  const color = props.color;
+  const {color, text} = props;
   return (
     <div >
       <span style={{"color": color}}>{text}</span>
