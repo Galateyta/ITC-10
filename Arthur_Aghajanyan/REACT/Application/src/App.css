@@ -1,0 +1,21 @@
+.login-page-style {
+  background-color: lemonchiffon;
+  border: 2px solid blue;
+}
+.registery-page-style {
+  background-color: lightcyan;
+  border: 2px solid blue;
+}
+.component-center {
+  text-align: center;
+}
+.form {
+    margin: 0 auto;
+    max-width: 420px;
+  }
+.comp-class {
+    margin-left: 1em;
+}
+.b {
+  background-color: yellow;
+}
