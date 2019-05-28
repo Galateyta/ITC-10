@@ -1,11 +1,11 @@
 import React from 'react';
-class Green extends React.Component {
+class Color extends React.Component {
     render(){
-        return(
-            <div className='green'>
+        return (
+            <div className='blue'>
                 Component, {this.props.name}
             </div>
         );
     }
 }
-export default Green;
+export default Color;
