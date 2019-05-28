@@ -1,0 +1,19 @@
+.login-page-style {
+  width: 35%;
+  border-radius: 5px;
+  background-color: #e9e5f5;
+  box-shadow: 5px 5px 10px grey;
+  padding: 4%;
+  margin-top: 3%;
+}
+.title-login-page {
+  margin: auto;
+  text-align: center;
+}
+.form-login-inpute {
+  margin: 0 auto;
+  max-width: 420px;
+  }
+.login-comp-class {
+  margin-left: 1em;
+}
