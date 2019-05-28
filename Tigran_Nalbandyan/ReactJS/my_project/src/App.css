@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .login {
 	background-color: white;
 	box-shadow: 0 8px 16px 0 rgba(0,0,0,0.4);
@@ -16,9 +12,6 @@
   transition: 0.4s;
 }
 
-list: {
-  width: 250
-},
-fullList: {
-  width: 'auto'
+.list {
+  width: 250px;
 }
