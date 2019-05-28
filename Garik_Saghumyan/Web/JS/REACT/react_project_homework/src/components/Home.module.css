@@ -1,0 +1,10 @@
+.NavItem {
+    height: 100px;
+    padding: 20px;
+    background-color: gray;
+}
+.NavLink {
+    color: white;
+    display: flex;
+    justify-content: center;
+}

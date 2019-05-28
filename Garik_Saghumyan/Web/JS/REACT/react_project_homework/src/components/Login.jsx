@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Form, FormGroup, Input, Button, Col, Label } from 'reactstrap';
 import { Redirect } from 'react-router-dom';
 import login from './Login.module.css';
+
 class Login extends Component {
 
     state = {
@@ -54,10 +55,10 @@ class Login extends Component {
                         {this.renderRedirect()}
                         <Button block onClick={this.handleSubmit} color="success" bsSize="large" type="submit">
                             Login
-                    </Button>
+                        </Button>
                         <Button block color="primary" bsSize="large" type="submit" >
                             Register
-                    </Button>
+                        </Button>
                     </FormGroup>
                 </Form>
             </div>
