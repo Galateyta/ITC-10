@@ -3,11 +3,15 @@
   padding: 0;
 }
 
+.date {
+  color: #4c4c55;
+}
+
 form {
   display: block;
   width: 400px;
   height: 600px;
-  background-color: grey;
+  background-color: gray;
   opacity: 0.5;
   color: white;
   margin: auto;
@@ -38,7 +42,7 @@ p {
 
 .button {
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-left: 15%;
   width: 70%;
   height: 28px;
@@ -46,12 +50,12 @@ p {
   border: 0.5px solid white;
   background-color: grey;
   color: white;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .button:hover  {
   margin: auto;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   margin-left: 15%;
   width: 70%;
   height: 28px;
@@ -59,10 +63,10 @@ p {
   border: 0.5px solid gray;
   background-color: white;
   color: gray;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
-.register {
+.cancel {
   border: None;
 }
 
