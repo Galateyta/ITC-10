@@ -14,4 +14,19 @@
 
 .list {
   width: 250px;
+  text-align: center;
 }
+
+.list-header {
+  padding: 10px 0;
+}
+
+.big-avatar {
+  margin: 10px;
+  border-radius: 50%;  
+}
+
+.login-text {
+  font-style: italic;
+}
+
