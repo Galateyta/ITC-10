@@ -1,47 +1,25 @@
-import React, { Component } from 'react';
-import {
-  Container, Col, Form,
-  FormGroup, FormText, Label, Input,
-  Button,
-} from 'reactstrap';
-import './App.css';
+import React from 'react';
+import Login from './Components/Login/Login';
+import Registry from './Components/Registry/Registry';
+import Slider from './Components/Profile/Slider/Slider';
+import Home from './Components/Profile/Home/Home';
+import { BrowserRouter, Route } from 'react-router-dom';
 
-class App extends Component {
+
+class App extends React.Component {
   render() {
     return (
-      <Container className="App">
-        
-        <Form className="form">
-        <h2>Sign In</h2>
-          <Col >
-            
-              <Input
-                type="email"
-                name="email"
-                id="exampleEmail"
-                placeholder="Email"
-                required 
-              />
+      <div>
 
-          </Col>
-          <Col>
-              <Input
-                type="password"
-                name="password"
-                id="examplePassword"
-                placeholder="Passord"
-                required
-              />
-          </Col>
-          <Col>
-            <Button  className = "signInButton">Sign in </Button>
-          </Col>
-          <Col>
-          <Button className = "signUpButton">Sign up</Button>
-          </Col>
-
-        </Form>
-      </Container>
+        <BrowserRouter>
+          <div>
+            <Route path='/' exact component={Login} />
+            <Route path='/registry' exact component={Registry} />
+            <Route path='/home' exact component={Home} />
+            <Route path='/slider' exact component={Slider} />
+          </div>
+        </BrowserRouter>
+      </div>
     );
   }
 }

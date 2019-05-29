@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Carousel } from 'react-responsive-carousel';
 
-class Slider extends Component {
+class DemoCarousel extends Component {
   render() {
     return (
       <Carousel >
@@ -25,4 +24,4 @@ class Slider extends Component {
 
   }
 }
-export default Slider;
+export default DemoCarousel

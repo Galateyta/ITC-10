@@ -4,9 +4,7 @@ import { Container, Col, Form, FormGroup, FormText, Label, Input, Button, } from
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      isLogin: true
-    };
+    this.state = {};
   }
 
 

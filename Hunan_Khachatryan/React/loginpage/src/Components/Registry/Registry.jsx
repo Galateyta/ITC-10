@@ -4,9 +4,9 @@ import {
   Input,
   Button,
 } from 'reactstrap';
-import './Login.css';
+import style from './Registry.module.css';
 
-class Register extends Component {
+class Registry extends Component {
 
   constructor(props) {
     super(props);
@@ -25,9 +25,9 @@ class Register extends Component {
 
   render() {
     return (
-      <div className="App" >
+      <div className={style.App} >
 
-        <Form className="form" onSubmit={this.handleSubmit}>
+        <Form className={style.form} onSubmit={this.handleSubmit}>
           <Container>
             <Row>
               <Col >
@@ -81,8 +81,12 @@ class Register extends Component {
               </Col>
 
               <Col >
-                <Button className="signUpButton">Sign up</Button>
+                <Button className={style.signUpButton}>Sign up</Button>
               </Col>
+              <label>
+                Upload file:
+            <input type="file" ref={this.fileInput} />
+              </label>
             </Row>
           </Container>
         </Form>
@@ -95,11 +99,12 @@ class Register extends Component {
   handleChange(e) {
     const elementId = e.target.id;
     switch (elementId) {
-      case 'name': this.setState({ name: e.target.value });
-      case 'surename': this.setState({ surename: e.target.value });
-      case 'email': this.setState({ email: e.target.value });
-      case 'username': this.setState({ username: e.target.value });
-      case 'password': this.setState({ password: e.target.value });
+      case 'name': this.setState({ name: e.target.value }); break;
+      case 'surename': this.setState({ surename: e.target.value }); break;
+      case 'email': this.setState({ email: e.target.value }); break;
+      case 'username': this.setState({ username: e.target.value }); break;
+      case 'password': this.setState({ password: e.target.value }); break;
+      default: break;
 
     }
   }
@@ -111,4 +116,4 @@ class Register extends Component {
 
 }
 
-export default Register;
+export default Registry;

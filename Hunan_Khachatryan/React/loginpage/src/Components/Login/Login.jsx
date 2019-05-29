@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Container, Col, Form, Row, Input, Button, } from 'reactstrap';
-import './Login.css';
+import style from './Login.module.css';
 import { Link, Redirect } from 'react-router-dom'
 
 class Login extends Component {
@@ -20,9 +20,9 @@ class Login extends Component {
 
   render() {
     return (
-      <div className="App" >
+      <div className={style.App} >
 
-        <Form className="form" onSubmit={this.handleSubmit}>
+        <Form className={style.form} onSubmit={this.handleSubmit}>
           <Container>
             <Row>
               <Col >
@@ -54,10 +54,10 @@ class Login extends Component {
 
             <Row>
               <Col  >
-                <Button className="signInButton" onSubmit={this.onSubmit}>Sign in </Button>
+                <Button className={style.signInButton} onSubmit={this.onSubmit}>Sign in </Button>
               </Col>
               <Col >
-                <Link to='/home' className='comp-class'><Button className="signUpButton">Sign up</Button></Link>
+                <Link to="/registry" className="comp-class"><Button className={style.signUpButton}>Sign up</Button></Link>
               </Col>
             </Row>
           </Container>
@@ -79,13 +79,13 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { username, password } = this.state;
-    this.setState({ error: true });
 
-    if (username !== 'username' && password !== 'password') {
+    if (username !== 'username@mail.ru' || password !== 'password') {
 
       alert(`Password or Username is false`);
-    } else {
-      <Redirect to="/home" />;
+    } else {    
+      this.setState({ isLogin: true });
+
     }
   }
 
