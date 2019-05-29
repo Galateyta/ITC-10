@@ -9,8 +9,11 @@ class  List extends Component {
         <ul> 
         	{this.props.works.map((item, index) => (
         		<li key={item.id}> 
-	        		{item.work} 
-	        		<button > Delete </button>
+            <input value={item.work}/>
+	        		  <input value={item.priority}/>
+                <input value={item.date}/>
+                <button > Change </button>
+	        		<button onClick={this.props.deleteWork(index)}> Delete </button>
         		 </li> 
         		))}
         </ul>
