@@ -1,4 +1,4 @@
-function searching (){
+function searching() {
 
   let input = document.getElementById('input').value;
   let div = document.getElementById("div");
@@ -8,7 +8,7 @@ function searching (){
   for (i = 0; i < p.length; i++) {
     txtValue = p[i].innerText;
     if (txtValue.indexOf(input) != 0) {
-        p[i].style.display = "none";
+      p[i].style.display = "none";
     }
   }
 
