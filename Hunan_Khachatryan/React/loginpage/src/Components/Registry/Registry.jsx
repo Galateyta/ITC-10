@@ -4,6 +4,7 @@ import {
   Input,
   Button,
 } from 'reactstrap';
+import InputFiles from 'react-input-files';
 import style from './Registry.module.css';
 
 class Registry extends Component {
@@ -79,14 +80,16 @@ class Registry extends Component {
                   required
                 />
               </Col>
+              <label> Choose File</label>
+              <InputFiles onChange={files => console.log(files)}>
+                <button>Upload</button>
+              </InputFiles>
 
               <Col >
                 <Button className={style.signUpButton}>Sign up</Button>
               </Col>
-              <label>
-                Upload file:
-            <input type="file" ref={this.fileInput} />
-              </label>
+
+
             </Row>
           </Container>
         </Form>

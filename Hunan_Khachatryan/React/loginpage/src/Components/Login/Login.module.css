@@ -2,12 +2,13 @@
     text-align: center;
     background-image: url("../images/1.jpg");
     padding: 10em;
+    
   }
   
   .form {
+    
     margin: 5em;
     color: white;
-    background-attachment: fixed;
   }
   input  {
     border-radius: 7px;

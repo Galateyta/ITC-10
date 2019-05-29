@@ -21,9 +21,9 @@ class Login extends Component {
   render() {
     return (
       <div className={style.App} >
+        <Container>
+          <Form className={style.form} onSubmit={this.handleSubmit}>
 
-        <Form className={style.form} onSubmit={this.handleSubmit}>
-          <Container>
             <Row>
               <Col >
                 <h2>Sign In</h2>
@@ -60,9 +60,9 @@ class Login extends Component {
                 <Link to="/registry" className="comp-class"><Button className={style.signUpButton}>Sign up</Button></Link>
               </Col>
             </Row>
-          </Container>
-        </Form>
 
+          </Form>
+        </Container>
       </div>
 
     );
@@ -83,7 +83,7 @@ class Login extends Component {
     if (username !== 'username@mail.ru' || password !== 'password') {
 
       alert(`Password or Username is false`);
-    } else {    
+    } else {
       this.setState({ isLogin: true });
 
     }
