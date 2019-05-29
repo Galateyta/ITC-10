@@ -46,6 +46,19 @@ class Home extends Component {
     );
   }
 
+  componentWillMount() {
+    if (!this.props.isAuthed) {
+      this.props.history.push('/login')
+    }
+  }
+
+  handleListItemClick = (name) => new Promise(resolve => {
+    setTimeout(() => {
+      resolve();
+      this.props.history.push(name);
+    }, 200)
+  });
+
   sideList = () => (
     <div
       className="list"
@@ -59,14 +72,24 @@ class Home extends Component {
       </div>
       <Divider/>
       <List>
-        {['Slider', 'About', 'Table'].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemIcon>{index % 2 === 0
-                ? <InboxIcon/>
-                : <MailIcon/>}</ListItemIcon>
-            <ListItemText primary={text}/>
-          </ListItem>
-        ))}
+        <ListItem button key="Slider" onClick={() => this.handleListItemClick('/slider')}>
+          <ListItemIcon>
+            <InboxIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Slider"/>
+        </ListItem>
+        <ListItem button key="About" onClick={() => this.handleListItemClick('/about')}>
+          <ListItemIcon>
+            <MailIcon/>
+          </ListItemIcon>
+          <ListItemText primary="About"/>
+        </ListItem>
+        <ListItem button key="Table" onClick={() => this.handleListItemClick('/table')}>
+          <ListItemIcon>
+            <InboxIcon/>
+          </ListItemIcon>
+          <ListItemText primary="Table"/>
+        </ListItem>
       </List>
       <Divider/>
       <List>
@@ -94,7 +117,9 @@ class Home extends Component {
               <MenuIcon/>
             </IconButton>
           </Box>
-          {this.component ? this.component : null}
+          {this.component
+            ? this.component
+            : null}
         </Grid>
 
         <SwipeableDrawer

@@ -1,14 +1,16 @@
 import React, {Component} from 'react';
 import {Route, BrowserRouter} from 'react-router-dom';
+import {connect} from "react-redux";
+import {updateAction} from "./actions/updateAction"
 import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
 import Home from './components/Home';
-import Table from './components/table/MyTable.jsx';
+import Table from './components/table/Table';
 
 class App extends Component {
   state = {
-    isAuthed: true, //false
+    isAuthed: false, //false
     users: [
       {
         login: 'admin',
@@ -67,13 +69,46 @@ class App extends Component {
           <Route
             path='/'
             exact
-            render={(props) => this.state.isAuthed
-            ? <Home {...props} currentUser={this.state.currentUser} logOut={this.logOut} component={<Table addUser={this.addUser}/>} />
-            : <Login {...props} checkUser={this.checkUser} />}/>
+            render={(props) => <Home
+            {...props}
+            isAuthed={this.state.isAuthed}
+            currentUser={this.state.currentUser}
+            logOut={this.logOut}/>}/>
+          <Route
+            path='/slider'
+            render={(props) => <Home
+            {...props}
+            isAuthed={this.state.isAuthed}
+            currentUser={this.state.currentUser}
+            logOut={this.logOut}/>}/>
+          <Route
+            path='/about'
+            render={(props) => <Home
+            {...props}
+            isAuthed={this.state.isAuthed}
+            currentUser={this.state.currentUser}
+            logOut={this.logOut}/>}/>
+          <Route
+            path='/table'
+            render={(props) => <Home
+            {...props}
+            isAuthed={this.state.isAuthed}
+            currentUser={this.state.currentUser}
+            logOut={this.logOut}
+            component={< Table addUser = {
+            this.addUser
+          } />}/>}/>
         </div>
       </BrowserRouter>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  ...state
+});
+const mapDispatchToProps = dispatch => ({
+  updateAction: () => dispatch(updateAction),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
