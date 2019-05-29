@@ -1,8 +1,7 @@
 iimport React from 'react';
  
 function CreateElement (props) {
-  const text = props.text;
-  const color = props.color;  
+  const {text, color} = this.props;
   return (
     <div>
       <h1 style={{"color": color}} > {text} {color} </h1> 
