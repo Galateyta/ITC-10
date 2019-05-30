@@ -1,4 +1,4 @@
-iimport React from 'react';
+import React from 'react';
  
 function CreateElement (props) {
   const text = props.text;
