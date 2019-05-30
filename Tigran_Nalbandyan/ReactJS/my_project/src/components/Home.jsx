@@ -14,7 +14,9 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitIcon from '@material-ui/icons/ExitToApp';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
+import {updateAction} from './../actions/updateAction';
 
 class Home extends Component {
   constructor(props) {
@@ -50,9 +52,19 @@ class Home extends Component {
   handleListItemClick = (name) => new Promise(resolve => {
     setTimeout(() => {
       resolve();
-      this.props.history.push(name);
+      this
+        .props
+        .history
+        .push(name);
     }, 200)
   });
+
+  logOut = () => {
+    this
+      .props
+      .updateAction({});
+    localStorage.setItem('isAuthed', false);
+  }
 
   sideList = () => (
     <div
@@ -67,7 +79,10 @@ class Home extends Component {
       </div>
       <Divider/>
       <List>
-        <ListItem button key="Slider" onClick={() => this.handleListItemClick('/slider')}>
+        <ListItem
+          button
+          key="Slider"
+          onClick={() => this.handleListItemClick('/slider')}>
           <ListItemIcon>
             <InboxIcon/>
           </ListItemIcon>
@@ -88,7 +103,7 @@ class Home extends Component {
       </List>
       <Divider/>
       <List>
-        <ListItem button key="Log Out" onClick={() => {this.props.logOut()}}>
+        <ListItem button key="Log Out" onClick={this.logOut}>
           <ListItemIcon>
             <ExitIcon/>
           </ListItemIcon>
@@ -100,10 +115,13 @@ class Home extends Component {
   );
 
   render() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/login')
+    const isAuthed = localStorage.getItem('isAuthed');
+    if (!isAuthed || isAuthed === 'false') {
+      this
+        .props
+        .history
+        .push('/login')
     }
-    console.log(this.props.isAuthed)
     return (
       <div>
         <Grid container direction="row">
@@ -133,8 +151,11 @@ class Home extends Component {
 }
 
 const mapStateToProps = state => {
-  return {currentUser: state.currentUser, isAuthed: state.isAuthed}
+  return {currentUser: state.currentUser}
 };
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  updateAction
+}, dispatch);
 
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

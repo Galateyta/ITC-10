@@ -11,6 +11,7 @@ import {
 } from '@material-ui/core';
 import {MuiPickersUtilsProvider, KeyboardDatePicker} from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
+import users from '../data/users';
 
 class Register extends Component {
   state = {
@@ -20,6 +21,10 @@ class Register extends Component {
     dateOfBirthday: Date.now(),
     gender: 'male',
     image: ''
+  }
+
+  addUser = (newUser) => {
+    users.push(newUser);
   }
 
   handleDateChange = (date) => {
@@ -48,10 +53,11 @@ class Register extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
     const newUser = Object.assign(this.state);
+    this.addUser(newUser);
     this
       .props
-      .addUser(newUser);
-    this.props.history.push('/');
+      .history
+      .push('/');
   }
 
   render() {
@@ -115,13 +121,19 @@ class Register extends Component {
                 </RadioGroup>
               </FormControl>
               <Grid container direction="column" alignItems="center" xs={6}>
-                <input id="image" value={this.state.image} onChange={this.handleChange} accept="image/*" type="file" hidden/>
+                <input
+                  id="image"
+                  value={this.state.image}
+                  onChange={this.handleChange}
+                  accept="image/*"
+                  type="file"
+                  hidden/>
                 <label htmlFor="image">
                   <Button variant="contained" component="span">
                     Upload Image
                   </Button>
                 </label>
-                <img src={this.state.image} alt="avatar" />
+                <img src={this.state.image} alt="avatar"/>
               </Grid>
             </Grid>
             <Grid container direction="row" justify="space-evenly" alignItems="center">

@@ -1,18 +1,15 @@
 import React, {Component} from 'react';
 import {Button, Grid, Checkbox, FormControlLabel, TextField} from '@material-ui/core';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
+import {updateAction} from "../actions/updateAction"
+import {bindActionCreators} from 'redux';
+import users from '../data/users';
 
 class Login extends Component {
   state = {
     login: '',
     password: ''
   }
-// TODO
-  // componentWillMount() {
-  //   if (!this.props.isAuthed) {
-  //     this.props.history.push('/login')
-  //   }
-  // }
 
   handleChange = (e) => {
     const name = e.target.id;
@@ -30,7 +27,7 @@ class Login extends Component {
       login: this.state.login,
       password: this.state.password
     };
-    if (this.props.checkUser(currentUser)) {
+    if (this.checkUser(currentUser)) {
       this
         .props
         .history
@@ -38,9 +35,30 @@ class Login extends Component {
     }
   }
 
+  checkUser = (currentUser) => {
+    for (const user of users) {
+      if (user.login === currentUser.login && user.password === currentUser.password) {
+        this
+          .props
+          .updateAction(user);
+        localStorage.setItem('isAuthed', true);
+        return true;
+      }
+    }
+    this
+      .props
+      .updateAction({});
+    localStorage.setItem('isAuthed', false);
+    return false;
+  }
+
   render() {
-    if (this.props.isAuthed) {
-      this.props.history.push('/')
+    const isAuthed = localStorage.getItem('isAuthed');
+    if (isAuthed && isAuthed === 'true') {
+      this
+        .props
+        .history
+        .push('/')
     }
     return (
       <div className="login">
@@ -69,10 +87,7 @@ class Login extends Component {
               justify="space-evenly"
               alignItems="center"
               spacing={1}>
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit">
+              <Button variant="contained" color="primary" type="submit">
                 Sign in
               </Button>
               <Button
@@ -94,8 +109,11 @@ class Login extends Component {
 }
 
 const mapStateToProps = state => {
-  return {currentUser: state.currentUser, isAuthed: state.isAuthed}
+  return {currentUser: state.currentUser}
 };
 
+const mapDispatchToProps = dispatch => bindActionCreators({
+  updateAction
+}, dispatch);
 
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

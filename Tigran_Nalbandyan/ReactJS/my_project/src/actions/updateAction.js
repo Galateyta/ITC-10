@@ -1,7 +1,6 @@
-export function updateAction(currentUser, isAuthed) {
+export function updateAction(currentUser) {
   currentUser = currentUser || {};
-  isAuthed = isAuthed || false;
   return {type: 'currentUserUpdate', 
-          payload: {currentUser, isAuthed}, 
+          payload: {currentUser}, 
         };
 }
