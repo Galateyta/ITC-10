@@ -4,8 +4,9 @@ import Login from './Login';
 import Slider from './Slider';
 import About from './About';
 import Table from './Table';
-import { Nav, NavItem, Container } from 'reactstrap';
+import { Nav, NavItem, Container, Jumbotron } from 'reactstrap';
 import home from './Home.module.css'
+import data from '../data'
 class Home extends Component {
   state = {
     name: '',
@@ -19,8 +20,13 @@ class Home extends Component {
   render() {
     return (
       <BrowserRouter>
-        <div className="d-flex">
+        <Jumbotron className="d-flex justify-content-center">
           <Nav className={home.Nav} vertical >
+          <NavItem className={home.NavItem}>
+              <img src={data.map((user) => user.imagePath)}></img>            
+              <p>{data.map((user) => user.name)}</p>
+              <p>{data.map((user) => user.surname)}</p>
+            </NavItem>
             <NavItem className={home.NavItem}>
               <NavLink className={home.NavLink} to="/slider">Slider</NavLink>
             </NavItem>
@@ -40,7 +46,7 @@ class Home extends Component {
             <Route path='/table' component={Table} />
             <Route path="/login" component={Login}/>
           </Container>
-        </div>
+        </Jumbotron>
 
       </BrowserRouter>
     );
