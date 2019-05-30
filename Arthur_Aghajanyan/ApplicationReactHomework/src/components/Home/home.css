@@ -1,0 +1,36 @@
+.home-style {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 2%;
+  padding: 1%;
+}
+.left-container {
+  margin: 1%;
+  width: 25%;
+}
+.right-container {
+  text-align: center;
+  margin: 1%;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px grey;
+  background-color:#d1c1d5;
+  width: 75%;
+}
+.nav-style {
+  border-radius: 10px;
+  box-shadow: 5px 5px 10px #d1c1f5;
+  background-color: #d1c1d5;
+  margin-right: auto;
+}
+.user-style {
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px #d1c1f5;
+  background-color: #d1c1d5;
+  margin-right: auto;
+}
+.user-style > img {
+  padding-top: 2%;
+  width: 50%;
+  height: 50%;
+}
