@@ -1,10 +1,19 @@
 ﻿import {createStore} from "redux";
-import listReducer from "./reducers/listReducer";
+import userReducer from "./reducers/userReducer";
 
 function configureStore(state = {
-  isAuthed: false
+  isAuthed: false,
+  currentUser: {
+    login: 'admin',
+    password: 'admin123',
+    name: 'Admin',
+    surname: 'Adminich',
+    dateOfBirthday: Date('19/03/1999'),
+    gender: 'male',
+    image: ''
+  }
 }) {
-  return createStore(listReducer, state);
+  return createStore(userReducer, state);
 }
 
 export default configureStore;

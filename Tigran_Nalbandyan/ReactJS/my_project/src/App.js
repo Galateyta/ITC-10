@@ -2,6 +2,9 @@ import React, {Component} from 'react';
 import {Route, BrowserRouter} from 'react-router-dom';
 import {connect} from "react-redux";
 import {updateAction} from "./actions/updateAction"
+import {bindActionCreators} from 'redux';
+import users from './data/users';
+
 import './App.css';
 import Login from './components/Login';
 import Register from './components/Register';
@@ -10,38 +13,22 @@ import Table from './components/table/Table';
 
 class App extends Component {
   state = {
-    isAuthed: false, //false
-    users: [
-      {
-        login: 'admin',
-        password: 'admin123',
-        name: 'Admin',
-        surname: 'Adminich',
-        dateOfBirthday: Date('19/03/1999'),
-        gender: 'male',
-        image: ''
-      }
-    ],
-    currentUser: {
-      login: 'admin',
-      password: 'admin123',
-      name: 'Admin',
-      surname: 'Adminich',
-      dateOfBirthday: Date('19/03/1999'),
-      gender: 'male',
-      image: ''
-    }
+    users: users
   }
 
   checkUser = (currentUser) => {
     const users = this.state.users;
     for (const user of users) {
       if (user.login === currentUser.login && user.password === currentUser.password) {
-        this.setState({isAuthed: true, currentUser: user});
+        this
+          .props
+          .updateAction(user, true);
         return true;
       }
     }
-    this.setState({isAuthed: false, currentUser: {}});
+    this
+      .props
+      .updateAction({}, false);
     return false;
   }
 
@@ -52,11 +39,14 @@ class App extends Component {
   }
 
   logOut = () => {
-    console.log('log out')
-    this.setState({isAuthed: false, currentUser: {}});
+    this
+      .props
+      .updateAction({}, false);
   }
 
   render() {
+    console.log('auth', this.props.isAuthed);
+
     return (
       <BrowserRouter>
         <div className="App">
@@ -69,31 +59,17 @@ class App extends Component {
           <Route
             path='/'
             exact
-            render={(props) => <Home
-            {...props}
-            isAuthed={this.state.isAuthed}
-            currentUser={this.state.currentUser}
-            logOut={this.logOut}/>}/>
+            render={(props) => <Home {...props} logOut={this.logOut}/>}/>
           <Route
             path='/slider'
-            render={(props) => <Home
-            {...props}
-            isAuthed={this.state.isAuthed}
-            currentUser={this.state.currentUser}
-            logOut={this.logOut}/>}/>
+            render={(props) => <Home {...props} logOut={this.logOut}/>}/>
           <Route
             path='/about'
-            render={(props) => <Home
-            {...props}
-            isAuthed={this.state.isAuthed}
-            currentUser={this.state.currentUser}
-            logOut={this.logOut}/>}/>
+            render={(props) => <Home {...props} logOut={this.logOut}/>}/>
           <Route
             path='/table'
             render={(props) => <Home
             {...props}
-            isAuthed={this.state.isAuthed}
-            currentUser={this.state.currentUser}
             logOut={this.logOut}
             component={< Table addUser = {
             this.addUser
@@ -104,11 +80,12 @@ class App extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  ...state
-});
-const mapDispatchToProps = dispatch => ({
-  updateAction: () => dispatch(updateAction),
-});
+const mapStateToProps = state => {
+  return {currentUser: state.currentUser, isAuthed: state.isAuthed}
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+  updateAction
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

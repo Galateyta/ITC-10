@@ -1,11 +1,18 @@
 import React, {Component} from 'react';
 import {Button, Grid, Checkbox, FormControlLabel, TextField} from '@material-ui/core';
+import { connect } from 'react-redux';
 
 class Login extends Component {
   state = {
     login: '',
     password: ''
   }
+// TODO
+  // componentWillMount() {
+  //   if (!this.props.isAuthed) {
+  //     this.props.history.push('/login')
+  //   }
+  // }
 
   handleChange = (e) => {
     const name = e.target.id;
@@ -32,6 +39,9 @@ class Login extends Component {
   }
 
   render() {
+    if (this.props.isAuthed) {
+      this.props.history.push('/')
+    }
     return (
       <div className="login">
         <form onSubmit={this.checkSignIn}>
@@ -83,4 +93,9 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {currentUser: state.currentUser, isAuthed: state.isAuthed}
+};
+
+
+export default connect(mapStateToProps)(Login);

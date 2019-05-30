@@ -14,6 +14,7 @@ import InboxIcon from '@material-ui/icons/MoveToInbox';
 import MailIcon from '@material-ui/icons/Mail';
 import MenuIcon from '@material-ui/icons/Menu';
 import ExitIcon from '@material-ui/icons/ExitToApp';
+import { connect } from 'react-redux';
 
 class Home extends Component {
   constructor(props) {
@@ -44,12 +45,6 @@ class Home extends Component {
           className="big-avatar"/>
       </Grid>
     );
-  }
-
-  componentWillMount() {
-    if (!this.props.isAuthed) {
-      this.props.history.push('/login')
-    }
   }
 
   handleListItemClick = (name) => new Promise(resolve => {
@@ -93,7 +88,7 @@ class Home extends Component {
       </List>
       <Divider/>
       <List>
-        <ListItem button key="Log Out" onClick={this.props.logOut}>
+        <ListItem button key="Log Out" onClick={() => {this.props.logOut()}}>
           <ListItemIcon>
             <ExitIcon/>
           </ListItemIcon>
@@ -105,6 +100,10 @@ class Home extends Component {
   );
 
   render() {
+    if (!this.props.isAuthed) {
+      this.props.history.push('/login')
+    }
+    console.log(this.props.isAuthed)
     return (
       <div>
         <Grid container direction="row">
@@ -133,4 +132,9 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {currentUser: state.currentUser, isAuthed: state.isAuthed}
+};
+
+
+export default connect(mapStateToProps)(Home);

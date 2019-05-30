@@ -29,6 +29,7 @@ class Register extends Component {
   handleChange = (e) => {
     const name = e.target.id;
     const value = e.target.value;
+    // console.log(name, e.target.files[0].name )
     if (name === 'login') {
       this.setState({login: value});
     } else if (name === 'password') {
@@ -39,16 +40,22 @@ class Register extends Component {
       this.setState({surname: value});
     } else if (e.target.type === 'radio') {
       this.setState({gender: value});
+    } else if (name === 'image') {
+      this.setState({image: value});
     }
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     const newUser = Object.assign(this.state);
-    this.props.addUser(newUser);
+    this
+      .props
+      .addUser(newUser);
+    this.props.history.push('/');
   }
 
   render() {
+    console.log(this.props.isAuthed);
     return (
       <div className="login">
         <form onSubmit={this.handleSubmit}>
@@ -89,23 +96,34 @@ class Register extends Component {
                 value={this.state.dateOfBirthday}
                 onChange={this.handleDateChange}/>
             </MuiPickersUtilsProvider>
-            <FormControl component="fieldset" margin="normal">
-              <FormLabel component="legend">Gender</FormLabel>
-              <RadioGroup
-                aria-label="Gender"
-                id="gender"
-                value={this.state.gender}
-                onChange={this.handleChange}>
-                <FormControlLabel
-                  value="male"
-                  control={< Radio color = "primary" />}
-                  label="Male"/>
-                <FormControlLabel
-                  value="female"
-                  control={< Radio color = "primary" />}
-                  label="Female"/>
-              </RadioGroup>
-            </FormControl>
+            <Grid container direction="row">
+              <FormControl component="fieldset" margin="normal">
+                <FormLabel component="legend">Gender</FormLabel>
+                <RadioGroup
+                  aria-label="Gender"
+                  id="gender"
+                  value={this.state.gender}
+                  onChange={this.handleChange}>
+                  <FormControlLabel
+                    value="male"
+                    control={< Radio color = "primary" />}
+                    label="Male"/>
+                  <FormControlLabel
+                    value="female"
+                    control={< Radio color = "primary" />}
+                    label="Female"/>
+                </RadioGroup>
+              </FormControl>
+              <Grid container direction="column" alignItems="center" xs={6}>
+                <input id="image" value={this.state.image} onChange={this.handleChange} accept="image/*" type="file" hidden/>
+                <label htmlFor="image">
+                  <Button variant="contained" component="span">
+                    Upload Image
+                  </Button>
+                </label>
+                <img src={this.state.image} alt="avatar" />
+              </Grid>
+            </Grid>
             <Grid container direction="row" justify="space-evenly" alignItems="center">
               <Button variant="contained" color="primary" type="submit">
                 Sign Up
