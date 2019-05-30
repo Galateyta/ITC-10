@@ -1,0 +1,42 @@
+.home {
+    display: inline-flex;
+    width:100%;
+    margin-top: 1em;
+    
+  }
+  .leftContainer {
+     background-color:tan;
+     width: 25%;
+     margin:1em;
+     padding:1em;
+     text-align: center;
+   
+  }
+ 
+  .rightContainer {
+    width: 75%;
+    margin:1em;
+    padding:1em;
+    background-color: #b1d3f3;
+    
+  }
+  .navStyle {text-align: left;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px #d1c1f5;
+    background-color: #d1c1d5;
+    margin-right: auto;
+    padding:auto;
+  }
+  .userStyle {
+    border-radius: 0.5em;
+    text-align: center;
+    background-color: #c9f5f3;
+    margin-right: auto;
+  }
+  .userStyle > img {
+    width: 90%;
+    border-radius: 50%;
+    padding-top: 0.5em;
+
+  }
+  

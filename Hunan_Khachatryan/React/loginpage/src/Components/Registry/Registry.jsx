@@ -4,8 +4,8 @@ import {
   Input,
   Button,
 } from 'reactstrap';
-import InputFiles from 'react-input-files';
 import style from './Registry.module.css';
+import {user} from '../data/data'
 
 class Registry extends Component {
 
@@ -22,7 +22,26 @@ class Registry extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
 
   }
+  handleChange(e) {
+    const elementId = e.target.id;
+    switch (elementId) {
+      case 'name': this.setState({ name: e.target.value }); break;
+      case 'surename': this.setState({ surename: e.target.value }); break;
+      case 'email': this.setState({ email: e.target.value }); break;
+      case 'username': this.setState({ username: e.target.value }); break;
+      case 'password': this.setState({ password: e.target.value }); break;
+      default: break;
 
+    }
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    console.log(this.state);
+    user.push(this.state);
+    this.props.history.push('/');
+
+  }
 
   render() {
     return (
@@ -63,7 +82,7 @@ class Registry extends Component {
                 <Input
                   type="email"
                   name="email"
-                  id="username"
+                  id="email"
                   placeholder="Email"
                   onChange={this.handleChange}
                   required
@@ -80,16 +99,10 @@ class Registry extends Component {
                   required
                 />
               </Col>
-              <label> Choose File</label>
-              <InputFiles onChange={files => console.log(files)}>
-                <button>Upload</button>
-              </InputFiles>
 
               <Col >
-                <Button className={style.signUpButton}>Sign up</Button>
+                <Button className={style.signUpButton} onSubmit={this.handleSubmit}>Sign up</Button>
               </Col>
-
-
             </Row>
           </Container>
         </Form>
@@ -99,23 +112,7 @@ class Registry extends Component {
     );
   }
 
-  handleChange(e) {
-    const elementId = e.target.id;
-    switch (elementId) {
-      case 'name': this.setState({ name: e.target.value }); break;
-      case 'surename': this.setState({ surename: e.target.value }); break;
-      case 'email': this.setState({ email: e.target.value }); break;
-      case 'username': this.setState({ username: e.target.value }); break;
-      case 'password': this.setState({ password: e.target.value }); break;
-      default: break;
-
-    }
-  }
-
-  handleSubmit(e) {
-    e.preventDefault();
-
-  }
+  
 
 }
 

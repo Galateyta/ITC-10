@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Container, Col, Form, Row, Input, Button, } from 'reactstrap';
 import style from './Login.module.css';
-import { Link, Redirect } from 'react-router-dom'
-
+import { Link, Redirect } from 'react-router-dom';
+import { user } from '../data/data'
+import { breakStatement } from '@babel/types';
 class Login extends Component {
 
   constructor(props) {
@@ -21,9 +22,9 @@ class Login extends Component {
   render() {
     return (
       <div className={style.App} >
-        <Container>
-          <Form className={style.form} onSubmit={this.handleSubmit}>
 
+        <Form className={style.form} onSubmit={this.handleSubmit}>
+          <Container>
             <Row>
               <Col >
                 <h2>Sign In</h2>
@@ -55,14 +56,13 @@ class Login extends Component {
             <Row>
               <Col  >
                 <Button className={style.signInButton} onSubmit={this.onSubmit}>Sign in </Button>
-              </Col>
-              <Col >
+
                 <Link to="/registry" className="comp-class"><Button className={style.signUpButton}>Sign up</Button></Link>
               </Col>
             </Row>
+          </Container>
+        </Form>
 
-          </Form>
-        </Container>
       </div>
 
     );
@@ -79,14 +79,19 @@ class Login extends Component {
   handleSubmit(e) {
     e.preventDefault();
     const { username, password } = this.state;
+    for (let i = 0; i < user.length; i++) {
+      if (username === user[i].email && password === user[i].password) {
+        this.setState({ isLogin: true });
+        this.props.history.push('/home');
+        break;
+      } else {
+        alert(`Password or Username is false`);
+        break;
 
-    if (username !== 'username@mail.ru' || password !== 'password') {
-
-      alert(`Password or Username is false`);
-    } else {
-      this.setState({ isLogin: true });
-
+      }
     }
+
+
   }
 
 }
