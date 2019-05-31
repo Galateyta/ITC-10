@@ -1,0 +1,38 @@
+#side-nave-id {
+  background-color: grey;
+}
+.home-style {
+  display: inline-flex;
+  width: 100%;
+  margin-top: 2%;
+  padding: 1%;
+}
+.left-container {
+  margin: 1%;
+  width: 5%;
+}
+.right-container {
+  text-align: center;
+  border-radius: 15px;
+  box-shadow: 5px 5px 10px grey;
+  background-color:#d1c1d5;
+  width: 95%;
+}
+.user-style {
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: 5px 5px 10px #d1c1f5;
+  background-color: #d1c1d5;
+  margin-right: auto;
+}
+.user-img-style {
+  text-align: center;
+
+}
+.user-img-style > img {
+  margin: auto;
+  width: 3em;
+}
+h5, h6 {
+  text-align: center;
+}

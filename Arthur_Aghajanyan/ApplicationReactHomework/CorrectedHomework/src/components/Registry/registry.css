@@ -1,0 +1,35 @@
+
+.registery-page-style {
+  width: 35%;
+  border-radius: 5px;
+  background-color: #e9e5f5;
+  box-shadow: 5px 5px 10px grey;
+  padding: 2%;
+  margin-top: 1%;
+}
+label {
+  margin-bottom: 0;
+}
+.title-registr-page {
+  margin: auto;
+  margin-bottom: 1%;
+  text-align: center;
+}
+.exampleFile {
+  border-color: grey;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px grey;
+}
+.form-group {
+  margin-bottom: 0.5rem;
+}
+.form-registry-inpute {
+  margin: 0 auto;
+  max-width: 420px;
+  }
+.registry-comp-class {
+  margin-left: 1em;
+}
+.gender-style {
+  margin-left: 7%;
+}

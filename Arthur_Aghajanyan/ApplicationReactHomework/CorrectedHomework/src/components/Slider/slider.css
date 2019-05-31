@@ -1,0 +1,10 @@
+.carusel-style {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 70%;
+}
+.control-style {
+  border-radius: 10px;
+  background-color: #5F9EA0;
+}
