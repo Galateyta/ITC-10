@@ -7,21 +7,23 @@ import {
 
 
 class Login extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loggingIn: false
-    };
-  }
-  componentWillMount() {
-  }
-  submit(event) {
-    event.preventDefault();
+  state = {
+  login: '',
+  password: ''
+}
+inputsChange = (e) => {
+  const name = e.target.name;
+  const value = e.target.value;
+  name === 'login' ? this.setState({login: value}) : this.setState({password: value});
+}
+
+login = (e) => {
+    e.preventDefault();
 
     const username = this.refs.username.value;
     const password = this.refs.password.value;
 
-    if (username.length === 0 || password.length === 0) {
+    {/*if (username.length === 0 || password.length === 0) {
       return this.setState({
         errorCode: 'missingUsernameOrPassword'
       });
@@ -46,7 +48,7 @@ class Login extends Component {
         window.location.href = '/';
       }
 
-    });
+    });*/}
 }
 
   render() {
@@ -58,13 +60,9 @@ class Login extends Component {
             <FormGroup>
               <Label>Username</Label>
               <Input
-                type="text"
-                id="exampleName"
                 placeholder="Enter your username"
-                autoCapitalize={false}
-                ref="username"
-                autoFocus
-                disabled={this.loggingIn}
+                name="username"
+                onChange={this.inputsChange}
               />
             </FormGroup>
           </Col>
@@ -74,10 +72,8 @@ class Login extends Component {
               <Input
                 type="password"
                 name="password"
-                id="examplePassword"
                 placeholder="Enter your password"
-                ref="password"
-                disabled={this.loggingIn}
+                onChange={this.inputsChange}
               />
             </FormGroup>
               <Label check>
@@ -88,9 +84,9 @@ class Login extends Component {
           <Button
             type="submit"
             disabled={this.state.loggingIn}
-            onClick={this.submit.bind(this)}
+            onClick={this.login}
           >Login</Button>
-          <Button onClick={this.props.registerInLogin}>Register</Button>
+          <Button >Register</Button>
         </Form>
       </Container>
     );

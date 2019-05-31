@@ -4,89 +4,89 @@ import {
   FormGroup, Label, Input,
   Button,
 } from 'reactstrap';
-
+import users from '../data/users';
 
 class Register extends Component {
-  constructor() {
-    super();
-    this.state = {
-      loggingIn: false
-    };
-  }
-  componentWillMount() {
-  }
-  login(event) {
-    event.preventDefault();
+  state = {
+    img: '',
+    username: '',
+    password: '',
+    name: '',
+    surname: '',
+    date: '',
+    gemus: ''
 
-    const username = this.refs.username.value;
-    const password = this.refs.password.value;
-
-    if (username.length === 0 || password.length === 0) {
-      return this.setState({
-        errorCode: 'missingUsernameOrPassword'
-      });
+  }
+  inputsChange = (e) => {
+    const name = e.target.name;
+    const value = e.target.value;
+    console.log('kanchvel e inoputChange' + name + value)
+    switch(name) {
+      case 'image':
+        this.setState({image: value});
+        break;
+      case 'username':
+        this.setState({username: value});
+        break;
+      case 'password':
+        this.setState({password: value});
+        break;
+      case 'name':
+        this.setState({name: value});
+        break;
+      case 'surname':
+        this.setState({surname: value});
+        break;
+      case 'date':
+        this.setState({date: value});
+        break;
+      default:
+        break;
     }
-
-    this.setState({
-      loggingIn: true,
-      errorCode: null
-    });
-
-    this.props.onLogin(username, password, (err) => {
-      if (err) {
-        return this.setState({
-          error: err,
-          loggingIn: false
-        });
-      }
-
-      if (this.props.location.state && this.props.location.state.nextPathname) {
-        window.location.href = this.props.location.state.nextPathname;
-      } else {
-        window.location.href = '/';
-      }
-
-    });
-}
-
+  }
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const newUser = Object.assign(this.state);
+    users.push(newUser);
+    console.log(users)
+  }
   render() {
     return (
       <Container className="App">
         <h2>Register</h2>
         <Form className="form" noValidate>
             <FormGroup>
-               <Label for="exampleFile">File</Label>
-               <Input type="file" name="file" id="exampleFile" />
+               <Label for="exampleFile">Enter image URL</Label>
+               <Input name="image" onChange={this.inputsChange}/>
             </FormGroup>
             <FormGroup>
               <Label>Username</Label>
               <Input
-                type="text"
                 placeholder="Enter username"
                 autoCapitalize={false}
-                ref="username"
-                autoFocus
-                disabled={this.loggingIn}
+                name="username"
+                onChange={this.inputsChange}
+                required
               />
             </FormGroup>
             <FormGroup>
               <Label for="examplePassword">Password</Label>
               <Input
                 type="password"
-                name="password"
                 placeholder="Enter password"
-                ref="password"
-                disabled={this.loggingIn}
+                name="password"
+                onChange={this.inputsChange}
+                required
               />
             </FormGroup>
             <FormGroup>
               <Label>Name</Label>
               <Input
-                type="text"
                 placeholder="Enter name"
                 autoCapitalize={false}
-                ref="name"
-                autoFocus
+                name="name"
+                onChange={this.inputsChange}
+                required
               />
             </FormGroup>
             <FormGroup>
@@ -95,40 +95,42 @@ class Register extends Component {
                 type="text"
                 placeholder="Enter surname"
                 autoCapitalize={false}
-                ref="syrname"
-                autoFocus
+                name="surname"
+                onChange={this.inputsChange}
+                required
               />
             </FormGroup>
             <Row form>
               <legend>Birthday</legend>
-              <Col md={3}>
-                <FormGroup>
-                   <Input
-                     placeholder="Day"
-                   />
-                </FormGroup>
-              </Col>
-              <Col md={3}>
-                <FormGroup>
-                  <Input
-                     placeholder="Month"
-                   />
-                </FormGroup>
-              </Col>
+              {/*// <Col md={3}>
+              //   <FormGroup>
+              //      <Input
+              //        placeholder="Day"
+              //      />
+              //   </FormGroup>
+              // </Col>
+              // <Col md={3}>
+              //   <FormGroup>
+              //     <Input
+              //        placeholder="Month"
+              //      />
+              //   </FormGroup>
+              // </Col>
+              // <Col>
+              //   <FormGroup>
+              //     <Input
+              //       placeholder="Years"
+              //     />
+              //   </FormGroup>
+              // </Col>*/}
               <Col>
-                <FormGroup>
-                  <Input
-                    placeholder="Years"
-                  />
-                </FormGroup>
-              </Col>
-              <Col md={3}>
                 <FormGroup>
                   <Input
                    type="date"
                    name="date"
                    id="exampleDate"
                    placeholder="date placeholder"
+                   onChange={this.inputsChange}
                  />
                </FormGroup>
              </Col>
@@ -148,17 +150,17 @@ class Register extends Component {
               </Label>
           </FormGroup>
           </FormGroup>
-          <Button
-            type="submit"
-            disabled={this.state.loggingIn}
-            onClick={this.login.bind(this)}
-          >
+          <Button type="submit" onClick={this.handleSubmit}>
             Register
           </Button>
-          <Button onClick={this.props.cancellInRegister}>Cancell</Button>
+          <Button  onClick={() => {}}>
+            Cancell
+          </Button>
         </Form>
       </Container>
     );
   }
 }
 export default Register;
+
+{/* mnuma avelacnel radioi arjeqn el statum u Cancell sexmelis gnal login opage*/}
