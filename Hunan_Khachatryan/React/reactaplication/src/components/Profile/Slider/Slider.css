@@ -1,0 +1,11 @@
+
+  .each-slide > img {
+    align-items: center;
+    display: flex;
+    background-size: cover;
+    height: 480px;
+    width:100%;
+
+  }
+  
+  

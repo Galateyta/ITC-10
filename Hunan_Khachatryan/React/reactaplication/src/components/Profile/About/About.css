@@ -1,0 +1,19 @@
+.about-style{
+    box-shadow: 15px 5px 10px grey;
+    background-color: #a3c2c2;
+    border-radius: 10px;
+  }
+  .about-img-style {
+    width: 10em;
+    height: 10em;
+  }
+  .card-style{
+    border-radius: 10px;
+    background-color: #df9fdf;
+    text-align: center;
+    margin: 1em;
+  }
+  .card-style > img {
+    margin: auto;
+  }
+  
