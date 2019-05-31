@@ -1,6 +1,5 @@
 import React ,{Component} from 'react';
  
-
 class  List extends Component {
   render () {
     return (
@@ -9,10 +8,10 @@ class  List extends Component {
         <ul> 
         	{this.props.works.map((item, index) => (
         		<li key={item.id}> 
-            <input value={item.work}/>
-	        		  <input value={item.priority}/>
-                <input value={item.date}/>
-                <button > Change </button>
+            		<input value={item.work}/>
+	        		<input value={item.priority}/>
+                	<input value={item.date}/>
+                	<button > Change </button>
 	        		<button onClick={this.props.deleteWork(index)}> Delete </button>
         		 </li> 
         		))}

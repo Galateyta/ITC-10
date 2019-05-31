@@ -26,7 +26,13 @@ class  List extends Component {
               <td> {item.work} </td>
               <td> {item.priority} </td>
               <td> {item.date} </td>
-              <Modal className="modal" item={item} nameChange={this.props.nameChange} priorityChange={this.props.priorityChange} dateChange={this.props.dateChange} addWork={this.props.addWork}/>
+              <Modal 
+                className="modal" item={item} 
+                nameChange={this.props.nameChange}
+                priorityChange={this.props.priorityChange}
+                dateChange={this.props.dateChange} 
+                addWork={this.props.addWork}
+              />
               <td> <Button color="danger"  onClick={() => this.props.deleteWork(index)} > Delete </Button>{' '} </td>
             </tr>
             ))}        
