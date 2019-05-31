@@ -52,7 +52,7 @@ class Login extends Component {
     return false;
   }
 
-  render() {
+  componentWillMount() {
     const isAuthed = localStorage.getItem('isAuthed');
     if (isAuthed && isAuthed === 'true') {
       this
@@ -60,6 +60,9 @@ class Login extends Component {
         .history
         .push('/')
     }
+  }
+
+  render() {
     return (
       <div className="login">
         <form onSubmit={this.checkSignIn}>

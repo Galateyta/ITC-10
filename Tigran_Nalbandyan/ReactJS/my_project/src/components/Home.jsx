@@ -64,6 +64,17 @@ class Home extends Component {
       .props
       .updateAction({});
     localStorage.setItem('isAuthed', false);
+    this.props.history.push('/login');
+  }
+
+  componentWillMount() {
+    const isAuthed = localStorage.getItem('isAuthed');
+    if (!isAuthed || isAuthed === 'false') {
+      this
+        .props
+        .history
+        .push('/login')
+    }
   }
 
   sideList = () => (
@@ -115,13 +126,6 @@ class Home extends Component {
   );
 
   render() {
-    const isAuthed = localStorage.getItem('isAuthed');
-    if (!isAuthed || isAuthed === 'false') {
-      this
-        .props
-        .history
-        .push('/login')
-    }
     return (
       <div>
         <Grid container direction="row">

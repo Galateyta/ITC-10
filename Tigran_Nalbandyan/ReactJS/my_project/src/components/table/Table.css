@@ -1,3 +1,7 @@
-.table {
-  margin: 50px;
+#table {
+  margin: 50px 0 50px 30px;
+}
+
+#chart {
+  margin: 10px; 
 }
