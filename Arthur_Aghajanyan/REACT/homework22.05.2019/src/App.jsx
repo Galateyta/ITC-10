@@ -1,10 +1,11 @@
 import React from 'react';
 import './App.css';
+import TextAndColor from './TextAndColor.jsx'
 
-class ParentComponent extends React.Component {
+class App extends React.Component {
     render(){
       return (
-            <div className="ParentComponent">
+            <div className="parent-component">
                 <TextAndColor name="Hello" textColor="red"/>
                 <TextAndColor name="React" textColor="yellow"/>
                 <TextAndColor name="My" textColor="blue"/>
@@ -14,10 +15,4 @@ class ParentComponent extends React.Component {
       );
     }
 }
-class TextAndColor extends ParentComponent {
-    render(){
-        return <h1 class="h1_style" style={{color : this.props.textColor}}>{this.props.name}</h1>;
-    }
-}
-
-export default ParentComponent;
+export default App;
