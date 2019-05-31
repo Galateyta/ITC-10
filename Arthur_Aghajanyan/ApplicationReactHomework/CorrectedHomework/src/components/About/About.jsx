@@ -3,6 +3,12 @@ import { Container, Card, CardTitle, CardText, Row, Col } from 'reactstrap';
 import './about.css'
 
 class About extends React.Component {
+
+    constructor(props) { 
+        debugger
+        super(props);
+    }
+    
     render() {
       return (
           <Container>

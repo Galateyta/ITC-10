@@ -1,8 +1,9 @@
 const userReducer = (state = [], action) => {
     switch(action.type) {
        case "ADD":
-          alert("1");
-          return state.concat([action.data])
+          return {...state, user: action.user};
+      case "DEL":
+         return {...state, user: {}};
        default:
           return state;
     }

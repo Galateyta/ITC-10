@@ -127,8 +127,8 @@ class Registry extends React.Component {
                                  value = {this.state.pictures}
                                  id = 'file'
                                  className = 'exampleFile'
-                                 accept = ".jpg, .jpeg, .png"
-                                 required />
+                                
+                                  />
                                  <img src = {this.state.pictures} alt = 'img'/>
                           <div className = 'gender-style'>
                               <Input type = 'radio'  name = 'gender'  value = 'male' required/>
