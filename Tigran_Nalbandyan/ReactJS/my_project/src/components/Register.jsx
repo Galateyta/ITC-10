@@ -32,22 +32,14 @@ class Register extends Component {
   }
 
   handleChange = (e) => {
-    const name = e.target.id;
+    let name = e.target.id;
     const value = e.target.value;
-    // console.log(name, e.target.files[0].name )
-    if (name === 'login') {
-      this.setState({login: value});
-    } else if (name === 'password') {
-      this.setState({password: value});
-    } else if (name === 'name') {
-      this.setState({name: value});
-    } else if (name === 'surname') {
-      this.setState({surname: value});
-    } else if (e.target.type === 'radio') {
-      this.setState({gender: value});
-    } else if (name === 'image') {
-      this.setState({image: value});
+
+    if (e.target.type === 'radio') {
+      name = 'gender';
     }
+
+    this.setState({[name]: value});
   }
 
   handleSubmit = (e) => {
@@ -108,6 +100,7 @@ class Register extends Component {
                 <RadioGroup
                   aria-label="Gender"
                   id="gender"
+                  name="gender"
                   value={this.state.gender}
                   onChange={this.handleChange}>
                   <FormControlLabel

@@ -14,11 +14,8 @@ class Login extends Component {
   handleChange = (e) => {
     const name = e.target.id;
     const value = e.target.value;
-    if (name === 'login') {
-      this.setState({login: value});
-    } else if (name === 'password') {
-      this.setState({password: value});
-    }
+
+    this.setState({[name]: value});
   }
 
   checkSignIn = (e) => {
