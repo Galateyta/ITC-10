@@ -1,17 +1,32 @@
 import React, {Component} from 'react';
 import {  Button, Container, Table , Modal, ModalHeader, ModalBody, ModalFooter, Input } from 'reactstrap';
+import Chart from "react-apexcharts";
 
 class List extends Component {
   constructor(props) {
     super(props);
 
   this.state = {
+    isEmptyState: false,
     items: this.props.items,
+    chartData: [],
+    chartCategories: [],
     modal: false,
     name: '',
     date: '',
-    priority: ''
+    priority: '',
+    options: {
+                xaxis: {
+                  categories: []
+                }
+              },
+    series: [
+        {
+          data: []
+        }
+    ]
   }
+  this.chartFunc = this.chartFunc.bind(this);
   this.compareBy.bind(this);
   this.sortBy.bind(this);
   this.toggle = this.toggle.bind(this);
@@ -58,6 +73,22 @@ saveItem(index) {
           this.setState({ priority: e.target.value });
       }
   }
+  chartFunc(){
+    let count = this.state.items.length;
+    for (let i = 0; i < count; i++){
+        this.state.chartData.push(this.state.items[i].date);
+        this.state.chartCategories.push(this.state.items[i].priority)
+    }
+    this.setState((state) => {
+      state.options.xaxis.categories = state.chartData;
+      state.series[0].data = state.chartCategories;
+    });
+    this.setState(prevState => ({
+      isEmptyState: !prevState.isEmptyState
+    }));
+
+  }
+
 
     render() {
         return (
@@ -112,8 +143,16 @@ saveItem(index) {
                     ))}
                     </tbody>
                 </Table>
+                <div>
+                    <Button color="primary" onClick = {this.chartFunc}>Graf</Button>
+                    {this.state.isEmptyState && <Chart
+                        options={this.state.options}
+                        series={this.state.series}
+                        type="line"
+                        width="500"
+                    />}
+                </div>
                 </Container>
-
               );
     }
 }

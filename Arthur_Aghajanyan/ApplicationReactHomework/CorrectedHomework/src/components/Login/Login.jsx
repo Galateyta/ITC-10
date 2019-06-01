@@ -34,10 +34,13 @@ class Login extends Component {
                 });
                 localStorage.setItem("signUp", true);
                 this.props.history.push('/home');
-            }
+            }else{
+            alert("Enter a correct passwor");
+          }
         }
-
-        alert("Enter a correct passwor");
+        if(data.length === 0){
+            alert("Enter a correct passwor");
+        }
     };
 
     validateForm() {

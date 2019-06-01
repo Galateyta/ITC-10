@@ -12,7 +12,42 @@ class MyTable extends Component {
                         priority: ''};
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    handleChange(e) {
+        if (e.target.id === 'name') {
+            this.setState({ name: e.target.value });
+        } else if (e.target.id === 'date') {
+            this.setState({ date: e.target.value });
+        } else if (e.target.id === 'priority') {
+            this.setState({ priority: e.target.value });
+        }
+    }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        if (!this.state.name.length) {
+            return;
+        }
+        const newItem = {
+            name: this.state.name,
+            date: this.state.date,
+            priority: this.state.priority,
+            id: Date.now()
+        };
+        this.setState((state) => {
+            state.items.push(newItem);
+            return {
+                name : '',
+                date : '',
+                priority: ''
+            }
+        });
+    }
+
+    removeItem = (indexItem) => {
+        const items = this.state.items;
+        items.splice(indexItem, 1);
+        this.setState({items});
     }
 
     render() {
@@ -64,44 +99,6 @@ class MyTable extends Component {
               <List items={this.state.items} removeItem={this.removeItem} />
           </Container>
         );
-    }
-
-
-    handleChange(e) {
-        if (e.target.id === 'name') {
-            this.setState({ name: e.target.value });
-        } else if (e.target.id === 'date') {
-            this.setState({ date: e.target.value });
-        } else if (e.target.id === 'priority') {
-            this.setState({ priority: e.target.value });
-        }
-    }
-
-    handleSubmit(e) {
-        e.preventDefault();
-        if (!this.state.name.length) {
-            return;
-        }
-        const newItem = {
-            name: this.state.name,
-            date: this.state.date,
-            priority: this.state.priority,
-            id: Date.now()
-        };
-        this.setState((state) => {
-            state.items.push(newItem);
-            return {
-                name : '',
-                date : '',
-                priority: ''
-            }
-        });
-    }
-
-    removeItem = (indexItem) => {
-        const items = this.state.items;
-        items.splice(indexItem, 1);
-        this.setState({items});
     }
 }
 

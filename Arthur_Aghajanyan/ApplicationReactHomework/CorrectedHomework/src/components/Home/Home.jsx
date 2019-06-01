@@ -5,14 +5,13 @@ import './home.css'
 import { connect } from 'react-redux';
 import SideNav, { NavItem } from '@trendmicro/react-sidenav';
 import '@trendmicro/react-sidenav/dist/react-sidenav.css';
-import { loadOptions } from '@babel/core';
 
 class Home extends Component {
     constructor(props) {
         super(props);
         this.signUpLocStorage = this.signUpLocStorage.bind(this);
     }
-    
+
     signUpLocStorage() {
         this.props.dispatch({
             type: "ADD",
@@ -35,13 +34,13 @@ class Home extends Component {
                                 </div>
                             </NavItem>
                             <NavItem>
-                                <h5>{this.props.user.name}</h5>
+                                <p>{this.props.user.name}</p>
                             </NavItem>
                             <NavItem>
-                                <h5>{this.props.user.surname}</h5>
+                                <p>{this.props.user.surname}</p>
                             </NavItem>
                             <NavItem>
-                                <h6>{this.props.user.date}</h6>
+                                <p>{this.props.user.date}</p>
                             </NavItem>
                             <NavItem eventKey="home">
                                 <NavLink to='/home'>Home</NavLink>
