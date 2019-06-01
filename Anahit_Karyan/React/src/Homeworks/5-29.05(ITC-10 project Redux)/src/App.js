@@ -3,9 +3,9 @@ import './App.css';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import About from './Components/About';
-import Homer from './Components/Home';
-import Slier from './Components/Slider';
-import Table from './Components/Table';
+import Home from './Components/Home';
+import Slider from './Components/Slider';
+import TableSection from './Components/Table/TableSection';
 
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
@@ -19,9 +19,16 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={store}>
-        <Register/>
-      </Provider>
+      <Router>
+        <Provider store={store}>
+           <Route path='/' exact component={Register}/>
+           <Route path='/login' component={Login}  />
+           <Route path='/home' component={Home}/>
+           <Route path="/home/slider" exact component={Slider} />
+           <Route path="/home/about" component={About} />
+           <Route path="/home/table" component={TableSection} />
+        </Provider>
+      </Router>
     );
   }
 }

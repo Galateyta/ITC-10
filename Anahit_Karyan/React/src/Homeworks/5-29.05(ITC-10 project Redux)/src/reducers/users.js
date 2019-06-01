@@ -3,7 +3,7 @@ const initialState = {};
 function users(state = initialState, action) {
     switch (action.type) {
         case 'LOAD_USER':{
-            return {...state, user: action.data}
+            return {...state, user: action.payload}
         }
         case 'DELETE_USER': {
             return {...state, user: {}}
@@ -13,4 +13,5 @@ function users(state = initialState, action) {
         }
     }
 }
+
 export {users};

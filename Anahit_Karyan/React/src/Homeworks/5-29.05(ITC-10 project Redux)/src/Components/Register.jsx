@@ -48,7 +48,8 @@ class Register extends Component {
     e.preventDefault();
     const newUser = Object.assign(this.state);
     users.push(newUser);
-    console.log(users)
+    console.log(users);
+    this.props.history.push('/login')
   }
   render() {
     return (
@@ -56,8 +57,8 @@ class Register extends Component {
         <h2>Register</h2>
         <Form className="form" noValidate>
             <FormGroup>
-               <Label for="exampleFile">Enter image URL</Label>
-               <Input name="image" onChange={this.inputsChange}/>
+               <Label for="exampleFile">Add image</Label>
+               <Input type="file" name="image" onChange={this.inputsChange}/>
             </FormGroup>
             <FormGroup>
               <Label>Username</Label>

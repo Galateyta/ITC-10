@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import users from './../data/users';
+import addUserAction from './../actions/user';
+import {bindActionCreators} from 'redux';
+import {connect} from 'react-redux';
 import {
   Container, Col, Form,
   FormGroup, Label, Input,
@@ -8,50 +12,40 @@ import {
 
 class Login extends Component {
   state = {
-  login: '',
+  username: '',
   password: ''
 }
 inputsChange = (e) => {
   const name = e.target.name;
   const value = e.target.value;
-  name === 'login' ? this.setState({login: value}) : this.setState({password: value});
+  name === 'username' ? this.setState({username: value}) : this.setState({password: value});
 }
 
 login = (e) => {
     e.preventDefault();
 
-    const username = this.refs.username.value;
-    const password = this.refs.password.value;
+    const username = this.state.username;
+    const password = this.state.password;
+    console.log(username);console.log(password);
+    console.log({users});
+    const corentUser = users.find((item)=> {
+      return item.username === username && item.password === password;
+    }); console.log(corentUser)
+    console.log('corent usern e'+ corentUser);
+    if(corentUser){
+      this.props.addUserAction(corentUser);
+      localStorage.setItem('isLogin', true);
+      this.props.history.push('/home');
 
-    {/*if (username.length === 0 || password.length === 0) {
-      return this.setState({
-        errorCode: 'missingUsernameOrPassword'
-      });
+      console.log('logini props');
+      console.log(this.props);
     }
-
-    this.setState({
-      loggingIn: true,
-      errorCode: null
-    });
-
-    this.props.onLogin(username, password, (err) => {
-      if (err) {
-        return this.setState({
-          error: err,
-          loggingIn: false
-        });
-      }
-
-      if (this.props.location.state && this.props.location.state.nextPathname) {
-        window.location.href = this.props.location.state.nextPathname;
-      } else {
-        window.location.href = '/';
-      }
-
-    });*/}
 }
 
   render() {
+    console.log('logini props');
+
+    console.log(this.props);
     return (
       <Container className="App">
         <h2>Sign In</h2>
@@ -81,16 +75,24 @@ login = (e) => {
                 Remember me
               </Label>
           </Col>
-          <Button
-            type="submit"
-            disabled={this.state.loggingIn}
-            onClick={this.login}
-          >Login</Button>
-          <Button >Register</Button>
+          <Button type="submit" onClick={this.login}>
+            Login
+          </Button>
+          <Button  onClick={() => {this.props.history.push('/register');}}>
+            Register
+          </Button>
         </Form>
       </Container>
     );
   }
 }
 
-export default Login;
+const mapStateToProps = state => {
+  return {users: state.users}
+};
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+   addUserAction
+}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

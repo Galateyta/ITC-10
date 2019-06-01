@@ -1,4 +1,5 @@
-export const addUser = user => ({
+const addUserAction = user => ({
     type: 'LOAD_USER',
-    data: user 
-  })
+    payload: user
+  });
+export default addUserAction;
