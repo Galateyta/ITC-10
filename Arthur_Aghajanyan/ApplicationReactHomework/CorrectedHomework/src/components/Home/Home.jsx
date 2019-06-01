@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { Button } from 'reactstrap';
 import './home.css'
 import { connect } from 'react-redux';
@@ -14,11 +14,10 @@ class Home extends Component {
 
     signUpLocStorage() {
         this.props.dispatch({
-            type: "ADD",
+            type: "DEL",
             user: {}
         });
         localStorage.removeItem("signUp");
-        this.props.history.push('/');
     };
 
     render() {
@@ -55,9 +54,9 @@ class Home extends Component {
                                 <NavLink to='/home/table'>Table</NavLink>
                             </NavItem>
                             <NavItem>
-                                <Button color='primary' onClick={this.signUpLocStorage}>
+                                <Link to = '/'><Button color='primary' onClick={this.signUpLocStorage}>
                                     Logout
-                                    </Button>
+                                    </Button></Link>
                             </NavItem>
                         </SideNav.Nav>
                     </SideNav>
