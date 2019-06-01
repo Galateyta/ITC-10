@@ -1,10 +1,36 @@
 .NavItem {
-    height: 130px;
+    height: 80px;
     padding: 20px;
-    background-color: gray;
+}
+.profile {
+    height: 250px;
+    border-style: double;
+    color: white;
+    text-align: center
 }
 .NavLink {
     color: white;
     display: flex;
     justify-content: center;
+    padding: 20px;
+}
+#sideNav {
+    background-color: rgb(9, 50, 60);
+}
+.container {
+    margin-top: 60px;
+    width: 80%;
+    border-style: solid;
+    border-radius: 20px;
+    border-color:rgb(9, 50, 60);
+    border-width: 20px;
+}
+.jumbotron {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+.sliderimage {
+    height: 550px;
+    width: 800px;
 }

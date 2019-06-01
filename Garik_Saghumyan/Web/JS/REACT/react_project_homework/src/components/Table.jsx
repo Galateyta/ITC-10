@@ -5,15 +5,17 @@ import Filter from './tablecomponents/Filter';
 import { Col, Container, Row } from 'reactstrap';
 
 class Table extends Component {
-
-  state = {
-    id: 1,
-    task: "",
-    priority: "",
-    date: "",
-    filterText: "",
-    show: false,
-    items: []
+  constructor(props){
+    super(props);
+    this.state = {
+      id: 1,
+      task: "",
+      priority: "",
+      date: "",
+      filterText: "",
+      show: false,
+      items: []
+    }
   }
   onChangeFilter = (event) => {
     this.setState({
@@ -95,13 +97,12 @@ class Table extends Component {
       id: id
     });
   }
-
   render() {
     return (
       <Container>
         <Row>
           <Col>
-            <h1 className="text-center">TASKS LIST</h1>
+            <h1 className="text-center">TASKS TABLE</h1>
             <Inputs task={this.state.task} priority={this.state.priority} date={this.state.date} onChangeTask={this.onChangeTask} onChangeDate={this.onChangeDate}
               onChangePriority={this.onChangePriority} onSubmit={this.onSubmit} />
             <Filter onChangeFilter={this.onChangeFilter} />
