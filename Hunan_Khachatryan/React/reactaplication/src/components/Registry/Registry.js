@@ -17,6 +17,7 @@ class Registry extends Component {
             username: '',
             password: '',
             email: '',
+            date:'',
             picture:''
         };
         this.handleChange = this.handleChange.bind(this);
@@ -31,6 +32,7 @@ class Registry extends Component {
             case 'email': this.setState({ email: e.target.value }); break;
             case 'username': this.setState({ username: e.target.value }); break;
             case 'password': this.setState({ password: e.target.value }); break;
+            case 'date': this.setState({ date: e.target.value }); break;
             case 'file':this.setState({ picture: e.target.value }); break;
             default: break;
 
@@ -120,6 +122,14 @@ class Registry extends Component {
                                     required
                                 />
                             </Col>
+                            <Col><Input
+                              type = 'date'
+                              name='date'
+                              id = 'date'
+                              onChange = {this.handleChange}
+                              autoComplete = 'on | off'
+                              required
+                              /></Col>
                             <Col md="12">
                                 <Input
                                     type="file"
