@@ -25,4 +25,5 @@ package-lock.json
 *.o
 *.swp
 *.swo
+./temp
 ./
