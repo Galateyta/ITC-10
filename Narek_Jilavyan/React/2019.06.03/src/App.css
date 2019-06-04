@@ -1,0 +1,10 @@
+.App {
+  text-align: center;
+}
+
+body {
+  margin: 0;
+  background-image: url("./components/images/back.jpg");
+  background-repeat: no-repeat;    
+  background-size: cover;
+}
