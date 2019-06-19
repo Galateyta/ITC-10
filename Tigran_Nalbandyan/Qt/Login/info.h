@@ -12,23 +12,15 @@ class Info : public QDialog
     Q_OBJECT
 
 public:
-    explicit Info(QString name,
-    QString lastname,
-    int age,
-    QString country,
-    QString birthday,QWidget *parent = nullptr);
+    explicit Info(QWidget *parent = nullptr);
     ~Info();
+    void updateText(QString name, QString lastname, QString age, QString country, QString birthday);
 
 private slots:
     void on_pushButton_clicked();
 
 private:
     Ui::Info *ui;
-    QString name;
-    QString lastname;
-    int age;
-    QString country;
-    QString birthday;
 };
 
 #endif // INFO_H
