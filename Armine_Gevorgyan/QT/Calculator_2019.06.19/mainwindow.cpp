@@ -4,7 +4,7 @@
 
 
 double  calcVal = 0.0;
-
+bool flag = false;
 bool divTrigger = false;
 bool multTrigger = false;
 bool addTrigger = false;
@@ -55,13 +55,15 @@ void MainWindow::NumPressed()
     QPushButton *button = (QPushButton *)sender();
     QString butVal = button->text();
     QString displayVal = ui->Display->text();
-
-    if((displayVal.toDouble() == 0) || (displayVal.toDouble() == 0.0)){
-        ui->Display->setText(butVal);
-    } else {
-        QString newVal = displayVal + butVal;
-        double dblNewVal = newVal.toDouble();
-        ui->Display->setText(QString::number(dblNewVal, 'g', 16));
+    
+    if(!flag) {
+        if((displayVal.toDouble() == 0) || (displayVal.toDouble() == 0.0)){
+            ui->Display->setText(butVal);
+        } else {
+            QString newVal = displayVal + butVal;
+            double dblNewVal = newVal.toDouble();
+            ui->Display->setText(QString::number(dblNewVal, 'g', 16));
+        }
     }
 }
 
@@ -86,6 +88,7 @@ void MainWindow::MathButtonPressed(){
     } else {
         subTrigger = true;
     }
+    falg = false;
     ui->Display->setText("");
 }
 
@@ -107,7 +110,8 @@ void MainWindow::EqualButtonPressed(){
             solution = calcVal / dblDisplayVal;
         }
     }
-
+    
+    flag = true;
     ui->Display->setText(QString::number(solution));
 
 }
