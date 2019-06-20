@@ -57,7 +57,7 @@ void MainWindow::NumPressed()
     QString displayVal = ui->Display->text();
     
     if(!flag) {
-        if((displayVal.toDouble() == 0) || (displayVal.toDouble() == 0.0)){
+        if(displayVal.toDouble() == 0){
             ui->Display->setText(butVal);
         } else {
             QString newVal = displayVal + butVal;
