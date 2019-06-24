@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
+#include <QSize>
 
 
 
@@ -16,7 +16,9 @@ EElementType elementTypeToEnum(std::string name)
     if ("h4" == name) return  EElementType::H4;
     if ("h5" == name) return  EElementType::H5;
     if ("h6" == name) return  EElementType::H6;
-    if ("span" == name) return  EElementType::SPAN;
+    if ("span" == name) return  EElementType::Span;
+    if ("textarea" == name) return  EElementType::TextArea;
+
 
 
 
@@ -39,6 +41,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
 //    }
     QString value = e.text();
 //    qDebug()<< value;
+    QString tagType = e.attribute("type");
 
     switch (type)
     {
@@ -48,7 +51,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              view = new Div();
              Div* layout = static_cast<Div*>(view);
              static_cast<Div*>(parent)->addDiv(layout);
-             layout->setStyleSheet(style);
         }
         else
         {
@@ -59,19 +61,51 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         break;
     }
     case EElementType::Input: {
-        if (parentType == EElementType::Div)
+        if (tagType == "text")
         {
-             view = new QLineEdit();
-             QWidget* widget = static_cast<QWidget*>(view);
-             Div* p = static_cast<Div*>(parent);
-             p->addWidget(widget);
-        }
-        else
+
+            if (parentType == EElementType::Div)
+            {
+                 view = new QLineEdit();
+                 QWidget* widget = static_cast<QWidget*>(view);
+                 Div* p = static_cast<Div*>(parent);
+                 p->addWidget(widget);
+            }
+            else
+            {
+                  view = new QLineEdit(static_cast<QWidget*>(parent));
+            }
+        } else if (tagType == "checkbox")
         {
-              view = new QLineEdit(static_cast<QWidget*>(parent));
+
+            if (parentType == EElementType::Div)
+            {
+                 view = new QCheckBox();
+                 QWidget* widget = static_cast<QWidget*>(view);
+                 Div* p = static_cast<Div*>(parent);
+                 p->addWidget(widget);
+            }
+            else
+            {
+                  view = new QCheckBox(static_cast<QWidget*>(parent));
+            }
+        }  else if (tagType == "radio")
+        {
+
+            if (parentType == EElementType::Div)
+            {
+                 view = new QRadioButton();
+                 QWidget* widget = static_cast<QWidget*>(view);
+                 Div* p = static_cast<Div*>(parent);
+                 p->addWidget(widget);
+            }
+            else
+            {
+                  view = new QRadioButton(static_cast<QWidget*>(parent));
+            }
         }
         break;
-    }
+        }
     case EElementType::Button: {
         if (parentType == EElementType::Div)
         {
@@ -98,13 +132,53 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              widget->setText(value);
              widget->setWordWrap(true);
 
+             QSize size = widget->sizeHint();
+             widget->setMinimumSize(size);
+
         }
         else
         {
               view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
-    }case EElementType::H1: {
+    }
+    case EElementType::Span: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QLabel();
+             QLabel* widget = static_cast<QLabel*>(view);
+             static_cast<Div*>(parent)->addWidget(widget);
+             widget->setStyleSheet(style);
+             widget->setText(value);
+             widget->setWordWrap(true);
+
+             QSize size = widget->sizeHint();
+             widget->setMinimumSize(size);
+
+        }
+        else
+        {
+              view = new QLabel(static_cast<QWidget*>(parent));
+        }
+        break;
+    }
+    case EElementType::TextArea: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QTextEdit();
+             QTextEdit* widget = static_cast<QTextEdit*>(view);
+             static_cast<Div*>(parent)->addWidget(widget);
+             widget->setStyleSheet(style);
+             widget->setText(value);
+        }
+        else
+        {
+              view = new QTextEdit(static_cast<QWidget*>(parent));
+        }
+        break;
+    }
+
+    case EElementType::H1: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
@@ -113,15 +187,19 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              style="font-size: 24pt;font-weight: bold";
              widget->setStyleSheet(style);
              widget->setText(value);
-
         }
         else
         {
               view = new QLabel(static_cast<QWidget*>(parent));
+              QLabel* widget = static_cast<QLabel*>(view);
+              style="font-size: 24pt;font-weight: bold; background-color: yellow";
 
+              widget->setStyleSheet(style);
+              widget->setText(value);
         }
         break;
-    }case EElementType::H2: {
+    }
+    case EElementType::H2: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
@@ -137,7 +215,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
               view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
-    }case EElementType::H3: {
+    }
+    case EElementType::H3: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
@@ -153,7 +232,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
               view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
-    }case EElementType::H4: {
+    }
+    case EElementType::H4: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
@@ -169,7 +249,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
               view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
-    }case EElementType::H5: {
+    }
+    case EElementType::H5: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
@@ -185,29 +266,14 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
               view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
-    }case EElementType::H6: {
+    }
+    case EElementType::H6: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel();
              QLabel* widget = static_cast<QLabel*>(view);
              static_cast<Div*>(parent)->addWidget(widget);
              style="font-size: 9pt;font-weight: bold";
-             widget->setStyleSheet(style);
-             widget->setText(value);
-
-        }
-        else
-        {
-              view = new QLabel(static_cast<QWidget*>(parent));
-        }
-        break;
-    }
-    case EElementType::SPAN: {
-        if (parentType == EElementType::Div)
-        {
-             view = new QLabel();
-             QLabel* widget = static_cast<QLabel*>(view);
-             static_cast<Div*>(parent)->addWidget(widget);
              widget->setStyleSheet(style);
              widget->setText(value);
 

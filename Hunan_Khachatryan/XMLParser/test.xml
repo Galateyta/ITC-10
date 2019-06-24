@@ -1,16 +1,19 @@
 <div  style="max-width:200px">
-	<input></input>
+	<input type="checkbox">CheckBox</input>
+	<input type="radio">Radiobutton</input>	
+    <input type="text"></input>
+    <textarea>adas</textarea>
 
-	<button style="color: blue; background-color: yellow;">Button1</button>
+	<button style="color: blue; background-color: yellow ">Button1</button>
 	<button>Button2</button>
 
-	<p>Text1</p>
+	<p>Tex <h1>Header1</h1> fdfgfdgdf fdfgdfgsdfsd sd d fdgdgdf d fdfbgfnhn vbvbnhv b dfgf dfgdfdfgdt1</p>
 	<h1>Header1</h1>
 	<h2>Header2</h2>
 	<h3>Header3</h3>
 	<h4>Header4</h4>
 	<h5>Header5</h5>         
 	<h6>Header6</h6>
-	<span>Span</span>
+	<span>Spas     dfss  dsf sdvvss vd  d d sssssfsdv sdfsd sdfndf d fdgbgfg f fg fg  sds  s s dgff</span>
 	
 </div>
