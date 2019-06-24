@@ -3,11 +3,13 @@
 #include <QLabel>
 #include <QTextEdit>
 #include <QColor>
+#include <QRadioButton>
+#include <QCheckBox>
 
 
 
 
-EElementType elementTypeToEnum(std::string name)
+EElementType elementTypeToEnum(QString name)
 {
     if ("div" == name) return  EElementType::Div;
     if ("input" == name) return  EElementType::Input;
@@ -21,13 +23,14 @@ EElementType elementTypeToEnum(std::string name)
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
 {
    // qDebug() << e.tagName();
-    std::string name = e.tagName().toStdString();
+    QString name = e.tagName();
     EElementType type = elementTypeToEnum(name);
 
     QObject* view = nullptr;
 
     QDomNamedNodeMap attributes = e.attributes();
-    QString style = e.attribute("style", "");
+    QString style = e.attribute("style");
+    QString inputType = e.attribute("type");
     QString value = e.text();
     for (int i = 0; i < attributes.size(); ++i)
     {
@@ -54,11 +57,29 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     case EElementType::Input: {
         if (parentType == EElementType::Div)
         {
-             view = new QLineEdit();
-             QWidget* widget = static_cast<QWidget*>(view);
-             Div* p = static_cast<Div*>(parent);
-             p->addWidget(widget);
-
+            if(inputType == "radio"){
+                view = new QRadioButton();
+                QWidget* widget = static_cast<QWidget*>(view);
+                Div* p = static_cast<Div*>(parent);
+                p->addWidget(widget);
+                p->setStyleSheet(style);
+            }
+            else if (inputType == "checkbox")
+            {
+                view = new QCheckBox();
+                QWidget* widget = static_cast<QWidget*>(view);
+                Div* p = static_cast<Div*>(parent);
+                p->addWidget(widget);
+                p->setStyleSheet(style);
+            }
+            else
+            {
+                view = new QLineEdit();
+                QWidget* widget = static_cast<QWidget*>(view);
+                Div* p = static_cast<Div*>(parent);
+                p->addWidget(widget);
+                p->setStyleSheet(style);
+            }
         }
         else
         {
@@ -86,7 +107,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     case EElementType::Text: {
         if (parentType == EElementType::Div)
         {
-            if (e.tagName() == "span")
+            if (name == "span")
             {
                 view = new QTextEdit();
                 QTextEdit* widget = static_cast<QTextEdit*>(view);
@@ -107,25 +128,25 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 widget->setStyleSheet(style);
                 widget->setText(value);
                 QFont font = widget->font();
-                if (e.tagName() == "h1")
+                if (name == "h1")
                 {
                     font.setPixelSize(32);
                     font.setBold(true);
                     widget->setFont(font);
                 }
-                else if (e.tagName() == "h2")
+                else if (name == "h2")
                 {
                     font.setPixelSize(24);
                     font.setBold(true);
                     widget->setFont(font);
                 }
-                else if (e.tagName() == "h3")
+                else if (name == "h3")
                 {
                     font.setPixelSize(19);
                     font.setBold(true);
                     widget->setFont(font);
                 }
-                else if (e.tagName() == "h4")
+                else if (name == "h4")
                 {
                     font.setPixelSize(16);
                     font.setBold(true);
@@ -137,7 +158,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                     font.setBold(true);
                     widget->setFont(font);
                 }
-                else if (e.tagName() == "h6")
+                else if (name == "h6")
                 {
                     font.setPixelSize(12);
                     font.setBold(true);
@@ -184,7 +205,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QVBoxLayout * l = new QVBoxLayout();
     l->addWidget(mLayout);
     centralWidget()->setLayout(l);
-
 }
 
 MainWindow::~MainWindow()
