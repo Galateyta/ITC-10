@@ -1,0 +1,10 @@
+<div width="100" height="50" style="max-width: 100px">
+	<input style="background-color:red"></input>
+    <input style="background-color:gray"></input>
+	<button style="color: blue; background-color: yellow;">BUTTON1</button>
+    <button>BUTTON2</button>
+    <span style="color:blue">SPAN</span>
+    <p style="color:red">PPPPPP</p>
+
+    <h1>h1</h1>
+</div>
