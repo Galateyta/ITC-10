@@ -1,0 +1,11 @@
+.ParentComponent {
+  border: 2px solid black;
+  text-align: center;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+.h1_style {
+  border: 2px solid black;
+  width: 300px;
+  margin-left: 20px;
+}
