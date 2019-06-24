@@ -7,14 +7,13 @@ EElementType elementTypeToEnum(std::string name)
     if (name == "div") return  EElementType::Div;
     if (name == "input") return  EElementType::Input;
     if (name == "button") return  EElementType::Button;
-    if ( name == "h1" || name == "h2" || name == "h3" || name == "h4" || name == "h5" || name == "h6" || name == "span" || name == "p" ) return  EElementType::Text;
+    if ( (name[0] == 'h' && name.length() == 2 && name[1] >= '1' && name[1] <= '6') || name == "span" || name == "p" ) return  EElementType::Text;
 
     return EElementType::Unknown;
 }
 
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
 {
-   // qDebug() << e.tagName();
     std::string name = e.tagName().toStdString();
     EElementType type = elementTypeToEnum(name);
 
@@ -24,10 +23,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     QString style = e.attribute("style");
     QString text = e.text();
     QString value = e.attribute("value");
-    for (int i = 0; i < attributes.size(); ++i)
-    {
-        qDebug() << attributes.item(i).nodeValue();
-    }
 
     switch (type) {
         case EElementType::Div: {
@@ -50,7 +45,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 widget->setText(value);
                 p->addWidget(widget);
             } else {
-                view = new QLineEdit(static_cast<QWidget*>(parent));
+                QLineEdit* view = new QLineEdit(static_cast<QWidget*>(parent));
+                view->setText(value);
             }
             break;
         }
@@ -62,19 +58,34 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 widget->setStyleSheet(style);
                 widget->setText(text);
             } else {
-                view = new QPushButton(static_cast<QWidget*>(parent));
+                QPushButton* view = new QPushButton(static_cast<QWidget*>(parent));
+                view->setStyleSheet(style);
+                view->setText(text);
             }
             break;
         }
         case EElementType::Text: {
+            double fontSize = 0;
+            if (name[0] == 'h') {
+                fontSize = double(name[1] - '0');
+                fontSize = 32 / pow(1.2, fontSize);
+            }
             if (parentType == EElementType::Div) {
                 view = new QLabel();
                 QLabel* widget = static_cast<QLabel*>(view);
                 static_cast<Div*>(parent)->addWidget(widget);
                 widget->setStyleSheet(style);
                 widget->setText(text);
+                if (fontSize > 0) {
+                    widget->setFont(QFont( "Arial", int(fontSize), QFont::Bold));
+                }
             } else {
-                view = new QLabel(static_cast<QWidget*>(parent));
+                QLabel* view = new QLabel(static_cast<QWidget*>(parent));
+                view->setStyleSheet(style);
+                view->setText(text);
+                if (fontSize > 0) {
+                    view->setFont(QFont( "Arial", int(fontSize), QFont::Bold));
+                }
             }
             break;
         }
