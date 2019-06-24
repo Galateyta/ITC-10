@@ -21,7 +21,12 @@ enum class EElementType
     Button,
     p,
     span,
-    h1
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6
 };
 
 namespace Ui {
@@ -38,6 +43,12 @@ public:
 
     ~MainWindow();
 
+    void createH(QObject* view, QDomElement e, QObject* parent, EElementType parentType, EElementType type);
+    void createPAndSpan(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    void createButton(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    void createInpute(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    void createDiv(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    QString getHStyle(EElementType type);
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
