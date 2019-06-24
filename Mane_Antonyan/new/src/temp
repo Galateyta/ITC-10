@@ -1,0 +1,37 @@
+      
+   this.onOpenModal = this.onOpenModal.bind(this);
+      
+      return (
+         <div class="window">
+           <h2>Change your planed task</h2>
+           <button onClick={this.onOpenModal}>Open modal</button>
+           <Modal open={this.open} onClose={this.onCloseModal}>
+           <Form
+                 formState={this.formState}
+                 onChange={this.onChange}
+                 onSubmit={this.onSubmit}
+              />
+           </Modal>
+         </div>
+       );
+
+           onOpenModal = () => {
+      this.setState({ open: true });
+      return (
+         <div class="window">
+           <h2>Change your planed task</h2>
+           <button onClick={this.onOpenModal}>Open modal</button>
+           <Modal open={this.open} onClose={this.onCloseModal}>
+           <Form
+                 formState={this.formState}
+                 onChange={this.onChange}
+                 onSubmit={this.onSubmit}
+              />
+           </Modal>
+         </div>
+       );
+    };
+  
+    onCloseModal = () => {
+      this.setState({ open: false });
+    };
