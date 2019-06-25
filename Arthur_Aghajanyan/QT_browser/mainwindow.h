@@ -12,6 +12,12 @@
 #include <QPushButton>
 #include <QLabel>
 #include "div.h"
+#include <QTextEdit>
+#include <QComboBox>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QSize>
+#include <QTableWidget>
 
 enum class EElementType
 {
@@ -26,7 +32,11 @@ enum class EElementType
     h3,
     h4,
     h5,
-    h6
+    h6,
+    TextArea,
+    Select,
+    Table,
+    Img
 };
 
 namespace Ui {
@@ -46,9 +56,14 @@ public:
     void createH(QObject* view, QDomElement e, QObject* parent, EElementType parentType, EElementType type);
     void createPAndSpan(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
     void createButton(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
-    void createInpute(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    void createInpute(QObject* view, QDomElement e, QObject* parent, EElementType parentType,QString typeOfTag);
     void createDiv(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
+    void createTextArea(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createSelect(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createTable(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createImg(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     QString getHStyle(EElementType type);
+
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;

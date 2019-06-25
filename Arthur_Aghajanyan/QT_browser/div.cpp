@@ -21,3 +21,4 @@ void Div::addWidget(QWidget *widget)
 {
     mLayout->addWidget(widget);
 }
+
