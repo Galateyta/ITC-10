@@ -12,6 +12,7 @@ EElementType elementTypeToEnum(std::string name)
     if ("select" == name) return  EElementType::Select;
     if ("table" == name) return  EElementType::Table;
     if ("img" == name) return  EElementType::Img;
+    if ("textarea" == name) return  EElementType::Textarea;
     if ("p" == name || "span" == name || "h1" == name ||
         "h2" == name || "h3" == name || "h4" == name ||
         "h5" == name || "h6" == name ) return  EElementType::Text;
@@ -28,6 +29,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     QObject* view = nullptr;
     QDomNamedNodeMap attributes = e.attributes();
     QString style = e.attribute("style", "");
+    QString inputType = e.attribute("type");
+
     for (int i = 0; i < attributes.size(); ++i)
     {
         qDebug() << attributes.item(i).nodeValue();
@@ -184,7 +187,42 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     case EElementType::Input: {
         if (parentType == EElementType::Div)
         {
-             view = new QLineEdit(text);
+             if("checkbox" == inputType)
+             {
+                 view = new QCheckBox(text);
+             } else  if("radio" == inputType)
+             {
+                 view = new QRadioButton(text);
+             } else {
+                 view = new QLineEdit(text);
+             }
+
+             QWidget* widget = static_cast<QWidget*>(view);
+            // widget->setStyleSheet(style);
+             Div* p = static_cast<Div*>(parent);
+             p->addWidget(widget);
+        }
+        else
+        {     
+            if("checkbox" == inputType)
+            {
+                view = new QCheckBox(static_cast<QWidget*>(parent));
+            } else  if("radio" == inputType)
+            {
+                view = new QRadioButton(static_cast<QWidget*>(parent));
+
+            } else {
+                view = new QLineEdit(static_cast<QWidget*>(parent));
+            }
+        }
+        break;
+    }
+
+
+    case EElementType::Textarea: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QTextEdit(text);
              QWidget* widget = static_cast<QWidget*>(view);
              widget->setStyleSheet(style);
              Div* p = static_cast<Div*>(parent);
@@ -192,10 +230,11 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         else
         {
-              view = new QLineEdit(static_cast<QWidget*>(parent));
+              view = new QTextEdit(static_cast<QWidget*>(parent));
         }
         break;
     }
+
     case EElementType::Button: {
         if (parentType == EElementType::Div)
         {
@@ -229,7 +268,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/home/student/Desktop/test.xml");
+    QFile xmlFile("/home/anahit/Desktop/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -239,6 +278,11 @@ MainWindow::MainWindow(QWidget *parent) :
     QVBoxLayout * l = new QVBoxLayout();
     l->addWidget(mLayout);
     centralWidget()->setLayout(l);
+
+    QScrollArea* scroll = new QScrollArea();
+   // scroll-> setWidgetResizeble(true)
+    scroll->setWidget(mLayout);
+    setCentralWidget(scroll);
 }
 
 MainWindow::~MainWindow()
