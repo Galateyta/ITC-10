@@ -1,7 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QSize>
-
+#include <QTableWidget>
+#include <QScrollArea>
 
 
 EElementType elementTypeToEnum(std::string name)
@@ -18,16 +19,15 @@ EElementType elementTypeToEnum(std::string name)
     if ("h6" == name) return  EElementType::H6;
     if ("span" == name) return  EElementType::Span;
     if ("textarea" == name) return  EElementType::TextArea;
-
-
-
+    if ("select" == name) return EElementType::Select;
+    if ("table" == name) return EElementType::Table;
+    if ("img" == name) return EElementType::Img;
 
     return EElementType::Unknown;
 }
 
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
 {
-   // qDebug() << e.tagName();
     std::string name = e.tagName().toStdString();
     EElementType type = elementTypeToEnum(name);
 
@@ -35,12 +35,9 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
 
     QDomNamedNodeMap attributes = e.attributes();
     QString style = e.attribute("style");
-//    for (int i = 0; i < attributes.size(); ++i)
-//    {
-//        qDebug() << attributes.item(i).nodeValue();
-//    }
     QString value = e.text();
-//    qDebug()<< value;
+    QString nv = e.nodeValue();
+    QString data = e.toText().data();
     QString tagType = e.attribute("type");
 
     switch (type)
@@ -51,12 +48,84 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              view = new Div();
              Div* layout = static_cast<Div*>(view);
              static_cast<Div*>(parent)->addDiv(layout);
+             layout->setStyleSheet(style);
+
         }
         else
         {
               view = new Div(static_cast<QWidget*>(parent));
               Div* div = static_cast<Div*>(view);
               div->setStyleSheet(style);
+
+
+        }
+        break;
+    }
+    case EElementType::Select: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QComboBox();
+            QComboBox* combobox = static_cast<QComboBox*>(view);
+            combobox->setStyleSheet(style);
+
+            for (int i = 0; i < e.childNodes().size(); ++i)
+            {
+                combobox->addItem(e.childNodes().at(i).toElement().text());
+            }
+            static_cast<Div*>(parent)->addWidget(combobox);
+        }
+        break;
+    }
+    case EElementType::Table: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QTableWidget();
+            QTableWidget* table = static_cast<QTableWidget*>(view);
+            table->setStyleSheet(style);
+
+            QDomElement headersElem = e.firstChild().toElement();
+            table->setColumnCount(headersElem.childNodes().size());
+            QStringList headers;
+            for (int i = 0; i < headersElem.childNodes().size(); ++i)
+            {
+                headers.push_back(headersElem.childNodes().at(i).toElement().text());
+            }
+
+            table->setRowCount(e.childNodes().size() - 1);
+            table->setHorizontalHeaderLabels(headers);
+
+            for (int i = 1; i < e.childNodes().size(); ++i)
+            {
+                const QDomNodeList& childs = e.childNodes().at(i).childNodes();
+                for (int j = 0; j < childs.size(); ++j)
+                {
+                    QTableWidgetItem* item = new QTableWidgetItem(childs.at(j).toElement().text());
+                    table->setItem(i - 1, j, item);
+                }
+            }
+
+            static_cast<Div*>(parent)->addWidget(table);
+        }
+        break;
+    }
+    case EElementType::Img: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QLabel();
+            QLabel* label = static_cast<QLabel*>(view);
+            label->setStyleSheet(style);
+
+            QString src = e.attribute("src", "");
+            if (!src.size()) break;
+
+            QPixmap img(src);
+            label->setPixmap(img);
+            label->setScaledContents(true);
+//            QSize size = label->sizeHint();
+//            label->setMinimumSize(200,200);
+            label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+
+            static_cast<Div*>(parent)->addWidget(label);
         }
         break;
     }
@@ -192,7 +261,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         {
               view = new QLabel(static_cast<QWidget*>(parent));
               QLabel* widget = static_cast<QLabel*>(view);
-              style="font-size: 24pt;font-weight: bold; background-color: yellow";
+              style="font-size: 24pt;font-weight: bold;color:green";
 
               widget->setStyleSheet(style);
               widget->setText(value);
@@ -276,7 +345,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              style="font-size: 9pt;font-weight: bold";
              widget->setStyleSheet(style);
              widget->setText(value);
-
         }
         else
         {
@@ -306,6 +374,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+
     QFile xmlFile("/home/hunan/Desktop/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
@@ -316,6 +385,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QVBoxLayout * l = new QVBoxLayout();
     l->addWidget(mLayout);
     centralWidget()->setLayout(l);
+
+
+
 
 }
 

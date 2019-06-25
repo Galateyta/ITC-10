@@ -14,6 +14,7 @@
 #include <QCheckBox>
 #include <QRadioButton>
 #include <QTextEdit>
+#include <QComboBox>
 #include "div.h"
 
 enum class EElementType
@@ -23,6 +24,9 @@ enum class EElementType
     Input,
     Button,
     TextArea,
+    Select,
+    Table,
+    Img,
     Span,
     P,
     H1,
