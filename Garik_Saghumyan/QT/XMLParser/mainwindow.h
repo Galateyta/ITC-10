@@ -11,12 +11,14 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include "div.h"
+#include <QLabel>
 
 enum class EElementType
 {
     Unknown,
     Div,
     Input,
+    Textarea,
     Button,
     Text,
     Select,
@@ -35,7 +37,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void parseElement(QDomElement e, QObject* parent, EElementType parentType);
-
+    void setPixelsToHeaders(QLabel* label, QFont font, int pixels);
     ~MainWindow();
 
 private:

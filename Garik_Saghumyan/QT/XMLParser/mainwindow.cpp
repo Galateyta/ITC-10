@@ -7,21 +7,26 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QTableWidget>
-
-
-
+#include <QScrollArea>
 
 EElementType elementTypeToEnum(QString name)
 {
     if ("div" == name) return  EElementType::Div;
     if ("input" == name) return  EElementType::Input;
     if ("button" == name) return  EElementType::Button;
+    if("textarea" == name) return EElementType::Textarea;
     if ("p" == name || "span" == name || "h1" == name || "h2" == name || "h3" == name || "h4" == name || "h5" == name || "h6" == name)
         return EElementType::Text;
     if("select" == name) return EElementType::Select;
     if("table" == name) return EElementType::Table;
     if("img" == name) return EElementType::Img;
     return EElementType::Unknown;
+}
+void MainWindow::setPixelsToHeaders(QLabel* label, QFont font, int pixels)
+{
+    font.setPixelSize(pixels);
+    font.setBold(true);
+    label->setFont(font);
 }
 
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
@@ -91,6 +96,22 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
+    case EElementType::Textarea: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QTextEdit();
+            QTextEdit* widget = static_cast<QTextEdit*>(view);
+            static_cast<Div*>(parent)->addWidget(widget);
+            widget->setPlainText(value);
+            widget->setStyleSheet(style);
+        }
+        else
+        {
+
+        }
+        break;
+    }
+
     case EElementType::Select: {
         if (parentType == EElementType::Div)
         {
@@ -161,7 +182,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         else
         {
-
+            view = view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
     }
@@ -185,21 +206,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     case EElementType::Text: {
         if (parentType == EElementType::Div)
         {
-            if (name == "span")
-            {
-                view = new QTextEdit();
-                QTextEdit* widget = static_cast<QTextEdit*>(view);
-                static_cast<Div*>(parent)->addWidget(widget);
-                QPalette p =  widget->palette();
-                p.setColor(QPalette::Base, QColor(245, 245, 255));
-                widget->setPalette(p);
-                widget->setReadOnly(true);
-                widget->setPlainText(value);
-                widget->setStyleSheet(style);
-
-            }
-            else
-            {
                 view = new QLabel();
                 QLabel* widget = static_cast<QLabel*>(view);
                 static_cast<Div*>(parent)->addWidget(widget);
@@ -209,42 +215,28 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 QFont font = widget->font();
                 if (name == "h1")
                 {
-                    font.setPixelSize(32);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 32 );
                 }
                 else if (name == "h2")
                 {
-                    font.setPixelSize(24);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 24 );
                 }
                 else if (name == "h3")
                 {
-                    font.setPixelSize(19);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 19 );
                 }
                 else if (name == "h4")
                 {
-                    font.setPixelSize(16);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 16 );
                 }
                 else if (e.tagName() == "h5")
                 {
-                    font.setPixelSize(13);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 13 );
                 }
                 else if (name == "h6")
                 {
-                    font.setPixelSize(12);
-                    font.setBold(true);
-                    widget->setFont(font);
+                    setPixelsToHeaders(widget, font, 12 );
                 }
-            }
-
         }
         else
         {
@@ -278,7 +270,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/home/student/ITC-10/Garik_Saghumyan/QT/test.xml");
+    QFile xmlFile("/home/garik/ITC-10/ITC-10/Garik_Saghumyan/QT/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -286,8 +278,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QDomElement root = d.firstChildElement();
     parseElement(root, nullptr, EElementType::Unknown);
     QVBoxLayout * l = new QVBoxLayout();
+    QScrollArea* scroll = new QScrollArea();
+    scroll->setWidget(mLayout);
+//    scroll->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    scroll->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    scroll->setWidgetResizable(true);
     l->addWidget(mLayout);
+    setCentralWidget(scroll);
     centralWidget()->setLayout(l);
+
 }
 
 MainWindow::~MainWindow()

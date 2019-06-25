@@ -1,32 +1,32 @@
-<div width="100" height="50">
-
-	<div>
-
+<div>
 		<input></input>
 		<input type="radio" >male</input>
 		<input type="checkbox"></input>	
 		<button style="color: blue; background-color: yellow;">button</button>
 		<button>button2</button>
-		<p>sometextantextspantextspantextspantextspantantextspantextspantextspantextspant
-		</p>
-		
-	
+		<p>sometextantextspantextspantextspantextspantantext spantextspantextspantextspant</p>
+
+		<textarea></textarea>
+
 		<h1 style="color: red">Hello h1</h1>
 		<h2>Hello h2</h2>
 		<h3>Hello h3</h3>
 		<h4>Hello h4</h4>
 		<h5>Hello h5</h5>
 		<h6>Hello h6</h6>
-	</div>
-	<img src="/home/student/Desktop/image.png"></img>
-	<select>
+		<div>
+			<img src="/home/garik/Downloads/image.jpg"></img>
+		</div>
+		
+
+		<select>
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
-    </select>
-    
-    <!-- <table>
+    	</select>
+    	<div>
+    		<table>
       <tr>
         <th>Month</th>
         <th>Savings</th>
@@ -39,6 +39,9 @@
        <td>February</td>
        <td>$80</td>
      </tr>
-   </table> -->
+   </table>    
+    	</div>
+	
+	
 </div>
 
