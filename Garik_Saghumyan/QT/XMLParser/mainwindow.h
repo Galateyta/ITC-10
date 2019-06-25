@@ -22,6 +22,7 @@ enum class EElementType
     Button,
     Text,
     Select,
+    List,
     Table,
     Img
 };

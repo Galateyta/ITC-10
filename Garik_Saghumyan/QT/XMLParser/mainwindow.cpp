@@ -7,7 +7,9 @@
 #include <QCheckBox>
 #include <QComboBox>
 #include <QTableWidget>
+#include <QListWidget>
 #include <QScrollArea>
+#include <QImage>
 
 EElementType elementTypeToEnum(QString name)
 {
@@ -20,6 +22,7 @@ EElementType elementTypeToEnum(QString name)
     if("select" == name) return EElementType::Select;
     if("table" == name) return EElementType::Table;
     if("img" == name) return EElementType::Img;
+    if("ul" == name || "ol" == name) return EElementType::List;
     return EElementType::Unknown;
 }
 void MainWindow::setPixelsToHeaders(QLabel* label, QFont font, int pixels)
@@ -131,6 +134,33 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
+    case EElementType::List: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QListWidget();
+            QListWidget* list = static_cast<QListWidget*>(view);
+            list->setStyleSheet(style);
+            qDebug() << e.tagName();
+            for (int i = 0; i < e.childNodes().size(); i++)
+            {
+                if(e.tagName() == "ol")
+                {
+                    list->addItem(QString::number(i + 1) + "." + e.childNodes().at(i).toElement().text());
+                }
+                else
+                {
+                    list->addItem(e.childNodes().at(i).toElement().text());
+                }
+
+            }
+            static_cast<Div*>(parent)->addWidget(list);
+        }
+        else
+        {
+
+        }
+        break;
+    }
     case EElementType::Table: {
         if (parentType == EElementType::Div)
         {
@@ -147,7 +177,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
             }
             table->setHorizontalHeaderLabels(headers);
             table->setRowCount(e.childNodes().size()-1);
-//            table->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
             for (int i = 1; i < e.childNodes().size(); ++i)
             {
                const QDomNodeList& childs = e.childNodes().at(i).childNodes();
@@ -173,16 +202,17 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
             label->setStyleSheet(style);
             QString src = e.attribute("src", "");
             if(!src.size()) break;
-            QPixmap img(src);
-            label->setPixmap(img);
+            QImage img(src);
+            QPixmap pix = QPixmap::fromImage(img);
+            label->setPixmap(pix);
             label->setScaledContents(true);
             label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-            label->setMinimumSize(200, 200);
+            label->setMinimumSize(100, 100);
             static_cast<Div*>(parent)->addWidget(label);
         }
         else
         {
-            view = view = new QLabel(static_cast<QWidget*>(parent));
+            view = new QLabel(static_cast<QWidget*>(parent));
         }
         break;
     }
@@ -198,7 +228,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         else
         {
-              view = new QPushButton(static_cast<QWidget*>(parent));
+             view = new QPushButton(static_cast<QWidget*>(parent));
 
         }
         break;
@@ -206,37 +236,37 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     case EElementType::Text: {
         if (parentType == EElementType::Div)
         {
-                view = new QLabel();
-                QLabel* widget = static_cast<QLabel*>(view);
-                static_cast<Div*>(parent)->addWidget(widget);
-                widget->setStyleSheet(style);
-                widget->setText(value);
-                widget->setWordWrap(true);
-                QFont font = widget->font();
-                if (name == "h1")
-                {
-                    setPixelsToHeaders(widget, font, 32 );
-                }
-                else if (name == "h2")
-                {
-                    setPixelsToHeaders(widget, font, 24 );
-                }
-                else if (name == "h3")
-                {
-                    setPixelsToHeaders(widget, font, 19 );
-                }
-                else if (name == "h4")
-                {
-                    setPixelsToHeaders(widget, font, 16 );
-                }
-                else if (e.tagName() == "h5")
-                {
-                    setPixelsToHeaders(widget, font, 13 );
-                }
-                else if (name == "h6")
-                {
-                    setPixelsToHeaders(widget, font, 12 );
-                }
+            view = new QLabel();
+            QLabel* widget = static_cast<QLabel*>(view);
+            static_cast<Div*>(parent)->addWidget(widget);
+            widget->setStyleSheet(style);
+            widget->setText(value);
+            widget->setWordWrap(true);
+            QFont font = widget->font();
+            if (name == "h1")
+            {
+                setPixelsToHeaders(widget, font, 32 );
+            }
+            else if (name == "h2")
+            {
+                setPixelsToHeaders(widget, font, 24 );
+            }
+            else if (name == "h3")
+            {
+                setPixelsToHeaders(widget, font, 19 );
+            }
+            else if (name == "h4")
+            {
+                setPixelsToHeaders(widget, font, 16 );
+            }
+            else if (e.tagName() == "h5")
+            {
+                setPixelsToHeaders(widget, font, 13 );
+            }
+            else if (name == "h6")
+            {
+                setPixelsToHeaders(widget, font, 12 );
+            }
         }
         else
         {

@@ -17,30 +17,44 @@
 		<div>
 			<img src="/home/garik/Downloads/image.jpg"></img>
 		</div>
-		
-
 		<select>
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>
           <option value="audi">Audi</option>
     	</select>
-    	<div>
+
     		<table>
-      <tr>
-        <th>Month</th>
-        <th>Savings</th>
-      </tr>
-      <tr>
-        <td>January</td>
-        <td>$100</td>
-     </tr>
-     <tr>
-       <td>February</td>
-       <td>$80</td>
-     </tr>
-   </table>    
-    	</div>
+              <tr>
+                <th>Month</th>
+                <th>Savings</th>
+              </tr>
+              <tr>
+               <td>January</td>
+               <td>$100</td>
+              </tr>
+             <tr>
+              <td>February</td>
+              <td>$80</td>
+             </tr>
+             <tr>
+              <td>March</td>
+              <td>$90</td>
+             </tr>
+           </table>
+    	<ol>
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+          <li>Coffee</li>
+          <li>Tea</li>
+          <li>Milk</li>
+       </ol>  
+      <!--  <ol>
+  <li>Coffee</li>
+  <li>Tea</li>
+  <li>Milk</li>
+</ol> -->
 	
 	
 </div>
