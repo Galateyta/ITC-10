@@ -9,19 +9,12 @@ EElementType elementTypeToEnum(std::string name)
     if ("div" == name) return  EElementType::Div;
     if ("input" == name) return  EElementType::Input;
     if ("button" == name) return  EElementType::Button;
+    if ("select" == name) return  EElementType::Select;
+    if ("table" == name) return  EElementType::Table;
+    if ("img" == name) return  EElementType::Img;
     if ("p" == name || "span" == name || "h1" == name ||
         "h2" == name || "h3" == name || "h4" == name ||
         "h5" == name || "h6" == name ) return  EElementType::Text;
-
-
-//    if ("span" == name ) return  EElementType::Span;
-//    if ("h1" == name) return  EElementType::H1;
-//    if ("h2" == name) return  EElementType::H2;
-//    if ("h3" == name) return  EElementType::H3;
-//    if ("h4" == name) return  EElementType::H4;
-//    if ("h5" == name) return  EElementType::H5;
-//    if ("h6" == name) return  EElementType::H6;
-
     return EElementType::Unknown;
 }
 
@@ -29,20 +22,16 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
 {
    // qDebug() << e.tagName();
     std::string name = e.tagName().toStdString();
-
     QString  text = e.text();
     qDebug() << text;
     EElementType type = elementTypeToEnum(name);
-
     QObject* view = nullptr;
-
     QDomNamedNodeMap attributes = e.attributes();
     QString style = e.attribute("style", "");
     for (int i = 0; i < attributes.size(); ++i)
     {
         qDebug() << attributes.item(i).nodeValue();
     }
-
     switch (type)
     {
     case EElementType::Div: {
@@ -60,12 +49,12 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Text: {//---------??? inputa sarqum inchi????
+    case EElementType::Text: {
         if (parentType == EElementType::Div)
         {
              view = new QLabel(text);
-            // view->setWordWrap(true);
-             QWidget* widget = static_cast<QWidget*>(view);
+             QLabel* widget = static_cast<QLabel*>(view);
+             widget->setWordWrap(true);
              if("h1" == name || "h2" == name || "h3" == name || "h4" == name || "h5" == name ||"h6" == name){
                  QFont font = widget->font();
                  font.setBold(true);
@@ -84,7 +73,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                     font.setPointSize(20);
                  }
                  widget->setFont(font);
-
+                 widget->setStyleSheet(style);
              }
              Div* p = static_cast<Div*>(parent);
              p->addWidget(widget);
@@ -93,10 +82,11 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         {
             if("p" == name || "span" == name) {
                 view = new QLabel(text, static_cast<QWidget*>(parent));
-            } else  if("h1" == name || "h2" == name || "h3" == name || "h4" == name || "h5" == name ||"h6" == name){
+            } else  if("h1" == name || "h2" == name || "h3" == name || "h4" == name || "h5" == name || "h6" == name){
                 view = new QLabel(text);
                // view->setWordWrap(true);
-                QWidget* widget = static_cast<QWidget*>(view);
+                QLabel* widget = static_cast<QLabel*>(view);
+                widget->setWordWrap(true);
                 QFont font = widget->font();
                 if("h1" == name) {
                    font.setPointSize(70);
@@ -113,83 +103,90 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 }
                 font.setBold(true);
                 widget->setFont(font);
-                //widget->setStyleSheet();
+                widget->setStyleSheet(style);
                 QWidget* p = static_cast<QWidget*>(parent);
                 widget->setParent(p);
             }
         }
-   }
+        break;
+    }
+
+    case EElementType::Select: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QComboBox();
+             QComboBox* combobox= static_cast<QComboBox*>(view);
+             combobox->setStyleSheet(style);
+             for(int i = 0; i < e.childNodes().length(); ++i)
+             {
+                 combobox->addItem(e.childNodes().at(i).toElement().text());
+             }
+             Div* p = static_cast<Div*>(parent);
+             p->addWidget(combobox);
+        }
+
+        break;
+    }
+    case EElementType::Table: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QTableWidget();
+             QTableWidget* table= static_cast<QTableWidget*>(view);
+             table->setStyleSheet(style);
+
+             QDomElement headersElem =  e.firstChild().toElement();
+             table->setColumnCount(headersElem.childNodes().size());
 
 
+             QStringList headers;
 
-//    case EElementType::P: {
-//        if (parentType == EElementType::Div)
-//        {
-//             view = new QLabel(text);
-//            // view->setWordWrap(true);
-//             QWidget* widget = static_cast<QWidget*>(view);
-//             Div* p = static_cast<Div*>(parent);
-//             p->addWidget(widget);
-//        }
-//        else
-//        {
-//              view = new QLabel(text, static_cast<QWidget*>(parent));
-//             // view->setWordWrap(true);
-//        }
-//        break;
-//    }
-//    case EElementType::Span: {
-//        if (parentType == EElementType::Div)
-//        {
-//             view = new QLabel(text);
-//            // view->setWordWrap(true);
-//             QWidget* widget = static_cast<QWidget*>(view);
-//             Div* p = static_cast<Div*>(parent);
-//             p->addWidget(widget);
-//        }
-//        else
-//        {
-//              view = new QLabel(text, static_cast<QWidget*>(parent));
-//             // view->setWordWrap(true);
-//        }
-//        break;
-//    }
-//    case EElementType::H1: {
-//        if (parentType == EElementType::Div)
-//        {
-//             view = new QLabel(text);
-//            // view->setWordWrap(true);
-//             QWidget* widget = static_cast<QWidget*>(view);
-//             QFont font = widget->font();
-//             font.setPointSize(70);
-//             font.setBold(true);
-//             widget->setFont(font);
-//             //widget->setStyleSheet();
-//             Div* p = static_cast<Div*>(parent);
-//             p->addWidget(widget);
-//        }
-//        else
-//        { //----------????? ete divi mej che style chi yndunum
-//              view = new QLabel(text);
-//             // view->setWordWrap(true);
-//              QWidget* widget = static_cast<QWidget*>(view);
-//              QFont font = widget->font();
-//              font.setPointSize(70);
-//              font.setBold(true);
-//              widget->setFont(font);
-//              //widget->setStyleSheet();
-//              QWidget* p = static_cast<QWidget*>(parent);
-//              widget->setParent(p);
-//        }
-//        break;
-//    }
+             for(int i = 0; i < headersElem.childNodes().size(); ++i)
+             {
+                headers.push_back(headersElem.childNodes().at(i).toElement().text());
+             }
+//             headers.push_back("h1");
+//             headers.push_back("h1222");
+//             headers.push_back("h1333");
+             table->setRowCount(e.childNodes().size()-1);
 
-
+             table->setHorizontalHeaderLabels(headers);
+             for(int i = 1; i < e.childNodes().size(); ++i)
+             {
+                 const QDomNodeList& childs =  e.childNodes().at(i).childNodes();
+                 for(int j = 0; j < childs.size(); ++j)
+                 {
+                     QTableWidgetItem* item = new QTableWidgetItem(childs.at(j).toElement().text());
+                     table->setItem(i-1,j,item);
+                 }
+             }
+             Div* p = static_cast<Div*>(parent);
+             p->addWidget(table);
+        }
+        break;
+    }
+    case EElementType::Img: {
+        if (parentType == EElementType::Div)
+        {
+             view = new QLabel();
+             QLabel* label= static_cast<QLabel*>(view);
+             label->setStyleSheet(style);
+             QString src = e.attribute("src","");
+             if(!src.size()) break;
+             QPixmap img(src);
+             label->setPixmap(img);
+             label->setScaledContents(true);
+             label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+             Div* p = static_cast<Div*>(parent);
+             p->addWidget(label);
+        }
+        break;
+    }
     case EElementType::Input: {
         if (parentType == EElementType::Div)
         {
-             view = new QLineEdit();
+             view = new QLineEdit(text);
              QWidget* widget = static_cast<QWidget*>(view);
+             widget->setStyleSheet(style);
              Div* p = static_cast<Div*>(parent);
              p->addWidget(widget);
         }
@@ -206,7 +203,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              QPushButton* widget = static_cast<QPushButton*>(view);
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setStyleSheet(style);
-
         }
         else
         {
@@ -215,7 +211,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         break;
     }
     }
-
     if (!mLayout)
     {
         mLayout = static_cast<Div*>(view);
@@ -226,8 +221,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     {
         parseElement(childs.at(i).toElement(), view, type);
     }
-
-
 }
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -236,7 +229,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/home/anahit/Desktop/test.xml");
+    QFile xmlFile("/home/student/Desktop/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -246,7 +239,6 @@ MainWindow::MainWindow(QWidget *parent) :
     QVBoxLayout * l = new QVBoxLayout();
     l->addWidget(mLayout);
     centralWidget()->setLayout(l);
-
 }
 
 MainWindow::~MainWindow()

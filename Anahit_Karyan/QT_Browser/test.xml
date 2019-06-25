@@ -1,15 +1,56 @@
-<div width="100" height="50" style="max-width: 100px">
-	<input></input>
-	<button style="color: blue; background-color: yellow;">asdfasd</button>
-	<button></button>
-	<p>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>>
-	<span>bbb<h1>cccc</h1></span>
+<div>
+    
+    <img src="/home/student/Desktop/1.png"> </img>
 
+<!-- 	<div>
+		<table>
+		  <tr>
+		    <th>Firstname</th>
+		    <th>Lastname</th> 
+		    <th>Age</th>
+		  </tr>
+		  <tr>
+		    <td>Jill</td>
+		    <td>Smith</td>
+		    <td>50</td>
+		  </tr>
+		  <tr>
+		    <td>Eve</td>
+		    <td>Jackson</td>
+		    <td>94</td>
+		  </tr>
+		  <tr>
+		    <td>John</td>
+		    <td>Doe</td>
+		    <td>80</td>
+		  </tr>
+		</table> 
+	<div>
+ -->
+
+
+	<input style="background-color: green"> Enter text </input>
+	<button style="color: blue; background-color: yellow;">asdfasd</button>
+	<button></button> 
+	<p >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa</p>>
+	<p style="color: red;">bbb<p>cccc</p></p>
 	<h1> A </h1>
 	<h2> A </h2>
-	<h3> A </h3>
+	<h3 style="color: red;"> A </h3>
 	<h4> A </h4>
 	<h5> A </h5>
 	<h6> A </h6>
+ 
+ 	<!--
+	<select>
+	    <option >Выберите героя</option>
+	    <option >Чебурашка</option>
+	    <option >Крокодил Гена</option>
+	    <option>Шапокляк</option>
+	    <option v>Крыса Лариса</option>
+   </select> -->
+
+  
 </div>
+
 
