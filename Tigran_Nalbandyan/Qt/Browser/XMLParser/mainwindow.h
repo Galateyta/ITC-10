@@ -11,6 +11,10 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QTextEdit>
+#include <QComboBox>
 #include "div.h"
 
 enum class EElementType
@@ -19,7 +23,10 @@ enum class EElementType
     Div,
     Input,
     Button,
-    Text
+    Text,
+    Select,
+    Table,
+    Img,
 };
 
 namespace Ui {
