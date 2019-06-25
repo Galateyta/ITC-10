@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QScrollArea>
 
 
 EElementType elementTypeToEnum(std::string name)
@@ -112,10 +113,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
             createImg(view, e, parent, parentType);
             break;
 
-
-
-
-
     }
 
     if (!mLayout)
@@ -142,7 +139,6 @@ void MainWindow::createInpute(QObject* view, QDomElement e, QObject* parent, EEl
         static_cast<Div*>(parent)->addWidget(widget);
         widget->setText(text);
         widget->setStyleSheet(style);
-
     }
     else
     {
@@ -157,6 +153,8 @@ void MainWindow::createInpute(QObject* view, QDomElement e, QObject* parent, EEl
              QCheckBox* widget = static_cast<QCheckBox*>(view);
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setText(text);
+             widget->setStyleSheet(style);
+
         }
         else
         {
@@ -171,6 +169,7 @@ void MainWindow::createInpute(QObject* view, QDomElement e, QObject* parent, EEl
              QRadioButton* widget = static_cast<QRadioButton*>(view);
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setText(text);
+             widget->setStyleSheet(style);
       }
         else
         {
@@ -323,11 +322,10 @@ void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, EEleme
     QPixmap img(src);
     label->setPixmap(img);
     label->setScaledContents(true);
-//            QSize size = label->sizeHint();
-//            label->setMinimumSize(200,200);
-     label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-     static_cast<Div*>(parent)->addWidget(label);
-     }
+    label->setMinimumSize(200,200);
+
+    static_cast<Div*>(parent)->addWidget(label);
+    }
 }
 QString MainWindow::getHStyle(EElementType type) {
     switch (type) {
@@ -360,9 +358,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
     QDomElement root = d.firstChildElement();
     parseElement(root, nullptr, EElementType::Unknown);
-    QVBoxLayout * l = new QVBoxLayout();
-    l->addWidget(mLayout);
-    centralWidget()->setLayout(l);
+
+//    QVBoxLayout * l = new QVBoxLayout();
+//    l->addWidget(mLayout);
+//    centralWidget()->setLayout(l);
+
+    QScrollArea *scrollarea = new QScrollArea(this);
+    scrollarea->setWidget(mLayout);
+    scrollarea->setWidgetResizable(true);
+    setCentralWidget(scrollarea);
 
 }
 
