@@ -44,6 +44,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              view = new Div();
              Div* layout = static_cast<Div*>(view);
              static_cast<Div*>(parent)->addDiv(layout);
+             layout->setStyleSheet(style);
         }
         else
         {
@@ -60,10 +61,11 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              QWidget* widget = static_cast<QWidget*>(view);
              Div* p = static_cast<Div*>(parent);
              p->addWidget(widget);
+             p->setStyleSheet(style);
         }
         else
         {
-              view = new QLineEdit(static_cast<QWidget*>(parent));
+            view = new QLineEdit(static_cast<QWidget*>(parent));
         }
         break;
     }
@@ -75,7 +77,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              QPushButton* widget = static_cast<QPushButton*>(view);
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setStyleSheet(style);
-
+             QString text = e.text();
+             widget->setText(text);
         }
         else
         {
@@ -149,7 +152,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/home/mane/Desktop/test.xml");
+    QFile xmlFile("/home/student/Desktop/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -224,6 +227,10 @@ QString MainWindow::getStyle(EElementType type)
         case EElementType::H6 :
         {
             return "display : block; font-size : 11px; font-weight: bold;";
+        }
+        default:
+        {
+            return "";
         }
     }
 }
