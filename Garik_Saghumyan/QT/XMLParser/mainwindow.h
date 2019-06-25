@@ -18,7 +18,10 @@ enum class EElementType
     Div,
     Input,
     Button,
-    Text
+    Text,
+    Select,
+    Table,
+    Img
 };
 
 namespace Ui {

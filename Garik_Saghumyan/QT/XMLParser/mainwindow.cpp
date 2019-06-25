@@ -5,6 +5,8 @@
 #include <QColor>
 #include <QRadioButton>
 #include <QCheckBox>
+#include <QComboBox>
+#include <QTableWidget>
 
 
 
@@ -16,7 +18,9 @@ EElementType elementTypeToEnum(QString name)
     if ("button" == name) return  EElementType::Button;
     if ("p" == name || "span" == name || "h1" == name || "h2" == name || "h3" == name || "h4" == name || "h5" == name || "h6" == name)
         return EElementType::Text;
-
+    if("select" == name) return EElementType::Select;
+    if("table" == name) return EElementType::Table;
+    if("img" == name) return EElementType::Img;
     return EElementType::Unknown;
 }
 
@@ -25,9 +29,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
    // qDebug() << e.tagName();
     QString name = e.tagName();
     EElementType type = elementTypeToEnum(name);
-
     QObject* view = nullptr;
-
     QDomNamedNodeMap attributes = e.attributes();
     QString style = e.attribute("style");
     QString inputType = e.attribute("type");
@@ -45,6 +47,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              view = new Div();
              Div* layout = static_cast<Div*>(view);
              static_cast<Div*>(parent)->addDiv(layout);
+             layout->setStyleSheet(style);
         }
         else
         {
@@ -71,6 +74,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 Div* p = static_cast<Div*>(parent);
                 p->addWidget(widget);
                 p->setStyleSheet(style);
+
             }
             else
             {
@@ -84,6 +88,80 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         else
         {
               view = new QLineEdit(static_cast<QWidget*>(parent));
+        }
+        break;
+    }
+    case EElementType::Select: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QComboBox();
+            QComboBox* combobox = static_cast<QComboBox*>(view);
+            combobox->setStyleSheet(style);
+            QDomNodeList childs = e.childNodes();
+            for (int i = 0; i < childs.length(); ++i)
+            {
+                combobox->addItem(e.childNodes().at(i).toElement().text());
+            }
+            static_cast<Div*>(parent)->addWidget(combobox);
+        }
+        else
+        {
+
+        }
+        break;
+    }
+    case EElementType::Table: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QTableWidget();
+            QTableWidget* table = static_cast<QTableWidget*>(view);
+            table->setStyleSheet(style);
+            QDomElement headerelement = e.firstChild().toElement();
+            QStringList headers;
+            table->setColumnCount(headerelement.childNodes().size());
+
+            for (int i = 0; i < headerelement.childNodes().size(); i++)
+            {
+                headers.push_back(headerelement.childNodes().at(i).toElement().text());
+            }
+            table->setHorizontalHeaderLabels(headers);
+            table->setRowCount(e.childNodes().size()-1);
+//            table->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+            for (int i = 1; i < e.childNodes().size(); ++i)
+            {
+               const QDomNodeList& childs = e.childNodes().at(i).childNodes();
+               for (int j = 0; j < childs.size(); ++j)
+               {
+                    QTableWidgetItem* item = new QTableWidgetItem(childs.at(j).toElement().text());
+                    table->setItem(i-1,j, item);
+               }
+            }
+            static_cast<Div*>(parent)->addWidget(table);
+        }
+        else
+        {
+
+        }
+        break;
+    }
+    case EElementType::Img: {
+        if (parentType == EElementType::Div)
+        {
+            view = new QLabel();
+            QLabel* label = static_cast<QLabel*>(view);
+            label->setStyleSheet(style);
+            QString src = e.attribute("src", "");
+            if(!src.size()) break;
+            QPixmap img(src);
+            label->setPixmap(img);
+            label->setScaledContents(true);
+            label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
+            label->setMinimumSize(200, 200);
+            static_cast<Div*>(parent)->addWidget(label);
+        }
+        else
+        {
+
         }
         break;
     }
@@ -113,7 +191,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 QTextEdit* widget = static_cast<QTextEdit*>(view);
                 static_cast<Div*>(parent)->addWidget(widget);
                 QPalette p =  widget->palette();
-                p.setColor(QPalette::Base, QColor(255, 255, 255));
+                p.setColor(QPalette::Base, QColor(245, 245, 255));
                 widget->setPalette(p);
                 widget->setReadOnly(true);
                 widget->setPlainText(value);
@@ -127,6 +205,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
                 static_cast<Div*>(parent)->addWidget(widget);
                 widget->setStyleSheet(style);
                 widget->setText(value);
+                widget->setWordWrap(true);
                 QFont font = widget->font();
                 if (name == "h1")
                 {
@@ -170,6 +249,10 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         else
         {
               view = new QLabel(static_cast<QWidget*>(parent));
+              QLabel* widget = static_cast<QLabel*>(view);
+              widget->setStyleSheet(style);
+              widget->setText(value);
+              widget->setWordWrap(true);
         }
         break;
     }
@@ -195,7 +278,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/home/garik/ITC-10/ITC-10/Garik_Saghumyan/QT/test.xml");
+    QFile xmlFile("/home/student/ITC-10/Garik_Saghumyan/QT/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
