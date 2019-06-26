@@ -1,8 +1,8 @@
 #ifndef DIV_H
 #define DIV_H
 
-#include <QWidget>
 #include <QBoxLayout>
+#include <QWidget>
 
 class Div : public QWidget
 {
@@ -14,10 +14,8 @@ public:
     void addLayout(QBoxLayout* layout);
     void addDiv(Div* div);
     void addWidget(QWidget* widget);
-
-signals:
-
-public slots:
+    void setDirection(QBoxLayout::Direction direction);
+    void setAlignment(Qt::Alignment alignment);
 
 private:
     QBoxLayout* mLayout = nullptr;

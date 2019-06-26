@@ -1,13 +1,10 @@
 #include "downloadmanager.h"
 #include <QNetworkReply>
-#include <QPixmap>
 
-DownloadManager::DownloadManager(QObject* parent) : QObject(parent) // in this case the parent is MainWindow(this)
+DownloadManager::DownloadManager(QObject* parent) : QObject(parent)
 {
     connect(&manager, SIGNAL(finished(QNetworkReply*)),
                 SLOT(slotDownloadFinished(QNetworkReply*)));
-
-
 }
 
 DownloadManager::~DownloadManager()
@@ -15,24 +12,17 @@ DownloadManager::~DownloadManager()
 
 }
 
-void DownloadManager::start()
+void DownloadManager::start(QString url, void* usrPtr)
 {
-    QNetworkRequest request(QUrl("https://www.nasa.gov/sites/default/files/thumbnails/image/tyuleniy_oli_2016097_lrg_a.jpg"));
+    QUrl qurl(url);
+    QNetworkRequest request(qurl);
     QNetworkReply* reply = manager.get(request);
-    connect(reply, SIGNAL(downloadProgress(qint64, qint64)),
-            this, SLOT(slotDownloadProgress(qint64, qint64)));
-
+    QObjectUserData * data = static_cast<QObjectUserData*>(usrPtr);
+    reply->setUserData(0, data);
 }
 
 void DownloadManager::slotDownloadFinished(QNetworkReply* reply)
 {
-    int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
     QByteArray data = reply->readAll();
-    emit finished(data);
-}
-
-void DownloadManager::slotDownloadProgress(qint64 current, qint64 total)
-{
-    int percent = (current / (double)total) * 100;
-    emit progress(percent);
+    emit finished(reply->userData(0), data);
 }
