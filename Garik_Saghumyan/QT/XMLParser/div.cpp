@@ -21,3 +21,8 @@ void Div::addWidget(QWidget *widget)
 {
     mLayout->addWidget(widget);
 }
+
+void Div::setDirection(QBoxLayout::Direction direction)
+{
+    mLayout->setDirection(direction);
+}

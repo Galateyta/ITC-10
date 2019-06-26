@@ -24,7 +24,13 @@ enum class EElementType
     Select,
     List,
     Table,
-    Img
+    Img,
+    H1,
+    H2,
+    H3,
+    H4,
+    H5,
+    H6
 };
 
 namespace Ui {
@@ -37,12 +43,23 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
+
     void parseElement(QDomElement e, QObject* parent, EElementType parentType);
     void setPixelsToHeaders(QLabel* label, QFont font, int pixels);
+    QObject* addDivElement(QObject* view, QObject* parent, EElementType parentType, QString style, QBoxLayout::Direction direction);
+    void addInputElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString inputType, QString value);
+    void addTextAreaElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString value);
+    void addSelectElements(QObject* view, QObject* parent, EElementType parentType, QDomElement e, QString style);
+    void addListElements(QObject* view, QObject* parent, EElementType parentType, QDomElement e, QString style);
+    void addTableElements(QObject* view, QObject* parent, EElementType parentType, QDomElement e, QString style);
+    void addButtonElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString value);
+    void addImageElemets(QObject* view, QObject* parent, EElementType parentType,QDomElement e, QString style, QString src);
+    void addTextElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString value, EElementType headerName);
+
     ~MainWindow();
 
 private slots:
-    void onDownloadFinished1(void* usrPtr, QByteArray data);
+    void onDownloadFinished(void* usrPtr, QByteArray data);
 
 private:
     Ui::MainWindow *ui;

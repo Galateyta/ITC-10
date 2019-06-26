@@ -4,7 +4,7 @@
 #include <QPixmap>
 #include <QObjectUserData>
 
-DownloadManager::DownloadManager(QObject* parent) : QObject(parent) // in this case the parent is MainWindow(this)
+DownloadManager::DownloadManager(QObject* parent) : QObject(parent)
 {
     connect(&manager, SIGNAL(finished(QNetworkReply*)),
                 SLOT(slotDownloadFinished(QNetworkReply*)));
@@ -26,7 +26,6 @@ void DownloadManager::start(QString url, void* usrPtr)
 
 void DownloadManager::slotDownloadFinished(QNetworkReply* reply)
 {
-    int statusCode = reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
     QByteArray data = reply->readAll();
     emit finished(reply->userData(0), data);
 }
