@@ -4,7 +4,7 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT       += core gui xml network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -26,11 +26,13 @@ CONFIG += c++11
 
 SOURCES += \
         div.cpp \
+        downloadmanager.cpp \
         main.cpp \
         mainwindow.cpp
 
 HEADERS += \
         div.h \
+        downloadmanager.h \
         mainwindow.h
 
 FORMS += \

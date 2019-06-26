@@ -10,6 +10,11 @@
 #include <QVBoxLayout>
 #include <QLineEdit>
 #include <QPushButton>
+#include <QLabel>
+#include <QCheckBox>
+#include <QRadioButton>
+#include <QTextEdit>
+#include <QComboBox>
 #include "div.h"
 
 enum class EElementType
@@ -18,15 +23,19 @@ enum class EElementType
     Div,
     Input,
     Button,
+    TextArea,
+    Select,
+    Table,
+    Img,
+    Span,
     P,
     H1,
     H2,
     H3,
     H4,
     H5,
-    H6,
-    Span,
-    Select
+    H6
+
 };
 
 namespace Ui {
@@ -39,9 +48,8 @@ class MainWindow : public QMainWindow
 
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    void parseElement(QDomElement, QObject*, EElementType);
-    void create(QObject*, QDomElement, QObject*, EElementType, EElementType);
-    QString getStyle(EElementType);
+    void parseElement(QDomElement e, QObject* parent, EElementType parentType);
+
     ~MainWindow();
 
 private:
