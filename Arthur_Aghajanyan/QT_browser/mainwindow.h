@@ -1,5 +1,6 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+#include "DownloadManager.h"
 
 #include <QMainWindow>
 #include <QVBoxLayout>
@@ -65,12 +66,18 @@ public:
     void createTable(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     void createImg(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     void createOlAndUl(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
-
+    QObject* createDiv(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     QString getHStyle(EElementType type);
+
 
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
+    DownloadManager* mDownloadManager;
+
+private slots:
+    void onDownloadFinished(void* usrPtr, QByteArray data);
+
 };
 
 #endif // MAINWINDOW_H
