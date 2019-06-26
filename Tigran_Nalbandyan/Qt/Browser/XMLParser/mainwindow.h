@@ -1,6 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include "downloadmanager.h"
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QtXml/QDomDocument>
@@ -27,6 +28,7 @@ enum class EElementType
     Select,
     Table,
     Img,
+    List
 };
 
 namespace Ui {
@@ -41,11 +43,25 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     void parseElement(QDomElement e, QObject* parent, EElementType parentType);
 
+    QObject* createDiv(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createInput(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createButton(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createText(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createSelect(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createTable(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createImg(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createList(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+
+
     ~MainWindow();
+
+private slots:
+    void onDownloadFinished(void* usrPtr, QByteArray data);
 
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
+    DownloadManager* mDownloadManager;
 };
 
 #endif // MAINWINDOW_H

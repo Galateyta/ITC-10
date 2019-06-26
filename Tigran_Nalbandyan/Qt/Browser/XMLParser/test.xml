@@ -5,8 +5,9 @@
 	<h1>asd</h1>
 
 	<div>
+		<img src="C:/Users/Admin/Pictures/Saved Pictures/1 - SkNreQB.jpg"></img>
 		<input />
-		<table>
+		<!-- <table>
 			<tr>
 				<th>Header1</th>
 				<th><h2>Header2</h2></th>
@@ -86,7 +87,7 @@
 				<td>43</td>
 				<td>54</td>
 			</tr>
-		</table>
+		</table> -->
 	</div>
 	<select value="C">
 		<option>A</option>
