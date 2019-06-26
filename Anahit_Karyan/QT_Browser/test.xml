@@ -1,6 +1,24 @@
+<!-- <div flex-direction="row" style="alignment: left" justify-content="center" align-items="center">
+
+	
+
+	<div flex-direction="column" justify-content="center">
+
+	<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQhvN5bRcWB4fJpF4-R8c_tP9qZ4UJXaq7FvNU5F3GSK8SvCqQC" ></img>
+
+	<div flex-direction="row" style="alignment: start" justify-content="center">
+	<input type="text" style="max-width: 200;"></input>
+	<button style="color: red;">Search</button>
+
+	</div>
+	</div>
+
+</div> -->
+
+
 <div>
     
-    <img src="/home/anahit/Desktop/1.png"> </img>
+    <img src="file:///home/anahit/Desktop/1.png"> </img>
 
 	<div>
 		<table>
@@ -34,7 +52,7 @@
 	<button></button> 
 	<p >aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaa</p>>
 	<p style="color: red;">bbb<p>cccc</p></p>
-	<h1> A </h1>
+<!-- 	<h1> A </h1>
 	<h2> A </h2>
 	<h3 style="color: red;"> A </h3>
 	<h4> A </h4>
@@ -48,8 +66,8 @@
 	    <option >Крокодил Гена</option>
 	    <option>Шапокляк</option>
 	    <option v>Крыса Лариса</option>
-   </select> 
-
+   </select>  -->
+ 
   	<textarea>
 		At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.
     </textarea> 
@@ -57,6 +75,19 @@
     <input type="checkbox"> check2 </input>
     <input type="radio" name="gender" > radio1</input>
     <input type="radio" name="gender"> radio2 </input>
+
+	<ul>
+	  <li>Coffee</li>
+	  <li>Tea</li>
+	  <li>Milk</li>
+	</ul> 
+
+	<ol>
+	  <li>Coffee1</li>
+	  <li>Tea1</li>
+	  <li>Milk1</li>
+	</ol> 
 </div>
+
 
 
