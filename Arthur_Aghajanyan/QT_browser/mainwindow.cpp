@@ -20,6 +20,8 @@ EElementType elementTypeToEnum(std::string name)
     if ("select" == name) return EElementType::Select;
     if ("table" == name) return EElementType::Table;
     if ("img" == name) return EElementType::Img;
+    if ("ol" == name || "ul" == name) return EElementType::ol;
+    if ("ul" == name) return EElementType::ul;
 
     return EElementType::Unknown;
 }
@@ -106,13 +108,19 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         case EElementType::Select:
             createSelect(view, e, parent, parentType);
             break;
+
         case EElementType::Table:
             createTable(view, e, parent, parentType);
             break;
+
         case EElementType::Img:
             createImg(view, e, parent, parentType);
             break;
 
+        case EElementType::ol:
+        case EElementType::ul:
+            createOlAndUl(view, e, parent, parentType);
+            break;
     }
 
     if (!mLayout)
@@ -132,18 +140,18 @@ void MainWindow::createInpute(QObject* view, QDomElement e, QObject* parent, EEl
     QString text = e.text();
     if (typeOfTag == "text")
     {
-    if (parentType == EElementType::Div)
-    {
-        view = new QLineEdit();
-        QLineEdit* widget = static_cast<QLineEdit*>(view);
-        static_cast<Div*>(parent)->addWidget(widget);
-        widget->setText(text);
-        widget->setStyleSheet(style);
-    }
-    else
-    {
-        view = new QLineEdit(static_cast<QWidget*>(parent));
-    }
+        if (parentType == EElementType::Div)
+        {
+            view = new QLineEdit();
+            QLineEdit* widget = static_cast<QLineEdit*>(view);
+            static_cast<Div*>(parent)->addWidget(widget);
+            widget->setText(text);
+            widget->setStyleSheet(style);
+        }
+        else
+        {
+            view = new QLineEdit(static_cast<QWidget*>(parent));
+        }
     }
     else if(typeOfTag == "checkbox")
     {
@@ -154,7 +162,6 @@ void MainWindow::createInpute(QObject* view, QDomElement e, QObject* parent, EEl
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setText(text);
              widget->setStyleSheet(style);
-
         }
         else
         {
@@ -303,10 +310,10 @@ void MainWindow::createTable(QObject* view, QDomElement e, QObject* parent, EEle
                 table->setItem(i - 1, j, item);
             }
         }
-
         static_cast<Div*>(parent)->addWidget(table);
     }
 }
+
 void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, EElementType parentType)
 {
     QString style = e.attribute("style", "");
@@ -325,6 +332,32 @@ void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, EEleme
     label->setMinimumSize(200,200);
 
     static_cast<Div*>(parent)->addWidget(label);
+    }
+}
+
+void MainWindow::createOlAndUl(QObject* view, QDomElement e, QObject* parent, EElementType parentType)
+{
+    QString style = e.attribute("style", "");
+    if (parentType == EElementType::Div)
+    {
+        view = new QListWidget();
+        QListWidget* list = static_cast<QListWidget*>(view);
+        int count = e.childNodes().size();
+        for (int i = 0; i < count; i++)
+        {
+            if(e.tagName() == "ul")
+            {
+                QString styleUl = "* ";
+                list->addItem(styleUl + e.childNodes().at(i).toElement().text());
+            }
+            else
+            {
+                QString num = (QString::number(i + 1) + ". ");
+                list->addItem(num + e.childNodes().at(i).toElement().text());
+             }
+            list->setStyleSheet(style);
+         }
+         static_cast<Div*>(parent)->addWidget(list);
     }
 }
 QString MainWindow::getHStyle(EElementType type) {
@@ -351,7 +384,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QFile xmlFile("/path/test.xml");
+    QFile xmlFile("/home/abul/Desktop/Artur_c++/ITC10/QT/browser/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -374,3 +407,4 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+

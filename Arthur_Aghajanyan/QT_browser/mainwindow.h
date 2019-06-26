@@ -18,6 +18,7 @@
 #include <QRadioButton>
 #include <QSize>
 #include <QTableWidget>
+#include <QListWidget>
 
 enum class EElementType
 {
@@ -25,6 +26,10 @@ enum class EElementType
     Div,
     Input,
     Button,
+    TextArea,
+    Select,
+    Table,
+    Img,
     p,
     span,
     h1,
@@ -33,10 +38,8 @@ enum class EElementType
     h4,
     h5,
     h6,
-    TextArea,
-    Select,
-    Table,
-    Img
+    ol,
+    ul
 };
 
 namespace Ui {
@@ -57,11 +60,12 @@ public:
     void createPAndSpan(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
     void createButton(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
     void createInpute(QObject* view, QDomElement e, QObject* parent, EElementType parentType,QString typeOfTag);
-    void createDiv(QObject* view, QDomElement e, QObject* parent, EElementType parentType);
     void createTextArea(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     void createSelect(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     void createTable(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
     void createImg(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+    void createOlAndUl(QObject *view, QDomElement e, QObject *parent, EElementType parentType);
+
     QString getHStyle(EElementType type);
 
 private:

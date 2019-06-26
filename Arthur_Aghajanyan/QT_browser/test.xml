@@ -1,0 +1,47 @@
+<div>
+	<input type ="text" style="background-color:red">type text</input>
+    <input type="checkbox" style="color:yellow">checkbox</input>
+    <input type="radio"> Male</input>
+    <button style="color: blue; background-color: green;">BUTTON1</button>
+
+<textarea>textarea</textarea>
+    <select>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes</option>
+      <option value="audi">Audi</option>
+    </select>
+<table style="width:100%">
+  <tr>
+    <th>Firstname</th>
+    <th>Lastname</th> 
+    <th>Age</th>
+  </tr>
+  <tr>
+    <td>Jill</td>
+    <td>Smith</td>
+    <td>50</td>
+  </tr>
+  <tr>
+    <td>Eve</td>
+    <td>Jackson</td>
+    <td>94</td>
+  </tr>
+  <tr>
+    <td>John</td>
+    <td>Doe</td>
+    <td>80</td>
+  </tr>
+</table>
+<img src="/home/abul/Desktop/Artur_c++/ITC10/QT/browser/pexels-photo-414612.jpeg" alt="альтернативный текст"></img>
+<ol>
+    <li>a</li>
+    <li>b</li>
+    <li>c</li>
+    <li>d</li>
+</ol>
+<ul>
+    <li>a</li>
+    <li>b</li>
+</ul>
+</div>
