@@ -12,7 +12,7 @@
 #include <QPushButton>
 #include "div.h"
 #include <QLabel>
-
+#include "downloadmanager.h"
 enum class EElementType
 {
     Unknown,
@@ -41,9 +41,14 @@ public:
     void setPixelsToHeaders(QLabel* label, QFont font, int pixels);
     ~MainWindow();
 
+private slots:
+    void onDownloadFinished1(void* usrPtr, QByteArray data);
+
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
+    DownloadManager* download;
+
 };
 
 #endif // MAINWINDOW_H

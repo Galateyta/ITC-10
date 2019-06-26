@@ -1,7 +1,7 @@
 <div>
 		<input></input>
 		<input type="radio" >male</input>
-		<input type="checkbox"></input>	
+		<input type="checkbox">esiminch</input>	
 		<button style="color: blue; background-color: yellow;">button</button>
 		<button>button2</button>
 		<p>sometextantextspantextspantextspantextspantantext spantextspantextspantextspant</p>
@@ -9,15 +9,15 @@
 		<textarea></textarea>
 
 		<h1 style="color: red">Hello h1</h1>
-		<h2>Hello h2</h2>
+		<h2 style="qproperty-alignment: AlignCenter">Hello h2</h2>
 		<h3>Hello h3</h3>
 		<h4>Hello h4</h4>
 		<h5>Hello h5</h5>
 		<h6>Hello h6</h6>
-		<div>
-			<img src="/home/garik/Downloads/image.jpg"></img>
-		</div>
-		<select>
+		<!-- <div>
+ --><img src="http://cdn3.megarush.net/wp-content/uploads/2013/01/search-engine-friendly-urls.jpg?fbclid=IwAR3AFDH3HFQzZ-9CSPRW15l0BqmNTzkpyOJyMVo9S7WHHZcQCDbL4CI3FF8"></img>
+<!-- 		</div>
+ -->	<select>
           <option value="volvo">Volvo</option>
           <option value="saab">Saab</option>
           <option value="mercedes">Mercedes</option>

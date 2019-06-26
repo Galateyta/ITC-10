@@ -34,7 +34,6 @@ void MainWindow::setPixelsToHeaders(QLabel* label, QFont font, int pixels)
 
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
 {
-   // qDebug() << e.tagName();
     QString name = e.tagName();
     EElementType type = elementTypeToEnum(name);
     QObject* view = nullptr;
@@ -49,7 +48,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
 
     switch (type)
     {
-    case EElementType::Div: {
+    case EElementType::Div:
+    {
         if (parentType == EElementType::Div)
         {
              view = new Div();
@@ -65,22 +65,26 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Input: {
+    case EElementType::Input:
+    {
         if (parentType == EElementType::Div)
         {
             if(inputType == "radio"){
                 view = new QRadioButton();
-                QWidget* widget = static_cast<QWidget*>(view);
+                QRadioButton* widget = static_cast<QRadioButton*>(view);
                 Div* p = static_cast<Div*>(parent);
                 p->addWidget(widget);
+                widget->setText(value);
+
                 p->setStyleSheet(style);
             }
             else if (inputType == "checkbox")
             {
                 view = new QCheckBox();
-                QWidget* widget = static_cast<QWidget*>(view);
+                QCheckBox* widget = static_cast<QCheckBox*>(view);
                 Div* p = static_cast<Div*>(parent);
                 p->addWidget(widget);
+                widget->setText(value);
                 p->setStyleSheet(style);
 
             }
@@ -99,7 +103,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Textarea: {
+    case EElementType::Textarea:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QTextEdit();
@@ -115,7 +120,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         break;
     }
 
-    case EElementType::Select: {
+    case EElementType::Select:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QComboBox();
@@ -134,7 +140,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::List: {
+    case EElementType::List:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QListWidget();
@@ -161,7 +168,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Table: {
+    case EElementType::Table:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QTableWidget();
@@ -194,20 +202,23 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Img: {
+    case EElementType::Img:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QLabel();
             QLabel* label = static_cast<QLabel*>(view);
             label->setStyleSheet(style);
+            label->setScaledContents(true);
             QString src = e.attribute("src", "");
             if(!src.size()) break;
-            QImage img(src);
-            QPixmap pix = QPixmap::fromImage(img);
-            label->setPixmap(pix);
-            label->setScaledContents(true);
-            label->setSizePolicy(QSizePolicy::Ignored, QSizePolicy::Ignored);
-            label->setMinimumSize(100, 100);
+            download->start(src, label);
+//            QImage img(src);
+//            QPixmap pix = QPixmap::fromImage(img);
+//            label->setPixmap(pix);
+//            label->setScaledContents(true);
+//            label->setMinimumSize(100, 100);
+//            label->setMaximumSize(500,300);
             static_cast<Div*>(parent)->addWidget(label);
         }
         else
@@ -216,7 +227,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Button: {
+    case EElementType::Button:
+    {
         if (parentType == EElementType::Div)
         {
              view = new QPushButton();
@@ -224,7 +236,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
              static_cast<Div*>(parent)->addWidget(widget);
              widget->setStyleSheet(style);
              widget->setText(value);
-
+             int w = widget->fontMetrics().width(value);
+             widget->setFixedWidth(w + 30);
         }
         else
         {
@@ -233,7 +246,8 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         break;
     }
-    case EElementType::Text: {
+    case EElementType::Text:
+    {
         if (parentType == EElementType::Div)
         {
             view = new QLabel();
@@ -299,8 +313,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    download = new DownloadManager(this);
+    connect(download, /*SIGNAL(finished(void*, QByteArray))*/&DownloadManager::finished, this, /*SLOT(onDownloadFinished1(void*, QbyteArray))*/&MainWindow::onDownloadFinished1);
 
-    QFile xmlFile("/home/garik/ITC-10/ITC-10/Garik_Saghumyan/QT/test.xml");
+    QFile xmlFile("/home/student/ITC-10/Garik_Saghumyan/QT/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -316,6 +332,15 @@ MainWindow::MainWindow(QWidget *parent) :
     l->addWidget(mLayout);
     setCentralWidget(scroll);
     centralWidget()->setLayout(l);
+
+}
+void MainWindow::onDownloadFinished1(void* usrPtr, QByteArray data)
+{
+    QLabel* label = static_cast<QLabel*>(usrPtr);
+    QPixmap pix;
+    pix.loadFromData(data);
+    label->setPixmap(pix);
+    label->setScaledContents(true);
 
 }
 
