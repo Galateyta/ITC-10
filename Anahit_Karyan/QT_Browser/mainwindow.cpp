@@ -37,7 +37,7 @@ Qt::Alignment alignmentStringToEnum(QString alignment)
     return Qt::AlignHCenter;
 
 }
-QObject* MainWindow::createDiv(QObject* view, QDomElement e,QObject* parent,QString style, QBoxLayout::Direction direction, Qt::Alignment alignment)
+QObject* MainWindow::createDiv(QObject* view, QObject* parent,QString style, QBoxLayout::Direction direction, Qt::Alignment alignment)
 {
     view = new Div();
     Div* layout = static_cast<Div*>(view);
@@ -47,7 +47,7 @@ QObject* MainWindow::createDiv(QObject* view, QDomElement e,QObject* parent,QStr
     layout->setAlignment(alignment);
     return view;
 }
-void MainWindow::createInput(QObject* view, QDomElement e, QObject* parent, QString inputType, QString text, QString style){
+void MainWindow::createInput(QObject* view, QObject* parent, QString inputType, QString text, QString style){
     if("checkbox" == inputType)
     {
         view = new QCheckBox(text);
@@ -62,35 +62,40 @@ void MainWindow::createInput(QObject* view, QDomElement e, QObject* parent, QStr
     }
 
     QWidget* widget = static_cast<QWidget*>(view);
+
     widget->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(widget);
 }
-void MainWindow::createButton(QObject* view, QDomElement e, QObject* parent, QString text, QString style)
+void MainWindow::createButton(QObject* view, QObject* parent, QString text, QString style)
 {
     view = new QPushButton(text);
     QPushButton* widget = static_cast<QPushButton*>(view);
+
     widget->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(widget);
 }
-void MainWindow::createTextarea(QObject* view, QDomElement e, QObject* parent, QString text, QString style)
+void MainWindow::createTextarea(QObject* view, QObject* parent, QString text, QString style)
 {
     view = new QTextEdit(text);
     QWidget* widget = static_cast<QWidget*>(view);
+
     widget->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(widget);
 }
-void MainWindow::createSelect(QObject* view, QDomElement e,QObject* parent, QString style)
+void MainWindow::createSelect(QObject* view, QDomElement e, QObject* parent, QString style)
 {
     view = new QComboBox();
     QComboBox* combobox= static_cast<QComboBox*>(view);
-    combobox->setStyleSheet(style);
+
     for(int i = 0; i < e.childNodes().length(); ++i)
     {
         combobox->addItem(e.childNodes().at(i).toElement().text());
     }
+
+    combobox->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(combobox);
 }
@@ -98,7 +103,6 @@ void MainWindow::createTable(QObject* view, QDomElement e, QObject* parent, QStr
 {
     view = new QTableWidget();
     QTableWidget* table= static_cast<QTableWidget*>(view);
-    table->setStyleSheet(style);
     QDomElement headersElem =  e.firstChild().toElement();
     table->setColumnCount(headersElem.childNodes().size());
     QStringList headers;
@@ -120,6 +124,8 @@ void MainWindow::createTable(QObject* view, QDomElement e, QObject* parent, QStr
             table->setItem(i-1,j,item);
         }
     }
+
+    table->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(table);
 }
@@ -127,13 +133,15 @@ void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, QStrin
 {
     view = new QLabel();
     QLabel* label = static_cast<QLabel*>(view);
-    label->setStyleSheet(style);
     QString src = e.attribute("src", "");
     //if (!src.size()) break;
     mDownloadManager->start(src, label);
-    static_cast<Div*>(parent)->addWidget(label);
+
+    label->setStyleSheet(style);
+    Div* p = static_cast<Div*>(parent);
+    p->addWidget(label);
 }
-void MainWindow::createText(QObject* view, QDomElement e, QObject* parent, QString text, QString style, std::string name)
+void MainWindow::createText(QObject* view, QObject* parent, QString text, QString style, std::string name)
 {
     view = new QLabel(text);
     QLabel* widget = static_cast<QLabel*>(view);
@@ -144,31 +152,32 @@ void MainWindow::createText(QObject* view, QDomElement e, QObject* parent, QStri
 
         if("h1" == name)
         {
-             font.setPointSize(70);
+             font.setPointSize(32);
         }
         else if("h2" == name)
         {
-             font.setPointSize(60);
+             font.setPointSize(24);
         }
         else if("h3" == name)
         {
-             font.setPointSize(50);
+             font.setPointSize(18.72);
         }
         else if("h4" == name)
         {
-             font.setPointSize(40);
+             font.setPointSize(16);
         }
         else if("h5" == name)
         {
-             font.setPointSize(30);
+             font.setPointSize(13.28);
         }
         else if("h6" == name)
         {
-             font.setPointSize(20);
+             font.setPointSize(12);
         }
         widget->setFont(font);
-        widget->setStyleSheet(style);
    }
+
+    widget->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(widget);
 }
@@ -176,7 +185,6 @@ void MainWindow::createList(QObject* view, QDomElement e, QObject* parent, QStri
 {
     view = new QListWidget();
     QListWidget* list = static_cast<QListWidget*>(view);
-    list->setStyleSheet(style);
     QString listStyle;
 
     for (int i = 0; i < e.childNodes().size(); ++i)
@@ -195,6 +203,8 @@ void MainWindow::createList(QObject* view, QDomElement e, QObject* parent, QStri
         QListWidgetItem* item = new QListWidgetItem(text);
         list->addItem(item);
     }
+
+    list->setStyleSheet(style);
     Div* p = static_cast<Div*>(parent);
     p->addWidget(list);
 }
@@ -220,7 +230,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent)
     {
         case EElementType::Div:
         {
-            createDiv(view, e, parent,style, direction, alignment );
+            createDiv(view,parent,style, direction, alignment );
             break;
         }
         case EElementType::Img:
@@ -230,7 +240,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent)
         }
         case EElementType::Text:
         {
-            createText(view, e, parent, text, style, name);
+            createText(view, parent, text, style, name);
             break;
         }
         case EElementType::Select:
@@ -250,17 +260,21 @@ void MainWindow::parseElement(QDomElement e, QObject* parent)
         }
         case EElementType::Input:
         {
-            createInput(view, e, parent, inputType, text, style);
+            createInput(view, parent, inputType, text, style);
             break;
         }
         case EElementType::Textarea:
         {
-            createTextarea(view, e, parent, text, style);
+            createTextarea(view, parent, text, style);
             break;
         }
         case EElementType::Button:
         {
-            createButton(view, e, parent, text, style);
+            createButton(view, parent, text, style);
+            break;
+        }
+        case EElementType::Unknown:
+        {
             break;
         }
     }

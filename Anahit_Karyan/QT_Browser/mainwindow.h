@@ -48,14 +48,14 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     void parseElement(QDomElement e, QObject* parente);
-    QObject* createDiv(QObject* view, QDomElement e,QObject* parent, QString style, QBoxLayout::Direction direction, Qt::Alignment alignment);
-    void createInput(QObject* view, QDomElement e,QObject* parent, QString inputType, QString text, QString style);
-    void createButton(QObject* view, QDomElement e,QObject* parent, QString text, QString style);
-    void createTextarea(QObject* view, QDomElement e,QObject* parent, QString text, QString style);
+    QObject* createDiv(QObject* view, QObject* parent, QString style, QBoxLayout::Direction direction, Qt::Alignment alignment);
+    void createInput(QObject* view, QObject* parent, QString inputType, QString text, QString style);
+    void createButton(QObject* view, QObject* parent, QString text, QString style);
+    void createTextarea(QObject* view, QObject* parent, QString text, QString style);
     void createSelect(QObject* view, QDomElement e,QObject* parent, QString style);
     void createTable(QObject* view, QDomElement e,QObject* parent, QString style);
     void createImg(QObject* view, QDomElement e,QObject* parent, QString style);
-    void createText(QObject* view, QDomElement e,QObject* parent, QString text, QString style, std::string name);
+    void createText(QObject* view, QObject* parent, QString text, QString style, std::string name);
     void createList(QObject* view, QDomElement e,QObject* parent, QString style, std::string name);
     ~MainWindow();
 
