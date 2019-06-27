@@ -13,6 +13,7 @@
 #include "div.h"
 #include <QLabel>
 #include "downloadmanager.h"
+#include <QScrollArea>
 enum class EElementType
 {
     Unknown,
@@ -46,7 +47,7 @@ public:
 
     void parseElement(QDomElement e, QObject* parent, EElementType parentType);
     void setPixelsToHeaders(QLabel* label, QFont font, int pixels);
-    QObject* addDivElement(QObject* view, QObject* parent, EElementType parentType, QString style, QBoxLayout::Direction direction);
+    QObject* addDivElement(QObject* view, QObject* parent, EElementType parentType, QString style, QBoxLayout::Direction direction, Qt::Alignment alignment );
     void addInputElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString inputType, QString value);
     void addTextAreaElements(QObject* view, QObject* parent, EElementType parentType, QString style, QString value);
     void addSelectElements(QObject* view, QObject* parent, EElementType parentType, QDomElement e, QString style);
@@ -65,7 +66,7 @@ private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
     DownloadManager* download;
-
+    QLineEdit* mUrlInput = nullptr;
 };
 
 #endif // MAINWINDOW_H

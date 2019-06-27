@@ -15,10 +15,7 @@ public:
     void addDiv(Div* div);
     void addWidget(QWidget* widget);
     void setDirection(QBoxLayout::Direction direction);
-
-signals:
-
-public slots:
+    void setAlignment(Qt::Alignment alignment);
 
 private:
     QBoxLayout* mLayout = nullptr;

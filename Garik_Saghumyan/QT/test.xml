@@ -10,7 +10,7 @@
           <option value="audi">Audi</option>
     	</select>
 
-	<div  flex-direction="row">
+	<div  flex-direction="row" style="">
 		<input style="max-width: 500"></input>
 		<button style="color: blue; background-color: yellow;">button</button>
 		

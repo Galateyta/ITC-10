@@ -13,7 +13,7 @@
 
 EElementType elementTypeToEnum(QString name)
 {
-    if ("div" == name) return  EElementType::Div;
+    if ("div" == name || "body" == name) return  EElementType::Div;
     if ("input" == name) return  EElementType::Input;
     if ("button" == name) return  EElementType::Button;
     if ("textarea" == name) return EElementType::Textarea;
@@ -45,6 +45,16 @@ QBoxLayout::Direction directionStringToEnum(QString direction)
     return QBoxLayout::Direction::TopToBottom;
 }
 
+Qt::Alignment alignmentStringToEnum(QString alignment)
+{
+    if ("left" == alignment || "start" == alignment) return Qt::AlignLeft;
+    if ("right" == alignment || "end" == alignment) return Qt::AlignRight;
+    if ("center" == alignment) return Qt::AlignHCenter;
+
+    return Qt::AlignHCenter;
+
+}
+
 void MainWindow::setPixelsToHeaders(QLabel* label, QFont font, int pixels)
 {
     font.setPixelSize(pixels);
@@ -52,7 +62,7 @@ void MainWindow::setPixelsToHeaders(QLabel* label, QFont font, int pixels)
     label->setFont(font);
 }
 
-QObject* MainWindow::addDivElement(QObject* view, QObject* parent, EElementType parentType, QString style, QBoxLayout::Direction direction)
+QObject* MainWindow::addDivElement(QObject* view, QObject* parent, EElementType parentType, QString style, QBoxLayout::Direction direction,  Qt::Alignment alignment)
 {
     if (parentType == EElementType::Div)
     {
@@ -61,6 +71,7 @@ QObject* MainWindow::addDivElement(QObject* view, QObject* parent, EElementType 
          static_cast<Div*>(parent)->addDiv(layout);
          layout->setStyleSheet(style);
          layout->setDirection(direction);
+         layout->setAlignment(alignment);
     }
     else
     {
@@ -68,6 +79,7 @@ QObject* MainWindow::addDivElement(QObject* view, QObject* parent, EElementType 
          Div* div = static_cast<Div*>(view);
          div->setStyleSheet(style);
          div->setDirection(direction);
+         div->setAlignment(alignment);
     }
     return view;
 }
@@ -82,8 +94,8 @@ void MainWindow::addInputElements(QObject *view, QObject *parent, EElementType p
             Div* p = static_cast<Div*>(parent);
             p->addWidget(widget);
             widget->setText(value);
-
             p->setStyleSheet(style);
+
         }
         else if (inputType == "checkbox")
         {
@@ -209,7 +221,7 @@ void MainWindow::addImageElemets(QObject *view, QObject *parent, EElementType pa
         view = new QLabel();
         QLabel* label = static_cast<QLabel*>(view);
         label->setStyleSheet(style);
-        label->setScaledContents(true);
+//        label->setScaledContents(true);
         download->start(src, label);
         static_cast<Div*>(parent)->addWidget(label);
     }
@@ -271,6 +283,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     QObject* view = nullptr;
     QDomNamedNodeMap attributes = e.attributes();
     QBoxLayout::Direction direction = directionStringToEnum(e.attribute("flex-direction"));
+    Qt::Alignment alignment = alignmentStringToEnum(e.attribute("justify-content"));
     QString style = e.attribute("style");
     QString inputType = e.attribute("type");
     QString src = e.attribute("src");
@@ -280,7 +293,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
     {
         case EElementType::Div:
         {
-            view = addDivElement(view, parent, parentType, style, direction);
+            view = addDivElement(view, parent, parentType, style, direction, alignment);
             break;
         }
         case EElementType::Input:
@@ -350,7 +363,7 @@ MainWindow::MainWindow(QWidget *parent) :
     download = new DownloadManager(this);
     connect(download, &DownloadManager::finished, this, &MainWindow::onDownloadFinished);
 
-    QFile xmlFile("/home/garik/ITC-10/ITC-10/Garik_Saghumyan/QT/test.xml");
+    QFile xmlFile("/home/student/Downloads/test1.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -358,10 +371,21 @@ MainWindow::MainWindow(QWidget *parent) :
     QDomElement root = d.firstChildElement();
     parseElement(root, nullptr, EElementType::Unknown);
 
+    QWidget* centralwidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(centralwidget);
+
+    QHBoxLayout* toolBarLayout = new QHBoxLayout(centralwidget);
+    mUrlInput = new QLineEdit(centralwidget);
+    toolBarLayout->addWidget(mUrlInput);
+    layout->addLayout(toolBarLayout);
+
+
+
     QScrollArea* scroll = new QScrollArea();
+    layout->addWidget(scroll);
     scroll->setWidget(mLayout);
     scroll->setWidgetResizable(true);
-    setCentralWidget(scroll);
+    setCentralWidget(centralwidget);
 }
 
 void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
@@ -370,7 +394,8 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     QPixmap pix;
     pix.loadFromData(data);
     label->setPixmap(pix);
-    label->setScaledContents(true);
+    label->setAlignment(Qt::AlignCenter);
+//    label->setScaledContents(true);
 }
 
 MainWindow::~MainWindow()

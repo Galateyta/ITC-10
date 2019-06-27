@@ -26,3 +26,8 @@ void Div::setDirection(QBoxLayout::Direction direction)
 {
     mLayout->setDirection(direction);
 }
+
+void Div::setAlignment(Qt::Alignment alignment)
+{
+    mLayout->setAlignment(alignment);
+}
