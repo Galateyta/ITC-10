@@ -8,7 +8,7 @@
 
 EElementType elementTypeToEnum(std::string name)
 {
-    if (name == "div") return  EElementType::Div;
+    if (name == "div" || name == "body") return  EElementType::Div;
     if (name == "input") return  EElementType::Input;
     if (name == "button") return  EElementType::Button;
     if ( (name[0] == 'h' && name.length() == 2 && name[1] >= '1' && name[1] <= '6') || name == "span" || name == "p" ) return  EElementType::Text;
@@ -22,16 +22,16 @@ EElementType elementTypeToEnum(std::string name)
 
 
 QBoxLayout::Direction directionStringToEnum(QString direction) {
-    if ("column" == direction) return QBoxLayout::Direction::TopToBottom;
-    if ("row" == direction) return QBoxLayout::Direction::LeftToRight;
+    if (direction == "column") return QBoxLayout::Direction::TopToBottom;
+    if (direction == "row") return QBoxLayout::Direction::LeftToRight;
 
     return QBoxLayout::Direction::TopToBottom;
 }
 
 Qt::Alignment alignmentStringToEnum(QString alignment) {
-    if ("left" == alignment || "start" == alignment) return Qt::AlignLeft;
-    if ("right" == alignment || "end" == alignment) return Qt::AlignRight;
-    if ("center" == alignment) return Qt::AlignHCenter;
+    if (alignment == "left" || alignment == "start") return Qt::AlignLeft;
+    if (alignment == "right" || alignment == "end") return Qt::AlignRight;
+    if (alignment == "center") return Qt::AlignHCenter;
 
     return Qt::AlignHCenter;
 
@@ -42,10 +42,41 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data) {
     QPixmap pix;
     pix.loadFromData(data);
     label->setPixmap(pix);
+    label->setAlignment(Qt::AlignHCenter);
+}
+
+
+void MainWindow::onXmlPageDownloadFinished(void *usrPtr, QByteArray data)
+{
+    QDomDocument d;
+    d.setContent(data);
+
+    QDomElement root = d.firstChildElement();
+    parseElement(root, nullptr, EElementType::Unknown);
+    mBrowserArea->setWidget(mLayout);
+}
+
+void MainWindow::onRefresh() {
+    if (mLayout) {
+        delete mLayout;
+        mLayout = nullptr;
+    }
+
+    QString url = mUrlInput->text();
+    mXmlDownloadManager->start(url, nullptr);
+}
+
+void MainWindow::changePage(QString href) {
+    mUrlInput->setText(href);
+    emit onRefresh();
 }
 
 QObject* MainWindow::createDiv(QObject *view, QDomElement e, QObject *parent, EElementType parentType) {
     Div* div;
+    QString style = e.attribute("style");
+    QBoxLayout::Direction direction = directionStringToEnum(e.attribute("flex-direction"));
+    Qt::Alignment alignment = alignmentStringToEnum(e.attribute("justify-content"));
+
     if (parentType == EElementType::Div) {
         view = new Div();
         div = static_cast<Div*>(view);
@@ -55,9 +86,9 @@ QObject* MainWindow::createDiv(QObject *view, QDomElement e, QObject *parent, EE
         view = new Div(static_cast<QWidget*>(parent));
         div = static_cast<Div*>(view);
     }
-    div->setStyleSheet(e.attribute("style"));
-    div->setDirection(directionStringToEnum(e.attribute("flex-direction")));
-    div->setAlignment(alignmentStringToEnum(e.attribute("justify-content")));
+    div->setStyleSheet(style);
+    div->setDirection(direction);
+    div->setAlignment(alignment);
 
     return div;
 }
@@ -107,6 +138,7 @@ void MainWindow::createInput(QObject *view, QDomElement e, QObject *parent, EEle
 void MainWindow::createButton(QObject *view, QDomElement e, QObject *parent, EElementType parentType) {
     QString style = e.attribute("style");
     QString text = e.text();
+    QString href = e.attribute("href", "");
 
     QPushButton* widget;
     if (parentType == EElementType::Div) {
@@ -118,6 +150,9 @@ void MainWindow::createButton(QObject *view, QDomElement e, QObject *parent, EEl
     }
     widget->setStyleSheet(style);
     widget->setText(text);
+    if (href.size()) {
+        connect(widget, &QPushButton::clicked, this, [this, href]{changePage(href);});
+    }
 }
 
 void MainWindow::createText(QObject *view, QDomElement e, QObject *parent, EElementType parentType) {
@@ -196,15 +231,23 @@ void MainWindow::createTable(QObject *view, QDomElement e, QObject *parent, EEle
 
 void MainWindow::createImg(QObject *view, QDomElement e, QObject *parent, EElementType parentType) {
     QString style = e.attribute("style");
+    QString src = e.attribute("src");
 
-    if (parentType == EElementType::Div) {
+    if(parentType == EElementType::Div) {
         view = new QLabel();
         QLabel* label = static_cast<QLabel*>(view);
         label->setStyleSheet(style);
+        QString regexp = "(http(s)?://)([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?";
+        QRegExp rx(regexp);
+        rx.indexIn(src);
 
-        QString src = e.attribute("src", "");
-        if (!src.size()) return;
-        mDownloadManager->start(src, label);
+        if(rx.cap(0).length() != 0) {
+            mDownloadManager->start(src, label);
+        }
+        else {
+            QPixmap pix(src);
+            label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+        }
 
         static_cast<Div*>(parent)->addWidget(label);
     }
@@ -300,24 +343,34 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     mDownloadManager = new DownloadManager(this);
+    mXmlDownloadManager = new DownloadManager(this);
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
 
-    QFile xmlFile("C:/Users/Admin/Documents/Qt projects/XMLParser/test.xml");
-    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-    QDomDocument d;
-    d.setContent(xmlFile.readAll());
+    connect(mXmlDownloadManager, SIGNAL(finished(void*, QByteArray)),
+            this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
 
-    QDomElement root = d.firstChildElement();
-    parseElement(root, nullptr, EElementType::Unknown);
-    QVBoxLayout * l = new QVBoxLayout();
-    l->addWidget(mLayout);
-    centralWidget()->setLayout(l);
+    QWidget* centralWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(centralWidget);
 
-    QScrollArea* scroll = new QScrollArea(this);
-    scroll->setWidget(mLayout);
-    scroll->setWidgetResizable(true);
-    setCentralWidget(scroll);
+    QHBoxLayout* toolBarLayout = new QHBoxLayout(centralWidget);
+
+    mUrlInput = new QLineEdit(centralWidget);
+    toolBarLayout->addWidget(mUrlInput);
+    layout->addLayout(toolBarLayout);
+
+    QPushButton* refresh = new QPushButton(centralWidget);
+    QPixmap pixmap(":/icons/refresh.png");
+    QIcon ButtonIcon(pixmap);
+    refresh->setIcon(ButtonIcon);
+    connect(mUrlInput, SIGNAL(returnPressed()), refresh, SIGNAL(clicked()));
+    connect(refresh, SIGNAL(clicked()), this, SLOT(onRefresh()));
+    toolBarLayout->addWidget(refresh);
+
+    mBrowserArea = new QScrollArea(centralWidget);
+    layout->addWidget(mBrowserArea);
+    mBrowserArea->setWidgetResizable(true);
+    setCentralWidget(centralWidget);
 }
 
 MainWindow::~MainWindow()

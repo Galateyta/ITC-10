@@ -17,6 +17,7 @@
 #include <QTextEdit>
 #include <QComboBox>
 #include "div.h"
+#include <QScrollArea>
 
 enum class EElementType
 {
@@ -57,11 +58,17 @@ public:
 
 private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
+    void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
+    void onRefresh();
+    void changePage(QString href);
 
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
     DownloadManager* mDownloadManager;
+    DownloadManager* mXmlDownloadManager;
+    QLineEdit* mUrlInput = nullptr;
+    QScrollArea* mBrowserArea = nullptr;
 };
 
 #endif // MAINWINDOW_H

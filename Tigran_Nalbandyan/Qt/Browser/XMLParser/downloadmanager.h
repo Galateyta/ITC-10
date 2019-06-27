@@ -1,7 +1,6 @@
 #ifndef DOWNLOADMANAGER_H
 #define DOWNLOADMANAGER_H
 
-#include <QThread>
 #include <QNetworkAccessManager>
 
 class DownloadManager : public QObject
@@ -24,4 +23,4 @@ private:
     QNetworkAccessManager manager;
 };
 
-#endif // TIMER_H
+#endif // DOWNLOADMANAGER_H

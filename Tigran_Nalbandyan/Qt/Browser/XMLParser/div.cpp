@@ -6,27 +6,22 @@ Div::Div(QWidget *parent)
     mLayout = new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
 }
 
-void Div::addLayout(QBoxLayout *layout)
-{
+void Div::addLayout(QBoxLayout *layout) {
     mLayout->addLayout(layout);
 }
 
-void Div::addDiv(Div *div)
-{
+void Div::addDiv(Div *div) {
     mLayout->addWidget(div);
 }
 
-void Div::addWidget(QWidget *widget)
-{
+void Div::addWidget(QWidget *widget) {
     mLayout->addWidget(widget);
 }
 
-void Div::setDirection(QBoxLayout::Direction direction)
-{
+void Div::setDirection(QBoxLayout::Direction direction) {
     mLayout->setDirection(direction);
 }
 
-void Div::setAlignment(Qt::Alignment alignment)
-{
+void Div::setAlignment(Qt::Alignment alignment) {
     mLayout->setAlignment(alignment);
 }
