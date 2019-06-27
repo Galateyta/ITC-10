@@ -221,9 +221,20 @@ void MainWindow::addImageElemets(QObject *view, QObject *parent, EElementType pa
         view = new QLabel();
         QLabel* label = static_cast<QLabel*>(view);
         label->setStyleSheet(style);
-//        label->setScaledContents(true);
-        download->start(src, label);
-        static_cast<Div*>(parent)->addWidget(label);
+        label->setScaledContents(true);
+        QString regexp = "(http(s)?://)([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?";
+        QRegExp rx(regexp);
+        rx.indexIn(src);
+        if(rx.cap(0).length() != 0)
+         {
+              download->start(src, label);
+         }
+         else
+         {
+              QPixmap pix(src);
+              label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+         }
+         static_cast<Div*>(parent)->addWidget(label);
     }
 
 }
@@ -361,15 +372,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     download = new DownloadManager(this);
+    mXmlPageDownloadManager = new DownloadManager(this);
     connect(download, &DownloadManager::finished, this, &MainWindow::onDownloadFinished);
-
-    QFile xmlFile("/home/student/Downloads/test1.xml");
-    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-    QDomDocument d;
-    d.setContent(xmlFile.readAll());
-
-    QDomElement root = d.firstChildElement();
-    parseElement(root, nullptr, EElementType::Unknown);
+    connect(mXmlPageDownloadManager, &DownloadManager::finished, this, &MainWindow::onXmlPageDownloadFinished);
 
     QWidget* centralwidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(centralwidget);
@@ -378,15 +383,22 @@ MainWindow::MainWindow(QWidget *parent) :
     mUrlInput = new QLineEdit(centralwidget);
     toolBarLayout->addWidget(mUrlInput);
     layout->addLayout(toolBarLayout);
+    QPushButton* refresh = new QPushButton(centralwidget);
+    QPixmap pixmap(":/icons/refresh.png");
+    QIcon ButtonIcon(pixmap);
+    refresh->setIcon(ButtonIcon);
+    toolBarLayout->addWidget(refresh);
 
+    connect(mUrlInput, SIGNAL(returnPressed()), refresh, SIGNAL(clicked()));
+    connect(refresh, SIGNAL(clicked()), this, SLOT(onRefresh()));
 
-
-    QScrollArea* scroll = new QScrollArea();
-    layout->addWidget(scroll);
-    scroll->setWidget(mLayout);
-    scroll->setWidgetResizable(true);
+    mBrowserArea = new QScrollArea(centralwidget);
+    layout->addWidget(mBrowserArea);
+    mBrowserArea->setWidget(mLayout);
+    mBrowserArea->setWidgetResizable(true);
     setCentralWidget(centralwidget);
 }
+
 
 void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
 {
@@ -395,7 +407,28 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     pix.loadFromData(data);
     label->setPixmap(pix);
     label->setAlignment(Qt::AlignCenter);
-//    label->setScaledContents(true);
+    label->setScaledContents(true);
+}
+
+void MainWindow::onXmlPageDownloadFinished(void *usrPtr, QByteArray data)
+{
+    QDomDocument d;
+    d.setContent(data);
+    QDomElement root = d.firstChildElement();
+    parseElement(root, nullptr, EElementType::Unknown);
+    mBrowserArea->setWidget(mLayout);
+}
+
+void MainWindow::onRefresh()
+{
+    if (mLayout)
+    {
+        delete mLayout;
+        mLayout = nullptr;
+    }
+
+    QString url = mUrlInput->text();
+    mXmlPageDownloadManager->start(url, nullptr);
 }
 
 MainWindow::~MainWindow()

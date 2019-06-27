@@ -61,12 +61,16 @@ public:
 
 private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
+    void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
+    void onRefresh();
 
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
     DownloadManager* download;
+    DownloadManager* mXmlPageDownloadManager;
     QLineEdit* mUrlInput = nullptr;
+    QScrollArea* mBrowserArea = nullptr;
 };
 
 #endif // MAINWINDOW_H
