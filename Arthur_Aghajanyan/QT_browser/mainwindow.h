@@ -20,6 +20,7 @@
 #include <QSize>
 #include <QTableWidget>
 #include <QListWidget>
+#include <QScrollArea>
 
 enum class EElementType
 {
@@ -74,9 +75,14 @@ private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
     DownloadManager* mDownloadManager;
+    DownloadManager* mXmlPageDownloadManager;
+    QLineEdit* mUrlInput = nullptr;
+    QScrollArea* mBrowserArea = nullptr;
 
 private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
+    void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
+    void onRefresh();
 
 };
 

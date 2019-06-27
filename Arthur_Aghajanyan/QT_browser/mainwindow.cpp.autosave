@@ -383,14 +383,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
 
-//    QFile xmlFile("/home/abul/Desktop/Artur_c++/ITC10/QT/browser/test.xml");
-//    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-//    QDomDocument domDoc;
-//    domDoc.setContent(xmlFile.readAll());
-
-//    QDomElement root = domDoc.firstChildElement();
-//    parseElement(root, nullptr, EElementType::Unknown);
-
     QWidget* centralWidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(centralWidget);
     QHBoxLayout* toolBarLayout = new QHBoxLayout(centralWidget);
@@ -414,8 +406,6 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 void MainWindow::onXmlPageDownloadFinished(void* usrPtr, QByteArray data)
 {
-    /*QFile xmlFile("/home/hunan/Desktop/test.xml");
-    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);*/
     QDomDocument d;
     d.setContent(data);
 

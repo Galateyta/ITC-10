@@ -1,9 +1,9 @@
 #include "DownloadManager.h"
-//#include <unistd.h>
+#include <unistd.h>
 #include <QNetworkReply>
 #include <QPixmap>
 
-DownloadManager::DownloadManager(QObject* parent) : QObject(parent)
+DownloadManager::DownloadManager(QObject* parent) : QObject(parent) // in this case the parent is MainWindow(this)
 {
     connect(&manager, SIGNAL(finished(QNetworkReply*)),
                 SLOT(slotDownloadFinished(QNetworkReply*)));
