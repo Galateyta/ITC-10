@@ -5,6 +5,7 @@
 
 EElementType elementTypeToEnum(std::string name)
 {
+    if ("body" == name) return  EElementType::Div;
     if ("div" == name) return  EElementType::Div;
     if ("input" == name) return  EElementType::Input;
     if ("button" == name) return  EElementType::Button;
@@ -338,8 +339,15 @@ MainWindow::MainWindow(QWidget *parent) :
     mDownloadManager = new DownloadManager(this);
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
+    mXmlPageDownloadManager = new DownloadManager(this);
+    connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
+                this, SLOT(onDownloadFinished(void*, QByteArray)));
 
-    QFile xmlFile("/home/student/Desktop/test.xml");
+    connect(mXmlPageDownloadManager, SIGNAL(finished(void*, QByteArray)),
+                this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
+
+
+    QFile xmlFile("/home/anahit/Desktop/test.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -347,10 +355,31 @@ MainWindow::MainWindow(QWidget *parent) :
     QDomElement root = d.firstChildElement();
     parseElement(root, nullptr, EElementType::Unknown);
 
-    QScrollArea* scroll = new QScrollArea(this);
-    scroll->setWidget(mLayout);
-    scroll->setWidgetResizable(true);
-    setCentralWidget(scroll);
+//    QScrollArea* scroll = new QScrollArea(this);
+//    scroll->setWidget(mLayout);
+//    scroll->setWidgetResizable(true);
+//    setCentralWidget(scroll);
+    QWidget* centralWidget = new QWidget(this);
+    QVBoxLayout* layout = new QVBoxLayout(centralWidget);
+
+    QHBoxLayout* toolBarLayout = new QHBoxLayout(centralWidget);
+
+    mUrlInput = new QLineEdit(centralWidget);
+    toolBarLayout->addWidget(mUrlInput);
+    layout->addLayout(toolBarLayout);
+
+    QPushButton* refresh = new QPushButton(centralWidget);
+    QPixmap pixmap(":/icons/refresh.png");
+    QIcon ButtonIcon(pixmap);
+    refresh->setIcon(ButtonIcon);
+    connect(mUrlInput, SIGNAL(returnPressed()), refresh, SIGNAL(clicked()));
+    connect(refresh, SIGNAL(clicked()), this, SLOT(onRefresh()));
+    toolBarLayout->addWidget(refresh);
+
+    mBrowserArea = new QScrollArea(centralWidget);
+    layout->addWidget(mBrowserArea);
+    mBrowserArea->setWidgetResizable(true);
+    setCentralWidget(centralWidget);
 }
 
 void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
@@ -360,6 +389,27 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     pix.loadFromData(data);
     label->setPixmap(pix);
     label->setAlignment(Qt::AlignCenter);
+}
+void MainWindow::onXmlPageDownloadFinished(void* usrPtr, QByteArray data)
+{
+
+    QDomDocument d;
+    d.setContent(data);
+    QDomElement root = d.firstChildElement();
+    parseElement(root, nullptr, EElementType::Unknown);
+    mBrowserArea->setWidget (mLayout);
+}
+
+void MainWindow::onRefresh()
+{
+    if (mLayout)
+    {
+        delete mLayout;
+        mLayout = nullptr;
+    }
+
+    QString url = mUrlInput->text();
+    mXmlPageDownloadManager->start(url, nullptr);
 }
 
 MainWindow::~MainWindow()
