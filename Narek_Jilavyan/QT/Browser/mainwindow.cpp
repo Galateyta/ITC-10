@@ -230,14 +230,13 @@ void MainWindow::onRefresh()
 
 void MainWindow::onPrew()
 {
-    if (mLayout)
-    {
-        delete mLayout;
-        mLayout = nullptr;
-    }
-
     if (prewUrl != "")
     {
+        if (mLayout)
+        {
+            delete mLayout;
+            mLayout = nullptr;
+        }
         nextUrl = url;
         url = prewUrl;
         mXmlPageDownloadManager->start(url, nullptr);
@@ -248,14 +247,13 @@ void MainWindow::onPrew()
 
 void MainWindow::onNext()
 {
-    if (mLayout)
-    {
-        delete mLayout;
-        mLayout = nullptr;
-    }
-
     if (nextUrl != "")
     {
+        if (mLayout)
+        {
+            delete mLayout;
+            mLayout = nullptr;
+        }
         prewUrl = url;
         url = nextUrl;
         mXmlPageDownloadManager->start(url, nullptr);
