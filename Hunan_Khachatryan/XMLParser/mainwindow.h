@@ -9,6 +9,9 @@
 #include <QMainWindow>
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <QTableWidget>
+#include <QScrollArea>
+#include <QListWidget>
 #include <QComboBox>
 #include <QTextEdit>
 #include <QLineEdit>
@@ -17,6 +20,8 @@
 #include <QDebug>
 #include <QLabel>
 #include <QFile>
+#include <QSize>
+
 
 enum class EElementType
 {
@@ -53,29 +58,37 @@ public:
     explicit MainWindow(QWidget *parent = nullptr);
     void parseElement(QDomElement e, QObject* parent, EElementType parentType);
     QObject* createDiv(QObject *view, QDomElement e, QObject *parent,EElementType type);
-    void createButton(QObject* view, QDomElement e, QObject* parent);
-    void createInput(QObject* view, QDomElement e, QObject* parent);
-    void createSelect(QObject* view, QDomElement e, QObject* parent);
-    void createImage(QObject* view, QDomElement e, QObject* parent);
-    void createP(QObject* view, QDomElement e, QObject* parent);
-    void createSpan(QObject *view, QDomElement e, QObject *parent);
-    void createTable(QObject *view, QDomElement e, QObject *parent);
-    void createH(QObject *view, QDomElement e, QObject *parent,EElementType type);
-    void addText(QObject *view, QDomElement e, QObject *parent,QString style);
-    void createTextArea(QObject *view, QDomElement e, QObject *parent);
-    void createOlAndUl(QObject* view, QDomElement e, QObject* parent);
+    void createButton(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void createInput(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void createSelect(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void createImage(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void createP(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void createTable(QObject *view, QDomElement e, QObject *parent,EElementType parentType);
+    void createH(QObject *view, QDomElement e, QObject *parent,EElementType type,EElementType parentType);
+    void addText(QObject *view, QDomElement e, QObject *parent,QString style,EElementType parentType);
+    void createTextArea(QObject *view, QDomElement e, QObject *parent,EElementType parentType);
+    void createList(QObject* view, QDomElement e, QObject* parent,EElementType parentType);
+    void onClick(QString url, QPushButton* usrPtr);
 
 
 
     ~MainWindow();
 
+signals:
+   void clickButton(QString);
+
 private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
+    void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
+    void onRefresh();
 
 private:
     Ui::MainWindow *ui;
     Div* mLayout = nullptr;
     DownloadManager* mDownloadManager;
+    DownloadManager* mXmlPageDownloadManager;
+    QLineEdit* mUrlInput = nullptr;
+    QScrollArea* mBrowserArea = nullptr;
 };
 
 #endif // MAINWINDOW_H

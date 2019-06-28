@@ -35,6 +35,8 @@ HEADERS += \
         downloadmanager.h \
         mainwindow.h
 
+RESOURCES += res/res.qrc
+
 FORMS += \
         mainwindow.ui
 

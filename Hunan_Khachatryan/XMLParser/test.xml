@@ -1,19 +1,53 @@
-<div  style="max-width:200px">
-	<input type="checkbox">CheckBox</input>
-	<input type="radio">Radiobutton</input>	
-    <input type="text"></input>
-    <textarea>adas</textarea>
+<div flex-direction="column" style="background-color: white" >
+    <div flex-direction="row" justify-content="right">
+        <p>Gmail</p>
+        <p>Images</p>
+        <div  style="color:green" >
+        <button style="QPushButton:hover {color: red; border-radius:10px }">Enter</button>
+    </div>
+    </div>
+    <div flex-direction="column" justify-content="center">
+        <img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+        <input placeholder="Search Google or type a URL " style="QLineEdit{background-color:#F3F3F3; height: 44px;height: 30px;border-radius: 15px; max-width: 600; padding: 0 8px; font-size: 16px;} QLineEdit:hover { background-color:#ECECEC;}"></input>
+        
+    </div>
+<div flex-direction="column" justify-content="center">
+    <div flex-direction="row">
+    	<div flex-direction="column" justify-content="center">
+    	            <button onClick="click()" style="border-image: url(/home/hunan/XMLParser/res/icons/fb.png); min-width:50;min-height:50;margin:15"></button> 
+            <p>Facebook</p>
+            </div>         
+                	<div flex-direction="column" justify-content="center">
 
-	<button style="color: blue; background-color: yellow ">Button1</button>
-	<button>Button2</button>
+            <button  style="border-image: url(/home/hunan/XMLParser/res/icons/youtube.png); min-width:50; min-height:50; margin:15;"></button>
+             <p>Youtube</p>
+            </div> 
+                	<div flex-direction="column" justify-content="center">
 
-	<p>Tex <h1>Header1</h1> fdfgfdgdf fdfgdfgsdfsd sd d fdgdgdf d fdfbgfnhn vbvbnhv b dfgf dfgdfdfgdt1</p>
-	<h1>Header1</h1>
-	<h2>Header2</h2>
-	<h3>Header3</h3>
-	<h4>Header4</h4>
-	<h5>Header5</h5>         
-	<h6>Header6</h6>
-	<span>Spas     dfss  dsf sdvvss vd  d d sssssfsdv sdfsd sdfndf d fdgbgfg f fg fg  sds  s s dgff</span>
-	
+            <button style="border-image: url(/home/hunan/XMLParser/res/icons/mail.png); min-width:50;min-height:50;margin:15;"></button>
+             <p>Mail.ru</p>
+            </div> 
+       
+        </div>  
+        <div flex-direction="row" justify-content="center">
+        	    	<div flex-direction="column" justify-content="center">
+
+            <button onClick="click()" style="border-image: url(/home/hunan/XMLParser/res/icons/Gmail.png); min-width:50;min-height:50;margin:15;"></button> 
+             <p>Gmail</p>
+            </div>   
+                	<div flex-direction="column" justify-content="center">
+       
+            <button  style="QPushButton {border-image: url(/home/hunan/XMLParser/res/icons/git.png); min-width:50; min-height:50; margin:15;} QPushButton:hover {background-color: #ECECEC;  }"></button>     
+
+			 <p>GitHub</p>
+			            </div> 
+     <div flex-direction="column" justify-content="right">
+              <button onClick="click()"  style="QPushButton { min-width:50; min-height:50; margin:15; font-size:20pt; border-radius:25;}QPushButton:hover {background-color: #ECECEC;  }">+</button>
+             <p>Add shourtcut</p>
+            </div> 
+       
+        </div> 
 </div>
+    
+</div>
+
