@@ -1,4 +1,4 @@
-#include "mainwindow.h"
+﻿#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "downloadmanager.h"
 #include <QSize>
@@ -100,7 +100,6 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         }
         case EElementType::Button:
         {
-        qDebug() << view;
             createButton(view, parentType, parent, text, style);
             break;
         }
@@ -248,8 +247,18 @@ void MainWindow::createImg(QObject* view, EElementType parentType, QDomElement e
         view = new QLabel();
         QLabel* label = static_cast<QLabel*>(view);
         QString src = e.attribute("src", "");
-        //if (!src.size()) break;
-        mDownloadManager->start(src, label);
+        QString regexp = "(http(s)?://)([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?";
+                QRegExp rx(regexp);
+                rx.indexIn(src);
+                if(rx.cap(0).length() != 0)
+                {
+                    mDownloadManager->start(src, label);
+                }
+                else
+                {
+                    QPixmap pix(src);
+                    label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+                }
 
         label->setStyleSheet(style);
         Div* p = static_cast<Div*>(parent);
