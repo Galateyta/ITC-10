@@ -242,7 +242,7 @@ void MainWindow::createImg(QObject *view, QDomElement e, QObject *parent, EEleme
         rx.indexIn(src);
 
         if(rx.cap(0).length() != 0) {
-            mDownloadManager->start(src, label);
+            mDownloadManager->startImage(src, label);
         }
         else {
             QPixmap pix(src);
@@ -347,7 +347,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
 
-    connect(mXmlDownloadManager, SIGNAL(finished(void*, QByteArray)),
+    connect(mXmlDownloadManager, SIGNAL(xmlFinished(void*, QByteArray)),
             this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
 
     QWidget* centralWidget = new QWidget(this);
