@@ -13,8 +13,13 @@ public:
 
     void start(QString url, void* usrPtr);
 
+    std::string serverRun();
+    void clientRun(QString url);
+    void startImage(QString url, void* usrPtr);
 signals:
     void finished(void* usrPtr, QByteArray data);
+    void xmlfinished(void* usrPtr, QByteArray data);
+
 
 
 private slots:

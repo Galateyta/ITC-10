@@ -227,7 +227,7 @@ void MainWindow::addImageElemets(QObject *view, QObject *parent, EElementType pa
         rx.indexIn(src);
         if(rx.cap(0).length() != 0)
          {
-              download->start(src, label);
+              download->startImage(src, label);
          }
          else
          {
@@ -374,7 +374,7 @@ MainWindow::MainWindow(QWidget *parent) :
     download = new DownloadManager(this);
     mXmlPageDownloadManager = new DownloadManager(this);
     connect(download, &DownloadManager::finished, this, &MainWindow::onDownloadFinished);
-    connect(mXmlPageDownloadManager, &DownloadManager::finished, this, &MainWindow::onXmlPageDownloadFinished);
+    connect(mXmlPageDownloadManager, &DownloadManager::xmlfinished, this, &MainWindow::onXmlPageDownloadFinished);
 
     QWidget* centralwidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(centralwidget);
