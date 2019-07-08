@@ -227,7 +227,7 @@ void MainWindow::addImageElemets(QObject *view, QObject *parent, EElementType pa
         rx.indexIn(src);
         if(rx.cap(0).length() != 0)
          {
-              download->startImage(src, label);
+              download->startImageDownload(src, label);
          }
          else
          {

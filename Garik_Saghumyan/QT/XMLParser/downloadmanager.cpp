@@ -14,15 +14,13 @@
 #include <netdb.h>
 #include <iostream>
 
-#define ZERO 0
 #define PORT 60005
 #define PORT1 50001
-#define BUFF 100000
+#define BUFF 10000
 
 DownloadManager::DownloadManager(QObject* parent) : QObject(parent)
 {
-    connect(&manager, SIGNAL(finished(QNetworkReply*)),
-                SLOT(slotDownloadFinished(QNetworkReply*)));
+    connect(&manager, SIGNAL(finished(QNetworkReply*)),SLOT(slotDownloadFinished(QNetworkReply*)));
 }
 
 DownloadManager::~DownloadManager()
@@ -32,14 +30,14 @@ DownloadManager::~DownloadManager()
 
 void DownloadManager::start(QString url, void* usrPtr)
 {
-
-      clientRun(url);
-      std::string data = serverRun();
-      QByteArray byteData(data.c_str(), data.length());
-      emit xmlfinished(nullptr, byteData);
+    clientRun(url);
+    std::string data = serverRun();
+    QByteArray byteData(data.c_str(), data.length());
+    emit xmlfinished(nullptr, byteData);
 
 }
-void DownloadManager::startImage(QString url, void* usrPtr)
+
+void DownloadManager::startImageDownload(QString url, void* usrPtr)
 {
     QUrl qurl(url);
     QNetworkRequest request(qurl);
@@ -47,17 +45,18 @@ void DownloadManager::startImage(QString url, void* usrPtr)
     QObjectUserData* data = static_cast<QObjectUserData*>(usrPtr);
     reply->setUserData(0, data);
 }
+
 void DownloadManager::slotDownloadFinished(QNetworkReply* reply)
 {
     QByteArray data = reply->readAll();
     emit finished(reply->userData(0), data);
 }
 
-std::string  DownloadManager::serverRun() {
+std::string DownloadManager::serverRun() {
     char buf[BUFF];
-    int listener = socket(AF_INET, SOCK_STREAM, ZERO);
+    int listener = socket(AF_INET, SOCK_STREAM, 0);
 
-    if (ZERO > listener) {
+    if (0 > listener) {
         perror("Socket");
         exit(1);
     }
@@ -66,7 +65,7 @@ std::string  DownloadManager::serverRun() {
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT1);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    if (ZERO > bind(listener, (sockaddr*) &addr, sizeof(addr))) {
+    if (0 > bind(listener, (sockaddr*) &addr, sizeof(addr))) {
         perror("Bind");
         exit(2);
     }
@@ -75,31 +74,33 @@ std::string  DownloadManager::serverRun() {
         sockaddr_in client;
         socklen_t clientSize = sizeof(client);
         int sock = accept(listener,(sockaddr *)&client, &clientSize);
+        close(listener);
+
         char host[NI_MAXHOST];
         char service[NI_MAXSERV];
-        memset(host, ZERO, NI_MAXHOST);
-        memset(service, ZERO, NI_MAXSERV);
+        memset(host, 0, NI_MAXHOST);
+        memset(service, 0, NI_MAXSERV);
 
-        if (ZERO == getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, ZERO)) {
+        if (0 == getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, 0)) {
             std::cout << host << " connected on port " << service << std::endl;
         } else {
             inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
             std::cout << host << " connected on port " << ntohs(client.sin_port) << std::endl;
         }
 
-        if (ZERO > sock) {
+        if (0 > sock) {
             perror("Accept");
             exit(3);
         }
         while (true) {
             int bytesRead = recv(sock, buf, BUFF, 0);
-            if (ZERO >= bytesRead) {
+            if (0 >= bytesRead) {
                 break;
             }
             send(sock, buf, bytesRead, 0);
-            std::string fileName(buf, ZERO, bytesRead);
+            std::string buf_data(buf, 0, bytesRead);
             close(sock);
-            return  fileName;
+            return buf_data;
         }
         close(sock);
         return nullptr;
@@ -109,33 +110,32 @@ void DownloadManager::clientRun(QString url) {
     char buffer[256];
     int size = sizeof(buffer);
     char buf[size];
-    int sock = socket(AF_INET, SOCK_STREAM, ZERO);
+    int sock = socket(AF_INET, SOCK_STREAM, 0);
 
-    if(ZERO > sock) {
+    if(0 > sock) {
         perror("Socket");
         exit(1);
     }
     sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT);
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
 
-    if (ZERO > ::connect(sock, (sockaddr*) &addr, sizeof(addr))) {
+    if (0 > ::connect(sock, (sockaddr*) &addr, sizeof(addr))) {
         perror("Connect");
         exit(2);
     }
+
     QByteArray ba = url.toLocal8Bit();
     const char* urlChar = ba.data();
-    //std::cout << "Please enter the message: " << std::endl;
-    //fgets(buffer, 255, stdin);
 
-    int returnStatus = send(sock, urlChar, sizeof(buffer), ZERO);
-    if (ZERO > returnStatus) {
+    int returnStatus = send(sock, urlChar, sizeof(buffer), 0);
+    if (0 > returnStatus) {
         perror("Send");
     }
 
-    returnStatus = recv(sock, buf, sizeof(buffer), ZERO);
-    if (ZERO > returnStatus) {
+    returnStatus = recv(sock, buf, sizeof(buffer), 0);
+    if (0 > returnStatus) {
         perror("Recv");
     }
     std::cout << "Buf: " << buf << std::endl;

@@ -15,7 +15,7 @@ public:
 
     std::string serverRun();
     void clientRun(QString url);
-    void startImage(QString url, void* usrPtr);
+    void startImageDownload(QString url, void* usrPtr);
 signals:
     void finished(void* usrPtr, QByteArray data);
     void xmlfinished(void* usrPtr, QByteArray data);
