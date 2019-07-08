@@ -83,6 +83,7 @@ private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
     void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
     void onRefresh();
+    void changePage(QString href);
 
 };
 

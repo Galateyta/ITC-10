@@ -40,7 +40,6 @@ Qt::Alignment alignmentStringToEnum(QString alignment)
     if ("center" == alignment) return Qt::AlignHCenter;
 
     return Qt::AlignHCenter;
-
 }
 
 void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType parentType)
@@ -183,7 +182,7 @@ void MainWindow::createButton(QObject* view, QDomElement e, QObject* parent, EEl
 {
     QString style = e.attribute("style", "");
     QString text = e.text();
-
+    QString href = e.attribute("href");
     if (parentType == EElementType::Div)
     {
         view = new QPushButton();
@@ -193,6 +192,15 @@ void MainWindow::createButton(QObject* view, QDomElement e, QObject* parent, EEl
         widget->setStyleSheet(style);
         int width = widget->fontMetrics().width(text);
         widget->setFixedWidth(width + 30);
+        if(href.size())
+        {
+            if(text == "Slack"){
+                QPixmap pixmap(":/icons/slack.png");
+                QIcon ButtonIcon(pixmap);
+                widget->setIcon(ButtonIcon);
+            }
+        connect(widget, &QPushButton::clicked, this, [this,href]{changePage(href);});
+        }
     }
 }
 
@@ -263,6 +271,7 @@ void MainWindow::createSelect(QObject* view, QDomElement e, QObject* parent, EEl
             combobox->addItem(e.childNodes().at(i).toElement().text());
         }
         static_cast<Div*>(parent)->addWidget(combobox);
+
     }
 }
 
@@ -310,7 +319,7 @@ void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, EEleme
         label->setStyleSheet(style);
         QString src = e.attribute("src", "");
         if (!src.size()) return;
-        mDownloadManager->start(src,label);
+        mDownloadManager->startImage(src,label);
         static_cast<Div*>(parent)->addWidget(label);
     }
 }
@@ -337,7 +346,7 @@ void MainWindow::createOlAndUl(QObject* view, QDomElement e, QObject* parent, EE
             if(e.tagName() == "ul")
             {
                 QString styleUl = QChar(0x2022);
-                list->addItem(styleUl + e.childNodes().at(i).toElement().text());
+                list->addItem(e.childNodes().at(i).toElement().text());
             }
             else
             {
@@ -377,19 +386,11 @@ MainWindow::MainWindow(QWidget *parent) :
     mDownloadManager = new DownloadManager(this);
     mXmlPageDownloadManager = new DownloadManager(this);
 
-    connect(mXmlPageDownloadManager, SIGNAL(finished(void*, QByteArray)),
+    connect(mXmlPageDownloadManager, SIGNAL(xmlfinished(void*, QByteArray)),
             this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
 
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
-
-//    QFile xmlFile("/home/abul/Desktop/Artur_c++/ITC10/QT/browser/test.xml");
-//    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-//    QDomDocument domDoc;
-//    domDoc.setContent(xmlFile.readAll());
-
-//    QDomElement root = domDoc.firstChildElement();
-//    parseElement(root, nullptr, EElementType::Unknown);
 
     QWidget* centralWidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(centralWidget);
@@ -398,11 +399,13 @@ MainWindow::MainWindow(QWidget *parent) :
     mUrlInput = new QLineEdit(centralWidget);
     toolBarLayout->addWidget(mUrlInput);
     layout->addLayout(toolBarLayout);
+    mUrlInput->setStyleSheet("border-radius: 5px; border: 2px solid blue");
 
     QPushButton* refresh = new QPushButton(centralWidget);
     QPixmap pixmap(":/icons/refresh.png");
     QIcon ButtonIcon(pixmap);
     refresh->setIcon(ButtonIcon);
+    refresh->setStyleSheet("background-color: yellow");
     connect(mUrlInput, SIGNAL(returnPressed()), refresh, SIGNAL(clicked()));
     connect(refresh, SIGNAL(clicked()), this, SLOT(onRefresh()));
     toolBarLayout->addWidget(refresh);
@@ -414,11 +417,8 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 void MainWindow::onXmlPageDownloadFinished(void* usrPtr, QByteArray data)
 {
-    /*QFile xmlFile("/home/hunan/Desktop/test.xml");
-    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);*/
     QDomDocument d;
     d.setContent(data);
-
     QDomElement root = d.firstChildElement();
     parseElement(root, nullptr, EElementType::Unknown);
     mBrowserArea->setWidget(mLayout);
@@ -435,7 +435,11 @@ void MainWindow::onRefresh()
     QString url = mUrlInput->text();
     mXmlPageDownloadManager->start(url, nullptr);
 }
-
+void MainWindow::changePage(QString href)
+{
+    mUrlInput->setText(href);
+    emit onRefresh();
+}
 
 MainWindow::~MainWindow()
 {

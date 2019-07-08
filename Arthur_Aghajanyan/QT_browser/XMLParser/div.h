@@ -16,9 +16,6 @@ public:
     void addWidget(QWidget* widget);
     void setDirection(QBoxLayout::Direction direction);
     void setAlignment(Qt::Alignment alignment);
-signals:
-
-public slots:
 
 private:
     QBoxLayout* mLayout = nullptr;
