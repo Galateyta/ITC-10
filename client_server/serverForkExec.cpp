@@ -1,109 +1,50 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
-#include <cstdio> 
-#include <cstdlib>
-#include <unistd.h>
+#include <arpa/inet.h>
+
 #include <iostream>
 #include <sstream>
 #include <fstream>
+#include <unistd.h>
+#include <cstdlib>
+#include <cstdlib>
+#include <cstdio> 
 #include <netdb.h>
 #include <cstring>
-#include <arpa/inet.h>
 
 #define ZERO 0
 #define STATUS -1
 #define PORT 60000
 #define PORT1 50001
+#define BUFF 1024
 
-void readFile(int sock){
+void readFile(int);
+void clientRun();
 
-    std::stringstream response;
-    std::stringstream response_body;
-    std::fstream fin;
-
-    fin.open("test.xml");
-
-    if (!fin.is_open()) {
-        std::cout << "file dose not open" << std::endl;
-    }
-
-    std::string str = "";
-    std::string line = "";
-    while (getline(fin, line)) {
-        if (ZERO != line.compare("")) {
-            str += line;
-            //std::cout << line << std::endl;
-        }
-    }
-    response_body << str;
-    response << "HTTP/1.1 200 OK\r\n"
-        << "Version: HTTP/1.1\r\n"     
-        << "Content-Type: text/html; charset=utf-8\r\n"
-        << "Content-Length: " << response_body.str().length()
-        << "\r\n\r\n"
-        << response_body.str();
-
-    send(sock,response.str().c_str(), response.str().length(), ZERO);
-    fin.close();
-}
-void clientRun(){
+int main() {
+    sockaddr_in addr;
     
-    char buffer[256];
-
-    char buf[sizeof(buffer)];
-    int sock,returnStatus;
-    struct sockaddr_in addr;
-    sock = socket(AF_INET, SOCK_STREAM, ZERO);
-    if(sock < ZERO)
-    {
-        perror("socket");
+    int listener = socket(AF_INET, SOCK_STREAM, ZERO);
+    if (ZERO > listener) {
+        perror("Socket");
         exit(1);
     }
 
-    addr.sin_family = AF_INET;
-    addr.sin_port = htons(PORT1);
-    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-    if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < ZERO)
-    {
-        perror("connect");
-        exit(2);
-    }
-    readFile(sock);
-    printf("%s\n",buf);
-    close(sock);
-}
-
-int main()
-{
-    int sock, listener;
-    struct sockaddr_in addr;
-    char buf[1024];
-    int bytes_read;
-
-    listener = socket(AF_INET, SOCK_STREAM, ZERO);
-    if(listener < ZERO)
-    {
-        perror("socket");
-        exit(1);
-    }
-    
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT);
     addr.sin_addr.s_addr = INADDR_ANY;
-    if(bind(listener, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-    {
-        perror("bind");
+    
+    if (ZERO > bind(listener, (sockaddr*) &addr, sizeof(addr))) {
+        perror("Bind");
         exit(2);
     }
-
     listen(listener, 1);
     
-    while(1)
-    {
+    while (true) {
         sockaddr_in client;
         socklen_t clientSize = sizeof(client);
-        sock = accept(listener,(sockaddr *)&client, &clientSize);
+        int sock = accept(listener, (sockaddr*) &client, &clientSize);
         char host[NI_MAXHOST];
         char service[NI_MAXSERV];
 
@@ -117,47 +58,105 @@ int main()
             std::cout << host << " connected on port " << ntohs(client.sin_port) << std::endl;
         }
 
-        if(sock < ZERO)
-        {
-            perror("accept");
+        if(ZERO > sock) {
+            perror("Accept");
             exit(3);
         }
         
-        switch(fork())
-        {
-        case STATUS:
-            perror("fork");
-            break;
+        char buf[BUFF];
+
+        switch(fork()) {
+            case STATUS:
+                perror("Fork");
+                break;
             
-        case ZERO:
-            close(listener);
-            while(1)
-            {
-                bytes_read = recv(sock, buf, 1024, ZERO);
-                if(bytes_read <= ZERO) break;
-                if (STATUS == bytes_read) {
-                    std::cerr << "Error in recv(). Quitting" << std::endl;
-                    break;
+            case ZERO:
+                close(listener);
+                while (true) {
+                    int bytesRead = recv(sock, buf, BUFF, ZERO);
+                    if (ZERO >= bytesRead) {
+                        break;
+                    }
+                
+                    if (STATUS == bytesRead) {
+                        std::cerr << "Error in recv(). Quitting" << std::endl;
+                        break;
+                    }
+
+                    if (ZERO == bytesRead) {
+                        std::cout << "Client disconnected." << std::endl;
+                        break;
+                    }
+
+                    std::string fileName = std::string(buf, ZERO, bytesRead);
+                    std::cout << fileName << std::endl;
+                    send(sock, buf, bytesRead, 0);
                 }
 
-                if (ZERO == bytes_read) {
-                    std::cout << "Client disconnected " << std::endl;
-                    break;
-                }
-                std::string file_name = std::string(buf, ZERO, bytes_read);
-                std::cout << file_name << std::endl;
-                send(sock, buf, bytes_read, 0);
-            }
-            close(sock);
-            clientRun();
-            _exit(0);
-            
-        default:
-            close(sock);
+                close(sock);
+                clientRun();
+                exit(0);
+        
+            default:
+                close(sock);
         }
     }
     
     close(listener);
-
     return 0;
+}
+
+void readFile(int sock){
+    std::fstream fin;
+    fin.open("test.xml");
+
+    if (!fin.is_open()) {
+        std::cout << "File can't open!" << std::endl;
+    }
+
+    std::string str = "";
+    std::string line = "";
+    while (getline(fin, line)) {
+        if (ZERO != line.compare("")) {
+            str += line;
+        }
+    }
+    fin.close();
+    
+    std::stringstream response;
+    std::stringstream responseBody;
+    responseBody << str;
+    response << "HTTP/1.1 200 OK\r\n"
+        << "Version: HTTP/1.1\r\n"     
+        << "Content-Type: text/html; charset=utf-8\r\n"
+        << "Content-Length: " << responseBody.str().length()
+        << "\r\n\r\n"
+        << responseBody.str();
+
+    send(sock, response.str().c_str(), response.str().length(), ZERO);
+}
+
+void clientRun(){
+    char buffer[256];
+    int size = sizeof(buffer);
+    char buf[size];
+    int sock = socket(AF_INET, SOCK_STREAM, ZERO);
+    if (ZERO > sock) {
+        perror("Socket");
+        exit(1);
+    }
+
+    sockaddr_in addr;
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(PORT1);
+    addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
+    
+    if(ZERO > connect(sock, (sockaddr*) &addr, sizeof(addr))) {
+        perror("Connect");
+        exit(2);
+    }
+
+    readFile(sock);
+    std::cout << "Buf: " << buf << std::endl;
+    close(sock);
 }

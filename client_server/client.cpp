@@ -12,38 +12,42 @@
 #define ZERO 0
 #define PORT 60000
 #define PORT1 50001
-void serverRun(){
-    int sock, listener;
-    struct sockaddr_in addr;
-    char buf[1024];
-    int bytes_read;
+#define BUFF 1024
 
-    listener = socket(AF_INET, SOCK_STREAM, 0);
-    if(listener < 0)
-    {
-        perror("socket");
+void serverRun();
+void clientRun();
+
+int main() {
+    clientRun();
+    serverRun();
+
+    return 0;
+}
+
+void serverRun() {
+    char buf[BUFF];
+    int listener = socket(AF_INET, SOCK_STREAM, ZERO);
+    
+    if (ZERO > listener) {
+        perror("Socket");
         exit(1);
     }
 
+    sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT1);
     addr.sin_addr.s_addr = htonl(INADDR_ANY);
-    if(bind(listener, (struct sockaddr *)&addr, sizeof(addr)) < 0)
-    {
-        perror("bind");
+    if (ZERO > bind(listener, (sockaddr*) &addr, sizeof(addr))) {
+        perror("Bind");
         exit(2);
     }
-
     listen(listener, 1);
 
-    while(1)
-    {
         sockaddr_in client;
         socklen_t clientSize = sizeof(client);
-        sock = accept(listener,(sockaddr *)&client, &clientSize);
+        int sock = accept(listener,(sockaddr *)&client, &clientSize);
         char host[NI_MAXHOST];
         char service[NI_MAXSERV];
-
         memset(host, ZERO, NI_MAXHOST);
         memset(service, ZERO, NI_MAXSERV);
 
@@ -54,64 +58,57 @@ void serverRun(){
             std::cout << host << " connected on port " << ntohs(client.sin_port) << std::endl;
         }
 
-        if(sock < 0)
-        {
-            perror("accept");
+        if (ZERO > sock) {
+            perror("Accept");
             exit(3);
         }
 
-        while(1)
-        {
-            bytes_read = recv(sock, buf, 1024, 0);
-            if(bytes_read <= 0) break;
-            send(sock, buf, bytes_read, 0);
-             std::string f = std::string(buf, ZERO, bytes_read);
-             std::cout << f << std::endl;
-
+        while (true) {
+            int bytesRead = recv(sock, buf, BUFF, 0);
+            if (ZERO >= bytesRead) {
+                break;
+            }
+            send(sock, buf, bytesRead, 0);
+            std::string fileName(buf, ZERO, bytesRead);
+            std::cout << fileName << std::endl;
         }
         close(sock);
-    }
 }
-void clientRun(){
-    
-    char buffer[256];
 
-    char buf[sizeof(buffer)];
-    int sock,returnStatus;
-    struct sockaddr_in addr;
-    sock = socket(AF_INET, SOCK_STREAM, ZERO);
-    if(sock < ZERO)
-    {
-        perror("socket");
+void clientRun() {
+    char buffer[256];
+    int size = sizeof(buffer);
+    char buf[size];
+    int sock = socket(AF_INET, SOCK_STREAM, ZERO);
+    
+    if(ZERO > sock) {
+        perror("Socket");
         exit(1);
     }
-
+    
+    sockaddr_in addr;
     addr.sin_family = AF_INET;
     addr.sin_port = htons(PORT);
     addr.sin_addr.s_addr = htonl(INADDR_LOOPBACK);
-    if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < ZERO)
-    {
-        perror("connect");
+    
+    if (ZERO > connect(sock, (sockaddr*) &addr, sizeof(addr))) {
+        perror("Connect");
         exit(2);
     }
-    printf("Please enter the message:\n");
-    fgets(buffer,255,stdin);
 
-    returnStatus = send(sock, buffer, sizeof(buffer), ZERO);
-    if (returnStatus < ZERO){
-        perror("send");
+    //std::cout << "Please enter the message: " << std::endl;
+    //fgets(buffer, 255, stdin);
+
+    int returnStatus = send(sock, buffer, sizeof(buffer), ZERO);
+    if (ZERO > returnStatus) {
+        perror("Send");
     }
+
     returnStatus = recv(sock, buf, sizeof(buffer), ZERO);
-    if (returnStatus < ZERO){
-        perror("recv");
+    if (ZERO > returnStatus) {
+        perror("Recv");
     }
 
-    printf("%s\n",buf);
+    std::cout << "Buf: " << buf << std::endl;
     close(sock);
-}
-int main()
-{
-    clientRun();
-    serverRun();
-    return 0;
 }
