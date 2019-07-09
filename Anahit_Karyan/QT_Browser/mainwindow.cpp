@@ -1,4 +1,4 @@
-﻿#include "mainwindow.h"
+#include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "downloadmanager.h"
 #include <QSize>
@@ -252,7 +252,7 @@ void MainWindow::createImg(QObject* view, EElementType parentType, QDomElement e
                 rx.indexIn(src);
                 if(rx.cap(0).length() != 0)
                 {
-                    mDownloadManager->start(src, label);
+                    mDownloadManager->startImageDownload(src, label);
                 }
                 else
                 {
@@ -349,14 +349,13 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
     mXmlPageDownloadManager = new DownloadManager(this);
-    connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
-                this, SLOT(onDownloadFinished(void*, QByteArray)));
 
-    connect(mXmlPageDownloadManager, SIGNAL(finished(void*, QByteArray)),
-                this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
+//    connect(mXmlPageDownloadManager, SIGNAL(finished(void*, QByteArray)),
+//                this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
 
+    connect(mXmlPageDownloadManager, &DownloadManager::xmlfinished, this, &MainWindow::onXmlPageDownloadFinished);
 
-    QFile xmlFile("/home/anahit/Desktop/test.xml");
+    QFile xmlFile("/home/student/Desktop/google.xml");
     xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
     QDomDocument d;
     d.setContent(xmlFile.readAll());
@@ -398,6 +397,7 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     pix.loadFromData(data);
     label->setPixmap(pix);
     label->setAlignment(Qt::AlignCenter);
+    label->setScaledContents(true);
 }
 void MainWindow::onXmlPageDownloadFinished(void* usrPtr, QByteArray data)
 {
