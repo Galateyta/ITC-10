@@ -1,0 +1,80 @@
+<div flex-direction="column" >
+    <div flex-direction="row" justify-content="right">
+        <h3>Gmail</h3>
+        <h3>Images</h3>
+        <select>
+            <option value="0">...</option>
+            <option value="1">Play</option>
+            <option value="2">Drive</option>
+            <option value="3">Photos</option>
+            <option value="4">Gmail</option>
+            <option value="5">Calendar</option>
+            <option value="6">Contacts</option>
+            <option value="7">Search</option>
+            <option value="8">Translate</option>
+        </select>
+        <button style="background-color: red; color: white; border-radius: 20px;border: 1px solid red;min-height: 10; max-height: 40; font-size: 20px">G</button>
+    </div>
+    <div flex-direction="column" justify-content="center">
+        <div flex-direction="column">
+            <img src="google.png"></img>
+        </div>
+        <div flex-direction="column">
+            <input style="max-width: 600; min-height: 40; border-radius: 20px;border: 1px solid gray"></input>
+        </div>
+        <div flex-direction="row">
+            <button style="background-position: bottom center">Search Google</button>
+            <button style="background-position: bottom center">I`m Feeling Lucky</button>
+        </div>
+    </div>
+    <!-- <div flex-direction="column">
+        <div flex-direction="row">
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/facebook.png"></img>
+                <p  style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Facebook</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/youtube.png"></img>
+                <p style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Youtube</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/gmail.png"></img>
+                <p style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Gmail</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/slack.png"></img>
+                <p  style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Slack</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/translate.png"></img>
+                <p  style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30;">Translate</p>
+            </div>
+        </div>
+        <div flex-direction="row">
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/github-logo.png"></img>
+                <p  style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Github</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/wikipedia.png"></img>
+                <p  style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Wikipedia</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/twitter.png"></img>
+                <p style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Twitter</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/linkedin.png"></img>
+                <p style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Linkedin</p>
+            </div>
+            <div flex-direction="column" justify-content="center">
+                <img style="background-color: white; max-width: 70; max-height: 70; border-radius: 30px;border: 3px inset white" src=":/icons/plus-button.png"></img>
+                <p style="background-color: white; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-height: 30; max-height: 30">Add</p>
+            </div>
+        </div>
+    </div> -->
+    <div flex-direction="row" justify-content="right">
+        <p style="background-color: white; color: blue; border-radius: 15px;border: 1px inset white; qproperty-alignment: AlignCenter; min-width: 100; max-height: 30">Costumize</p>
+    </div>
+</div>
+

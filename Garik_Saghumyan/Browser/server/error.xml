@@ -1,0 +1,9 @@
+<div flex-direction="row" justify-content="left" style="background-color: white">
+	<div flex-direction="column">
+		<img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"/>
+		<h1 style="color: red">ENTERED A NON_EXISTENT ADDRESS</h1>
+	</div>
+	<div>
+		<img src="http://precisiondigital-llc.com/wp-content/uploads/2018/10/404-error.jpg"/>
+	</div>
+</div>
