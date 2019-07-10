@@ -9,7 +9,7 @@
 #include <cstdlib>
 #include <netdb.h>
 #include <cstring>
-#include <cstdio> 
+#include <cstdio>
 
 
 #define BUFF 1024
@@ -23,7 +23,7 @@ int main(int argc, char* argv[]) {
     if(3 > argc) {
         std::cout << "Enter IP address  and Port" << std::endl;
         exit(1);
-    }else { 
+    }else {
         int port = atoi(argv[2]);
         char* hostname = argv[1];
         runServer(hostname, port);
@@ -35,7 +35,7 @@ int main(int argc, char* argv[]) {
 void runServer(char* hostname, int port) {
 
     sockaddr_in addr;
-    
+
     int listener = socket(AF_INET, SOCK_STREAM, 0);
     if (0 > listener) {
         perror("Socket");
@@ -51,7 +51,7 @@ void runServer(char* hostname, int port) {
     }
 
     int num = listen(listener, SOMAXCONN);
-    
+
     while (true) {
         sockaddr_in client;
         socklen_t clientSize = sizeof(client);
@@ -66,22 +66,22 @@ void runServer(char* hostname, int port) {
             perror("Accept");
             exit(3);
         }
-        
+
         char buf[BUFF];
 
         switch(fork()) {
             case -1:
                 perror("Fork");
                 break;
-            
+
             case 0: {
                 close(listener);
-            
+
                 int readBuf = recv(sock, buf, BUFF, 0);
                 if (0 >= readBuf ) {
                     break;
                 }
-            
+
                 if (-1 == readBuf ) {
                     std::cerr << "Error in recv(). Quitting" << std::endl;
                     break;
@@ -93,7 +93,7 @@ void runServer(char* hostname, int port) {
                 }
 
                 std::cout << buf;
-                send(sock, buf, readBuf , 0);            
+                send(sock, buf, readBuf , 0);
 
                 close(sock);
                 runClient(hostname, port + 1);
@@ -125,19 +125,17 @@ void runClient(char* hostname, int port) {
 
     addr.sin_family = AF_INET;
     addr.sin_port = htons(port);
-    if(0 >= inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr))  
-    { 
-        perror("Invalid  IP address"); 
+    if(0 >= inet_pton(AF_INET, "127.0.0.1", &addr.sin_addr))
+    {
+        perror("Invalid  IP address");
         exit(1);
-    } 
+    }
     if(0 > connect(sock, (sockaddr *)&addr, sizeof(addr)) ) {
         perror("connect");
         exit(2);
     }
-    std::cout << "connected to port: " << port << std::endl;
 
     send(sock, buf, 256, 0);
 
     runServer(hostname, port + 1);
 }
-
