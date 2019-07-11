@@ -16,19 +16,36 @@
 
 void runServer(char* hostname, int port);
 void runClient(char* hostname, int port);
-
+int flag;
 
 int main(int argc, char* argv[]) {
 
     if(3 > argc) {
-        std::cout << "Enter IP address  and Port" << std::endl;
+        std::cout << "Enter IP address  and Port for server and port for client" << std::endl;
         exit(1);
-    }else {
-        int port = atoi(argv[2]);
+    }else { 
+        
         char* hostname = argv[1];
-        runServer(hostname, port);
-    }
+        int port = atoi(argv[2]);
+        
+        std::cout << "Run Server or Client ? Enter 1 for server , 2 for client : ";
+        std::cin >> flag;
+        switch(flag) {
+            case 1: 
+                runServer(hostname, port);
+                break;
 
+            case 2: {
+                runClient(hostname, port);
+                runServer(hostname, port + 1);
+                break;
+        }
+            default:
+                std::cout << "Error" << std::endl;
+                break;
+        }
+        
+    }
     return 0;
 }
 
@@ -96,7 +113,11 @@ void runServer(char* hostname, int port) {
                 send(sock, buf, readBuf , 0);
 
                 close(sock);
-                runClient(hostname, port + 1);
+                if(flag == 1) {
+                    runClient(hostname, port + 1);
+                }else {
+                    runClient(hostname, port - 1);
+                }
                 exit(0);
             }
             default:
@@ -137,5 +158,4 @@ void runClient(char* hostname, int port) {
 
     send(sock, buf, 256, 0);
 
-    runServer(hostname, port + 1);
 }
