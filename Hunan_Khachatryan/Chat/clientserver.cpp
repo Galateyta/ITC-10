@@ -10,109 +10,102 @@
 #include <cstring>
 
 
-void clientRun(char* port, char* port1);
+void clientRun(char* port);
 
-void serverRun(char* port, char* port1);
+void serverRun(char* port);
 
 int main(int argc, char* argv[]) {
      
-     if(argv[3]){
-         clientRun(argv[1],argv[2]);
+     if(argv[2]){ std::cout<<"kaaaa";
+         clientRun(argv[1]);
      }else{
-         serverRun(argv[1],argv[2]);   
+         serverRun(argv[1]);   
      }
     return 0; 
 }
 
 
-void clientRun(char* port, char* port1){
-    int sock;
-    sockaddr_in addr;
-    hostent* server;
-    char buffer[256];
-    int size = sizeof(buffer);
-    char buf[size];
-    int portno = atoi(port);
-    std::cout<<portno;
-
+void clientRun(char* port){
+    int sock, portno;
+    struct sockaddr_in addr;
+    char message[128];
+    char buf[sizeof(message)];
+    portno = atoi(port);
     sock = socket(AF_INET, SOCK_STREAM, 0);
-    if (0 > sock) {
-        perror("Socket");
+    if(sock < 0)
+    {
+        perror("socket");
+        exit(1);
+    }
+
+    addr.sin_family = AF_INET;
+    addr.sin_port = htons(portno); 
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    if(connect(sock, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+    {
+        perror("connect");
+        exit(2);
+    }
+    while(1){
+    memset(message,0,128);
+    printf("Please enter the message: ");
+    fgets(message,128,stdin);
+    send(sock, message, sizeof(message), 0);
+    recv(sock, buf, sizeof(message), 0);
+    printf(buf);
+    }
+    close(sock);
+}
+
+void serverRun(char* port){
+
+    int sock, listener,portno;
+    struct sockaddr_in addr;
+    char buf[1024];
+    int bytes_read;
+    portno = atoi(port);
+
+
+    listener = socket(AF_INET, SOCK_STREAM, 0);
+    if(listener < 0)
+    {
+        perror("socket");
         exit(1);
     }
     
     addr.sin_family = AF_INET;
     addr.sin_port = htons(portno);
-    addr.sin_addr.s_addr = INADDR_ANY;
-    
-    if(0 > connect(sock, (sockaddr*) &addr, sizeof(addr))) {
-        perror("Connecting   ");
+    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    if(bind(listener, (struct sockaddr *)&addr, sizeof(addr)) < 0)
+    {
+        perror("bind");
         exit(2);
     }
-    printf("Enter message:");
-    memset(buf,0,256);
-    fgets(buf,255,stdin);
+
+    listen(listener, 1);
     
-    int t = send(sock, buf, strlen(buf),0);
-    if(0 > t){
-        perror("Error send");
-        exit(0);
+    while(1)
+    {
+        sock = accept(listener, NULL, NULL);
+        if(sock < 0)
+        {
+            perror("accept");
+            exit(3);
+        }
+
+        while(1)
+        {
+            bytes_read = recv(sock, buf, 1024, 0);
+        printf(buf);
+
+        printf("Please enter the message: ");
+        bzero(buf,0.128);
+        fgets(buf,128,stdin);
+            if(bytes_read <= 0) break;
+            send(sock, buf, bytes_read, 0);
+        }
+    
+        close(sock);
     }
-    int n = recv(sock,buf,strlen(buf),0);
-    if(n<0){
-        perror("Recv");
-        exit(0);
-    }
-
-    close(sock);
-    
-   
-}
-
-void serverRun(char* port, char* port1){
-
-     int sockfd, newsockfd, portno;
-     socklen_t clientlen;
-     char buffer[256];
-     sockaddr_in serv_addr, client_addr;
-     int n;
-     sockfd = socket(AF_INET, SOCK_STREAM, 0);
-
-     if (sockfd < 0) 
-        perror("ERROR opening socket");
-
-     bzero((char *) &serv_addr, sizeof(serv_addr));
-
-     portno = atoi(port);
-     serv_addr.sin_family = AF_INET;
-     serv_addr.sin_addr.s_addr = INADDR_ANY;
-     serv_addr.sin_port = htons(portno);
-
-
-     if (bind(sockfd, (struct sockaddr *) &serv_addr,sizeof(serv_addr)) < 0) {
-         perror("ERROR on binding");
-     }
-     listen(sockfd,1);
-     
-    
-    clientlen = sizeof(client_addr);
-    newsockfd = accept(sockfd,(sockaddr *) &client_addr,&clientlen);
-     if (newsockfd < 0) {
-          perror("ERROR on accept");
-     }
-
-    
-    memset(buffer,0,256);
-     
-    n = recv(newsockfd,buffer,strlen(buffer),0);
-    std::cout<<buffer<<strlen(buffer)<<std::endl;
-    if (0 > n) {
-        perror("Error not read from socket");
-        exit(0);
-    }
-
-    
-    printf("Here is the message: %s\n",buffer);
-    close(sockfd);
     
 }
