@@ -10,6 +10,7 @@
 #include <QListWidget>
 #include <QScrollArea>
 #include <QImage>
+#include <downloadmanager.h>
 
 EElementType elementTypeToEnum(QString name)
 {
@@ -227,16 +228,19 @@ void MainWindow::addImageElemets(QObject *view, QObject *parent, EElementType pa
         rx.indexIn(src);
         if(rx.cap(0).length() != 0)
          {
-              download->startImageDownload(src, label);
+             download->startImageDownload(src, label);
          }
          else
          {
-              QPixmap pix(src);
+
+              QByteArray data = download->getImage(src);
+              QPixmap pix;
+              pix.loadFromData(data);
               label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+//              label->setScaledContents(true);
          }
          static_cast<Div*>(parent)->addWidget(label);
     }
-
 }
 
 void MainWindow::addTextElements(QObject *view, QObject *parent, EElementType parentType, QString style, QString value, EElementType headerName)
@@ -373,6 +377,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     download = new DownloadManager(this);
     mXmlPageDownloadManager = new DownloadManager(this);
+    imageDownloader = new DownloadManager(this);
     connect(download, &DownloadManager::finished, this, &MainWindow::onDownloadFinished);
     connect(mXmlPageDownloadManager, &DownloadManager::xmlfinished, this, &MainWindow::onXmlPageDownloadFinished);
 
@@ -407,8 +412,10 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     pix.loadFromData(data);
     label->setPixmap(pix);
     label->setAlignment(Qt::AlignCenter);
-    label->setScaledContents(true);
+//    label->setScaledContents(true);
 }
+
+
 
 void MainWindow::onXmlPageDownloadFinished(void *usrPtr, QByteArray data)
 {
@@ -435,3 +442,4 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+

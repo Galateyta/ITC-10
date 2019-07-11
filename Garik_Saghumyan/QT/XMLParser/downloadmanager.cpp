@@ -13,10 +13,12 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <iostream>
+#include <netinet/in.h>
+
 
 #define PORT 60005
 #define PORT1 50001
-#define BUFF 10000
+#define BUFF 200000
 
 DownloadManager::DownloadManager(QObject* parent) : QObject(parent)
 {
@@ -31,12 +33,17 @@ DownloadManager::~DownloadManager()
 void DownloadManager::start(QString url, void* usrPtr)
 {
     clientRun(url);
-    std::string data = serverRun();
-    QByteArray byteData(data.c_str(), data.length());
-    emit xmlfinished(nullptr, byteData);
-
+    QByteArray data = serverRun();
+    emit xmlfinished(nullptr, data);
 }
+QByteArray DownloadManager::getImage(QString url)
+{
+    clientRun(url);
 
+    QByteArray data = serverRun();
+
+    return data;
+}
 void DownloadManager::startImageDownload(QString url, void* usrPtr)
 {
     QUrl qurl(url);
@@ -51,8 +58,7 @@ void DownloadManager::slotDownloadFinished(QNetworkReply* reply)
     QByteArray data = reply->readAll();
     emit finished(reply->userData(0), data);
 }
-
-std::string DownloadManager::serverRun() {
+QByteArray DownloadManager::serverRun() {
     char buf[BUFF];
     int listener = socket(AF_INET, SOCK_STREAM, 0);
 
@@ -98,11 +104,14 @@ std::string DownloadManager::serverRun() {
                 break;
             }
             send(sock, buf, bytesRead, 0);
-            std::string buf_data(buf, 0, bytesRead);
             close(sock);
-            return buf_data;
+
+            QByteArray text = QByteArray::fromRawData(buf, bytesRead);
+
+            return text;
         }
         close(sock);
+
         return nullptr;
 }
 
@@ -111,22 +120,40 @@ void DownloadManager::clientRun(QString url) {
     int size = sizeof(buffer);
     char buf[size];
     int sock = socket(AF_INET, SOCK_STREAM, 0);
-
+    //   ITC://172.20.24.16/google.xml
+    QString protocol = url.split("://")[0];
+    QString ip = url.split("/")[2];
+    QString fileName = url.split("/")[3];
+    if ("localhost" == ip)
+    {
+        ip = "127.0.0.1";
+    }
+    qDebug() << protocol;
+    qDebug() << ip;
+    qDebug() << fileName;
     if(0 > sock) {
         perror("Socket");
         exit(1);
     }
     sockaddr_in addr;
     addr.sin_family = AF_INET;
-    addr.sin_port = htons(PORT);
-    addr.sin_addr.s_addr = htonl(INADDR_ANY);
+    if (protocol.simplified() == "ITC" ){
+        addr.sin_port = htons(PORT);
+    }else {
+        qDebug() << "Invalid protocol";
+        exit(1);
+    }
+    QByteArray baba = ip.toLatin1();
+    const char* ipByte = baba.data();
+    addr.sin_addr.s_addr = inet_addr(ipByte);
+
 
     if (0 > ::connect(sock, (sockaddr*) &addr, sizeof(addr))) {
         perror("Connect");
         exit(2);
     }
 
-    QByteArray ba = url.toLocal8Bit();
+    QByteArray ba = fileName.toLocal8Bit();
     const char* urlChar = ba.data();
 
     int returnStatus = send(sock, urlChar, sizeof(buffer), 0);
@@ -136,7 +163,7 @@ void DownloadManager::clientRun(QString url) {
 
     returnStatus = recv(sock, buf, sizeof(buffer), 0);
     if (0 > returnStatus) {
-        perror("Recv");
+         perror("Recv");
     }
     std::cout << "Buf: " << buf << std::endl;
     close(sock);

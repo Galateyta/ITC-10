@@ -59,6 +59,7 @@ public:
 
     ~MainWindow();
 
+
 private slots:
     void onDownloadFinished(void* usrPtr, QByteArray data);
     void onXmlPageDownloadFinished(void* usrPtr, QByteArray data);
@@ -69,6 +70,7 @@ private:
     Div* mLayout = nullptr;
     DownloadManager* download;
     DownloadManager* mXmlPageDownloadManager;
+    DownloadManager *imageDownloader;
     QLineEdit* mUrlInput = nullptr;
     QScrollArea* mBrowserArea = nullptr;
 };
