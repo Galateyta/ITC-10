@@ -8,7 +8,7 @@
 #include <string.h> 
 #include <arpa/inet.h>
 
-void clientRun(int port){
+void clientRun(int port, int mod, const char* buf){
 
     int sock = 0, valread; 
     struct sockaddr_in serv_addr; 
@@ -29,16 +29,24 @@ void clientRun(int port){
 
 
     connect(sock, (struct sockaddr *)&addr, sizeof(addr));
-    std::string my_message;
-    std::cout << "enter message : ";
-    std::getline(std::cin, my_message);
-    const char* hello = my_message.c_str();
+    if(mod == 1){
+        std::string my_message;
+        std::cout << "enter message : ";
+        std::getline(std::cin, my_message);
+        const char* hello = my_message.c_str();
     
-    send(sock , hello , strlen(hello) , 0 );
+        send(sock , hello , strlen(hello) , 0 );
+    }
+    else {
+        std::string my_message(buf);
+        const char* hello = (my_message + my_message).c_str();
+    
+        send(sock , hello , strlen(hello) , 0 );   
+    }
     close(sock);
 }
 
-void serverRun(int port_s, int port_c){
+void serverRun(int port_s, int port_c, int mod, const char* buf){
     int server_fd = socket(AF_INET, SOCK_STREAM, 0);
     
     struct sockaddr_in address;
@@ -49,21 +57,26 @@ void serverRun(int port_s, int port_c){
     address.sin_port = htons( port_s ); 
 
 
-    int bind_val = bind(server_fd, (struct sockaddr *)&address, sizeof(address));
+    bind(server_fd, (struct sockaddr *)&address, sizeof(address));
 
-    int listener = listen(server_fd, 1);
+    listen(server_fd, 1);
 
-    char buffer[1024]; 
     int new_socket, valread; 
     const char* hello;
 
     while(true){
         new_socket = accept(server_fd, (struct sockaddr *)&address,(socklen_t*)&addrlen);
         while(true){
+            char buffer[1024] = {0}; 
             valread = recv( new_socket , buffer, 1024, 0);
             if(valread <= 0) break;
             std::cout << "from server : " <<buffer << std::endl; 
-            clientRun(port_c);
+            if(mod == 1) {
+                clientRun(port_c, mod, buf);
+            }
+            else {
+                clientRun(port_c, mod, buffer);
+            }
         }
         close(new_socket);
     }
@@ -77,11 +90,12 @@ int main(int argc,const char* argv[])
     mod = atoi(argv[3]);
     port_s = atoi(argv[1]);
     port_c = atoi(argv[2]);
+    const char* buf = "";
 
     if(mod == 1){
-        clientRun(port_c);
+        clientRun(port_c, mod, buf);
     }
-    serverRun(port_s, port_c);
+    serverRun(port_s, port_c, mod, buf);
     
     return 0;
 }
