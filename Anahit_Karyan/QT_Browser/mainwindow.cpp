@@ -256,7 +256,9 @@ void MainWindow::createImg(QObject* view, EElementType parentType, QDomElement e
                 }
                 else
                 {
-                    QPixmap pix(src);
+                    QByteArray imgBytes = mDownloadManager->imgDownloadFromServer(src);
+                    QPixmap pix;
+                    pix.loadFromData(imgBytes);
                     label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
                 }
 
@@ -345,36 +347,22 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
+    mXmlPageDownloadManager = new DownloadManager(this);
     mDownloadManager = new DownloadManager(this);
     connect(mDownloadManager, SIGNAL(finished(void*, QByteArray)),
             this, SLOT(onDownloadFinished(void*, QByteArray)));
-    mXmlPageDownloadManager = new DownloadManager(this);
-
-//    connect(mXmlPageDownloadManager, SIGNAL(finished(void*, QByteArray)),
-//                this, SLOT(onXmlPageDownloadFinished(void*, QByteArray)));
 
     connect(mXmlPageDownloadManager, &DownloadManager::xmlfinished, this, &MainWindow::onXmlPageDownloadFinished);
 
-    QFile xmlFile("/home/student/Desktop/google.xml");
-    xmlFile.open(QIODevice::ReadOnly | QIODevice::Text);
-    QDomDocument d;
-    d.setContent(xmlFile.readAll());
-
-    QDomElement root = d.firstChildElement();
-    parseElement(root, nullptr, EElementType::Unknown);
-
-//    QScrollArea* scroll = new QScrollArea(this);
-//    scroll->setWidget(mLayout);
-//    scroll->setWidgetResizable(true);
-//    setCentralWidget(scroll);
     QWidget* centralWidget = new QWidget(this);
     QVBoxLayout* layout = new QVBoxLayout(centralWidget);
-
     QHBoxLayout* toolBarLayout = new QHBoxLayout(centralWidget);
 
     mUrlInput = new QLineEdit(centralWidget);
     toolBarLayout->addWidget(mUrlInput);
     layout->addLayout(toolBarLayout);
+
+    mUrlInput->setText("ITC://localhost/google.xml");
 
     QPushButton* refresh = new QPushButton(centralWidget);
     QPixmap pixmap(":/icons/refresh.png");
@@ -397,7 +385,6 @@ void MainWindow::onDownloadFinished(void* usrPtr, QByteArray data)
     pix.loadFromData(data);
     label->setPixmap(pix);
     label->setAlignment(Qt::AlignCenter);
-    label->setScaledContents(true);
 }
 void MainWindow::onXmlPageDownloadFinished(void* usrPtr, QByteArray data)
 {
