@@ -47,13 +47,13 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 # For windows command line encoding!!!
-QMAKE_EXTRA_TARGETS += before_build makefilehook
+#QMAKE_EXTRA_TARGETS += before_build makefilehook
 
-makefilehook.target = $(MAKEFILE)
-makefilehook.depends = .beforebuild
+#makefilehook.target = $(MAKEFILE)
+#makefilehook.depends = .beforebuild
 
-PRE_TARGETDEPS += .beforebuild
+#PRE_TARGETDEPS += .beforebuild
 
-before_build.target = .beforebuild
-before_build.depends = FORCE
-before_build.commands = chcp 1251
+#before_build.target = .beforebuild
+#before_build.depends = FORCE
+#before_build.commands = chcp 1251

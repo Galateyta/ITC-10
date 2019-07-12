@@ -1,0 +1,44 @@
+<div flex-direction="column" style="background-color: white" >
+    <div flex-direction="row" justify-content="right">
+        <p>Gmail</p>
+        <p>Images</p>
+        <div  style="color:green" >
+        	<button style="QPushButton:hover {color: red; border-radius:10px }">Enter</button>
+    	</div>
+    </div>
+    <div flex-direction="column" justify-content="center">
+        <img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+        <input placeholder="Search Google or type a URL " style="QLineEdit{background-color:#F3F3F3; height: 44px;height: 30px;border-radius: 15px; max-width: 600; } QLineEdit:hover { background-color:#ECECEC;}"></input>
+    </div>
+	<div flex-direction="column" justify-content="center">
+    	<div flex-direction="row">
+    		<div flex-direction="column" justify-content="center">
+	            <button onClick="click()" style="border-image: url(/home/hunan/XMLParser/res/icons/fb.png); min-width:48;min-height:48;margin:20px"></button> 
+            	<p style="qproperty-alignment: AlignCenter">Facebook</p>
+            </div>         
+            <div flex-direction="column" justify-content="center">
+	            <button  style="border-image: url(/home/hunan/XMLParser/res/icons/youtube.png); min-width:48; min-height:48; margin:20px;"></button>
+             	<p style="qproperty-alignment: AlignCenter">Youtube</p>
+            </div> 
+        	<div flex-direction="column" justify-content="center">
+	            <button style="border-image: url(/home/hunan/XMLParser/res/icons/mail.png); min-width:48;min-height:48;margin:20px;"></button>
+            	 <p style="qproperty-alignment: AlignCenter">Mail.ru</p>
+            </div> 
+    	</div>  
+		<div flex-direction="row" justify-content="center">
+    		<div flex-direction="column" justify-content="center" >
+         	   <button  style="border-image: url(/home/hunan/XMLParser/res/icons/gmail.png); min-width:48;min-height:48;margin:20px;"></button> 
+           	 <p style="qproperty-alignment: AlignCenter">Gmail</p>
+        	</div>   
+        	<div flex-direction="column" justify-content="center">
+          		<button  style="border-image: url(/home/hunan/XMLParser/res/icons/git.png); min-width:48; min-height:48; 	margin:20px;"></button>     
+				<p style="qproperty-alignment: AlignCenter">GitHub</p>
+   			</div> 
+     		<div flex-direction="column" justify-content="center">
+              	<button onClick="click()"  style="QPushButton { min-width:48; min-height:48; margin:20px; font-size:20pt; border-radius:25;}QPushButton:hover {background-color: #ECECEC;  }">+</button>
+             	<p style="qproperty-alignment: AlignCenter">Add shourtcut</p>
+        	</div> 
+         </div> 
+     </div>
+</div>
+

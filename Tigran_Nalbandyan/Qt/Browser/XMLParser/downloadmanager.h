@@ -11,10 +11,11 @@ public:
     ~DownloadManager();
 
     void start(QString url, void* usrPtr);
-    std::string runServer();
+    QByteArray runServer();
     void runClient(QString url);
-    void startImage(QString url, void* usrPtr);
 
+    void startImageDownload(QString url, void *usrPtr);
+    QByteArray getImage(QString url);
 signals:
     void finished(void* usrPtr, QByteArray data);
     void xmlFinished(void* usrPtr, QByteArray data);

@@ -233,7 +233,7 @@ void MainWindow::createImg(QObject *view, QDomElement e, QObject *parent, EEleme
     QString style = e.attribute("style");
     QString src = e.attribute("src");
 
-    if(parentType == EElementType::Div) {
+    if (parentType == EElementType::Div) {
         view = new QLabel();
         QLabel* label = static_cast<QLabel*>(view);
         label->setStyleSheet(style);
@@ -241,12 +241,14 @@ void MainWindow::createImg(QObject *view, QDomElement e, QObject *parent, EEleme
         QRegExp rx(regexp);
         rx.indexIn(src);
 
-        if(rx.cap(0).length() != 0) {
-            mDownloadManager->startImage(src, label);
-        }
-        else {
-            QPixmap pix(src);
+        if (rx.cap(0).length() != 0) {
+            mDownloadManager->startImageDownload(src, label);
+        } else {
+            QByteArray data = mDownloadManager->getImage(src);
+            QPixmap pix;
+            pix.loadFromData(data);
             label->setPixmap(pix.scaled(label->width(),label->height(),Qt::KeepAspectRatio));
+            label->setAlignment(Qt::AlignCenter);
         }
 
         static_cast<Div*>(parent)->addWidget(label);
@@ -371,6 +373,8 @@ MainWindow::MainWindow(QWidget *parent) :
     layout->addWidget(mBrowserArea);
     mBrowserArea->setWidgetResizable(true);
     setCentralWidget(centralWidget);
+
+    mUrlInput->setText("ITC://localhost/google.xml");
 }
 
 MainWindow::~MainWindow()
