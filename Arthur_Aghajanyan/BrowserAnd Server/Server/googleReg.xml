@@ -1,0 +1,44 @@
+<div flex-direction="column" justify-content="center" style="background-color: white;">
+    <div justify-content="center">
+        <img src="ITC://localhost/images/account.svg" style = "max-height: 100px;max-width: 100px"></img>    
+    </div>
+        <h2>Create your Google Account</h2>
+    <div flex-direction="column" style="max-width:500">
+        <div flex-direction="row" style="">
+            <input style="min-height: 30; border-radius: 10px;border: 1px solid blue">FirstName</input>
+            <input style="min-height: 30; border-radius: 10px;border: 1px solid blue">LastNname</input>
+        </div>
+            <input style="min-height: 30; border-radius: 10px;border: 1px solid blue">UserName</input>
+            <p>You can use latter,numbers and periodes</p>
+            <p style="color:blue">Use my current email address instead</p>
+            <div flex-direction="row" style="">
+                <input style="min-height: 30; border-radius: 10px;border: 1px solid blue">Password</input>
+                <input style="min-height: 30; border-radius: 10px;border: 1px solid blue">Confirm</input>
+            </div>
+            <p>Use 8 or more characters with a mix of letters, numbers and symbols</p>
+        <div flex-direction="row" justify-content="center">
+            <div flex-direction="column">
+                <input type="radio">male</input>
+                <input type="radio">female</input>
+            </div>
+        </div>
+        <div flex-direction="row" justify-content="center" >
+            <p style="min-width: 70;font-size: 20px">Subject</p>
+            <select>
+                <option value="0">Programmin skill</option>
+                <option value="1">Java</option>
+                <option value="2">C++</option>
+                <option value="3">JavaScript</option>
+                <option value="4">Python</option>
+            </select>
+        </div>
+        <div flex-direction="column" style="max-height: 100">
+            <p style="font-size: 20px">About</p>
+            <textarea></textarea>
+        </div>
+        <div  flex-direction="row" style="">
+            <button style="color: white; background-color: red; min-height: 30;" href = "ITC://localhost/google.xml">Cancel</button>
+            <button style="color: white; background-color: blue; min-height: 30;">Register</button>
+        </div>
+    </div>
+</div>
