@@ -1,10 +1,6 @@
-#include <sys/types.h>
 #include <sys/socket.h>
-#include <netinet/in.h>
 #include <arpa/inet.h>
 #include <iostream>
-#include <sstream>
-#include <fstream>
 #include <unistd.h>
 #include <cstdlib>
 #include <cstdio>
