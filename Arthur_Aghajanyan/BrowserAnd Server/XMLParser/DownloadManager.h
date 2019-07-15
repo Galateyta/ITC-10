@@ -9,7 +9,7 @@ public:
     DownloadManager(QObject* parent);
     ~DownloadManager();
 
-    void start(QString url, void* usrPtr);
+    void start(QString url);
 
     QByteArray serverRun();
     void clientRun(QString url);

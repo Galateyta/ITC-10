@@ -4,7 +4,6 @@ Div::Div(QWidget *parent)
     : QWidget(parent)
 {
     mLayout = new QBoxLayout(QBoxLayout::Direction::TopToBottom, this);
-
 }
 
 void Div::addLayout(QBoxLayout *layout)
@@ -21,6 +20,7 @@ void Div::addWidget(QWidget *widget)
 {
     mLayout->addWidget(widget);
 }
+
 void Div::setDirection(QBoxLayout::Direction direction)
 {
     mLayout->setDirection(direction);

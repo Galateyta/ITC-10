@@ -21,10 +21,10 @@ EElementType elementTypeToEnum(std::string name)
     if ("table" == name) return EElementType::Table;
     if ("img" == name) return EElementType::Img;
     if ("ol" == name || "ul" == name) return EElementType::ol;
-    if ("ul" == name) return EElementType::ul;
 
     return EElementType::Unknown;
 }
+
 QBoxLayout::Direction directionStringToEnum(QString direction)
 {
     if ("column" == direction) return QBoxLayout::Direction::TopToBottom;
@@ -112,6 +112,7 @@ void MainWindow::parseElement(QDomElement e, QObject* parent, EElementType paren
         parseElement(childs.at(i).toElement(), view, type);
     }
 }
+
 QObject* MainWindow::createDiv(QObject *view, QDomElement e, QObject *parent, EElementType parentType)
 {
     QString style = e.attribute("style", "");
@@ -322,7 +323,7 @@ void MainWindow::createImg(QObject* view, QDomElement e, QObject* parent, EEleme
         QString pattern = "(http(s)?://)([\w-]+\.)+[\w-]+(/[\w- ;,./?%&=]*)?";
         QRegExp regexp(pattern);
         regexp.indexIn(src);
-        if(regexp.cap(0).length() != 0)
+        if (regexp.cap(0).length() != 0)
         {
             mDownloadManager->startImage(src, label);
         }
@@ -448,7 +449,7 @@ void MainWindow::onRefresh()
     }
 
     QString url = mUrlInput->text();
-    mXmlPageDownloadManager->start(url, nullptr);
+    mXmlPageDownloadManager->start(url);
 }
 
 void MainWindow::changePage(QString href)

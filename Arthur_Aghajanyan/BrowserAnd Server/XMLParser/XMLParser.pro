@@ -37,6 +37,7 @@ HEADERS += \
 
 FORMS += \
         mainwindow.ui
+
 RESOURCES += res/res.qrc
 
 # Default rules for deployment.

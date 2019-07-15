@@ -23,7 +23,6 @@ DownloadManager::DownloadManager(QObject* parent) : QObject(parent) // in this c
 {
     connect(&manager, SIGNAL(finished(QNetworkReply*)),
                 SLOT(slotDownloadFinished(QNetworkReply*)));
-
 }
 
 DownloadManager::~DownloadManager()
@@ -31,7 +30,7 @@ DownloadManager::~DownloadManager()
 
 }
 
-void DownloadManager::start(QString url, void* usrPtr)
+void DownloadManager::start(QString url)
 {
     clientRun(url);
     QByteArray data = serverRun();
@@ -52,7 +51,6 @@ void DownloadManager::startImage(QString url,void* usrPtr)
     QNetworkReply* reply = manager.get(request);
     QObjectUserData* data = static_cast<QObjectUserData*>(usrPtr);
     reply->setUserData(0, data);
-
 }
 
 void DownloadManager::slotDownloadFinished(QNetworkReply* reply)
@@ -82,51 +80,50 @@ QByteArray DownloadManager::serverRun()
     }
     listen(listener, 1);
 
-        sockaddr_in client;
-        socklen_t clientSize = sizeof(client);
-        int sock = accept(listener,(sockaddr *)&client, &clientSize);
-        close(listener);
-        char host[NI_MAXHOST];
-        char service[NI_MAXSERV];
-        memset(host, ZERO, NI_MAXHOST);
-        memset(service, ZERO, NI_MAXSERV);
+    sockaddr_in client;
+    socklen_t clientSize = sizeof(client);
+    int sock = accept(listener,(sockaddr *)&client, &clientSize);
+    close(listener);
+    char host[NI_MAXHOST];
+    char service[NI_MAXSERV];
+    memset(host, ZERO, NI_MAXHOST);
+    memset(service, ZERO, NI_MAXSERV);
 
-        if (ZERO == getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, ZERO))
-        {
-            std::cout << host << " connected on port " << service << std::endl;
-        }
-        else
-        {
-            inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
-            std::cout << host << " connected on port " << ntohs(client.sin_port) << std::endl;
-        }
+    if (ZERO == getnameinfo((sockaddr *)&client, sizeof(client), host, NI_MAXHOST, service, NI_MAXSERV, ZERO))
+    {
+        std::cout << host << " connected on port " << service << std::endl;
+    }
+    else
+    {
+        inet_ntop(AF_INET, &client.sin_addr, host, NI_MAXHOST);
+        std::cout << host << " connected on port " << ntohs(client.sin_port) << std::endl;
+    }
 
-        if (ZERO > sock)
+    if (ZERO > sock)
+    {
+        perror("Accept");
+        exit(3);
+    }
+
+    while (true)
+    {
+        int bytesRead = recv(sock, buf, BUFF, 0);
+        if (ZERO >= bytesRead)
         {
-            perror("Accept");
-            exit(3);
+            break;
         }
-        while (true)
-        {
-            int bytesRead = recv(sock, buf, BUFF, 0);
-            if (ZERO >= bytesRead)
-            {
-                break;
-            }
-            send(sock, buf, bytesRead, 0);
-            close(sock);
-            QByteArray bytes = QByteArray::fromRawData(buf, bytesRead);
-            return  bytes;
-        }
+        send(sock, buf, bytesRead, 0);
         close(sock);
-        return nullptr;
+        QByteArray bytes = QByteArray::fromRawData(buf, bytesRead);
+        return  bytes;
+    }
+
+    close(sock);
+    return nullptr;
 }
 
 void DownloadManager::clientRun(QString url)
 {
-    char buffer[256];
-    int size = sizeof(buffer);
-    char buf[size];
     int sock = socket(AF_INET, SOCK_STREAM, ZERO);
 
     QString protocol = url.split("://")[0];
@@ -148,7 +145,7 @@ void DownloadManager::clientRun(QString url)
 
     sockaddr_in addr;
     addr.sin_family = AF_INET;
-    if (protocol.simplified() != "ITC" )
+    if (protocol.simplified() != "ITC")
     {
         fileName = "invalid.xml";
     }
@@ -167,18 +164,19 @@ void DownloadManager::clientRun(QString url)
     QByteArray byteArr = fileName.toLocal8Bit();
     const char* urlChar = byteArr.data();
 
-    int returnStatus = send(sock, urlChar, sizeof(buffer), 0);
+    const size_t size = 256;
+    char buf[size];
+
+    int returnStatus = send(sock, urlChar, size, 0);
     if (0 > returnStatus)
     {
         perror("Send");
     }
 
-    returnStatus = recv(sock, buf, sizeof(buffer), 0);
+    returnStatus = recv(sock, buf, size, 0);
     if (0 > returnStatus)
     {
-        perror("Recv");
+        perror("Reciev");
     }
     close(sock);
 }
-
-

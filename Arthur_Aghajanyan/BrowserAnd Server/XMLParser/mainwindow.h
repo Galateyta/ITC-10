@@ -1,6 +1,8 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
+
 #include "DownloadManager.h"
+#include "div.h"
 
 #include <QMainWindow>
 #include <QVBoxLayout>
@@ -12,7 +14,6 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QLabel>
-#include "div.h"
 #include <QTextEdit>
 #include <QComboBox>
 #include <QCheckBox>
@@ -44,8 +45,9 @@ enum class EElementType
     ul
 };
 
-namespace Ui {
-class MainWindow;
+namespace Ui
+{
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
