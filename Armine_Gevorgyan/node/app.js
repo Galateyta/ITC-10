@@ -27,8 +27,11 @@ let classes = [{name : "9", dasghek : "Mane Antonyan"},
              ];
 
 Itc  = function (req, res, next) {
-  console.log(req.head);
-  next();
+  if (req.headers.authorization !== 'ITC-10') {
+    res.send(" Headers authorization have not \n Please enter a ITC-10 for headers authorization ");
+  } else {
+    next()
+  }
 }
 
 app.use(Itc);
