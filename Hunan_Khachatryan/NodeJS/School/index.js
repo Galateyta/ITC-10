@@ -1,9 +1,10 @@
 const http = require('http');
 const express = require('express');
-var bodyParser = require('body-parser')
-var db = require('./db');
-var app = express(); 
-var server = http.createServer(app); 
+const bodyParser = require('body-parser')
+const db = require('./db');
+const { check ,validationResult,oneOf} = require('express-validator');
+const app = express(); 
+const server = http.createServer(app); 
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -11,20 +12,51 @@ app.use(bodyParser.json())
 app.use(function (req, res, next) {
     if ( req.headers.authorization !== 'ITC10'){
         res.send('Wrong authorisation');
-    }
+    }else{
         next();    
+    }
   });
 
-
-  app.get( '/students',function (req, res) {
+app.route('/students')
+  .get( function (req, res) {
+      
     res.send(db.students);
-  });
-  app.post('/students/add', function (req, res) {
-      console.log(req.body);
+  })
+  
+.post( [
+    check('name')
+      .not().isEmpty().withMessage('The First name is required')
+      .matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('Name must started upper simbols '),
+    check('surname')
+      .not().isEmpty().withMessage('The Last name is required')
+      .matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('SureName must started upper simbols '),
+    check('age')
+      .not().isEmpty().withMessage('The age is required')
+      .isInt({gt:6, lt:30}).withMessage('Students age wil be in range 6-30'),
+    check('email')
+    .not().isEmpty().withMessage('The email is required')
+    .isEmail().withMessage('Email is not validate'),
+    check('gender')
+    .not().isEmpty().withMessage('The age is required')
+    .isIn(['male','female']).withMessage('Gender is not validate'),
+    oneOf([[
+        check('gender').equals('male'),
+        check('carNumber')
+        .not().isEmpty().withMessage('Car Numer is required')
+        .matches(/^[0-9]{2}[A-Z]{2}[0-9]{3}$/).withMessage('Car Number not validate '),
+      ], [
+        check('gender').equals('female'),
+        check('carNumber')
+      ]])
+  ], (req, res) => {
+      const errors = validationResult(req);
+    if ( !errors.isEmpty()){
+        res.send(errors);
+    }else{
       db.students.push(req.body);
       res.send(db.students);
-    
-});
+    }
+  });
 app.route('/students/:id')
    .get(function(req, res){
           var item= db.students.find(x => x.id == req.params.id);
@@ -36,20 +68,53 @@ app.route('/students/:id')
             res.send("Not found student by following id");
           }
    })
-   .put(function(req, res ){ 
-       var item= db.students.find(x => x.id == req.params.id);
-        console.log(item.id); 
-        if (item){
-             db.students.forEach(function(element){
-                  if (element.id === item.id){
-                       element.name = req.body.name;
-                       element.surname = req.body.surname;
-                       element.classid = req.body.classid;
-                     } })
-         res.send(db.students); 
-        }else {
-             res.send("Not found student by following id"); 
-        } })
+   .put([
+    check('name')
+        .not().isEmpty().withMessage('The First name is required')
+        .matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('Name must started upper simbols '),
+    check('surname')
+        .not().isEmpty().withMessage('The Last name is required')
+        .matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('SureName must started upper simbols '),
+    check('age')
+        .not().isEmpty().withMessage('The age is required')
+        .isInt([{gt:6, lt:30}]).withMessage('Students age wil be in range 6-30'),
+    check('email')
+        .not().isEmpty().withMessage('The email is required')
+        .isEmail().withMessage('Email is not validate'),
+    check('gender')
+        .not().isEmpty().withMessage('The age is required')
+        .isIn(['male','female']).withMessage('Gender is not validate'),
+    oneOf([[
+        check('gender').equals('male'),
+        check('carNomer')
+        .not().isEmpty().withMessage('Car Nomer is required')
+        .matches(/^[0-9]{2}[A-Z]{2}[0-9]{3}$/).withMessage('Car Nomer not validate '),
+    ], [
+        check('gender').equals('female'),
+        check('carNomber')
+    ]])
+    ],function(req, res ){ 
+        const errors = validationResult(req);
+        if (!errors.isEmpty()){
+            res.send(errors);
+        } else {
+            var item= db.students.find(x => x.id == req.params.id);
+                if (item){
+                    db.students.forEach(function(element){
+                        if (element.id === item.id){
+                            element.name = req.body.name;
+                            element.surname = req.body.surname;
+                            element.email = req.body.email;
+                            element.age = req.body.age;
+                            element.carNomer = req.body.carNomer;
+                            element.email = req.body.email;
+                            } })
+                res.send(db.students); 
+                } else {
+                    res.send("Not found the following student "); 
+                }    
+            }
+        })
     .delete(function(req, res ){ 
         var item= db.students.find(x => x.id == req.params.id);
          console.log(item.id); 
