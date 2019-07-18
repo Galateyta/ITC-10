@@ -9,11 +9,12 @@ app.use(bodyParser.json())
 
 //Authorization part
 app.use(function (req, res, next) {
-    if (req.headers.authorization !== 'ITC10') {
+    /*if (req.headers.authorization !== 'ITC10') {
         res.send("Please enter a ITC10 for headers authorization")
     } else {
         next();
-    }
+    }*/
+    next();
 });
 
 //Student part
