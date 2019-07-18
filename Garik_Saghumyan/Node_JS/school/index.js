@@ -1,8 +1,8 @@
-var db = require("./fakedb");
-var express = require('express');
+const db = require("./fakedb");
+const express = require('express');
 const app = express();
 const { check, validationResult, oneOf } = require('express-validator')
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({
     extended: false
 }))
@@ -39,7 +39,9 @@ app.route('/students')
             return res.status(422).jsonp(errors.array());
         } else {
             db.students.push(req.body)
-            res.send(db.students);
+            let newStudent = req.body;
+            // res.send(db.students);
+            res.send({message: "Student successfully added!", newStudent });
         }
 
     })
@@ -50,35 +52,43 @@ app.route('/students')
         res.send('Got a DELETE request at /student');
     });
 app.get('/students/:id', function (req, res, next) {
+    newStudents = [];
     db.students.forEach(function (student) {
         if (req.params.id == student.id) {
-            res.send(student);
+            newStudents.push(student);
         }
     });
+    res.send(newStudents);
     next();
 });
 app.get('/teachers/:id', function (req, res, next) {
+    newTeachers = [];
     db.teachers.forEach(function (teacher) {
         if (req.params.id == teacher.id) {
-            res.send(teacher);
+            newTeachers.push(teacher);
         }
     });
+    res.send(newTeachers)
     next();
 });
 app.get('/subjects/:id', function (req, res, next) {
-    db.subjects.forEach(function (subject) {
+    newSubjects = [];
+    db.teachers.forEach(function (subject) {
         if (req.params.id == subject.id) {
-            res.send(subject);
+            newSubjects.push(subjects);
         }
     });
+    res.send(newSubjects)
     next();
 });
 app.get('/classes/:id', function (req, res, next) {
-    db.classes.forEach(function (clas) {
+    newClasses = [];
+    db.teachers.forEach(function (clas) {
         if (req.params.id == clas.id) {
-            res.send(clas);
+            newClasses.push(subjects);
         }
     });
+    res.send(newClasses)
     next();
 });
 
@@ -132,3 +142,4 @@ app.route('/classes')
     });
 
 app.listen(10000);
+module.exports = app;
