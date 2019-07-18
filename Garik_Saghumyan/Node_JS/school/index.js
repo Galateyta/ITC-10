@@ -1,6 +1,7 @@
 var db = require("./fakedb");
 var express = require('express');
-var app = express();
+const app = express();
+const { check, validationResult, oneOf } = require('express-validator')
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({
     extended: false
@@ -9,7 +10,8 @@ app.use(bodyParser.json())
 
 app.use(function (req, res, next) {
     if (req.headers.authorization !== 'ITC10') {
-        res.send('Incalid authorization')
+        res.send('Invalid authorization');
+        return;
     }
     next();
 });
@@ -17,9 +19,29 @@ app.route('/students')
     .get(function (req, res) {
         res.send(db.students);
     })
-    .post(function (req, res) {
-        db.students.push(req.body)
-        res.send(db.students);
+    .post([
+        check('firstname').matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('firstnames first simbol must upper'),
+        check('lastname').matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('lasttnames first simbol must upper'),
+        check('age').isInt({ gt: 6, lt: 30 }).withMessage('age must be in range [6, 30]'),
+        check('email').isEmail().normalizeEmail().withMessage('mail must be like this example@gmail.com'),
+        check('gender').isIn(['male', 'female']).withMessage('gender must be male or female'),
+        oneOf([[
+            check('gender').equals('male'),
+            check('carNumber').matches(/^[0-9]{2}[A-Z]{2}[0-9]{3}$/).withMessage('carNumber for male person must be like Armenian car numbers')
+        ], [
+            check('gender').equals('female')
+        ]])
+    ], function (req, res) {
+        const errors = validationResult(req);
+        console.log(req.body);
+
+        if (!errors.isEmpty()) {
+            return res.status(422).jsonp(errors.array());
+        } else {
+            db.students.push(req.body)
+            res.send(db.students);
+        }
+
     })
     .put(function (req, res) {
         res.send('Update the students');
@@ -59,6 +81,7 @@ app.get('/classes/:id', function (req, res, next) {
     });
     next();
 });
+
 
 app.route('/teachers')
     .get(function (req, res) {
@@ -103,7 +126,7 @@ app.route('/classes')
     })
     .put(function (req, res) {
         res.send('Update the classes');
-    }) 
+    })
     .delete(function (req, res) {
         res.send('Got a DELETE request at /class');
     });
