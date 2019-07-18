@@ -1,16 +1,19 @@
 var db = require("./schoolDb");
 var express = require('express');
+const { check, validationResult, oneOf } = require('express-validator');
 var app = express();
 var bodyParser = require('body-parser')
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
+
 //Authorization part
 app.use(function (req, res, next) {
     if (req.headers.authorization !== 'ITC10') {
         res.send("Please enter a ITC10 for headers authorization")
+    } else {
+        next();
     }
-    next();
 });
 
 //Student part
@@ -18,9 +21,38 @@ app.route('/students')
 .get(function(req, res) {
 	res.send(db.students);
 })
-.post(function(req, res) {
-	db.students.push(req.body);
-	res.send(db.students);
+.post(check('name')
+    .isLength({ min:3 })
+    .matches(/^[A-Z]{1}[a-z]{1,}$/),
+      
+    check('surname')
+        .isLength({ min:6 })
+        .matches(/^[A-Z]{1}[a-z]{1,}$/),
+    check('age')
+        .isInt({ gt: 6, lt: 30 }),
+    check('email')
+        .isEmail(),
+    check('gender')
+        .isIn(['male', 'female']),
+    oneOf([[
+        check('gender').equals('male'),
+        check('autoNumber').matches(/^[0-9]{2}[A-Z]{2}[0-9]{3}$/)
+        ],[
+        check('gender').equals('female')
+        ]]),
+      
+    function(req, res) {
+
+    console.log(req.body);
+    var errors = validationResult(req);
+
+    if (!errors.isEmpty()) {
+
+        res.status(400).json(errors.array());
+    } else {
+        db.students.push(req.body);
+	    res.send(db.students);
+    }
 })
 
 app.route('/students/:id')
