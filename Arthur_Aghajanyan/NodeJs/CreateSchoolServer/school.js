@@ -47,12 +47,14 @@ app.route('/students/:id')
 	} 
 })
 .delete(function(req, res ) {
-	if (req.params.id) {             
-		db.students.splice((req.params.id - 1),1); 
-		res.send(db.students);
-	} else {
-		res.send("there is not student with mantioned id for delete");
+    for(let j = 0; j < db.students.length; j++){
+        if(db.students[j].id == req.params.id){
+            db.students.splice(j,1);
+            res.send(db.students);
+            return;
+	    }
     }
+    res.send("there is not student with mantioned id for delete");     
 })
 
 //Teacher part
@@ -89,12 +91,14 @@ app.route('/teachers/:id')
 	} 
 })
 .delete(function(req, res ) {
-	if (req.params.id) {             
-		db.teachers.splice((req.params.id - 1),1); 
-		res.send(db.teachers);
-	} else {
-		res.send("there is not teacher with mantioned id for delete");
+	for(let j = 0; j < db.students.length; j++){
+        if(db.students[j].id == req.params.id){
+            db.students.splice(j,1);
+            res.send(db.students);
+            return;
+	    }
     }
+	res.send("there is not teacher with mantioned id for delete");
 })
 
 //Subject part
@@ -130,12 +134,15 @@ app.route('/subjects/:id')
 	} 
 })
 .delete(function(req, res ) {
-	if (req.params.id) {             
-		db.subjects.splice((req.params.id - 1),1); 
-		res.send(db.subjects);
-	} else {
-		res.send("there is not subject with mantioned id for delete");
-    }
+	for(let j = 0; j < db.students.length; j++){
+        if(db.students[j].id == req.params.id){
+            db.students.splice(j,1);
+            res.send(db.students);
+            return;
+	    }
+	} 		
+    res.send("there is not subject with mantioned id for delete");
+    
 })
 
 //Class part
@@ -172,12 +179,14 @@ app.route('/classes/:id')
 	} 
 })
 .delete(function(req, res ) {
-	if (req.params.id) {             
-		db.classes.splice((req.params.id - 1),1); 
-		res.send(db.classes);
-	} else {
-		res.send("there is not classes with mantioned id for delete");
+	for(let j = 0; j < db.students.length; j++){
+        if(db.students[j].id == req.params.id){
+            db.students.splice(j,1);
+            res.send(db.students);
+            return;
+	    }
     }
+    res.send("there is not classes with mantioned id for delete");
 })
 
 app.listen(9999);
