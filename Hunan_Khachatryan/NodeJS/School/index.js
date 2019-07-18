@@ -80,7 +80,7 @@ app.route('/teachers/:id')
             
     res.send(item);
         }else{
-        res.send("Not found student by following id");
+        res.send("Not found teacher by following id");
         }
 })
 .put(function(req, res ){ 
@@ -95,7 +95,7 @@ app.route('/teachers/:id')
                     } })
         res.send(db.teachers); 
     }else {
-            res.send("Not found student by following id"); 
+            res.send("Not found teacher by following id"); 
     } })
 .delete(function(req, res ){ 
     var item= db.teachers.find(x => x.id == req.params.id);
@@ -107,7 +107,7 @@ app.route('/teachers/:id')
         });
         res.send(db.teachers); 
         }else {
-            res.send("Not found student by following id"); 
+            res.send("Not found teachers by following id"); 
         } });
 
 
@@ -127,7 +127,7 @@ app.route('/classes/:id')
             
     res.send(item);
         }else{
-        res.send("Not found student by following id");
+        res.send("Not found class by following id");
         }
 })
 .put(function(req, res ){ 
@@ -141,7 +141,7 @@ app.route('/classes/:id')
                     } })
         res.send(db.classes); 
     }else {
-            res.send("Not found student by following id"); 
+            res.send("Not found class by following id"); 
     } })
 .delete(function(req, res ){ 
     var item= db.classes.find(x => x.id == req.params.id);
@@ -153,7 +153,51 @@ app.route('/classes/:id')
         });
         res.send(db.classes); 
         }else {
-            res.send("Not found student by following id"); 
+            res.send("Not found class by following id"); 
+        } });
+
+app.get( '/subjects',function (req, res) {
+    res.send(db.subjects);
+    });
+    app.post('/subjects/add', function (req, res) {
+        console.log(req.body);
+        db.subjects.push(req.body);
+        res.send(db.subjects);
+    });
+app.route('/subjects/:id')
+.get(function(req, res){
+        var item= db.subjects.find(x => x.id == req.params.id);
+
+    if (item){
+            
+    res.send(item);
+        }else{
+        res.send("Not found subject by following id");
+        }
+})
+.put(function(req, res ){ 
+    var item= db.subjects.find(x => x.id == req.params.id);
+    console.log(item.id); 
+    if (item){
+            db.subjects.forEach(function(element){
+                if (element.id === item.id){
+                    element.name = req.body.name;
+                    } })
+        res.send(db.subjects); 
+    }else {
+            res.send("Not found subject by following id"); 
+    } })
+.delete(function(req, res ){ 
+    var item= db.subjects.find(x => x.id == req.params.id);
+        console.log(item.id); 
+        if (item){
+            db.subjects =  db.subjects.filter(function(value, index, arr){
+
+            return value.id !== item.id;
+        });
+        res.send(db.subjects); 
+        }else {
+            res.send("Not found subject by following id"); 
         } });
 
   server.listen(4000);

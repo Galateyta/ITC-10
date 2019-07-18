@@ -12,7 +12,7 @@ var students = [
         classid:"8b"
     },
     {
-        id:1,
+        id:3,
         name: "Ani",
         surname: "Poghosyan",
         classid:"7a"
@@ -62,6 +62,19 @@ var classes = [{
     studCount:18
 
 }]
+var subjects = [{
+    id:1,
+    name:"Fizika"
+},
+{
+    id:2,
+    name:"Qimia"
+},
+{
+    id:3,
+    name:"Matem"
+}]
+module.exports.subjects = subjects;
 module.exports.students = students;
 module.exports.teachers = teachers;
 module.exports.classes = classes;
