@@ -8,9 +8,11 @@ describe('Studends', () => {
         it("should get all students record", (done) => {
             chai.request(server)
                 .get('/students')
+                .set('Authorization', 'ITC10')
                 .end((err, res) => {
                     res.should.have.status(200);
-                    res.body.should.be.a('object');
+                    res.body.should.be.a('array');
+                    console.log(res.body);
                     done();
                 });
         });
@@ -27,9 +29,10 @@ describe('Studends', () => {
             }
             chai.request(server)
                 .post('/students')
+                .set('Authorization', 'ITC10')
                 .send(student)
                 .end((err, res) => {
-                    res.body.should.be.a('object');
+                    res.body.should.be.a('array');
                     done();
                 });
         });
@@ -44,13 +47,15 @@ describe('Studends', () => {
             }
             chai.request(server)
                 .post('/students')
+                .set('Authorization', 'ITC10')
                 .send(student)
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('object');
+                    res.body.should.have.property('message');
+                    res.body.newStudent.should.have.property('gender').be.eql('male');
                     done();
                 });
-
         });
 
     });
