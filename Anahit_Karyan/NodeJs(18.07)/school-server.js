@@ -6,6 +6,75 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
+//conect db and node--------------------------------------------------------------------------
+var mysql      = require('mysql');
+var connection = mysql.createConnection({
+  host     : 'localhost',
+  user     : 'root',
+  password : 'student',
+  database : 'TigranSchool'
+});
+ 
+connection.connect();
+ /*
+connection.query('SELECT * FROM Students', function (error, results, fields) {
+  if (error) throw error;
+  console.log(results);
+});*/
+ 
+
+
+//----------------------query Select------------------------
+
+function getStudents () {
+	return new Promise (function (res, rej) {
+							connection.query('SELECT * FROM Students', function (error, results, fields) {
+								if (error) {
+									rej(error);
+								} else {
+								    res(results);
+								}
+						    });
+						});
+}
+
+
+//----------------------query Insert-----------------------
+
+
+//const student = {id: 11, name: "Mariam", surname: "Karyan", age: 23, gender: "female", class_id: 2};
+function setStudents (student) {
+	return new Promise (function (res, rej) { console.log(student);
+							connection.query('INSERT INTO Students SET ? ', student , function (error, results, fields) {
+								if (error) {
+									rej(error);
+								} else {
+								    res(results);
+								}
+						    });
+						});
+}
+
+/*setStudents(student).then((value)=> {
+				console.log(value);
+			  }
+).catch( (error)=> {
+			console.log("Error in queri Insert" + error);
+})
+
+
+getStudents().then((value)=> {
+				console.log(value);
+			  }
+).catch((error)=> {
+			console.log("Error in queri select" + error);
+})
+*/
+
+
+
+//connection.end();
+//-----------------------------------------------------------------------------------------------
 let students = [
     {
      id : 1,
@@ -48,11 +117,27 @@ function changeStudentInfo (req) {
  	}
 };
 
+app.use(function (req, res, next) {
+    if (req.headers.authorization !== 'ITC10') {
+    	res.status(401);
+        res.send("Headers authorization not a ITC10");
+    }
+    next();
+});
+
 app.route('/students')
 .get(function(req, res) {
-	res.send(students);
+	getStudents().then((value)=> {
+				console.log(value);
+				res.send(value);
+			  }
+).catch((error)=> {
+			console.log("Error in queri select" + error);
+			res.send(error);
 })
-.post( [
+	
+})
+.post(/*[
     check('name').not().isEmpty().withMessage('----Name is empty!-----').matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('-----Incorect name ------'),
     check('surname').not().isEmpty().withMessage('-----Surname is empty ------').matches(/^[A-Z]{1}[a-z]{1,}$/).withMessage('-----Incorect surname ------'),
     check('email').not().isEmpty().withMessage('-----Email is empty ------').normalizeEmail().isEmail().withMessage('-----Incorect email------'),
@@ -64,13 +149,21 @@ app.route('/students')
     	],[
     	check('gender').equals('female')
     	]])
-   ],function(req, res) {
+   ],*/function(req, res) {
    		const errors = validationResult(req);
         if (!errors.isEmpty()) {
   	   		return res.status(422).jsonp(errors.array());
-		} else {
-			students.push(req.body);
-			res.send(students);
+		} else {console.log(req.body);
+			setStudents(req.body).then((value)=> {
+				const student = {...req.body, id : value.insertId};
+
+				//console.log(value);
+				res.send(student);
+			}
+			).catch( (error)=> {
+				console.log("Error in queri Insert" + error);
+				res.send(error);
+			})
 		}
 });
 
