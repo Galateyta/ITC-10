@@ -1,4 +1,4 @@
-const teachers = require('../models/teachers');
+const classes = require('../models/classes.js');
 const express = require('express');
 const {check, validationResult} = require('express-validator');
 
@@ -8,28 +8,24 @@ router
   .route('/')
   .get((req, res) => {
     if (req.query.id) {
-      teachers
-        .getTeachers({id: req.query.id})
+      classes
+        .getClasses({id: req.query.id})
         .then((result) => res.send(result))
         .catch((error) => res.send(error));
     } else {
-      teachers
-        .getTeachers()
+      classes
+        .getClasses()
         .then((result) => {
           res.send(result);
         });
     }
   })
-  .post(function (req, res) {
-    const newTeacher = req.body;
-    teachers
-      .addTeacher(newTeacher)
-      .then((result) => {
-        res.send(`Teacher ${req.body.name} added with id ${result.insertId}`);
-      })
-      .catch((err) => {
-        res.send(`MySQL error: ${err}`);
-      });
+  .post((req, res) => {
+    const newClass = req.body;
+    classes
+      .addClass(newClass)
+      .then((result) => res.send(`${newClass} successfully added`))
+      .catch((error) => res.send(error))
   })
   .delete([check('id', 'id is required').exists()], (req, res) => {
     const errors = validationResult(req);
@@ -40,20 +36,23 @@ router
           errors: errors.array()
         });
     }
-    teachers
-      .deleteTeacher(req.query.id)
+    classes
+      .deleteClass(req.query.id)
       .then((result) => {
-        if (result.affectedRows == 0) res.send(`There is no Teacher №${req.query.id}`);
-        else res.send(`Teacher №${req.query.id} successfully deleted`);
-      })
+        if (result.affectedRows == 0) 
+          res.send(`There is no Class №${req.query.id}`);
+        else 
+          res.send(`Class №${req.query.id} successfully deleted`);
+        }
+      )
       .catch((err) => {
         res.send(`MySQL error: ${err}`);
       });
   })
   .put((req, res) => {
-    let message = `There is no teacher №${req.query.id}`;
+    let message = `There is no class ${req.query.name}`;
     // TODO: add edit functionality
-    message = `Teacher №${req.query.id} successfully edited`;
+    message = `Class ${req.query.name} successfully edited`;
     res.send(message);
   });
 
