@@ -6,19 +6,19 @@ let userPostFunction =  function(req, res){
     const userGender = req.body.gender;
     const userOrders = req.body.orders;
     const user = new User({name: userName, age: userAge, gender: userGender, orders: userOrders});
-    console.log(user);
+    let error = user.validateSync();
         
     user.save().then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.send(error.message);
     });
 }
 let userGetFunction = function(req, res){
     User.find({}).then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('Users not found!');
     });
 }
 let userGetById = function(req, res){     
@@ -26,7 +26,7 @@ let userGetById = function(req, res){
     User.findOne({_id: id}).then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('User not found!');
     });
 }
 let userDeleteById =  function(req, res){     
@@ -34,7 +34,7 @@ let userDeleteById =  function(req, res){
     User.findByIdAndDelete(id).then((result) => {
         res.send(result)
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('User not found!');
     });
 };
 let updateUser = function(req, res){
@@ -43,11 +43,13 @@ let updateUser = function(req, res){
     const id = req.body.id;
     const userName = req.body.name;
     const userAge = req.body.age;
-    const newUser = {age: userAge, name: userName};
+    const userGender = req.body.gender;
+    const userOrders = req.body.orders;
+    const newUser = {age: userAge, name: userName, gender: userGender, orders: userOrders};
     User.findOneAndUpdate({_id: id}, newUser, {new: true}).then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('User not found!');
     });
 };
 module.exports.userPostFunction = userPostFunction;

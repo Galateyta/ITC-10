@@ -2,12 +2,19 @@ const mongoose = require('mongoose');
 
 
 const Product = mongoose.model('product', new mongoose.Schema({
-    name: String,
-    price: Number,
+    name: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
     description: String,
     type: {
         type: String,
-        enum: ['desert', 'salad', 'drink',]
+        enum: ['desert', 'salad', 'drink', ],
+        required: true
     },
     img: String
 }));

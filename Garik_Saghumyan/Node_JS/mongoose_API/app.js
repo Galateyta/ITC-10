@@ -9,7 +9,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }))
 app.use(bodyParser.json());
-mongoose.connect('mongodb://localhost:27017/test', {useNewUrlParser: true});
+mongoose.connect('mongodb://localhost:27017/shop', {useNewUrlParser: true});
 app.listen(10000);
 app.use('/users' , users);
 app.use('/orders', orders);

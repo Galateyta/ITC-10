@@ -5,19 +5,19 @@ let orderPostFunction =  function(req, res){
     const orderQuantity = req.body.quantity;
     const orderProducts = req.body.products;
     const order = new Order({price: orderPrice, quantity: orderQuantity, products: orderProducts});
-    console.log(order);
+    let error = order.validateSync();        
         
     order.save().then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.send(error.message);
     });
 }
 let orderGetFunction = function(req, res){
     Order.find({}).then((result) => {
         res.send(result)
     }).catch((reject) => {
-        console.log(reject)
+        res.status(404).send('Orders not found!');
     });
 }
 let orderGetById = function(req, res){     
@@ -25,7 +25,7 @@ let orderGetById = function(req, res){
     Order.findOne({_id: id}).then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('Order not found!');
     });
 }
 let orderDeleteById =  function(req, res){     
@@ -33,7 +33,7 @@ let orderDeleteById =  function(req, res){
     Order.findByIdAndDelete(id).then((result) => {
         res.send(result)
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('Order not found!');
     });
 };
 let updateOrder = function(req, res){
@@ -41,11 +41,12 @@ let updateOrder = function(req, res){
     const id = req.body.id;
     const orderPrice = req.body.price;
     const orderQuantity = req.body.quantity;
-    const newOrder = {price: orderPrice, quantity: orderQuantity};
+    const orderProducts = req.body.products;
+    const newOrder = {price: orderPrice, quantity: orderQuantity, products: orderProducts};
     Order.findOneAndUpdate({_id: id}, newOrder, {new: true}).then((result) => {
         res.send(result);
     }).catch((reject) => {
-        console.log(reject);
+        res.status(404).send('Order not found!');
     });
 };
 module.exports.orderPostFunction = orderPostFunction;
