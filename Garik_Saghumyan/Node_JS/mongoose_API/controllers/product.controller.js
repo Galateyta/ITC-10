@@ -1,5 +1,5 @@
 const Product = require('../models/product.model');
-let productPostFunction =  function(req, res){
+let productPostFunction = async function(req, res){
     if(!req.body) return res.sendStatus(400);
     const productName = req.body.name;
     const productPrice = req.body.price;
@@ -7,37 +7,40 @@ let productPostFunction =  function(req, res){
     const productType = req.body.type;
     const productImg = req.body.img;
     const product = new Product({name: productName, price: productPrice, description: productDesc, type: productType, img: productImg});
-    let error = product.validateSync();        
-    product.save().then((result) => {
+    try {
+        const result = await product.save();
         res.send(result);
-    }).catch((reject) => {
-        res.send(error.message)
-    });
+    } catch (error) {
+        res.status(422).json({message: error.message});
+    }
 }
-let productGetFunction = function(req, res){
-    Product.find({}).then((result) => {
+let productGetFunction = async function(req, res){
+    try {
+        const result = await Product.find({});
         res.send(result);
-    }).catch((reject) => {
-        res.status(404).send('Products not found!');
-    });
+    } catch (error) {
+        res.status(404).json({message: 'Products not found!'});
+    };
 }
-let productGetById = function(req, res){     
+let productGetById = async function(req, res){     
     const id = req.params.id;
-    Product.findOne({_id: id}).then((result) => {
+    try {
+        const result = await Product.findOne({_id: id});
         res.send(result);
-    }).catch((reject) => {
-        res.status(404).send('Product not found!');
-    });
+    } catch (error) {
+        res.status(404).json({message: 'Product not found!'});
+    };
 }
-let productDeleteById =  function(req, res){     
+let productDeleteById = async function(req, res){     
     const id = req.params.id;
-    Product.findByIdAndDelete(id).then((result) => {
-        res.send(result)
-    }).catch((reject) => {
-        res.status(404).send('Products not found!');
-    });
+    try {
+        const result = await Product.findByIdAndDelete(id);
+        res.send(result);
+    } catch (error) {
+        res.status(404).json({message: 'Product not found!'});
+    };
 };
-let updateProduct = function(req, res){
+let updateProduct = async function(req, res){
          
     if(!req.body) return res.sendStatus(400);
     const id = req.body.id;
@@ -47,11 +50,12 @@ let updateProduct = function(req, res){
     const productType = req.body.type;
     const productImg = req.body.img;
     const newProduct = {name: productName, description: productDesc, price: productPrice, type: productType, img: productImg};
-    Product.findOneAndUpdate({_id: id}, newProduct, {new: true}).then((result) => {
+    try {
+        const result = await Product.findOneAndUpdate({_id: id}, newProduct, {new: true});
         res.send(result);
-    }).catch((reject) => {
-        res.status(404).send('Products not found!');
-    });
+    } catch (error) {
+        res.status(404).json({message: 'Product not found!'});
+    };
 };
 module.exports.productPostFunction = productPostFunction;
 module.exports.productGetFunction = productGetFunction;

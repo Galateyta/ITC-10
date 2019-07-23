@@ -13,7 +13,7 @@ const Product = mongoose.model('product', new mongoose.Schema({
     description: String,
     type: {
         type: String,
-        enum: ['desert', 'salad', 'drink', ],
+        enum: ['desert', 'salad', 'drink' ],
         required: true
     },
     img: String

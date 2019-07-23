@@ -1,53 +1,62 @@
 const Order = require('../models/order.model');
-let orderPostFunction =  function(req, res){
-    if(!req.body) return res.sendStatus(400);
-    const orderPrice = req.body.price;
+const Product = require('../models/product.model');
+let orderPostFunction = async function (req, res) {
+    if (!req.body) return res.sendStatus(400);
     const orderQuantity = req.body.quantity;
     const orderProducts = req.body.products;
-    const order = new Order({price: orderPrice, quantity: orderQuantity, products: orderProducts});
-    let error = order.validateSync();        
-        
-    order.save().then((result) => {
+    let orderPrice = 0;
+    for (const productId of orderProducts) {
+        const product = await Product.findOne({ _id: productId });
+        orderPrice += product.price;
+    }
+
+    const order = new Order({ price: orderPrice, quantity: orderQuantity, products: orderProducts });
+    try {
+        const result = await order.save();
         res.send(result);
-    }).catch((reject) => {
-        res.send(error.message);
-    });
+    } catch (error) {
+        res.status(422).json({message: error.message});
+    }
 }
-let orderGetFunction = function(req, res){
-    Order.find({}).then((result) => {
-        res.send(result)
-    }).catch((reject) => {
-        res.status(404).send('Orders not found!');
-    });
-}
-let orderGetById = function(req, res){     
-    const id = req.params.id;
-    Order.findOne({_id: id}).then((result) => {
+let orderGetFunction = async function (req, res) {
+    try {
+        const result = await Order.find({});
         res.send(result);
-    }).catch((reject) => {
-        res.status(404).send('Order not found!');
-    });
+    } catch (error) {
+        res.status(404).json({message: 'Orders not found!'});
+    };
 }
-let orderDeleteById =  function(req, res){     
+let orderGetById = async function (req, res) {
     const id = req.params.id;
-    Order.findByIdAndDelete(id).then((result) => {
-        res.send(result)
-    }).catch((reject) => {
-        res.status(404).send('Order not found!');
-    });
+    try {
+        const result = await Order.findOne({ _id: id });
+        res.send(result);
+    } catch (error) {
+        res.status(404).json({message: 'Order not found!'});
+    };
+}
+let orderDeleteById = async function (req, res) {
+    const id = req.params.id;
+    try {
+        const result = await Order.findByIdAndDelete(id);
+        res.send(result);
+    } catch (error) {
+        res.status(404).json({message: 'Order not found!'});
+    };
 };
-let updateOrder = function(req, res){
-    if(!req.body) return res.sendStatus(400);
+let updateOrder = async function (req, res) {
+    if (!req.body) return res.sendStatus(400);
     const id = req.body.id;
     const orderPrice = req.body.price;
     const orderQuantity = req.body.quantity;
     const orderProducts = req.body.products;
-    const newOrder = {price: orderPrice, quantity: orderQuantity, products: orderProducts};
-    Order.findOneAndUpdate({_id: id}, newOrder, {new: true}).then((result) => {
+    const newOrder = { price: orderPrice, quantity: orderQuantity, products: orderProducts };
+    try {
+        const result = findOneAndUpdate({ _id: id }, newOrder, { new: true });
         res.send(result);
-    }).catch((reject) => {
-        res.status(404).send('Order not found!');
-    });
+    } catch (error) {
+        res.status(404).json({message: 'Order not found!'});
+    };
 };
 module.exports.orderPostFunction = orderPostFunction;
 module.exports.orderGetFunction = orderGetFunction;

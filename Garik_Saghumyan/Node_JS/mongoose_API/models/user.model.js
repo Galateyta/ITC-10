@@ -19,6 +19,10 @@ const User = mongoose.model('user', new mongoose.Schema({
         type: String,
         enum: ['male', 'female']
     },
+    role: {
+        type: String,
+        enum: ['user', 'admin']
+    },
     orders: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'order'

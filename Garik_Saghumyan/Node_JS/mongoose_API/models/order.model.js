@@ -6,7 +6,11 @@ const Order = mongoose.model('order', new mongoose.Schema({
         type: Number,
         required: true
     },
-    quantity: Number,
+    quantity: {
+        type:Number,
+        min: 1,
+        default:1
+    },
     products: [{ type: mongoose.Schema.Types.ObjectId, ref: 'product' }]
 }));
 
