@@ -9,9 +9,13 @@ const OrderSchema = new mongoose.Schema({
     quantity: {
         type: Number,
         required: 'quantity can\'t be empty',
-        min: 1
+        min: 1,
+        default: 1
     },
-    products: [mongoose.Schema.ObjectId]
+    products: {
+        type: [mongoose.Schema.ObjectId],
+        required: 'products can\'t be empty'
+    }
 });
 const Order = mongoose.model('Order', OrderSchema);
 module.exports = Order;

@@ -1,32 +1,96 @@
 const Product = require('../models/product.models');
 
-function addProduct(product) {
-    const newProduct = new Product(product);
-    return newProduct.save();
+async function addProduct(req, res) {
+    const newProduct = new Product(req.body);
+    try {
+        const data = await newProduct.save()
+        if (!data) {
+            res.status(404).json({
+                message: "No record found"
+            });
+            return;
+        }
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(400).json(err);
+    }
 }
 
-function findProducts() {
-    return Product.find({}).exec();
+async function getProducts(req, res) {
+    if (req.query.id) {
+        try {
+            const product = await Product.findById(req.query.id);
+            if (!product) {
+                res.status(404).json({
+                    message: `Product by id ${req.query.id} not found`
+                });
+                return;
+            }
+            res.status(200).json(product);
+        } catch (err) {
+            res.status(404).json(err);
+        }
+    } else {
+        try {
+            const product = await Product.find({});
+            if (!product) {
+                res.status(404).json({
+                    message: "No record found"
+                });
+                return;
+            }
+            res.status(200).json(product);
+        } catch (err) {
+            res.status(400).json(err);
+        }
+    }
 }
 
-function findProductsById(id) {
-    return Product.findById(id).exec();
+async function deleteProduct(req, res) {
+    try {
+        const data = await Product.deleteOne({
+            _id: req.query.id
+        });
+        if (!data || !data.n) {
+            res.status(404).json({
+                message: `Product by id ${req.query.id} not found`
+            });
+            return;
+        }
+        res.status(200).json({
+            message: `Product by id ${req.query.id} successfully deleted`
+        });
+    } catch (err) {
+        res.status(404).json({
+            message: `Product by id ${req.query.id} not found`
+        });
+    }
 }
 
-function deleteProduct(id) {
-    return Product.deleteOne({
-        _id: id
-    }).exec();
-}
-
-function updateProduct(id, info) {
-    return Product.updateOne({
-        _id: id
-    }, info, {runValidators: true}).exec();
+async function updateProduct(req, res) {
+    try {
+        const data = await Product.updateOne({
+            _id: req.query.id
+        }, req.body, {
+            runValidators: true
+        });
+        if (!data || !data.n) {
+            res.status(404).json({
+                message: `Product by id ${req.query.id} not found`
+            });
+            return;
+        }
+        res.status(200).json({
+            message: `Product by id ${req.query.id} successfully updated`
+        });
+    } catch (err) {
+        res.status(404).json({
+            message: `Product by id ${req.query.id} not found`
+        });
+    }
 }
 
 module.exports.addProduct = addProduct;
-module.exports.findProducts = findProducts;
-module.exports.findProductsById = findProductsById;
+module.exports.getProducts = getProducts;
 module.exports.deleteProduct = deleteProduct;
 module.exports.updateProduct = updateProduct;

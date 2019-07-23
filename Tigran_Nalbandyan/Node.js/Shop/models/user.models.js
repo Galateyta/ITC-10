@@ -17,6 +17,11 @@ const UserSchema = new mongoose.Schema({
         enum: ["male", "female"],
         required: 'gender can\'t be empty'
     },
+    role: {
+        type: String,
+        enum: ['admin', 'user'],
+        required: 'role can\'t be empty'
+    },
     orders: [mongoose.Schema.ObjectId]
 });
 const User = mongoose.model('User', UserSchema);
