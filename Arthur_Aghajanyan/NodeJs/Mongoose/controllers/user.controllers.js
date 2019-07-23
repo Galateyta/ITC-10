@@ -1,32 +1,93 @@
 const User = require('../models/user.models');
 
-function addUser(user) {
-    const newUser = new User(user);
-    return newUser.save();
+async function addUser(req, res) {
+    const newUser = new User(req.body);
+    try {
+        const data = await newUser.save()
+        if (!data) {
+            res.status(404).json({
+                message: `No record found`
+            })
+            return
+        }
+        res.status(200).json(data);
+    } catch (err) {
+        res.status(400).json(err);
+    }
 }
 
-function findUsers() {
-    return User.find({}).exec();
+async function findUsers(req, res) {
+    if (req.query.id) {
+        try {
+            const user = await User.findById(req.query.id)
+            if (!user) {
+                res.status(404).json({
+                    message: `No record found`
+                })
+                return
+            }
+            res.status(200).json(user);
+        } catch (err) {
+            res.status(400).json(err);
+        }
+    } else {
+        try {
+            const user = await User.find({})
+            if (!user) {
+                res.status(404).json({
+                    message: `No record found`
+                })
+                return
+            }
+            res.status(200).json(user);
+        } catch (err) {
+            res.status(400).json(err);
+        }
+    }
 }
 
-function findUsersById(id) {
-    return User.findById(id).exec();
+async function deleteUser(req, res) {
+    try {
+        const data = await User.deleteOne({
+            _id: req.query.id
+        })
+        if (!data.n) {
+            res.status(404).json({
+                message: `User not found`
+            });
+        }
+        res.status(200).json({
+            message: `User by id ${req.query.id} successfully deleted`
+        })
+
+    } catch (err) {
+        res.status(400).json(err);
+    };
+
 }
 
-function deleteUser(id) {
-    return User.deleteOne({
-        _id: id
-    }).exec();
-}
+async function updateUser(req, res) {
+    try {
+        const data = await User.updateOne({
+            _id: req.query.id
+        }, req.body, {
+            runValidators: true
+        })
+        if (!data.n) {
+            res.status(404).json({
+                message: `User not found`
+            });
+        }
+        res.status(200).json({
+            message: `User by id ${req.query.id} successfully updated`
+        });
 
-function updateUser(id, info) {
-    return User.updateOne({
-        _id: id
-    }, info, {runValidators: true}).exec();
+    } catch (err) {
+        res.status(400).json(err);
+    };
 }
 
 module.exports.addUser = addUser;
 module.exports.findUsers = findUsers;
-module.exports.findUsersById = findUsersById;
 module.exports.deleteUser = deleteUser;
 module.exports.updateUser = updateUser;
