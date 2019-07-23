@@ -2,13 +2,32 @@
 const mongoose = require('mongoose');
 
 const userSchema = new mongoose.Schema({
-    name: String,
-    age: Number,
+    name: {
+    	type: String,
+    	validate: {
+	    	validator: function(v) {
+	        	return /[A-Z]{1}[a-z]{1,}/.test(v);
+	      	},
+	      	message: props => `${props.value} is not a valid name!`
+	    },
+	    required: [true, 'User name required']
+	    },
+    age: {
+    	type: Number,
+    	validate: {
+	    	validator: function(v) {
+	        	return /[0-9]{1,2}/.test(v);
+	      	},
+	      	message: props => `${props.value} is not a valid age!`
+	    },
+	    required: [true, 'User age required']
+         },
     gender:{
         type: String,
-        enum: ['male','female']
+        enum: ['male','female'],
+        required: [true, 'User gender required']
     },
-    orders: [{type: mongoose.Schema.Types.ObjectId, forinKey: 'order'}]
+    orders: [{type: mongoose.Schema.Types.ObjectId, forinKey: 'order',}]
   });
 const Users = mongoose.model('Users', userSchema);
 
