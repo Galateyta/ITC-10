@@ -13,13 +13,9 @@ const userSchema = new mongoose.Schema({
 	    required: [true, 'User name required']
 	    },
     age: {
-    	type: Number,
-    	validate: {
-	    	validator: function(v) {
-	        	return /[0-9]{1,2}/.test(v);
-	      	},
-	      	message: props => `${props.value} is not a valid age!`
-	    },
+		type: Number,
+		min: 0,
+		max: 120,
 	    required: [true, 'User age required']
          },
     gender:{
