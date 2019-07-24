@@ -5,8 +5,9 @@ const user = require('./routers/user.routers.js');
 const order = require('./routers/order.routers.js');
 const product = require('./routers/product.routers.js');
 
+
 const app = express();
-const port = 10000;
+const port = 50000;
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
