@@ -15,7 +15,9 @@ const OrderSchema = new mongoose.Schema({
     products: {
         type: [mongoose.Schema.ObjectId],
         required: 'products can\'t be empty'
-    }
-});
+    },
+}, {timestamps: true});
+OrderSchema.index({createdAt: 1},{expireAfterSeconds: 2592000 /* 30 days in seconds */});
+
 const Order = mongoose.model('Order', OrderSchema);
 module.exports = Order;

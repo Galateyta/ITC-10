@@ -68,18 +68,19 @@ async function deleteProduct(req, res) {
 }
 
 async function updateProduct(req, res) {
+    if (req.body.id) {
+        res.status(400).json({
+            message: "Invalid requests: Unexpected id property"
+        });
+        return;
+    }
+
     try {
         const data = await Product.updateOne({
             _id: req.query.id
         }, req.body, {
             runValidators: true
         });
-        if (!data || !data.n) {
-            res.status(404).json({
-                message: `Product by id ${req.query.id} not found`
-            });
-            return;
-        }
         res.status(200).json({
             message: `Product by id ${req.query.id} successfully updated`
         });

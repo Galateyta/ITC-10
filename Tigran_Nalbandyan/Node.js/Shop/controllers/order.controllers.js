@@ -1,5 +1,6 @@
 const Order = require('../models/order.models');
 const Product = require('../models/product.models');
+const User = require('../models/user.models.js');
 
 async function addOrder(req, res) {
     req.body.price = await calculatePrice(req.body);
@@ -12,8 +13,18 @@ async function addOrder(req, res) {
             });
             return;
         }
+        const token = req.headers.authorization;
+
+        const update = {
+            $push: {
+                orders: data.id
+            }
+        }
+        await User.updateOne({_id: token}, update, {runValidators: true});
+    
         res.status(200).json(data);
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 }
@@ -59,6 +70,15 @@ async function deleteOrder(req, res) {
             });
             return;
         }
+        const token = req.headers.authorization;
+
+        const update = {
+            $pull: {
+                orders: req.query.id
+            }
+        }
+        await User.updateOne({_id: token}, update, {runValidators: true});
+
         res.status(200).json({
             message: `Order by id ${req.query.id} successfully deleted`
         });
@@ -71,9 +91,27 @@ async function deleteOrder(req, res) {
 
 async function updateOrder(req, res) {
     try {
+        const newOrder = req.body
+
+        if (!newOrder.quantity || !newOrder.products) {
+            const order = await Order.findById(req.query.id);
+            if (!newOrder.products) {
+                newOrder.products = order.products;
+            }
+            if (!newOrder.quantity) {
+                newOrder.quantity = order.quantity;
+            }
+        }
+
+        newOrder.price = await calculatePrice(newOrder);
+
         const data = await Order.updateOne({
             _id: req.query.id
-        }, req.body, {
+        }, {
+            products: newOrder.products,
+            quantity: newOrder.quantity,
+            price: newOrder.price
+        }, {
             runValidators: true
         });
         if (!data || !data.n) {
@@ -86,9 +124,8 @@ async function updateOrder(req, res) {
             message: `Order by id ${req.query.id} successfully updated`
         });
     } catch (err) {
-        res.status(404).json({
-            message: `Order by id ${req.query.id} not found`
-        });
+        console.log(err);
+        res.status(404).json(err);
     }
 }
 
