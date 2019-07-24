@@ -1,17 +1,32 @@
 const Order = require('../models/order.models');
 const product = require('../models/product.models');
+const User = require('../models/user.models');
 
 async function addOrder(req, res) {
     req.body.price = await getPrice(req.body);
     const newOrder = new Order(req.body);
     try {
-        const data = await newOrder.save()
+        const data = await newOrder.save();
+
         if (!data) {
             res.status(404).json({
                 message: `No record found`
             })
             return
         }
+        const dataId = data.id;
+        const userId = req.headers.authorization;
+        const update = {
+            $push: {
+                orders: dataId
+            }
+        }
+        await User.updateOne({
+            _id: userId
+        }, update, {
+            runValidators: true
+        });
+
         res.status(200).json(data);
     } catch (err) {
         res.status(400).json(err);
@@ -58,6 +73,18 @@ async function deleteOrder(req, res) {
                 message: `Order not found`
             });
         }
+        const dataId = req.query.id;
+        const userId = req.headers.authorization;
+        const update = {
+            $pull: {
+                orders: dataId
+            }
+        }
+        await User.updateOne({
+            _id: userId
+        }, update, {
+            runValidators: true
+        });
         res.status(200).json({
             message: `Order by id ${req.query.id} successfully deleted`
         })
@@ -70,9 +97,27 @@ async function deleteOrder(req, res) {
 
 async function updateOrder(req, res) {
     try {
+        const inputOrder = req.body;
+
+        if (!inputOrder.quantity || !inputOrder.products) {
+            const oldOrder = await Order.findById(req.query.id);
+
+            if (!inputOrder.products) {
+                inputOrder.products = oldOrder.products;
+            }
+            if (!inputOrder.quantity) {
+                inputOrder.quantity = oldOrder.quantity;
+            }
+        }
+        inputOrder.price = await getPrice(inputOrder);
+
         const data = await Order.updateOne({
             _id: req.query.id
-        }, req.body, {
+        }, {
+            products: inputOrder.products,
+            quantity: inputOrder.quantity,
+            price: inputOrder.price
+        }, {
             runValidators: true
         })
         if (!data.n) {

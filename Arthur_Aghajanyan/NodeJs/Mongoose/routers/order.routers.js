@@ -7,7 +7,7 @@ const router = express.Router();
 router.route('/')
     .get(orders.findOrders)
     .post(mid.checkUser,orders.addOrder)
-    .delete(orders.deleteOrder)
-    .put(orders.updateOrder)
+    .delete(mid.checkUser,orders.deleteOrder)
+    .put(mid.checkUser,orders.updateOrder)
 
 module.exports = router;
