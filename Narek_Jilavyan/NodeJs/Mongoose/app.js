@@ -14,6 +14,7 @@ app.use(body_parser.urlencoded({
 
 app.use(body_parser.json());
 mongoose.connect('mongodb://localhost:27017/Classwork', {useNewUrlParser: true});
+//mongoose.set('useCreateIndex', true);
 app.listen(10000);
 app.use("/users", users);
 app.use("/products", products);
