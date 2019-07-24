@@ -23,7 +23,11 @@ const userSchema = new mongoose.Schema({
         enum: ['male','female'],
         required: [true, 'User gender required']
     },
-    orders: [{type: mongoose.Schema.Types.ObjectId, forinKey: 'order',}]
+	orders: [{type: mongoose.Schema.Types.ObjectId, forinKey: 'order',}],
+	role: {
+        type: String,
+        enum: ['isAdmin', 'isUser']
+    }
   });
 const Users = mongoose.model('Users', userSchema);
 

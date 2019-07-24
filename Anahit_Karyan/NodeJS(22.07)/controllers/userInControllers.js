@@ -12,7 +12,7 @@ module.exports.getAllUsers = async function(req, res){
 module.exports.postUser = async function (req, res) {
     if(!req.body) return res.sendStatus(400);  
     try {
-        const user = new User({name: req.body.name, age: req.body.age, gender: req.body.gender, orders: req.body.orders});
+        const user = new User({name: req.body.name, age: req.body.age, gender: req.body.gender, orders: req.body.orders, role: req.body.role});
         user.save();
         res.status(200).json(user);
     } catch (error) {
@@ -20,32 +20,33 @@ module.exports.postUser = async function (req, res) {
     }
 }
 
-module.exports.getUserById = function(req, res){
-         
+module.exports.getUserById = async function(req, res){      
     const id = req.params.id;
-    User.findOne({_id: id}, function(err, user){
-          
-        if(err) return res.status(400).json(err);
+    try {
+        const user =  await User.findOne({_id: id});
         res.status(200).json(user);
-    });
+    } catch (error) {
+        return res.status(400).json(error);
+    }
 }
 
-module.exports.putUserById = function(req, res){
-         
+module.exports.putUserById = async function(req, res){   
     if(!req.body) return res.sendStatus(400);
     const id = req.params.id;
-    User.findOneAndUpdate({_id: id}, req.body, {new: true}, function(err, user){
-        if(err) return res.status(400).json(err);
+    try {
+        const user = await User.findOneAndUpdate({_id: id}, req.body, {new: true});
         res.status(200).json(user);
-    });
+    } catch (error) {
+        return res.status(400).json(error);
+    }
 }
 
-module.exports.deleteUserById = function(req, res){
-         
+module.exports.deleteUserById = async function(req, res){
     const id = req.params.id;
-    User.findByIdAndDelete(id, function(err, user){
-                
-        if(err) return res.status(400).json(err);
-        res.status(200).json(user);
-    });
+    try {
+        const user = await User.findByIdAndDelete(id);
+        res.status(200).json(user);
+    } catch (error) {
+        return res.status(400).json(error);
+    }
 }
