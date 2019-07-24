@@ -1,5 +1,7 @@
+require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
+const logger = require('./logging/logger.js');
 
 const user = require('./routers/user.routers.js');
 const order = require('./routers/order.routers.js');
@@ -17,6 +19,6 @@ app.use('/users', user);
 app.use('/orders', order);
 app.use('/products', product);
 
-app.listen(port, () => console.log(`Shop server listening on port ${port}`));
+app.listen(port, () => logger.log('debug', `Shop server listening on port ${port}`));
 
 module.exports = app; // for testing 
