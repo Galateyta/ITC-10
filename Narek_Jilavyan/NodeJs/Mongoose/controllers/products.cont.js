@@ -1,32 +1,66 @@
-const Product = require('../model/products.mod');
+const Product = require('../models/products.mod');
 
-function addProduct(product) {
-    const newProduct = new Product(product);
-    return newProduct.save();
+async function getProducts(req, res){
+    try {
+        const data = await Product.find({});
+        if (data.length == 0) {
+            res.status(200).json({"result" : "data is empty"});
+            return
+        }
+        res.send(data);
+    }
+    catch{
+        res.status(400).json({"error" : "Invalid request"});
+    }
 }
 
-function findProducts() {
-    return Product.find({}).exec();
+async function getProduct(req, res){
+    try {
+        const data = await Product.findById(req.params.id);
+        if (data.length == 0) {
+            res.status(200).json({"result" : "data is empty"});
+            return
+        }
+        res.send(data);
+    }
+    catch{
+        res.status(400).json({"error" : "Invalid request"});
+    }
 }
 
-function findProductsById(id) {
-    return Product.findById(id).exec();
+async function addProduct(req, res){
+    try {
+        var newProduct = new Product(req.body);
+        result = await newProduct.save();
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    }
 }
 
-function deleteProduct(id) {
-    return Product.deleteOne({
-        _id: id
-    }).exec();
+async function updateProduct(req, res){
+    try {
+        result = await Product.updateOne({ _id: req.params.id}, req.body , {runValidators: true}).exec();
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    }  
 }
 
-function updateProduct(id, info) {
-    return Product.updateOne({
-        _id: id
-    }, info, {runValidators: true}).exec();
+async function deleteProduct(req, res){
+    try {
+        result = await Products.deleteOne({_id: req.params.id})
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    } 
 }
 
 module.exports.addProduct = addProduct;
-module.exports.findProducts = findProducts;
-module.exports.findProductsById = findProductsById;
+module.exports.getProducts = getProducts;
+module.exports.getProduct = getProduct;
 module.exports.deleteProduct = deleteProduct;
 module.exports.updateProduct = updateProduct;

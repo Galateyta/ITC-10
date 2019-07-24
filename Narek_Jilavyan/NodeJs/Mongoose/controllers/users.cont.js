@@ -1,32 +1,66 @@
-const User = require('../model/users.mod');
+const User = require('../models/users.mod');
 
-function addUser(user) {
-    const newUser = new User(user);
-    return newUser.save();
+async function getUsers(req, res){
+    try {
+        const data = await User.find({});
+        if (data.length == 0) {
+            res.status(200).json({"result" : "data is empty"});
+            return
+        }
+        res.send(data);
+    }
+    catch{
+        res.status(400).json({"error" : "Invalid request"});
+    }
 }
 
-function findUsers() {
-    return User.find({}).exec();
+async function getUser(req, res){
+    try {
+        const data = await User.findById(req.params.id);
+        if (data.length == 0) {
+            res.status(200).json({"result" : "data is empty"});
+            return
+        }
+        res.send(data);
+    }
+    catch{
+                res.status(400).json({"error" : "Invalid request"});
+    }
 }
 
-function findUsersById(id) {
-    return User.findById(id).exec();
+async function addUser(req, res){
+    try {
+        var newUser = new User(req.body);
+        result = await newUser.save();
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    }
 }
 
-function deleteUser(id) {
-    return User.deleteOne({
-        _id: id
-    }).exec();
+async function updateUser(req, res){
+    try {
+        result = await User.updateOne({ _id: req.params.id}, req.body , {runValidators: true}).exec();
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    }  
 }
 
-function updateUser(id, info) {
-    return User.updateOne({
-        _id: id
-    }, info, {runValidators: true}).exec();
+async function deleteUser(req, res){
+    try {
+        result = await User.deleteOne({_id: req.params.id})
+        res.status(200).json(result);
+    }
+    catch {
+        res.status(400).json({"error": "invalid body"});
+    } 
 }
 
 module.exports.addUser = addUser;
-module.exports.findUsers = findUsers;
-module.exports.findUsersById = findUsersById;
+module.exports.getUsers = getUsers;
+module.exports.getUser = getUser;
 module.exports.deleteUser = deleteUser;
 module.exports.updateUser = updateUser;
