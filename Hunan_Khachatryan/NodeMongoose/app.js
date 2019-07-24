@@ -1,22 +1,32 @@
 const http = require('http');
 const express = require('express');
-const bodyParser = require('body-parser');
-const app = express(); 
-const server = http.createServer(app); 
-const users = require('./routers/users.router');
-const products = require('./routers/products.router');
-const orders = require('./routers/orders.router');
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/users',{ useNewUrlParser: true });
+const bodyParser = require('body-parser');
+const users = require('./routers/users.router');
+const orders = require('./routers/orders.router');
+const products = require('./routers/products.router');
+const app = express();
+const server = http.createServer(app);
+require('dotenv').config();
 
-app.use(bodyParser.urlencoded({ extended: false }))
+mongoose.set('useFindAndModify', false);
+mongoose.set('useCreateIndex', true);
+
+mongoose.connect(process.env.DB_CONNECT, {
+  useNewUrlParser: true
+});
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}))
 app.use(bodyParser.json())
 
 
-app.use('/users',users);
-app.use('/products',products)
+app.use('/users', users);
+app.use('/products', products)
 app.use('/orders', orders)
 
-  
-  server.listen(8080);
-  module.exports.app = app;
+
+server.listen(process.env.PORT);
+
+module.exports.app = app;

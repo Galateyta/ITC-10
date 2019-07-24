@@ -5,11 +5,25 @@ const Schema = mongoose.Schema;
 // create a schema for Products
 
 var productSchema = new Schema({
-    name: { type: String, required: true},
-    price: { type: Number, required: true},
-    discription : {type: String,required: true},
-    type: {type:String, enum: ["desert", "salad", "drink"]},
-    img: {type: mongoose.SchemaTypes.Url}
+    name: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    discription: {
+        type: String,
+        required: true
+    },
+    type: {
+        type: String,
+        enum: ["desert", "salad", "drink"]
+    },
+    img: {
+        type: mongoose.SchemaTypes.Url
+    }
 });
 var Products = mongoose.model('products', productSchema);
 

@@ -1,11 +1,15 @@
 const Users = require('../modeles/users.modele')
-
+const logger = require('../loger/winston.logger')
 module.exports.getAllUsers = async function (req, res) {
   try {
     const result = await Users.find({});
-    res.json(result)
+    res.status = 200;
+    logger.info(req.info);
+    logger.info(res.body);
+    logger.info(res.status);
+    return res.json(result)
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
 
   }
 }
@@ -15,10 +19,10 @@ module.exports.getUserByID = async function (req, res) {
     const result = await Users.findOne({
       _id: id
     });
-    res.json(result)
+    return res.json(result)
 
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
 
   }
 }
@@ -28,10 +32,10 @@ module.exports.addUser = async function (req, res) {
   const users = new Users(data);
   try {
     const result = await users.save()
-    res.json(result);
+    return res.json(result);
 
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
   }
 }
 
@@ -44,9 +48,9 @@ module.exports.updateUser = async function (req, res) {
     }, data, {
       new: true
     });
-    res.json(result)
+    return res.json(result)
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
 
   }
 }
@@ -56,10 +60,10 @@ module.exports.removeUser = async function (req, res) {
     const result = await Users.findOneAndRemove({
       _id: id
     });
-    res.json(result)
+    return res.json(result)
 
   } catch (error) {
-    res.status(400).json(error);
+    return res.status(400).json(error);
 
   }
 }
