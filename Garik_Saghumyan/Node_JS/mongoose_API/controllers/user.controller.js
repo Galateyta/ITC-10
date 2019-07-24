@@ -45,7 +45,7 @@ let userDeleteById = async function(req, res){
 let updateUser = async function(req, res){
          
     if(!req.body) return res.sendStatus(400);
-    const id = req.body.id;
+    const id = req.body._id;
     const userName = req.body.name;
     const userAge = req.body.age;
     const userGender = req.body.gender;

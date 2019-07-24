@@ -43,7 +43,7 @@ let productDeleteById = async function(req, res){
 let updateProduct = async function(req, res){
          
     if(!req.body) return res.sendStatus(400);
-    const id = req.body.id;
+    const id = req.body._id;
     const productName = req.body.name;
     const productDesc = req.body.description;
     const productPrice = req.body.price;
