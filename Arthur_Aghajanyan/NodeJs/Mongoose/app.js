@@ -7,7 +7,7 @@ const product = require('./routers/product.routers.js');
 
 
 const app = express();
-const port = 50000;
+const port = 10001;
 
 app.use(bodyParser.json()); // to support JSON-encoded bodies
 app.use(bodyParser.urlencoded({ // to support URL-encoded bodies
@@ -19,5 +19,6 @@ app.use('/orders', order);
 app.use('/products', product);
 
 app.listen(port, () => console.log(`Shop server listening on port ${port}`));
+
 
 module.exports = app; // for testing

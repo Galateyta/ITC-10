@@ -1,6 +1,8 @@
 const Order = require('../models/order.models');
 const product = require('../models/product.models');
 const User = require('../models/user.models');
+const log = require('../config/index');
+
 
 async function addOrder(req, res) {
     req.body.price = await getPrice(req.body);
@@ -34,17 +36,22 @@ async function addOrder(req, res) {
 }
 
 async function findOrders(req, res) {
+
     if (req.query.id) {
         try {
             const order = await Order.findById(req.query.id)
             if (!order) {
+                log.error({'statusCode': 404},'could not find orders')
                 res.status(404).json({
                     message: `No record found`
                 })
                 return
             }
+            log.info({'statusCode': res.statusCode},'successfuled findById orders')
             res.status(200).json(order);
+
         } catch (err) {
+            log.error({'statusCode': 400},'could not find orders')
             res.status(400).json(err);
         }
     } else {
@@ -57,7 +64,10 @@ async function findOrders(req, res) {
                 return
             }
             res.status(200).json(order);
+            log.info({'statusCode': res.statusCode},'successfuled find orders')
+
         } catch (err) {
+            log.error({'statusCode': 400},'could not find orders')
             res.status(400).json(err);
         }
     }
