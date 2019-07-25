@@ -5,11 +5,13 @@ const products = require('./routers/productsAPI.js');
 const orders = require('./routers/ordersAPI.js');
 const mongoose = require('mongoose');
 
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/test', {useNewUrlParser: true});
+mongoose.connect(process.env.DB_HOST, { useNewUrlParser: true });
 
 app.use('/users', users);
 app.use('/products', products );

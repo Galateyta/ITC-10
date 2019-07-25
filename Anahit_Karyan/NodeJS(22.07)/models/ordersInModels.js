@@ -12,7 +12,8 @@ const orderSchema = new mongoose.Schema({
 		min: 0,
 	    required: [true, 'Quantity required']
     }
-  });
+  }, {timestamps: true});
+orderSchema.index({createdAt: 1},{expireAfterSeconds: 2592000});
 const Orders = mongoose.model('Orders', orderSchema);
 
 module.exports = Orders;

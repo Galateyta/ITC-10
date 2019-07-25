@@ -26,7 +26,8 @@ const userSchema = new mongoose.Schema({
 	orders: [{type: mongoose.Schema.Types.ObjectId, forinKey: 'order',}],
 	role: {
         type: String,
-        enum: ['isAdmin', 'isUser']
+        enum: ['isAdmin', 'isUser'],
+        required: [true, 'Order required']
     }
   });
 const Users = mongoose.model('Users', userSchema);
