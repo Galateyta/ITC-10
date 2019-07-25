@@ -1,4 +1,5 @@
 const user = require("./models/user.models");
+const logger = require("./app");
 
 module.exports.isUserExist = async function(req, res, next) {
     const id = req.headers.authorization;

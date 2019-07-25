@@ -1,4 +1,5 @@
 const mongoose = require('../database/mongo');
+const logger = require("../app");
 
 const schema = new mongoose.Schema({
     name: {type: String, min: [3, "Minimum 3 symbols!!!"], required: true},

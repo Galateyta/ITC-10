@@ -1,4 +1,5 @@
 const product = require('../models/product.models');
+const logger = require("../app");
 
 async function findProduct(req, res) {
     if (req.query.id) {
