@@ -20,8 +20,9 @@ public class Calculator {
     }
 
     public double doTheShuntingYard(String expression)throws IllegalArgumentException, NumberFormatException, ArithmeticException{
-        if(expression == null || expression.trim().length() == 0)
+        if(expression == null || expression.trim().length() == 0){
             throw new IllegalArgumentException("Empty expression or null");
+        }
 
         expression = expression.replaceAll("\\s+","");
 

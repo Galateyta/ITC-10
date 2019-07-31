@@ -4,23 +4,19 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-        Calculator calculator = new Calculator();
-        List list = new ArrayList();
-        try {
-            File file = new File("src/resources/file.txt");
-            BufferedReader br = new BufferedReader(new FileReader(file));
-            String st = br.readLine();
-            br.close();
-            String[] tmp = st.split("=");
-            double result = calculator.doTheShuntingYard(tmp[0]);
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-            writer.write(tmp[0] + '=' + result);
-            writer.close();
-            System.out.println(tmp[0] + '=' + result);
-        } catch (IOException e) {
-            System.out.println(list);
-            e.printStackTrace();
+         Calculator calculator = new Calculator();
+
+        File file = new File("src/resources/file.txt");
+        String st;
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            st = br.readLine();
         }
+        String[] tmp = st.split("=");
+        double result = calculator.doTheShuntingYard(tmp[0]);
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+            writer.write(tmp[0] + '=' + result);
+        }
+        System.out.println(tmp[0] + '=' + result);
 
     }
 }
