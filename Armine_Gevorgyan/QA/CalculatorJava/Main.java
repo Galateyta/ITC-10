@@ -21,7 +21,7 @@ public class Main {
         scanner.close();
 
         try {
-            File file = new File("path");
+            File file = new File(path);
             BufferedReader br = new BufferedReader(new FileReader(file));
 
             while ((curline = br.readLine()) != null) {
