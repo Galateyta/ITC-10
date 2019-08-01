@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.app.AppTest" time="0.011" tests="8" errors="0" skipped="0" failures="5">
+  <properties>
+    <property name="sun.desktop" value="gnome"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/test-classes:/home/abul/Desktop/MAVEN/my-app/target/classes:/home/abul/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/abul/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter8394366774823903943.jar /home/abul/Desktop/MAVEN/my-app/target/surefire 2019-08-01T07-49-38_488-jvmRun1 surefire7082410073313330011tmp surefire_05671864203526698543tmp"/>
+    <property name="surefire.test.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/test-classes:/home/abul/Desktop/MAVEN/my-app/target/classes:/home/abul/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/abul/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/abul"/>
+    <property name="user.language" value="en"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/usr/lib/jvm/java-8-oracle/jre"/>
+    <property name="basedir" value="/home/abul/Desktop/MAVEN/my-app"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter8394366774823903943.jar"/>
+    <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_151-b12"/>
+    <property name="user.name" value="abul"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="4.4.0-53-generic"/>
+    <property name="java.endorsed.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/abul/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_151"/>
+    <property name="user.dir" value="/home/abul/Desktop/MAVEN/my-app"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="java.vm.version" value="25.151-b12"/>
+    <property name="java.ext.dirs" value="/usr/lib/jvm/java-8-oracle/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="newLineChar" classname="com.mycompany.app.AppTest" time="0.007">
+    <failure message="newLineChar expected:&lt;2[5].0&gt; but was:&lt;2[6].0&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: newLineChar expected:<2[5].0> but was:<2[6].0>
+	at com.mycompany.app.AppTest.newLineChar(AppTest.java:57)
+]]></failure>
+    <system-out><![CDATA[The result is 26.0
+]]></system-out>
+  </testcase>
+  <testcase name="shouldAnswerWithTrue" classname="com.mycompany.app.AppTest" time="0"/>
+  <testcase name="rightAnswer" classname="com.mycompany.app.AppTest" time="0"/>
+  <testcase name="scops" classname="com.mycompany.app.AppTest" time="0.001">
+    <failure message="scops expected:&lt;[true]&gt; but was:&lt;[error]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: scops expected:<[true]> but was:<[error]>
+	at com.mycompany.app.AppTest.scops(AppTest.java:29)
+]]></failure>
+    <system-out><![CDATA[Expression error.
+]]></system-out>
+  </testcase>
+  <testcase name="fileReaderTest" classname="com.mycompany.app.AppTest" time="0"/>
+  <testcase name="multiOperator" classname="com.mycompany.app.AppTest" time="0">
+    <failure message="multiOperator expected:&lt;er[]or&gt; but was:&lt;er[r]or&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: multiOperator expected:<er[]or> but was:<er[r]or>
+	at com.mycompany.app.AppTest.multiOperator(AppTest.java:43)
+]]></failure>
+    <system-out><![CDATA[Expression error.
+Expression error.
+]]></system-out>
+  </testcase>
+  <testcase name="undefinedOperand" classname="com.mycompany.app.AppTest" time="0">
+    <failure message="undefinedOperand expected:&lt;er[]or&gt; but was:&lt;er[r]or&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: undefinedOperand expected:<er[]or> but was:<er[r]or>
+	at com.mycompany.app.AppTest.undefinedOperand(AppTest.java:50)
+]]></failure>
+    <system-out><![CDATA[Expression error.
+Expression error.
+]]></system-out>
+  </testcase>
+  <testcase name="divideByZero" classname="com.mycompany.app.AppTest" time="0">
+    <failure message="divideByZero expected:&lt;[error]&gt; but was:&lt;[Infinity]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: divideByZero expected:<[error]> but was:<[Infinity]>
+	at com.mycompany.app.AppTest.divideByZero(AppTest.java:36)
+]]></failure>
+    <system-out><![CDATA[The result is Infinity
+]]></system-out>
+  </testcase>
+</testsuite>

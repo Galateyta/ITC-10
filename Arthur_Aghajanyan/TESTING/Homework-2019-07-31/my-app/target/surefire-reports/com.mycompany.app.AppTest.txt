@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------
+Test set: com.mycompany.app.AppTest
+-------------------------------------------------------------------------------
+Tests run: 8, Failures: 5, Errors: 0, Skipped: 0, Time elapsed: 0.011 s <<< FAILURE! - in com.mycompany.app.AppTest
+newLineChar(com.mycompany.app.AppTest)  Time elapsed: 0.007 s  <<< FAILURE!
+org.junit.ComparisonFailure: newLineChar expected:<2[5].0> but was:<2[6].0>
+	at com.mycompany.app.AppTest.newLineChar(AppTest.java:57)
+
+scops(com.mycompany.app.AppTest)  Time elapsed: 0.001 s  <<< FAILURE!
+org.junit.ComparisonFailure: scops expected:<[true]> but was:<[error]>
+	at com.mycompany.app.AppTest.scops(AppTest.java:29)
+
+multiOperator(com.mycompany.app.AppTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: multiOperator expected:<er[]or> but was:<er[r]or>
+	at com.mycompany.app.AppTest.multiOperator(AppTest.java:43)
+
+undefinedOperand(com.mycompany.app.AppTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: undefinedOperand expected:<er[]or> but was:<er[r]or>
+	at com.mycompany.app.AppTest.undefinedOperand(AppTest.java:50)
+
+divideByZero(com.mycompany.app.AppTest)  Time elapsed: 0 s  <<< FAILURE!
+org.junit.ComparisonFailure: divideByZero expected:<[error]> but was:<[Infinity]>
+	at com.mycompany.app.AppTest.divideByZero(AppTest.java:36)
+
