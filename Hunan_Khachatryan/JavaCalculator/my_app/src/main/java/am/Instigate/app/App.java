@@ -7,48 +7,43 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Stack;
+
 /**
  * Hello world!
- *
  */
-public class App
-{
+
+public class App {
 
     public static void main(String[] args) throws IOException {
         String filename = "src/resources/file.txt";
         App calc = new App();
-        if(calc.readAndWriteInFile(filename)){
-            System.out.println("Sucssesful");
-        }else {
-            System.out.println("Faild");
-        }
-
-
+        calc.readAndWriteInFile(filename);
 
     }
 
-
-    public String readFile(String filename) throws IOException{
+    // A function that performs the reading function from a file
+    public String readFile(String filename) throws IOException {
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
-                sb.append(line).append("\n");
+                sb.append(line);
             }
 
         }
         return sb.toString();
     }
 
-
-
+    // A function that performs the function of writing to a file:
     public void writeInFile(String filename, String result) throws IOException {
         try (FileWriter fWrite = new FileWriter(filename, true)) {
             fWrite.write(result);
 
         }
     }
-    public boolean readAndWriteInFile(String filename) throws IOException {
+    // A function that performs the main operation
+
+    public void readAndWriteInFile(String filename) throws IOException {
         String expression = this.readFile(filename);
 
         String[] tmp = expression.split("=");
@@ -64,31 +59,32 @@ public class App
                     if (rigthPart == leftResult) {
                         String text = "  true ";
                         this.writeInFile(filename, text);
-                        return true;
-                    }
+                    } else {
                         String text = "  false ";
                         this.writeInFile(filename, text);
-                        return true;
-                }
+                    }
+
+                } else {
                     double result = this.evalExpression(leftPart);
                     String text = " " + Double.toString(result);
                     this.writeInFile(filename, text);
-                    return true;
 
+                }
 
-            }
+            } else {
                 double result = this.evalExpression(leftPart);
                 String text = " = " + result;
                 this.writeInFile(filename, text);
-                return true;
 
+            }
 
+        } else {
+            throw new IOException("In expression the paranthes is not balanced");
         }
-            System.out.println("In expression the paranthes is not balanced");
-        return false;
+
     }
 
-
+    // A function that determines the priority of a given action
     public int priority(char op) {
         switch (op) {
             case '+':
@@ -102,6 +98,7 @@ public class App
         }
     }
 
+    // A function that performs the given math operation
     public double operation(double a, double b, char op) {
         switch (op) {
             case '+':
@@ -118,7 +115,7 @@ public class App
 
     }
 
-
+    // A function that determines whether the parentheses in the given expression are balanced
     public boolean areParanthesisBalanced(String str) {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
@@ -144,6 +141,7 @@ public class App
 
     }
 
+    // A function that calculates the value of a given expression
     public double evalExpression(String str) {
         int i;
         Stack<Double> numbers = new Stack<Double>();
