@@ -3,7 +3,7 @@ package com.mycompany.app;
 import java.util.ArrayList;
 
 public class TokenStack {
-   
+
     private ArrayList<Token> tokens;
 
     public TokenStack() {

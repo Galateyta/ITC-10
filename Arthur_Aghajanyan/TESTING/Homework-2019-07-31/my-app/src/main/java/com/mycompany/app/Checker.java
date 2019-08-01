@@ -1,16 +1,17 @@
 package com.mycompany.app;
 
-
 import java.io.*;
 import java.util.Arrays;
 
 public class Checker {
     public static void main(String[] args) throws IOException {
-        String path = "/home/abul/Desktop/MAVEN/my-app/file.tx";
-        //reader(path);
-        String t = readerForTest(path);
-        System.out.println(t);
+        String path = "src/resources/file.txt";
+        reader(path);
+
     }
+    // the function is assigned to read the mathematical expression from the file,
+    // solve this expression and write the answer in the same file
+
     public static void reader(String path)throws IOException {
         File file = new File(path);
         FullCalculator calc = new FullCalculator();
@@ -30,9 +31,8 @@ public class Checker {
         if (expect.isEmpty()){
             result = calc.start(line); 
         } else {
-            result = calc.start(String.join(" ", Arrays.copyOfRange(parts, 0, parts.length - 2)));
+            result = calc.start(String.join(" ", Arrays.copyOfRange(parts, 0, parts.length - 2)));       
         } 
-
 
         if (!result.equals("error")) {
             FileWriter fw = new FileWriter(file);
@@ -50,33 +50,6 @@ public class Checker {
         }
         br.close();
         fr.close();
-    }
-
-    public static String readerForTest(String path)throws IOException {
-        FileReader fr;
-        BufferedReader br;
-        try{
-            File file = new File(path);
-            FullCalculator calc = new FullCalculator();
-
-            fr = new FileReader(file);
-            br = new BufferedReader(fr);
-        }catch(Exception ex){
-            return "Not found";
-        }
-        String line = br.readLine();
-        String expect = "";
-        String[] parts = line.split(" ");
-        if (line.contains("=")) {
-            if (parts[parts.length - 2].equals("=")) {
-
-                expect = parts[parts.length - 1];
-            }
-        }
-        String result = "";        
-        br.close();
-        fr.close();
-        return line;
     }
 
 }

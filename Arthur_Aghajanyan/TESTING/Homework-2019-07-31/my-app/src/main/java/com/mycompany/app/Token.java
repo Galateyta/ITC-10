@@ -62,7 +62,7 @@ public class Token {
     int getPrecedence() {
         return precedence;
     }
-
+    //function assigned to math
     Token operate(double a, double b) {
         double result = 0;
         switch (operator) {

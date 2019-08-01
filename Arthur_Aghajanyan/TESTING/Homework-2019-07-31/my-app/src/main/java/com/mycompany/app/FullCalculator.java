@@ -13,13 +13,13 @@ public class FullCalculator {
     }
 
     private void processOperator(Token t) {
-        Token A = null, B = null;
+        Token operandOne = null, operandTwo = null;
         if (valueStack.isEmpty()) {
             System.out.println("Expression error.");
             error = true;
             return;
         } else {
-            B = valueStack.top();
+            operandTwo = valueStack.top();
             valueStack.pop();
         }
         if (valueStack.isEmpty()) {
@@ -27,11 +27,11 @@ public class FullCalculator {
             error = true;
             return;
         } else {
-            A = valueStack.top();
+            operandOne = valueStack.top();
             valueStack.pop();
         }
-        Token R = t.operate(A.getValue(), B.getValue());
-        valueStack.push(R);
+        Token summa = t.operate(operandOne.getValue(), operandTwo.getValue());
+        valueStack.push(summa);
     }
 
     public String start(String input) {
