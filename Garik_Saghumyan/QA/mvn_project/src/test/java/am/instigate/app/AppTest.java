@@ -1,6 +1,7 @@
 package am.instigate.app;
 
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Rule;
@@ -13,6 +14,7 @@ public class AppTest
 {
     @Rule
     public ExpectedException exception = ExpectedException.none();
+
     @Test
     public void shouldAnswerWithTrue() {
         Calculator calculator = new Calculator();
@@ -28,14 +30,16 @@ public class AppTest
     @Test
     public void shouldAnswerWithError() {
         Calculator calculator = new Calculator();
-        assertEquals(0.0, calculator.doTheShuntingYard("5 + 2 * 4/2") );
+        assertNotEquals(0.0, calculator.doTheShuntingYard("5 + 2 * 4/2") );
     }
 
     @Test
     public void throwsIllegalArgumentExeption() {
+        exception.expect(IllegalArgumentException.class);
+        exception.expectMessage("Invalid Expression:a+7");
         Calculator calculator = new Calculator();
-        calculator.doTheShuntingYard("a + 7");
-        exception.expectMessage("Invalid Expression:a + 7");
+        calculator.doTheShuntingYard("a+7");
+
     }
     @Test
     public void testMain() throws IOException {
@@ -52,10 +56,10 @@ public class AppTest
             writer.write(tmp[0] + '=' + result);
         }
         assertEquals(12.0, result );
-
     }
     @Test
     public void testMain1() throws IOException {
+        exception.expect(IllegalArgumentException.class);
         Calculator calculator = new Calculator();
         File file = new File("src/resources/file1.txt");
         String st;
@@ -67,7 +71,5 @@ public class AppTest
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
             writer.write(tmp[0] + '=' + result);
         }
-        exception.expect(IllegalArgumentException.class);
-        exception.expectMessage("Invalid Expression:" + st);
     }
 }
