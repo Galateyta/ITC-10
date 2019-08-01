@@ -17,39 +17,62 @@ public class App {
             Calculator calculator = new Calculator();
             List list = new ArrayList();
             String curline;
-            Scanner scanner = new Scanner(System.in);
-            System.out.println("Enter Path of file");
-            String path = scanner.nextLine();
-            scanner.close();
 
             try {
                 File file = new File("src/resources/file.txt");
+                //open file for reading
                 BufferedReader br = new BufferedReader(new FileReader(file));
-
-                while ((curline = br.readLine()) != null) {
-                    String[] tmp = curline.split("=");
-                    if (tmp.length == 2) {
-                        double resultLeft = calculator.doTheShuntingYard(tmp[0]);
-                        double resultRight = calculator.doTheShuntingYard(tmp[1]);
-                        if (resultLeft == resultRight) {
+                //read line on file
+                curline = br.readLine();
+                // split text on curline
+                String[] tmp = curline.split("=");
+                if (tmp.length == 2) {
+                    //calculate result in left and right expression
+                    double resultLeft = calculator.doTheShuntingYard(tmp[0]);
+                    double resultRight = calculator.doTheShuntingYard(tmp[1]);
+                    //compare left and right expression
+                    if (resultLeft == resultRight) {
+                        try {
+                            //open file for writing
                             BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                            //write in file
                             writer.write(tmp[0] + " = " + tmp[1] + " //true");
+                            //close file
                             writer.close();
-                        } else {
-                            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                            writer.write(tmp[0] + " = " + tmp[1] + " //false");
-                            writer.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
                         }
                     } else {
-                        double result = calculator.doTheShuntingYard(tmp[0]);
-                        String numberAsString = Double.toString(result);
-                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                        writer.write(tmp[0] + " = " + result);
-                        writer.close();
+                        try {
+                            //open file for writing
+                            BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                            //write in file
+                            writer.write(tmp[0] + " = " + tmp[1] + " //false");
+                            //close file
+                            writer.close();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
-
+                } else {
+                    //calculate result for expression
+                    double result = calculator.doTheShuntingYard(tmp[0]);
+                    //cast double to string
+                    String numberAsString = Double.toString(result);
+                    try {
+                        //open file for writing
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                        //write on file
+                        writer.write(tmp[0] + " = " + result);
+                        //close file
+                        writer.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
+		//close file
                 br.close();
+
             } catch (IOException e) {
                 System.out.println(list);
                 e.printStackTrace();
