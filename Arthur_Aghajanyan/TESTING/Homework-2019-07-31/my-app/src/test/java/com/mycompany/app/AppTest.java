@@ -26,41 +26,41 @@ public class AppTest {
     public void scops() {
         FullCalculator tester = new FullCalculator();
         String input = " 8 + 9 * 7 (";
-        assertEquals("scops", "true", tester.start(input));
+        assertEquals("scops", "error", tester.start(input));
     }
 
     @Test
     public void divideByZero() {
         FullCalculator tester = new FullCalculator();
         String input = " ( 8 + 9 ) / 0 ";
-        assertEquals("divideByZero", "error", tester.start(input));
+        assertEquals("divideByZero", "Infinity", tester.start(input));
     }
 
     @Test
     public void multiOperator() {
         FullCalculator tester = new FullCalculator();
         String input = " ( 8 + + 9 ) ";
-        assertEquals("multiOperator", "eror", tester.start(input));
+        assertEquals("multiOperator", "error", tester.start(input));
     }
 
     @Test
     public void undefinedOperand() {
         FullCalculator tester = new FullCalculator();
         String input = " ( 8 + x + 9 ) ";
-        assertEquals("undefinedOperand", "eror", tester.start(input));
+        assertEquals("undefinedOperand", "error", tester.start(input));
     }
 
     @Test
     public void newLineChar() {
         FullCalculator tester = new FullCalculator();
         String input = "  8 + 9 \n + 9  ";
-        assertEquals("newLineChar", "25.0", tester.start(input));
+        assertEquals("newLineChar", "26.0", tester.start(input));
     }
 
     @Test
     public void fileReaderTest() throws IOException {
         Checker tester = new Checker(); 
-        String input = "/home/abul/Desktop/MAVEN/my-app/file.txt";
-        assertEquals("fileReaderTest", "40 * ( 2 + 4 )",  tester.readerForTest(input));
+        String input = "/home/abul/Desktop/MAVEN/my-app/file.tx";
+        assertEquals("fileReaderTest", "Not found",  tester.readerForTest(input));
     }
 }

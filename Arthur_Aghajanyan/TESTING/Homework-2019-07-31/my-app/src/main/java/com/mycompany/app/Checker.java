@@ -51,13 +51,19 @@ public class Checker {
         br.close();
         fr.close();
     }
+
     public static String readerForTest(String path)throws IOException {
-        File file = new File(path);
-        FullCalculator calc = new FullCalculator();
+        FileReader fr;
+        BufferedReader br;
+        try{
+            File file = new File(path);
+            FullCalculator calc = new FullCalculator();
 
-        FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
-
+            fr = new FileReader(file);
+            br = new BufferedReader(fr);
+        }catch(Exception ex){
+            return "Not found";
+        }
         String line = br.readLine();
         String expect = "";
         String[] parts = line.split(" ");

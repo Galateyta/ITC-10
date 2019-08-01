@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.app.AppTest" time="0.011" tests="8" errors="0" skipped="0" failures="5">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report.xsd" name="com.mycompany.app.AppTest" time="0.006" tests="8" errors="0" skipped="0" failures="0">
   <properties>
     <property name="sun.desktop" value="gnome"/>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
@@ -17,7 +17,7 @@
     <property name="user.country" value="US"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter8394366774823903943.jar /home/abul/Desktop/MAVEN/my-app/target/surefire 2019-08-01T07-49-38_488-jvmRun1 surefire7082410073313330011tmp surefire_05671864203526698543tmp"/>
+    <property name="sun.java.command" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter7389037614718289191.jar /home/abul/Desktop/MAVEN/my-app/target/surefire 2019-08-01T10-49-57_399-jvmRun1 surefire1161324579066181865tmp surefire_04637016418080450314tmp"/>
     <property name="surefire.test.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/test-classes:/home/abul/Desktop/MAVEN/my-app/target/classes:/home/abul/.m2/repository/junit/junit/4.11/junit-4.11.jar:/home/abul/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/abul"/>
@@ -30,7 +30,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter8394366774823903943.jar"/>
+    <property name="surefire.real.class.path" value="/home/abul/Desktop/MAVEN/my-app/target/surefire/surefirebooter7389037614718289191.jar"/>
     <property name="sun.boot.class.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/resources.jar:/usr/lib/jvm/java-8-oracle/jre/lib/rt.jar:/usr/lib/jvm/java-8-oracle/jre/lib/sunrsasign.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jsse.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jce.jar:/usr/lib/jvm/java-8-oracle/jre/lib/charsets.jar:/usr/lib/jvm/java-8-oracle/jre/lib/jfr.jar:/usr/lib/jvm/java-8-oracle/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_151-b12"/>
@@ -58,44 +58,12 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="newLineChar" classname="com.mycompany.app.AppTest" time="0.007">
-    <failure message="newLineChar expected:&lt;2[5].0&gt; but was:&lt;2[6].0&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: newLineChar expected:<2[5].0> but was:<2[6].0>
-	at com.mycompany.app.AppTest.newLineChar(AppTest.java:57)
-]]></failure>
-    <system-out><![CDATA[The result is 26.0
-]]></system-out>
-  </testcase>
+  <testcase name="newLineChar" classname="com.mycompany.app.AppTest" time="0.001"/>
   <testcase name="shouldAnswerWithTrue" classname="com.mycompany.app.AppTest" time="0"/>
   <testcase name="rightAnswer" classname="com.mycompany.app.AppTest" time="0"/>
-  <testcase name="scops" classname="com.mycompany.app.AppTest" time="0.001">
-    <failure message="scops expected:&lt;[true]&gt; but was:&lt;[error]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: scops expected:<[true]> but was:<[error]>
-	at com.mycompany.app.AppTest.scops(AppTest.java:29)
-]]></failure>
-    <system-out><![CDATA[Expression error.
-]]></system-out>
-  </testcase>
+  <testcase name="scops" classname="com.mycompany.app.AppTest" time="0"/>
   <testcase name="fileReaderTest" classname="com.mycompany.app.AppTest" time="0"/>
-  <testcase name="multiOperator" classname="com.mycompany.app.AppTest" time="0">
-    <failure message="multiOperator expected:&lt;er[]or&gt; but was:&lt;er[r]or&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: multiOperator expected:<er[]or> but was:<er[r]or>
-	at com.mycompany.app.AppTest.multiOperator(AppTest.java:43)
-]]></failure>
-    <system-out><![CDATA[Expression error.
-Expression error.
-]]></system-out>
-  </testcase>
-  <testcase name="undefinedOperand" classname="com.mycompany.app.AppTest" time="0">
-    <failure message="undefinedOperand expected:&lt;er[]or&gt; but was:&lt;er[r]or&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: undefinedOperand expected:<er[]or> but was:<er[r]or>
-	at com.mycompany.app.AppTest.undefinedOperand(AppTest.java:50)
-]]></failure>
-    <system-out><![CDATA[Expression error.
-Expression error.
-]]></system-out>
-  </testcase>
-  <testcase name="divideByZero" classname="com.mycompany.app.AppTest" time="0">
-    <failure message="divideByZero expected:&lt;[error]&gt; but was:&lt;[Infinity]&gt;" type="org.junit.ComparisonFailure"><![CDATA[org.junit.ComparisonFailure: divideByZero expected:<[error]> but was:<[Infinity]>
-	at com.mycompany.app.AppTest.divideByZero(AppTest.java:36)
-]]></failure>
-    <system-out><![CDATA[The result is Infinity
-]]></system-out>
-  </testcase>
+  <testcase name="multiOperator" classname="com.mycompany.app.AppTest" time="0"/>
+  <testcase name="undefinedOperand" classname="com.mycompany.app.AppTest" time="0"/>
+  <testcase name="divideByZero" classname="com.mycompany.app.AppTest" time="0"/>
 </testsuite>
