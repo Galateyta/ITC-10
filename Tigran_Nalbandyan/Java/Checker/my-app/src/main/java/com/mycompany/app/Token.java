@@ -1,4 +1,4 @@
-package com.itc;
+package com.mycompany.app;
 
 public class Token {
     public static final int UNKNOWN = -1;
