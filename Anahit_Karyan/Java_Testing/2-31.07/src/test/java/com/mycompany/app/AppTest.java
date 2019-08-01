@@ -10,96 +10,89 @@ public class AppTest
     //Test for checkBracketsTest method-----------------------------------
     
     @Test
-    public void checkBracketsTest()
+    public void checkBracketsTestTrue()
     {
         boolean actual = App.checkBrackets("as(h)ghj(jhj)");
-        assertTrue(actual);
+        assertTrue("The brackets wher opened and closed correctly but the mistake waas:", actual);
        
     }
     @Test
-    public void checkBracketsTest1()
+    public void checkBracketsTestTrue1()
     {
         boolean actual =  App.checkBrackets("(ghgh(hjhj(jhhj)))");
-        assertTrue(actual);       
+        assertTrue("The brackets wher opened and closed correctly but the mistake waas:", actual);       
     }
     @Test
-    public void checkBracketsTest2()
+    public void checkBracketsTestFalse()
     {
         boolean actual = App.checkBrackets(")df(df");
-        assertFalse(actual);
+        assertFalse("Was initially opened after it closed but was considered right:", actual);
     }
     @Test
     public void checkBracketsTest3()
     {
         boolean actual = App.checkBrackets("df)df");
-        assertFalse(actual);
+        assertFalse("Alone closed the bracket but it was considered right:", actual);
     }
     @Test
     public void checkBracketsTest4()
     {
         boolean actual = App.checkBrackets(")dfdf");
-        assertFalse(actual);
+        assertFalse("Alone closed the bracket but it was considered right:", actual);
     }
     @Test
     public void checkBracketsTest5()
     {
         boolean actual = App.checkBrackets("dfdf)(");
-        assertFalse(actual);          
+        assertFalse("Was initially opened after it closed but was considered right:", actual);          
     }
 
     //Test for resultReceipt method------------------------------------
 
-    /*@Test
+   @Test
     public void resultReceiptTest1() throws Exception {
-        int result = App.resultReceipt("5+2");
-        assertThat(result, is(7));
+        assertEquals("The addition operation was not performed correctly:", 7, App.result("5+2"));
+    }
+    @Test
+    public void resultReceiptTest2() throws Exception {
+        assertEquals("The subtraction operation was not performed correctly:", 3, App.result("5-2"));
     }
 
     @Test
     public void resultReceiptTest2() throws Exception {
-        int result = App.resultReceipt("5-2");
-        assertThat(result, is(3));
-    }
-
-    @Test
-    public void resultReceiptTest2() throws Exception {
-        int result = App.resultReceipt("5*2");
-        assertThat(result, is(10));
+        assertEquals("The multiplication  operation was not performed correctly:", 10, App.result("5*2"));
     }
 
     @Test
     public void resultReceiptTest3() throws Exception {
-        int result = App.resultReceipt("6/2");
-        assertThat(result, is(3));
+        assertEquals("The separation operation was not performed correctly:", 3, App.result("6/2"));
     }
 
     @Test
     public void resultReceiptTest4() throws Exception {
-        int result = App.resultReceipt("5+2*2");
-        assertThat(result, is(9));
+        assertEquals("Arithmetic operations are not performed correctly:", 9, App.result("5+2*2"));
     }
 
     @Test
     public void resultReceiptTest5() throws Exception {
-        int result = App.resultReceipt("5+2/2-3");
-        assertThat(result, is(3));
-    }*/
+        assertEquals("Arithmetic operations are not performed correctly:", 3, App.result("5+2/2-3"));
+    }
 
     //Test for result method----------------------------------------------
 
     @Test  
     public void resultTest1() {    
-        assertEquals(35, App.result("17+6*(2+1)"));  
+        assertEquals("The final result of the expression is incorrectly calculated:", 35, App.result("17+6*(2+1)"));  
     } 
 
     @Test  
     public void resultTest2() {    
-        assertEquals(29, App.result("17+(6-2)*(2+1)"));  
+        assertEquals("The final result of the expression is incorrectly calculated:", 29, App.result("17+(6-2)*(2+1)"));  
     } 
 
     @Test  
     public void resultTest3() {    
-        assertEquals(20, App.result("17+(6+3)/(2+1)"));  
+        assertEquals("The final result of the expression is incorrectly calculated:", 20, App.result("17+(6+3)/(2+1)"));  
     } 
 
    /* @Test  
@@ -109,16 +102,16 @@ public class AppTest
     
     @Test  
     public void resultTest5() {    
-        assertEquals(0, App.result("0/5"));  
+        assertEquals("The final result of the expression is incorrectly calculated:", 0, App.result("0/5"));  
     } 
 
     @Test  
     public void resultTest6() {    
-        assertEquals(10, App.result("10"));  
+        assertEquals("Works wrong when getting a number:", 10, App.result("10"));  
     } 
 
     @Test  
     public void resultTest7() {    
-        assertEquals(0, App.result(""));  
+        assertEquals("Working wrong when getting a blank line:", 0, App.result(""));  
     } 
 }
