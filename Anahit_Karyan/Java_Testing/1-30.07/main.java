@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.*; 
 
 class Main{
-	public static boolean checkBraces(String string) {
+	public static boolean checkBrackets(String string) {
 	    int count = 0;
 	    char stack[];
 	    char[] str = string.toCharArray();
@@ -20,75 +20,69 @@ class Main{
 	    return count == 0;   
     }
 
-
-
-
-
-
-
-
-
-
-
     public static int resultReceipt(String equation) { 
 
-	    Stack<Character> operationStack = new Stack<Character>();
-	    Queue<Character> numbersQ = new LinkedList<>();
-	    Stack<Character> stackOutput = new Stack<Character>();
+	    Stack<String> operationStack = new Stack<String>();
+	    Queue<String> numbersQ = new LinkedList<>();
+	    Stack<String> stackOutput = new Stack<String>();
 	    
 	    char[] prioritet = {'+', '-', '*', '/'};   
-	    //գործողությունները լցնենք stac֊ի մեջ, իսկ թվերը Q-ի
-
+	
 	    for(int i = 0; i < equation.length(); ++i) { 
-	        if(equation.charAt(i) == (int) equation.charAt(i)){  
+	        if(Character.isDigit(equation.charAt(i))){   
 	            int number = Character.getNumericValue(equation.charAt(i));
-	            while(equation.charAt(i + 1) == (int)equation.charAt(i + 1)){ 
+
+	            while(i + 1 != equation.length() && Character.isDigit(equation.charAt(i + 1))){ 
 	                number = number * 10 + Character.getNumericValue(equation.charAt(i + 1));
-	            }   
-	        numbersQ.add((char)number); 
+	            	i++;
+	            }
+	        	numbersQ.add(Integer.toString(number)); 
 	        } else {
 	            if(operationStack.isEmpty()) {
-	                operationStack.push(equation.charAt(i));
+	                operationStack.push(String.valueOf(equation.charAt(i))); 
 	            } else {
-	                char lastOperation = operationStack.pop();             
+	                String lastOperation = operationStack.pop();        
 	                if(new String(prioritet).indexOf(equation.charAt(i)) >= new String(prioritet).indexOf(lastOperation)) {
-	                    operationStack.push(lastOperation);
-	                    operationStack.push(equation.charAt(i));
+	                    operationStack.push(lastOperation); 
+	                    operationStack.push(String.valueOf(equation.charAt(i)));
 	                } else {
+
 	                    while(new String(prioritet).indexOf(equation.charAt(i)) < new String(prioritet).indexOf(lastOperation)) {
 	                        numbersQ.add(lastOperation);
-	                        lastOperation = operationStack.pop();                      
+	                        lastOperation = operationStack.pop();                       
 	                    }
 	                    operationStack.push(lastOperation);
-	                    operationStack.push(equation.charAt(i)); 
+	                    operationStack.push(String.valueOf(equation.charAt(i))); 
 	                }   
 	            }
 	        }
 	    }
-	    //stac֊ի պարունակությունը ավելացնենք Q-ի մեջ
+	   
 	    while(!operationStack.isEmpty()) {
-	        numbersQ.add(operationStack.pop());        
+	        numbersQ.add(operationStack.pop());         
 	    }      
-	    //Q-ից հերթով հանում ենք նայում եթե թիվա գցում նոր stac֊ի mեջ,եթե գործողությունա էդ stec֊ի վերջին 2 թվերը հանում ենք իրանց վրա կիրառում էդ գործողութունը
+
 	    while(!numbersQ.isEmpty()){
-	        Character lastNumberQ = numbersQ.peek();
-	        if(lastNumberQ == (int) lastNumberQ) { 
+	        String lastNumberQ = numbersQ.poll(); 
+	        if(lastNumberQ.matches("-?\\d+(\\.\\d+)?")){ 
 	            stackOutput.push(lastNumberQ); 
 	        } else {
-	            int num2 = Character.getNumericValue(stackOutput.pop()); 
-	            int num1 = Character.getNumericValue(stackOutput.pop()); 
-	            int result;
+	            int num2 = Integer.parseInt(stackOutput.pop()); 
+	            int num1 = Integer.parseInt(stackOutput.pop()); 
+	            int result = 0;
+
 	            switch(lastNumberQ) {
-	                case '+':
+	            	 
+	                case "+":
 	                    result = num1 + num2;
 	                    break;
-	                case '-':
+	                case "-":
 	                    result = num1 - num2;
 	                    break;
-	                case '*':
+	                case "*":
 	                    result = num1 * num2;
 	                    break;
-	                case '/':
+	                case "/":
 	                    if(num2 == 0) { 
 	                       System.out.println("Ariphmetic exception: divide in null");
 	                        return 0;
@@ -99,19 +93,18 @@ class Main{
 	                default:
 	                    break;
 	            } 
-	            stackOutput.push((char)result); 
+
+	            stackOutput.push(Integer.toString(result)); 
 	        }
 	    }
-	    return Character.getNumericValue(stackOutput.pop());
+	    return Integer.parseInt(stackOutput.pop());
 	}
 
-	
-	//փակագծի մեջի գրածը փոխումա տեղը դնում հաշված արժեքը
 	public static int result(String str) {
 	    int resultFinished;
-	    int index1;
-	    //քանի դոռ կա փակագիծ գտնւմ ենք ամենավերջի փակվողը,իրա բացվողը ու իրա պարունակության համար արժեք հաշվող ֆունկցիան կանչում վերադարցրածը դնում իրա տեղը
-	    while(str.indexOf(')') != -1) {
+	    int index1 = 0;
+	 
+	    while(str.indexOf(')') != -1) { 
 	        int index2 = str.indexOf(')');
 	        for(int i = index2; i > 0; --i) {
 	                if(str.charAt(i) == '(') {
@@ -122,45 +115,33 @@ class Main{
 	        String bracketsContent = str.substring(index1 + 1, index2); 
 	        String content = "(";
 	        content = content + bracketsContent +')';
-	        str = str.replaceAll(content, String.valueOf(resultReceipt(bracketsContent)));      
+	        str = str.replace(content, String.valueOf(resultReceipt(bracketsContent)));      
 	    }
 	    resultFinished = resultReceipt(str);
 	    return resultFinished;
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 	public static void main(String[] args) throws Exception {
  
         FileReader fr = new FileReader("file.txt");
         Scanner scan = new Scanner(fr);
  		String str = "" ;
- 		String str1 ="sdsd(ffgfh(ghgh(ff)jhhj)";
-        
+ 		int result;
+     
         while (scan.hasNextLine()) {
             str += scan.nextLine();
         }
+
         fr.close();
         System.out.println(str);
-        System.out.println(checkBraces(str1));
+        if(checkBrackets(str)) {
+        	result = result(str);
+        } else {
+        	System.out.println("Brackets is not valid");
+        }
 
-
-        resultReceipt(str);
-         result(str);
-
+        result = result(str);
+        System.out.println(result);
+	
 	}
 }
