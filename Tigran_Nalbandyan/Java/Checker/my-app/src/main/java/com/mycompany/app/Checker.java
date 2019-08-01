@@ -7,7 +7,7 @@ public class Checker {
     public static void main(String[] args) throws IOException {
         System.out.println("line");
 
-        run("/home/student/Desktop/my-app/file.txt");
+        run("src/resources/file.txt");
     }
 
     public static void run(String path) throws IOException {

@@ -59,7 +59,7 @@ public class AppTest
 
     @Test
     public void shouldReadAndWrite() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+        final String path = "src/resources/file.txt";
         final String input = "2 + 6 - 3";
         final String expected = input + " = 5.0";
 
@@ -71,8 +71,8 @@ public class AppTest
     }
 
     @Test
-    public void add() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkAdd() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "1 + 5";
         final String expected = input + " = 6.0";
 
@@ -84,8 +84,8 @@ public class AppTest
     }
 
     @Test
-    public void scope() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkScope() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "2 + 5 - 4 )";
         final String expected = input + " = error";
 
@@ -97,8 +97,8 @@ public class AppTest
     }
 
     @Test
-    public void multioperator() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkMultioperator() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "1 + + + 3";
         final String expected = input + " = error";
 
@@ -110,8 +110,8 @@ public class AppTest
     }
 
     @Test
-    public void scope2() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkScope2() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "( 23 – 2 / 3";
         final String expected = input + " = error";
 
@@ -123,8 +123,8 @@ public class AppTest
     }
 
     @Test
-    public void divideByZero() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkDivideByZero() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "( 2 + 2 ) / 0";
         final String expected = input + " = Infinity";
 
@@ -136,8 +136,8 @@ public class AppTest
     }
 
     @Test
-    public void hard() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkHard() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "62 + 2.5 / 27.5 * ( 2 + 0.2 )";
         final String expected = input + " = 62.2";
 
@@ -149,8 +149,8 @@ public class AppTest
     }
 
     @Test
-    public void minus() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkMinus() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "( -2 * 2 ) * -4 / 1";
         final String expected = input + " = 16.0";
 
@@ -158,12 +158,12 @@ public class AppTest
         Checker.run(path);
         final String actual = readFile(path);
 
-        assertEquals("Minus\n", expected, actual);
+        assertEquals("Minus", expected, actual);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void aziz() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkAziz() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "Barev aziz :D";
         final String expected = input + " = error";
 
@@ -172,8 +172,8 @@ public class AppTest
     }
 
     @Test
-    public void undefined() throws IOException {
-        final String path = "/home/student/Desktop/my-app/file.txt";
+    public void checkUndefined() throws IOException {
+        final String path = "src/resources/file.txt";
         final String input = "2 * x + 3";
         final String expected = input + " = error";
 
@@ -181,6 +181,41 @@ public class AppTest
         Checker.run(path);
         final String actual = readFile(path);
 
-        assertEquals("Undefined\n", expected, actual);
+        assertEquals("Undefined", expected, actual);
+    }
+
+    @Test
+    public void checkExpression() throws IOException {
+        final String path = "src/resources/file.txt";
+        final String input = "23 - 2 + -16 / 2 = 13.0";
+        final String expected = input + " true";
+
+        writeFile(path, input);
+        Checker.run(path);
+        final String actual = readFile(path);
+
+        assertEquals("Expression", expected, actual);
+    }
+
+    @Test
+    public void checkHardExpression() throws IOException {
+        final String path = "src/resources/file.txt";
+        final String input = "( 152 - 233 ) * 24666 - 2 / ( 122 / -122 ) + 1 = -1997943.0";
+        final String expected = input + " true";
+
+        writeFile(path, input);
+        Checker.run(path);
+        final String actual = readFile(path);
+
+        assertEquals("Hard expression", expected, actual);
+    }
+
+    @Test(expected = FileNotFoundException.class)
+    public void checkInvalidFilePath() throws IOException {
+        final String path = "src/resources/notExistingFile.txt";
+        final String input = "1 + 1";
+        final String expected = input + " = 2.0";
+
+        readFile(path);
     }
 }
