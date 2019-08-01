@@ -128,8 +128,7 @@ public class AppTest
                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                        writer.write(tmp[0] + " = " + tmp[1] + " //true");
                        writer.close();
-                       assertEquals(numberAsStringLeft, numberAsStringRight);
-                       //assertEquals(resultLeft, resultRight);
+                       assertEquals("checkValidExeption test function valid", numberAsStringLeft, numberAsStringRight);
                    } catch (IOException e) {
                        e.printStackTrace();
                    }
@@ -149,7 +148,7 @@ public class AppTest
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                 writer.write(tmp[0] + " = " + result);
                 writer.close();
-                assertEquals("checkMainWithCorrectFile test function failed", "11.0", numberAsString);
+                assertEquals("checkValidExeption test function valid", "11.0", numberAsString);
             }
             br.close();
         } finally {
@@ -220,12 +219,5 @@ public class AppTest
         assertTrue( true );
     }
 
-
-//    @Test
-//    public void checkAddition()
-//    {
-//        Calculator calculator = new Calculator();
-//        assertEquals(12.0, calculator.doTheShuntingYard("5 +*  6"), 0.0);
-//    }
 }
 
