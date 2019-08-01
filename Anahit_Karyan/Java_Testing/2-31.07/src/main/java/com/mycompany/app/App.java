@@ -128,10 +128,10 @@ public class App {
 
 	public static void main(String[] args) throws Exception {
  
-        /*FileReader fr = new FileReader("file.txt");
+        FileReader fr = new FileReader("/home/student/Desktop/2-31.07/src/main/java/com/mycompany/app/file.txt");
         Scanner scan = new Scanner(fr);
  		String str = "" ;
- 	
+		int result = 0;
         while (scan.hasNextLine()) {
             str += scan.nextLine();
         }
@@ -139,13 +139,18 @@ public class App {
         fr.close();
         System.out.println(str);
         if(checkBrackets(str)) {
-        	result = result(str);
+			result = result(str);
+			
+
+			String strResult = str + " = " + result;
+			BufferedWriter writer = new BufferedWriter(new FileWriter("/home/student/Desktop/2-31.07/src/main/java/com/mycompany/app/file.txt"));
+			writer.write(strResult);
+			writer.close();
+			
+			System.out.println(strResult);
         } else {
-        	System.out.println("Brackets is not valid");
-        }*/
-        String str1 = "17+6*(2+1)";
-        int result = result(str1);
-        System.out.println(result);
+			System.out.println("Brackets is not valid");
+        }
 	
 	}
 }
