@@ -174,7 +174,7 @@ public class AppTest
         assertEquals("Negative numbers", expected, actual);
     }
 
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void checkAziz() throws IOException {
         // Dummy input with write: should throw ArrayIndexOutOfBoundsException
 
