@@ -27,7 +27,7 @@ public class AppTest
         assertNotEquals("shouldAnswerNotCorrect test function failed",0.0, calculator.doTheShuntingYard("5 + 2 * 4/2") );
     }
 
-    // input of function is empty and execpted exeption is IllegalArgumentException
+    // input of function is empty and expected exception is IllegalArgumentException with message Empty expression or null
     @Test
     public void emptyExpression() {
         exception.expect(IllegalArgumentException.class);
@@ -36,7 +36,7 @@ public class AppTest
         calculator.doTheShuntingYard("");
     }
 
-    // input of function is empty string and execpted exeption is IllegalArgumentException
+    // input expression has dividing by 0 and expected exception is ArithmeticException  with message Division by 0
     @Test
     public void throwsArithmeticExeption() {
         exception.expect(ArithmeticException.class);
@@ -44,7 +44,7 @@ public class AppTest
         Calculator calculator = new Calculator();
         calculator.doTheShuntingYard("((5 + 2) * 2)/0");
     }
-
+    // input expression has latin character and expected exception is IllegalArgumentException  with message Invalid Expression:a+7
     @Test
     public void throwsIllegalArgumentExeption() {
         exception.expect(IllegalArgumentException.class);
@@ -53,6 +53,8 @@ public class AppTest
         calculator.doTheShuntingYard("a+7");
 
     }
+
+    // input expression has ^ operator and expected exception is IllegalArgumentException  with message Invalid Expression:5^7
     @Test
     public void invalidOperator() {
         exception.expect(IllegalArgumentException.class);
@@ -61,6 +63,8 @@ public class AppTest
         calculator.doTheShuntingYard("5^7");
 
     }
+
+    // main function read file from path  and invoke function doTheShuntingYard with expression in file as an argument and expected result is correct
     @Test
     public void checkMainWithCorrectFile() throws IOException {
         System.out.println("main");
@@ -77,6 +81,9 @@ public class AppTest
         }
         assertEquals( "checkMainWithCorrectFile test function failed",12.0, result );
     }
+
+    // main function read file from path  and invoke function doTheShuntingYard with expression in file as an argument but expression has latin character
+    // and exception is IllegalArgumentException
     @Test
     public void checkMainWithInvalidFile() throws IOException {
         exception.expect(IllegalArgumentException.class);
@@ -92,7 +99,7 @@ public class AppTest
             writer.write(tmp[0] + '=' + result);
         }
     }
-
+    // main function try to read from file from empty path and and exception is FileNotFoundException with message No such file or directory
     @Test
     public void checkMainWithoutFilePath() throws IOException {
         exception.expect(FileNotFoundException.class);

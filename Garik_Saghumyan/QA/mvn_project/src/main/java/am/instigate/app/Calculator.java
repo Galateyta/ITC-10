@@ -20,12 +20,19 @@ public class Calculator {
         operators.put("/", 1);
         operators.put("*", 1);
     }
-
+    /**
+     * Performs the Shunting Yard algorithm
+     * @param expression the mathematical expression
+     * @return the result, if found
+     * @throws IllegalArgumentException invalid expression exception
+     * @throws NumberFormatException error while parsing a number, probably due to an invalid expression
+     * @throws ArithmeticException division by 0
+     */
     public double doTheShuntingYard(String expression)throws IllegalArgumentException, NumberFormatException, ArithmeticException{
+
         if(expression == null || expression.trim().length() == 0){
             throw new IllegalArgumentException("Empty expression or null");
         }
-
         expression = expression.replaceAll("\\s+","");
 
         expression = expression.replace("(-", "(0-");
@@ -55,6 +62,7 @@ public class Calculator {
 
         for(String token : tokens){
             if(operators.containsKey(token)){
+
                 while(!stack.empty() &&
                         operators.containsKey(stack.peek()) &&
                         operators.get(token) <= operators.get(stack.peek())){
@@ -86,7 +94,7 @@ public class Calculator {
         while(!stack.empty()){
             output.add(stack.pop());
         }
-
+        System.out.println(expression);
         Stack<Double> doubles = new Stack<>();
         for(String token : output){
             if(!operators.containsKey(token) && token.matches("([0-9]*[.])?[0-9]+")){
