@@ -31,7 +31,7 @@ public class AppTest
     public void checkAdditionMultiplay()
     {
       Calculator calculator = new Calculator();
-      assertEquals(30, calculator.doTheShuntingYard(" 5 +* 6 "), 0.0);
+      assertEquals("check result after validate on checkAdditionMultiplay function",30, calculator.doTheShuntingYard(" 5 +* 6 "), 0.0);
     }
 
     //check validation + hes been ignored,
@@ -39,7 +39,7 @@ public class AppTest
     public void checkAdditionDiv()
     {
         Calculator calculator = new Calculator();
-        assertEquals(7, calculator.doTheShuntingYard(" 42 +/ 6 "), 0.0);
+        assertEquals("check result after validate on checkAdditionDiv function", 7, calculator.doTheShuntingYard(" 42 +/ 6 "), 0.0);
     }
 
     //check validation * hes been ignored,
@@ -47,7 +47,7 @@ public class AppTest
     public void checkAdditionAdd()
     {
         Calculator calculator = new Calculator();
-        assertEquals(11, calculator.doTheShuntingYard(" 5 *+ 6 "), 0.0);
+        assertEquals("check result after validate on checkAdditionSub function", 11, calculator.doTheShuntingYard(" 5 *+ 6 "), 0.0);
     }
 
     //check validation + hes been ignored,
@@ -55,7 +55,7 @@ public class AppTest
     public void checkAdditionSub()
     {
         Calculator calculator = new Calculator();
-        assertEquals(19, calculator.doTheShuntingYard(" 25 +- 6 "), 0.0);
+        assertEquals("check result after validate on checkAdditionSub function", 19, calculator.doTheShuntingYard(" 25 +- 6 "), 0.0);
     }
 
     //check result of  adding
@@ -63,7 +63,7 @@ public class AppTest
     public void checkResultAdd()
     {
         Calculator calculator = new Calculator();
-        assertEquals(30, calculator.doTheShuntingYard(" 24 + 6 "), 0.0);
+        assertEquals("check result of adding function test", 30, calculator.doTheShuntingYard(" 24 + 6 "), 0.0);
     }
 
     //check result of  subtraction
@@ -71,7 +71,7 @@ public class AppTest
     public void checkResultSub()
     {
         Calculator calculator = new Calculator();
-        assertEquals(18, calculator.doTheShuntingYard(" 24 - 6 "), 0.0);
+        assertEquals("check result of subtraction function test",18, calculator.doTheShuntingYard(" 24 - 6 "), 0.0);
     }
 
     //check result of  multiply
@@ -79,7 +79,7 @@ public class AppTest
     public void checkResultMul()
     {
         Calculator calculator = new Calculator();
-        assertEquals(30, calculator.doTheShuntingYard(" 5 * 6 "), 0.0);
+        assertEquals("check result of multiply function test",30, calculator.doTheShuntingYard(" 5 * 6 "), 0.0);
     }
 
     //check result of  division
@@ -87,7 +87,7 @@ public class AppTest
     public void checkResultDiv()
     {
         Calculator calculator = new Calculator();
-        assertEquals(4, calculator.doTheShuntingYard(" 24 / 6 "), 0.0);
+        assertEquals("check result of division function test",4, calculator.doTheShuntingYard(" 24 / 6 "), 0.0);
     }
 
     //open file read on file , close file
@@ -99,7 +99,7 @@ public class AppTest
             String curline = br.readLine();
             System.out.println(curline);
             br.close();
-            assertEquals("5 + 60", curline);
+            assertEquals("readFile function test","5 + 60", curline);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -128,7 +128,8 @@ public class AppTest
                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
                        writer.write(tmp[0] + " = " + tmp[1] + " //true");
                        writer.close();
-                       assertEquals("checkValidExeption test function valid", numberAsStringLeft, numberAsStringRight);
+                       assertEquals("checkValidExeption test function valid",numberAsStringLeft, numberAsStringRight);
+                       //assertEquals(resultLeft, resultRight);
                    } catch (IOException e) {
                        e.printStackTrace();
                    }
@@ -167,7 +168,7 @@ public class AppTest
         String curline = br.readLine();
         System.out.println(curline);
         br.close();
-        assertEquals("new text", curline );
+        assertEquals("writeFile function test","new text", curline );
     }
 
 
@@ -210,7 +211,6 @@ public class AppTest
         exception.expectMessage("Division by 0");
         Calculator calculator = new Calculator();
         calculator.doTheShuntingYard("((7 + 9) / 2)/0");
-
     }
 
     @Test
@@ -219,5 +219,7 @@ public class AppTest
         assertTrue( true );
     }
 
+
 }
+
 
