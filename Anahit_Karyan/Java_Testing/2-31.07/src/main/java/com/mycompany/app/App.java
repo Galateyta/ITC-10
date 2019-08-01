@@ -4,6 +4,11 @@ import java.io.*;
 import java.util.*; 
 
 public class App {
+
+	/* This function as an argument gets the string and 
+	checks if the brackets are correct and if true returns true,
+	if false  returns false*/
+
 	public static boolean checkBrackets(String string) {
 	    int count = 0;
 	    char stack[];
@@ -21,6 +26,10 @@ public class App {
 	    }
 	    return count == 0;   
     }
+
+    /* This function as an argument gets the string that represwnts a 
+    mathematical expression and calculates ints value in an shunting-yard
+    algorithm and returns it as int*/
 
     public static int resultReceipt(String equation) { 
 
@@ -102,6 +111,12 @@ public class App {
 	    return Integer.parseInt(stackOutput.pop());
 	}
 
+	/*This function as an argument gets the string that represwnts a 
+    mathematical expression and  replace the expressions between the
+    brackets with the resultReceipt function  with their corresponding 
+    value and then calculate the value of the general expression with the
+     resultReceipt function and returns it as int*/
+
 	public static int result(String str) {
 	    int resultFinished;
 	    int index1 = 0;
@@ -126,27 +141,30 @@ public class App {
 	    return resultFinished;
 	}
 
+	/*This function reads the mathematical expression from a file as a string ,
+	checks the brackets accuracy with the checkBrackets function and 
+	calculates yhe value with the result function ,then writes the calculated value to the file*/
+
 	public static void main(String[] args) throws Exception {
  
-        FileReader fr = new FileReader("/home/student/Desktop/2-31.07/src/main/java/com/mycompany/app/file.txt");
+        FileReader fr = new FileReader("src/resources/file.txt");
         Scanner scan = new Scanner(fr);
  		String str = "" ;
 		int result = 0;
+
         while (scan.hasNextLine()) {
             str += scan.nextLine();
         }
 
         fr.close();
         System.out.println(str);
+        
         if(checkBrackets(str)) {
 			result = result(str);
-			
-
 			String strResult = str + " = " + result;
-			BufferedWriter writer = new BufferedWriter(new FileWriter("/home/student/Desktop/2-31.07/src/main/java/com/mycompany/app/file.txt"));
+			BufferedWriter writer = new BufferedWriter(new FileWriter("src/resources/file.txt"));
 			writer.write(strResult);
 			writer.close();
-			
 			System.out.println(strResult);
         } else {
 			System.out.println("Brackets is not valid");
