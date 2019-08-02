@@ -1,7 +1,6 @@
 package com.mycompany.app;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -9,32 +8,41 @@ import java.io.*;
 
 public class AppTest 
 {
-    public String readFile(String path) throws IOException {
+    public String readFile(String path) {
         // Read file function to read files from tests
         File file = new File(path);
 
-        FileReader fr = new FileReader(file);
-        BufferedReader br = new BufferedReader(fr);
+        try {
+            FileReader fr = new FileReader(file);
+            BufferedReader br = new BufferedReader(fr);
 
-        String line = br.readLine();
+            String line = br.readLine();
 
-        br.close();
-        fr.close();
-        return line;
+            br.close();
+            fr.close();
+            return line;
+        } catch (IOException e) {
+            return "File read error";
+        }
     }
 
-    public void writeFile(String path, String line) throws IOException {
+    public int writeFile(String path, String line) {
         // Write file function to write files from tests
-
         File file = new File(path);
 
-        FileWriter fw = new FileWriter(file);
-        BufferedWriter bw = new BufferedWriter(fw);
+        try {
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
 
-        bw.write(line);
+            bw.write(line);
 
-        bw.close();
-        fw.close();
+            bw.close();
+            fw.close();
+
+            return 0;
+        } catch (IOException e) {
+            return 1;
+        }
     }
 
     @Test
@@ -51,11 +59,11 @@ public class AppTest
 
         FullCalculator calc = new FullCalculator();
 
-        assertEquals("error","error", calc.start("1 + 5 + (") );
+        assertEquals("Scope exception","error", calc.start("1 + 5 + (") );
     }
 
     @Test
-    public void shouldReadAndWrite() throws IOException {
+    public void shouldReadAndWrite() {
         // Write and read : test writes an expression and reads the answer that must be right
 
         final String path = "src/resources/file.txt";
@@ -70,7 +78,7 @@ public class AppTest
     }
 
     @Test
-    public void checkAdd() throws IOException {
+    public void checkAdd() {
         // Simple expression with read and write: should write to the file the right answer
 
         final String path = "src/resources/file.txt";
@@ -85,7 +93,7 @@ public class AppTest
     }
 
     @Test
-    public void checkUnopenedScope() throws IOException {
+    public void checkUnopenedScope() {
         // Unopened scope with read and write: should write to the file error
 
         final String path = "src/resources/file.txt";
@@ -100,7 +108,7 @@ public class AppTest
     }
 
     @Test
-    public void checkMultioperator() throws IOException {
+    public void checkMultioperator() {
         // Operators without numbers with read and write: should write to the file error
 
         final String path = "src/resources/file.txt";
@@ -115,7 +123,7 @@ public class AppTest
     }
 
     @Test
-    public void checkUnclosedScope() throws IOException {
+    public void checkUnclosedScope() {
         // Unclosed scope with read and write: should write to the file error
 
         final String path = "src/resources/file.txt";
@@ -130,7 +138,7 @@ public class AppTest
     }
 
     @Test
-    public void checkDivideByZero() throws IOException {
+    public void checkDivideByZero() {
         // Divide by zero with read and write: should write to the file Infinity
 
         final String path = "src/resources/file.txt";
@@ -145,7 +153,7 @@ public class AppTest
     }
 
     @Test
-    public void checkHardExpressionReadWrite() throws IOException {
+    public void checkHardExpressionReadWrite() {
         // Hard expression with read and write: should write to the file the right answer
 
         final String path = "src/resources/file.txt";
@@ -160,7 +168,7 @@ public class AppTest
     }
 
     @Test
-    public void checkNegative() throws IOException {
+    public void checkNegative() {
         // Negative numbers with read and write: should write to the file the right answer
 
         final String path = "src/resources/file.txt";
@@ -175,7 +183,7 @@ public class AppTest
     }
 
     @Test(expected = IndexOutOfBoundsException.class)
-    public void checkAziz() throws IOException {
+    public void checkAziz() {
         // Dummy input with write: should throw ArrayIndexOutOfBoundsException
 
         final String path = "src/resources/file.txt";
@@ -186,7 +194,7 @@ public class AppTest
     }
 
     @Test
-    public void checkUndefined() throws IOException {
+    public void checkUndefined() {
         // Undefined x with read and write: should write to the file error
 
         final String path = "src/resources/file.txt";
@@ -201,7 +209,7 @@ public class AppTest
     }
 
     @Test
-    public void checkExpression() throws IOException {
+    public void checkExpression() {
         // Expression with read and write: should write to the file true
 
         final String path = "src/resources/file.txt";
@@ -216,7 +224,7 @@ public class AppTest
     }
 
     @Test
-    public void checkHardExpression() throws IOException {
+    public void checkHardExpression() {
         // Hard expression with answer with read and write: should write to the file true
 
         final String path = "src/resources/file.txt";
@@ -230,12 +238,13 @@ public class AppTest
         assertEquals("Hard expression", expected, actual);
     }
 
-    @Test(expected = FileNotFoundException.class)
-    public void checkInvalidFilePath() throws IOException {
+    @Test
+    public void checkInvalidFilePath() {
         // Invalid file path with read: should throw FileNotFoundException
 
         final String path = "src/resources/notExistingFile.txt";
 
-        readFile(path);
+        final String result = readFile(path);
+        assertEquals("File Not Found Exception", "File read error", result);
     }
 }

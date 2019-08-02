@@ -13,37 +13,40 @@ public class FullCalculator {
     }
 
     private void processOperator(Token t) {
-        Token A = null, B = null;
+        Token firstOperand = null;
+        Token secondOperand = null;
         if (valueStack.isEmpty()) {
             System.out.println("Expression error.");
             error = true;
             return;
-        } else {
-            B = valueStack.top();
-            valueStack.pop();
         }
+        secondOperand = valueStack.top();
+        valueStack.pop();
+
         if (valueStack.isEmpty()) {
             System.out.println("Expression error.");
             error = true;
             return;
-        } else {
-            A = valueStack.top();
-            valueStack.pop();
         }
-        Token R = t.operate(A.getValue(), B.getValue());
-        valueStack.push(R);
+        firstOperand = valueStack.top();
+        valueStack.pop();
+
+        Token result = t.operate(firstOperand.getValue(), secondOperand.getValue());
+        valueStack.push(result);
     }
 
     public String start(String input) {
         // The tokens that make up the input
         String[] parts = input.split(" ");
         Token[] tokens = new Token[parts.length];
-        for (int n = 0; n < parts.length; n++) {
-            tokens[n] = new Token(parts[n]);
+        int n = 0;
+        for (String part : parts) {
+            tokens[n] = new Token(part);
+            n++;
         }
 
         // Main loop - process all input tokens
-        for (int n = 0; n < tokens.length; n++) {
+        for (n = 0; n < tokens.length; n++) {
             Token nextToken = tokens[n];
             if (nextToken.getType() == Token.NUMBER) {
                 valueStack.push(nextToken);
@@ -82,7 +85,7 @@ public class FullCalculator {
             processOperator(toProcess);
         }
         // Print the result if no error has been seen.
-        if (error == false) {
+        if (!error) {
             Token result = valueStack.top();
             valueStack.pop();
             if (!operatorStack.isEmpty() || !valueStack.isEmpty()) {
