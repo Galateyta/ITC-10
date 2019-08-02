@@ -53,11 +53,11 @@ public class AppTest {
     }
 
     //test function is assigned to read the correct and incorrect files
-    @Test(expected = IOException.class)
-        public void fileReaderAndWriterTest() throws IOException {
-            Checker tester = new Checker(); 
-            String input = "src/resources/file.tx";
-            tester.reader(input);
+    @Test
+    public void fileReaderAndWriterTest() throws IOException {
+        Checker tester = new Checker(); 
+        String input = "src/resources/file.tx";
+        assertEquals("return error status code", 1, tester.reader(input));
         }
 
 }

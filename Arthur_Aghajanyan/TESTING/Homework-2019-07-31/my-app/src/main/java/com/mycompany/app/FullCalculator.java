@@ -13,15 +13,16 @@ public class FullCalculator {
     }
 
     private void processOperator(Token t) {
-        Token operandOne = null, operandTwo = null;
+        Token operandOne = null;
+        Token operandTwo = null;
         if (valueStack.isEmpty()) {
             System.out.println("Expression error.");
             error = true;
             return;
-        } else {
-            operandTwo = valueStack.top();
-            valueStack.pop();
-        }
+        } 
+        operandTwo = valueStack.top();
+        valueStack.pop();
+       
         if (valueStack.isEmpty()) {
             System.out.println("Expression error.");
             error = true;
@@ -82,7 +83,7 @@ public class FullCalculator {
             processOperator(toProcess);
         }
         // Print the result if no error has been seen.
-        if (error == false) {
+        if (!error) {
             Token result = valueStack.top();
             valueStack.pop();
             if (!operatorStack.isEmpty() || !valueStack.isEmpty()) {

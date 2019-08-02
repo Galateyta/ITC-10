@@ -4,19 +4,19 @@ import java.io.*;
 import java.util.Arrays;
 
 public class Checker {
-    public static void main(String[] args) throws IOException {
-        String path = "src/resources/file.txt";
+    public static void main(String[] args) {
+        String path = "src/resources/file.txt";      
         reader(path);
-
     }
     // the function is assigned to read the mathematical expression from the file,
     // solve this expression and write the answer in the same file
 
-    public static void reader(String path)throws IOException {
+    public static int reader(String path){
         File file = new File(path);
-        FullCalculator calc = new FullCalculator();
 
-        FileReader fr = new FileReader(file);
+        FullCalculator calc = new FullCalculator();
+        try {
+            FileReader fr = new FileReader(file);
         BufferedReader br = new BufferedReader(fr);
 
         String line = br.readLine();
@@ -50,7 +50,12 @@ public class Checker {
         }
         br.close();
         fr.close();
-    }
+        return 0;
+    } catch (IOException ex) {
+        ex.printStackTrace();
+        return 1;
+        }
+    }    
 
 }
 
