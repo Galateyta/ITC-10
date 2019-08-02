@@ -11,10 +11,14 @@ import java.util.Stack;
 
 public class App {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         String filename = "src/resources/file.txt";
         App calc = new App();
-        calc.readAndWriteInFile(filename);
+       try {
+           calc.readAndWriteInFile(filename);
+       }catch (IOException e){
+           System.out.println("IOException  ");
+       }
 
     }
 

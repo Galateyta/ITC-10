@@ -41,13 +41,7 @@ public class AppTest {
 
     }
 
-    //a test that tests the function of performing mathematical operations
-    @Test
-    public void optionPlusFalse() {
-        App test = new App();
-        assertNotEquals("Operation  is true ", 7.0, test.operation(8, 5, '+'), 0.0);
 
-    }
 
     //a test that tests the function of performing mathematical operations
     @Test
@@ -59,27 +53,13 @@ public class AppTest {
 
     //a test that tests the function of performing mathematical operations
     @Test
-    public void optionMinuFalse() {
-        App test = new App();
-        assertNotEquals("Operation  is true ", 8.0, test.operation(14, 5, '-'), 0.0);
-
-    }
-
-    //a test that tests the function of performing mathematical operations
-    @Test
     public void optionMultiplyTrue() {
         App test = new App();
         assertEquals("Operation  is false ", 20.0, test.operation(4, 5, '*'), 0.0);
 
     }
 
-    //a test that tests the function of performing mathematical operations
-    @Test
-    public void optionMultiplyFalse() {
-        App test = new App();
-        assertNotEquals("Operation  is true ", 9.0, test.operation(14, 5, '*'), 0.0);
 
-    }
 
     //a test that tests the function of performing mathematical operations
     @Test
@@ -89,13 +69,7 @@ public class AppTest {
 
     }
 
-    //a test that tests the function of performing mathematical operations
-    @Test
-    public void optionDivFalse() {
-        App test = new App();
-        assertNotEquals("Operation  is true ", 9.0, test.operation(14, 5, '/'), 0.0);
 
-    }
 
     //a test that checks the priority of the operators
     @Test
@@ -105,13 +79,7 @@ public class AppTest {
 
     }
 
-    //a test that checks the priority of the operators
-    @Test
-    public void priorityPlusFalse() {
-        App test = new App();
-        assertNotEquals("Priority  is true ", 2, test.priority('+'));
 
-    }
 
     //a test that checks the priority of the operators
     @Test
@@ -121,13 +89,6 @@ public class AppTest {
 
     }
 
-    //a test that checks the priority of the operators
-    @Test
-    public void priorityMinusFalse() {
-        App test = new App();
-        assertNotEquals("Priority  is true ", 2, test.priority('-'));
-
-    }
 
     //a test that checks the priority of the operators
     @Test
@@ -137,13 +98,6 @@ public class AppTest {
 
     }
 
-    //a test that checks the priority of the operators
-    @Test
-    public void priorityDivFalse() {
-        App test = new App();
-        assertNotEquals("Priority  is true ", 1, test.priority('/'));
-
-    }
 
     //a test that checks the priority of the operators
     @Test
@@ -153,13 +107,6 @@ public class AppTest {
 
     }
 
-    //a test that checks the priority of the operators
-    @Test
-    public void priorityMultiplyFalse() {
-        App test = new App();
-        assertNotEquals("Priority  is true ", 1, test.priority('*'));
-
-    }
 
     //test that checks the expression calculation function
     @Test
@@ -176,6 +123,7 @@ public class AppTest {
     public void writeInFile() throws IOException {
         App test = new App();
         test.writeInFile("src/resources/file1.txt", "4 + 5");
+        fail("writeInFile fail");
 
     }
 
@@ -185,6 +133,7 @@ public class AppTest {
         App test = new App();
         exeption.expect(IOException.class);
         test.writeInFile("", "4 + 5");
+        fail("writeInFile fail");
 
     }
 
@@ -213,7 +162,7 @@ public class AppTest {
         exeption.expect(IllegalArgumentException.class);
         exeption.expectMessage("In expression the paranthes is not balanced");
         test.readAndWriteInFile("src/resources/file.txt");
-
+        fail("In expression the paranthes is not balanced");
 
     }
 }
