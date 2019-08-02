@@ -180,6 +180,7 @@ public class AppTest
         exception.expectMessage("Empty expression or null");
         Calculator calculator = new Calculator();
         calculator.doTheShuntingYard(" ");
+	      fail("Should have thrown an exception - Empty expression or null");
     }
 
     // input  expression has been invalid expression . then expected illegalArgumentException exception with message Invalid Expression: 88$6
@@ -190,6 +191,7 @@ public class AppTest
         exception.expectMessage("Invalid Expression: 88$6");
         Calculator calculator = new Calculator();
         calculator.doTheShuntingYard("88$6");
+	      fail("Should have thrown an exception - Invalid Expression: 88$6");
     }
 
     // trying open file and read ,but path is  empty , then expected  FileNotFoundException exception with message No such file or directory
@@ -201,6 +203,7 @@ public class AppTest
         File file = new File("~/");
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
         }
+	      fail("Should have thrown an exception - No such file or directory");
     }
 
     // input expression has been dividing by 0 , then expected ArithmeticException exception  with message Division by 0
@@ -211,15 +214,10 @@ public class AppTest
         exception.expectMessage("Division by 0");
         Calculator calculator = new Calculator();
         calculator.doTheShuntingYard("((7 + 9) / 2)/0");
-    }
+	      fail("Should have thrown an exception - Division by 0");
 
-    @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
     }
 
 
 }
-
 
