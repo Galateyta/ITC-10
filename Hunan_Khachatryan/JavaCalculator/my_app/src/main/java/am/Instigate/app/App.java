@@ -8,9 +8,6 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Stack;
 
-/**
- * Hello world!
- */
 
 public class App {
 
@@ -30,6 +27,8 @@ public class App {
                 sb.append(line);
             }
 
+        } catch (IOException exception) {
+            throw exception;
         }
         return sb.toString();
     }
@@ -39,48 +38,56 @@ public class App {
         try (FileWriter fWrite = new FileWriter(filename, true)) {
             fWrite.write(result);
 
+        } catch (IOException exception) {
+            throw exception;
         }
     }
     // A function that performs the main operation
 
-    public void readAndWriteInFile(String filename) throws IOException {
-        String expression = this.readFile(filename);
+    public void readAndWriteInFile(String filename) throws IllegalArgumentException, IOException {
+        try {
+            String expression = this.readFile(filename);
 
-        String[] tmp = expression.split("=");
-        String leftPart = tmp[0];
-        boolean isBalanced = this.areParanthesisBalanced(leftPart);
+            String[] tmp = expression.split("=");
+            String leftPart = tmp[0];
+            boolean isBalanced = this.areParanthesisBalanced(leftPart);
 
-        if (isBalanced) {
-            double leftResult = this.evalExpression(leftPart);
+            if (isBalanced) {
+                double leftResult = this.evalExpression(leftPart);
 
-            if (tmp.length > 1) {
-                if (tmp[1].length() > 1) {
-                    double rigthPart = Double.parseDouble(tmp[1]);
-                    if (rigthPart == leftResult) {
-                        String text = "  true ";
-                        this.writeInFile(filename, text);
+                if (tmp.length > 1) {
+                    if (tmp[1].length() > 1) {
+                        double rigthPart = Double.parseDouble(tmp[1]);
+                        if (rigthPart == leftResult) {
+                            String text = "  true ";
+                            this.writeInFile(filename, text);
+                        } else {
+                            String text = "  false ";
+                            this.writeInFile(filename, text);
+                        }
+
                     } else {
-                        String text = "  false ";
+                        double result = this.evalExpression(leftPart);
+                        String text = " " + Double.toString(result);
                         this.writeInFile(filename, text);
+
                     }
 
                 } else {
                     double result = this.evalExpression(leftPart);
-                    String text = " " + Double.toString(result);
+                    String text = " = " + result;
                     this.writeInFile(filename, text);
 
                 }
 
-            } else {
-                double result = this.evalExpression(leftPart);
-                String text = " = " + result;
-                this.writeInFile(filename, text);
-
+                return;
             }
+        } catch (IOException e) {
+            throw e;
 
-        } else {
-            throw new IOException("In expression the paranthes is not balanced");
         }
+
+        throw new IllegalArgumentException("In expression the paranthes is not balanced");
 
     }
 
@@ -211,5 +218,4 @@ public class App {
 
         return numbers.peek();
     }
-
 }

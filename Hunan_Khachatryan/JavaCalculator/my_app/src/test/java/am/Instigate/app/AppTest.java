@@ -9,13 +9,9 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
-/**
- * Unit test for simple App.
- */
+
 public class AppTest {
-    /**
-     * Rigorous Test :-)
-     */
+
     @Rule
     public ExpectedException exeption = ExpectedException.none();
 
@@ -41,7 +37,7 @@ public class AppTest {
     @Test
     public void optionPlusTrue() {
         App test = new App();
-        assertEquals("Operation  is false ",9.0, test.operation(4, 5, '+'), 0.0);
+        assertEquals("Operation  is false ", 9.0, test.operation(4, 5, '+'), 0.0);
 
     }
 
@@ -49,7 +45,7 @@ public class AppTest {
     @Test
     public void optionPlusFalse() {
         App test = new App();
-        assertNotEquals("Operation  is true ",7.0, test.operation(8, 5, '+'), 0.0);
+        assertNotEquals("Operation  is true ", 7.0, test.operation(8, 5, '+'), 0.0);
 
     }
 
@@ -57,7 +53,7 @@ public class AppTest {
     @Test
     public void optionMinusTrue() {
         App test = new App();
-        assertEquals("Operation  is false ",-1.0, test.operation(4, 5, '-'), 0.0);
+        assertEquals("Operation  is false ", -1.0, test.operation(4, 5, '-'), 0.0);
 
     }
 
@@ -65,7 +61,7 @@ public class AppTest {
     @Test
     public void optionMinuFalse() {
         App test = new App();
-        assertNotEquals("Operation  is true ",8.0, test.operation(14, 5, '-'), 0.0);
+        assertNotEquals("Operation  is true ", 8.0, test.operation(14, 5, '-'), 0.0);
 
     }
 
@@ -73,7 +69,7 @@ public class AppTest {
     @Test
     public void optionMultiplyTrue() {
         App test = new App();
-        assertEquals("Operation  is false ",20.0, test.operation(4, 5, '*'), 0.0);
+        assertEquals("Operation  is false ", 20.0, test.operation(4, 5, '*'), 0.0);
 
     }
 
@@ -81,7 +77,7 @@ public class AppTest {
     @Test
     public void optionMultiplyFalse() {
         App test = new App();
-        assertNotEquals("Operation  is true ",9.0, test.operation(14, 5, '*'), 0.0);
+        assertNotEquals("Operation  is true ", 9.0, test.operation(14, 5, '*'), 0.0);
 
     }
 
@@ -89,7 +85,7 @@ public class AppTest {
     @Test
     public void optionDivTrue() {
         App test = new App();
-        assertEquals("Operation  is false ",8.0, test.operation(40, 5, '/'), 0.0);
+        assertEquals("Operation  is false ", 8.0, test.operation(40, 5, '/'), 0.0);
 
     }
 
@@ -97,7 +93,7 @@ public class AppTest {
     @Test
     public void optionDivFalse() {
         App test = new App();
-        assertNotEquals("Operation  is true ",9.0, test.operation(14, 5, '/'), 0.0);
+        assertNotEquals("Operation  is true ", 9.0, test.operation(14, 5, '/'), 0.0);
 
     }
 
@@ -105,7 +101,7 @@ public class AppTest {
     @Test
     public void priorityPlusTrue() {
         App test = new App();
-        assertEquals("Priority  is false ",1, test.priority('+'));
+        assertEquals("Priority  is false ", 1, test.priority('+'));
 
     }
 
@@ -113,7 +109,7 @@ public class AppTest {
     @Test
     public void priorityPlusFalse() {
         App test = new App();
-        assertNotEquals("Priority  is true ",2, test.priority('+'));
+        assertNotEquals("Priority  is true ", 2, test.priority('+'));
 
     }
 
@@ -121,7 +117,7 @@ public class AppTest {
     @Test
     public void priorityMinusTrue() {
         App test = new App();
-        assertEquals("Priority  is false ",1, test.priority('-'));
+        assertEquals("Priority  is false ", 1, test.priority('-'));
 
     }
 
@@ -129,7 +125,7 @@ public class AppTest {
     @Test
     public void priorityMinusFalse() {
         App test = new App();
-        assertNotEquals("Priority  is true ",2, test.priority('-'));
+        assertNotEquals("Priority  is true ", 2, test.priority('-'));
 
     }
 
@@ -137,7 +133,7 @@ public class AppTest {
     @Test
     public void priorityDivTrue() {
         App test = new App();
-        assertEquals("Priority  is false ",2, test.priority('/'));
+        assertEquals("Priority  is false ", 2, test.priority('/'));
 
     }
 
@@ -145,7 +141,7 @@ public class AppTest {
     @Test
     public void priorityDivFalse() {
         App test = new App();
-        assertNotEquals("Priority  is true ",1, test.priority('/'));
+        assertNotEquals("Priority  is true ", 1, test.priority('/'));
 
     }
 
@@ -153,7 +149,7 @@ public class AppTest {
     @Test
     public void priorityMultiplyTrue() {
         App test = new App();
-        assertEquals("Priority  is false ",2, test.priority('*'));
+        assertEquals("Priority  is false ", 2, test.priority('*'));
 
     }
 
@@ -161,7 +157,7 @@ public class AppTest {
     @Test
     public void priorityMultiplyFalse() {
         App test = new App();
-        assertNotEquals("Priority  is true ",1, test.priority('*'));
+        assertNotEquals("Priority  is true ", 1, test.priority('*'));
 
     }
 
@@ -169,17 +165,11 @@ public class AppTest {
     @Test
     public void evalExpressionTrue() {
         App test = new App();
-        assertEquals("Evaluate expression is false ",60.0, test.evalExpression("( 10 + 5 ) * 4"), 0.0);
+        assertEquals("Evaluate expression is false ", 60.0, test.evalExpression("( 10 + 5 ) * 4"), 0.0);
 
     }
 
-    //test that checks the expression calculation function
-    @Test
-    public void evalExpressionFalse() {
-        App test = new App();
-        assertNotEquals("Evaluate expression is true ",15.0, test.evalExpression("10 + 5 * 4"), 0.0);
 
-    }
 
     //a test that checks the write function of a file
     @Test
@@ -202,8 +192,8 @@ public class AppTest {
     @Test
     public void readFromFile() throws IOException {
         App test = new App();
-        System.out.println("a"+test.readFile("src/resources/file1.txt")+"a");
-        assertEquals("Can not readFromFile  ","4 + 5",test.readFile("src/resources/file1.txt"));
+        System.out.println("a" + test.readFile("src/resources/file1.txt") + "a");
+        assertEquals("Can not readFromFile  ", "4 + 5", test.readFile("src/resources/file1.txt"));
 
     }
 
@@ -212,8 +202,18 @@ public class AppTest {
     public void readFromFileWidthExeption() throws IOException {
         App test = new App();
         exeption.expect(IOException.class);
-        assertEquals("Can readFromFile ","4+5",test.readFile(""));
+        assertEquals("Can readFromFile ", "4+5", test.readFile(""));
 
     }
 
+    @Test
+    public void readAFromFileWidthExeption() throws IllegalArgumentException, IOException {
+        App test = new App();
+
+        exeption.expect(IllegalArgumentException.class);
+        exeption.expectMessage("In expression the paranthes is not balanced");
+        test.readAndWriteInFile("src/resources/file.txt");
+
+
+    }
 }
