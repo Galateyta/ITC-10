@@ -94,7 +94,6 @@ public class Calculator {
         while(!stack.empty()){
             output.add(stack.pop());
         }
-        System.out.println(expression);
         Stack<Double> doubles = new Stack<>();
         for(String token : output){
             if(!operators.containsKey(token) && token.matches("([0-9]*[.])?[0-9]+")){

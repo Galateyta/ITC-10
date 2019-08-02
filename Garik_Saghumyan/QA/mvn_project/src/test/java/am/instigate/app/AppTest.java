@@ -8,7 +8,7 @@ import org.junit.rules.ExpectedException;
 
 import java.io.*;
 
-public class AppTest 
+public class AppTest
 {
     @Rule
     public ExpectedException exception = ExpectedException.none();
