@@ -1,0 +1,16 @@
+
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="TestAll" parallel="tests">
+    <test name="TestChrome">
+        <parameter name="browser" value="chrome" />
+        <classes>
+            <class name="ChromeSeleniumTest" />
+        </classes>
+    </test>
+    <test name="TestFirefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="FirefoxSeleniumTest"/>
+        </classes>
+    </test>
+</suite>
