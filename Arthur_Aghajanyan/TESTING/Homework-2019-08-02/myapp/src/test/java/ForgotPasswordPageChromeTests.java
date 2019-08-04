@@ -1,17 +1,25 @@
 import org.junit.AfterClass;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
+
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class ForgotPasswordPageChromeTests {
+    final String forgotPasswordPageText = "//*[@id=\"root\"]/div/div/div/form/div/div/div[1]/h2";
+    final String forgotPasswordPageResetButton = "//*[@id=\"root\"]/div/div/div/form/div/div/div[3]/button";
+    final String forgotPasswordPageEmailInput = "//*[@id=\"email\"]";
+    final String correctEmailAddres = "arthur.aghajanyan.1994@mail.ru";
+    final String incorrectEmailAddres = "aaaa@mail.ru";
+    final String signInPageText = "//*[@id=\"root\"]/div/div/div/form/div/div[1]/div[1]/h2";
+
     static WebDriver driver = new ChromeDriver();
     DesiredCapabilities desiredCapabilities;
 
@@ -23,64 +31,75 @@ public class ForgotPasswordPageChromeTests {
         }
         return driver;
     }
-
+    public void waitToElement(int second, String element){
+        WebDriverWait wait = new WebDriverWait(driver, second);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(element)));
+    }
     @BeforeMethod
     public void createWebDriver() {
         System.setProperty("webdriver.chrome.driver", "/usr/lib/chromium-browser/chromedriver");
         driver = initWebDriver();
         driver.get("http://localhost:3000/reset");
-        sleepSpecificTime(5);
+        waitToElement(7, forgotPasswordPageText);
     }
 
-    @AfterClass
+    @AfterSuite
     public void quitDriver() {
         driver.quit();
     }
+    @Test
+    public void verifyForgotPasswordPageText(){
+        System.out.println("verifyForgotPasswordPageText");
+        WebElement forgotPasswordText = driver.findElement(By.xpath(forgotPasswordPageText));
+        Assert.assertEquals(forgotPasswordText.getText(), "Forgot password", "Not equals");
+    }
 
     @Test
-    public void verifyForgotPasswordPageStructure() {
-        WebElement forgotPasswordText = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[1]/h2"));
-        WebElement emailField = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        WebElement resetButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[3]/button"));
-        Assert.assertEquals(forgotPasswordText.getText(), "Forgot password", "Not equals");
-        Assert.assertTrue(emailField.isDisplayed(), "Email field does not exists");
+    public void verifyForgotPasswordPageResetButton(){
+        System.out.println("verifyForgotPasswordPageResetButton");
+        WebElement resetButton = driver.findElement(By.xpath(forgotPasswordPageResetButton));
         Assert.assertTrue(resetButton.isDisplayed(), "Reset button does not exists");
     }
 
     @Test
+    public void verifyForgotPasswordPageEmailField(){
+        System.out.println("verifyForgotPasswordPageEmailField");
+        WebElement emailField = driver.findElement(By.xpath(forgotPasswordPageEmailInput));
+        Assert.assertTrue(emailField.isDisplayed(), "Email field does not exists");
+    }
+
+    @Test
     public void verifyInvalidEmailAddressFunctionality() {
-        WebElement forgotPasswordText = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[1]/h2"));
-        WebElement emailField = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        WebElement resetButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[3]/button"));
+        WebElement forgotPasswordText = driver.findElement(By.xpath(forgotPasswordPageText));
+        WebElement emailField = driver.findElement(By.xpath(forgotPasswordPageEmailInput));
+        WebElement resetButton = driver.findElement(By.xpath(forgotPasswordPageResetButton));
 
         emailField.clear();
-        emailField.sendKeys("aaaa@mail.ru");
+        emailField.sendKeys(incorrectEmailAddres);
 
         try {
             resetButton.click();
+            sleepSpecificTime(5);
         } catch (UnhandledAlertException f) {
             try {
                 Alert alert = driver.switchTo().alert();
-                String alertText = alert.getText();
-                System.out.println("Alert data: " + alertText);
                 alert.accept();
             } catch (NoAlertPresentException e) {
                 e.printStackTrace();
             }
         }
-
-        sleepSpecificTime(5);
         Assert.assertTrue(forgotPasswordText.isDisplayed(), "Page change after inputing invalid email address!!!");
     }
 
     @Test
     public void verifyValidEmailAddressFunctionality() {
-        WebElement emailField = driver.findElement(By.xpath("//*[@id=\"email\"]"));
-        WebElement resetButton = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[3]/button"));
+        WebElement emailField = driver.findElement(By.xpath(forgotPasswordPageEmailInput));
+        WebElement resetButton = driver.findElement(By.xpath(forgotPasswordPageResetButton));
         emailField.clear();
-        emailField.sendKeys("arthur.aghajanyan.1994@mail.ru");
+        emailField.sendKeys(correctEmailAddres);
         try {
             resetButton.click();
+            waitToElement(7, signInPageText);
         } catch (UnhandledAlertException f) {
             try {
                 Alert alert = driver.switchTo().alert();
@@ -91,8 +110,7 @@ public class ForgotPasswordPageChromeTests {
                 e.printStackTrace();
             }
         }
-        sleepSpecificTime(5);
-        WebElement signInPageElement = driver.findElement(By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div[1]/div[1]/h2"));
+        WebElement signInPageElement = driver.findElement(By.xpath(signInPageText));
         Assert.assertTrue(signInPageElement.isDisplayed(), "Sign up page does not appeared");
     }
 
