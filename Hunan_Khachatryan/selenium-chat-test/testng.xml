@@ -10,7 +10,7 @@
             </run>
         </groups>
         <classes>
-            <class name="com.instigate.app.AppTest">
+            <class name="com.instigate.app.ChatTest">
             </class>
         </classes>
     </test>
