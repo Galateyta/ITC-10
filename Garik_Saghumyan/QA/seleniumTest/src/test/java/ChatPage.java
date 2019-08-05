@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class ChatPage extends WebDriverSetUp {
+
     By chatClass = By.xpath("/html/body/div");
     By friendsName =  By.xpath("/html/body/div/div/div[1]/div[1]/h3");
     By postsText = By.xpath("/html/body/div/div/div[1]/div[3]/h3");
@@ -13,6 +14,7 @@ public class ChatPage extends WebDriverSetUp {
     By posts = By.id("publicText");
     By sendPost = By.xpath("/html/body/div/div/div[3]/div[3]/div/button");
     By id = By.xpath("//*[@id=\"publicMessages\"]");
+
     public String getClassName(WebDriver driver){
         return driver.findElement(chatClass).getAttribute("class");
     }
@@ -28,9 +30,9 @@ public class ChatPage extends WebDriverSetUp {
         return driver.findElement(name).getText();
     }
 
-    public void writeMessage(WebDriver driver){
+    public void writeMessage(WebDriver driver, String message){
         WebElement text = driver.findElement(textarea);
-        text.sendKeys("Hello");
+        text.sendKeys(message);
     }
     public void sendMessage(WebDriver driver){
         WebElement write = driver.findElement(send);

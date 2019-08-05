@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class FirstPage extends WebDriverSetUp {
+
     By username =  By.id("username");
     By join = By.xpath("/html/body/form/div/input[2]");
 
@@ -19,9 +20,9 @@ public class FirstPage extends WebDriverSetUp {
         WebElement joinbutton = driver.findElement(join);
         joinbutton.click();
     }
-    public void writeName(WebDriver driver){
+    public void writeName(WebDriver driver, String name){
         WebElement input = driver.findElement(username);
-        input.sendKeys("Garik");
+        input.sendKeys(name);
     }
 
 }
