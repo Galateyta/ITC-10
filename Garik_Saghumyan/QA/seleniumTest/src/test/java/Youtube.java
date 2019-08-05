@@ -69,9 +69,6 @@ public class Youtube {
         ArrayList<String> tabs = new ArrayList<>(driver.getWindowHandles());
         driver.switchTo().window(tabs.get(1));
         driver.get(url);
-
-
-
         try {
             Thread.sleep(12000);
         } catch (InterruptedException e) {
@@ -98,11 +95,7 @@ public class Youtube {
         transport.connect("smtp.gmail.com", "authorisation.app@gmail.com", "ITC102019");
         transport.sendMessage(generateMailMessage, generateMailMessage.getAllRecipients());
         transport.close();
-
     }
-
-
-
 
     @AfterClass
     public void close(){
