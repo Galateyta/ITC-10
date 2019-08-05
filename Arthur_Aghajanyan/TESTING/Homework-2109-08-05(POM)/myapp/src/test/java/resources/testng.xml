@@ -1,0 +1,9 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Reporting">
+    <parameter name="browser" value="chrome"/>
+    <test name="ForgotPasswordPageTests">
+        <classes>
+            <class name="tests.ForgotPasswordPageTests"/>
+        </classes>
+    </test>
+</suite>
