@@ -29,7 +29,7 @@ public class  SignInPageTest  {
         signIn.signIn(driver);
         String email = signIn.getEmailValue(driver);
         //String password = signIn.getPasswordValue(driver);
-        Assert.assertEquals(email, "gevorgyan.armine@inbox.ru", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(email, "gevorgyan.armine@inbox.ru", "writeEmail");
     }
 
     public void writeEmailfeild(){
@@ -39,7 +39,7 @@ public class  SignInPageTest  {
         signIn.rememberMe(driver);
         signIn.signIn(driver);
         String email = signIn.getEmailValue(driver);
-        Assert.assertEquals(email, "gevorgyan.armine@inbox", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(email, "gevorgyan.armine@inbox", "writeEmailfeild");
     }
 
     public void writeEmailEmpty(){
@@ -49,7 +49,7 @@ public class  SignInPageTest  {
         signIn.rememberMe(driver);
         signIn.signIn(driver);
         String email = signIn.getEmailValue(driver);
-        Assert.assertEquals(email, "", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(email, "", "writeEmailEmpty");
     }
 
     @Test
@@ -60,7 +60,7 @@ public class  SignInPageTest  {
         signIn.rememberMe(driver);
         signIn.signIn(driver);
         String pass = signIn.getPasswordValue(driver);
-        Assert.assertEquals(pass, "Test.147test", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(pass, "Test.147test", "writePassword");
     }
 
 
@@ -72,7 +72,7 @@ public class  SignInPageTest  {
         signIn.rememberMe(driver);
         signIn.signIn(driver);
         String pass = signIn.getPasswordValue(driver);
-        Assert.assertEquals(pass, "Test", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(pass, "Test", "writePasswordfeild");
     }
 
     @Test
@@ -83,7 +83,7 @@ public class  SignInPageTest  {
         signIn.rememberMe(driver);
         signIn.signIn(driver);
         String pass = signIn.getPasswordValue(driver);
-        Assert.assertEquals(pass, "", "aaaaaaaaaaaaaaaaaaaaaaa");
+        Assert.assertEquals(pass, "", "writePasswordEmpty");
     }
 
     @AfterMethod
