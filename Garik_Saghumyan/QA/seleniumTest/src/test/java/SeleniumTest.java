@@ -5,7 +5,7 @@ import org.testng.Assert;
 import org.testng.annotations.*;
 
 
-public class ChromeSeleniumTest extends WebDriverSetUp{
+public class SeleniumTest extends WebDriverSetUp{
 
     @Test
     public void checkTitle(){

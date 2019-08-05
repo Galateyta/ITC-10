@@ -4,13 +4,15 @@
     <test name="TestChrome">
         <parameter name="browser" value="chrome" />
         <classes>
-            <class name="ChromeSeleniumTest" />
+            <class name="SeleniumTest" />
+            <class name="Youtube"></class>
         </classes>
     </test>
     <test name="TestFirefox">
         <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="FirefoxSeleniumTest"/>
+            <class name="SeleniumTest"/>
+            <class name="Youtube"/>
         </classes>
     </test>
 </suite>
