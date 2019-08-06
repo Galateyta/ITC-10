@@ -1,5 +1,6 @@
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Reporter;
 
 import java.io.File;
@@ -8,56 +9,62 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 public class ChatPage extends WebDriverSetUp {
-
-    By chatClass = By.xpath("/html/body/div");
-    By friendsName =  By.xpath("/html/body/div/div/div[1]/div[1]/h3");
-    By postsText = By.xpath("/html/body/div/div/div[1]/div[3]/h3");
-    By name = By.id("uName");
-    By textarea = By.id("privateText");
-    By send = By.xpath("/html/body/div/div/div[3]/div[2]/div/button");
-    By message = By.xpath("//*[@id=\"messages\"]/li");
-    By posts = By.id("publicText");
-    By sendPost = By.xpath("/html/body/div/div/div[3]/div[3]/div/button");
-    By id = By.xpath("//*[@id=\"publicMessages\"]");
+    @FindBy(xpath="/html/body/div")
+    WebElement chatClass;
+    @FindBy(xpath = "/html/body/div/div/div[1]/div[1]/h3")
+    WebElement friendsName;
+    @FindBy(xpath = "/html/body/div/div/div[1]/div[3]/h3")
+    WebElement postsText;
+    @FindBy(id = "uName")
+    WebElement name;
+    @FindBy(id = "textarea")
+    WebElement textarea;
+    @FindBy(xpath = "/html/body/div/div/div[3]/div[2]/div/button")
+    WebElement send;
+    @FindBy(xpath = "//*[@id=\"messages\"]/li")
+    WebElement message;
+    @FindBy(id = "publicText")
+    WebElement posts;
+    @FindBy(xpath = "/html/body/div/div/div[3]/div[3]/div/button")
+    WebElement sendPost;
+    @FindBy(xpath = "//*[@id=\"publicMessages\"]")
+    WebElement id;
 
     public String getClassName(WebDriver driver){
-        return driver.findElement(chatClass).getAttribute("class");
+        return chatClass.getAttribute("class");
     }
 
     public String getFriendsText(WebDriver driver){
-        return driver.findElement(friendsName).getText();
+        return friendsName.getText();
     }
 
     public String getPostsText(WebDriver driver){
-        return driver.findElement(postsText).getText();
+        return postsText.getText();
     }
     public String getName(WebDriver driver){
-        return driver.findElement(name).getText();
+        return name.getText();
     }
 
     public void writeMessage(WebDriver driver, String message){
-        WebElement text = driver.findElement(textarea);
-        text.sendKeys(message);
+
+        textarea.sendKeys(message);
     }
     public void sendMessage(WebDriver driver){
-        WebElement write = driver.findElement(send);
-        write.click();
+        send.click();
     }
 
     public String getMessageText(WebDriver driver){
-        return driver.findElement(message).getText();
+        return message.getText();
     }
 
     public void writePost(WebDriver driver){
-        WebElement post = driver.findElement(posts);
-        post.sendKeys("My current post");
+        posts.sendKeys("My current post");
     }
     public void sendPost(WebDriver driver){
-        WebElement send = driver.findElement(sendPost);
-        send.click();
+        sendPost.click();
     }
     public String getPostsId(WebDriver driver){
-        return driver.findElement(id).getAttribute("id");
+        return id.getAttribute("id");
     }
     public  void takeScreenshot(WebDriver driver ){
         String timeStamp;

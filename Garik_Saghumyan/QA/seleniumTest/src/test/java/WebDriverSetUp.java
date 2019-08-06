@@ -8,22 +8,22 @@ import org.testng.annotations.Optional;
 import org.testng.annotations.Parameters;
 import java.util.concurrent.TimeUnit;
 
+import static io.github.bonigarcia.wdm.WebDriverManager.*;
+
 public class WebDriverSetUp {
 
-    WebDriver driver;
+     WebDriver driver;
 
     @Parameters("browser")
     @BeforeClass
     public  void createDriver(@Optional("chrome") String browser) {
         if(browser.equalsIgnoreCase("chrome")) {
-//            System.setProperty("webdriver.chrome.driver", "src/resources/chromedriver");
-            WebDriverManager.chromedriver().setup();
+            chromedriver().setup();
             driver = new ChromeDriver();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();
         } else if (browser.equalsIgnoreCase("firefox")) {
-//            System.setProperty("webdriver.gecko.driver", "src/resources/geckodriver");
-            WebDriverManager.firefoxdriver().setup();
+            firefoxdriver().setup();
             driver = new FirefoxDriver();
             driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
             driver.manage().window().maximize();

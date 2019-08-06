@@ -1,9 +1,8 @@
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -13,10 +12,11 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+
+import static io.github.bonigarcia.wdm.WebDriverManager.chromedriver;
 
 
 public class Youtube {
@@ -24,16 +24,8 @@ public class Youtube {
     WebDriver driver;
     @BeforeClass
     public void setUp() throws MalformedURLException {
-        DesiredCapabilities cap = new DesiredCapabilities();
-
-        cap.setCapability("deviceName", "Galaxy J5 (2016)");
-        cap.setCapability("udid", "b005ec88");
-        cap.setCapability("platformName", "Android");
-        cap.setCapability("appPackage", "com.android.chrome");
-        cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");
-        cap.setCapability("platformVersion","7.1.1");
-
-        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
+        chromedriver().setup();
+        driver = new ChromeDriver();
     }
 
     @Test

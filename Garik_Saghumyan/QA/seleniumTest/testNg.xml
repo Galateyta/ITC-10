@@ -8,11 +8,11 @@
 <!--            <class name="Youtube"></class>-->
         </classes>
     </test>
-<!--    <test name="TestFirefox">-->
-<!--        <parameter name="browser" value="firefox"/>-->
-<!--        <classes>-->
-<!--            <class name="SeleniumTest"/>-->
+    <test name="TestFirefox">
+        <parameter name="browser" value="firefox"/>
+        <classes>
+            <class name="SeleniumTest"/>
 <!--            <class name="Youtube"/>-->
-<!--        </classes>-->
-<!--    </test>-->
+        </classes>
+    </test>
 </suite>
