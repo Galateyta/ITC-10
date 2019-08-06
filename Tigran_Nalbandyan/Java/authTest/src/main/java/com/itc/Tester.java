@@ -12,16 +12,12 @@ public class Tester {
     private WebDriver driver;
 
     private void waitForAlert(WebDriver driver) {
-        int i=0;
-        while(i++<5)
-        {
-            try
-            {
+        int i = 0;
+        while (i++ < 5) {
+            try {
                 driver.switchTo().alert();
                 break;
-            }
-            catch(NoAlertPresentException e)
-            {
+            } catch (NoAlertPresentException e) {
                 try {
                     Thread.sleep(1000);
                 } catch (InterruptedException ex) {
@@ -56,8 +52,7 @@ public class Tester {
             }
 
             System.exit(0);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             System.out.println("exception happened - here's what I know: ");
             e.printStackTrace();
             System.exit(-1);
@@ -74,6 +69,7 @@ public class Tester {
 
     @BeforeClass
     public void initWebDriver() {
+        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver.exe");
         driver = new ChromeDriver();
     }
 
@@ -585,7 +581,7 @@ public class Tester {
         Assert.assertEquals(currentUrl, expectedUrl, "Successfully forgot password with invalid email!");
     }
 
-    @Test(skipFailedInvocations = true)
+    @Test
     public void checkForgotPasswordNotRegisteredEmail() {
         final String email = "100percent.not.registered.email@gmail.com";
 
@@ -617,7 +613,7 @@ public class Tester {
         Assert.assertEquals(currentUrl, expectedUrl, "Successfully forgot password with email that not registered!");
     }
 
-    @Test(skipFailedInvocations = true)
+    @Test
     public void checkForgotPassword() {
         final String email = "tigran.nalbandyan03@gmail.com";
 
@@ -636,7 +632,7 @@ public class Tester {
         waitForAlert(driver);
         try {
             Alert alert = driver.switchTo().alert();
-            String alertMessage= driver.switchTo().alert().getText();
+            String alertMessage = driver.switchTo().alert().getText();
             System.out.println(alertMessage);
             alert.accept();
         } catch (NoAlertPresentException e) {
