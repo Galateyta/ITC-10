@@ -1,6 +1,7 @@
 package com.itc.tests;
 
 import com.itc.pages.ForgotPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
@@ -20,7 +21,7 @@ public class TestForgotPage {
 
     @BeforeClass
     public void init() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         forgotPage = new ForgotPage(driver);
     }

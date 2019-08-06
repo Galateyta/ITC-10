@@ -1,11 +1,13 @@
 package com.itc.tests;
 
 import com.itc.pages.SignUpPage;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -20,13 +22,13 @@ public class TestSignUpPage {
 
     @BeforeClass
     public void init() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-        signUpPage = new SignUpPage(driver);
+        signUpPage = PageFactory.initElements(driver, SignUpPage.class);
     }
 
     @BeforeMethod
-    public void opensignUpPage() {
+    public void openSignUpPage() {
         signUpPage.open();
     }
 

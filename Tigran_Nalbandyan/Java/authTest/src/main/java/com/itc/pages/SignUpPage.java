@@ -9,12 +9,13 @@ public class SignUpPage {
 
     public final String url = "http://localhost:3000/registry";
 
-    private final By nameInputPath = By.xpath("//input[@id=\"name\"]");
-    private final By surnameInputPath = By.xpath("//input[@id=\"surname\"]");
-    private final By ageInputPath = By.xpath("//input[@id=\"age\"]");
-    private final By emailInputPath = By.xpath("//input[@id=\"email\"]");
-    private final By genderButtonPath = By.xpath("//*[@id=\"gender\"][@value=\"male\"]");
-    private final By passwordInputPath = By.xpath("//input[@id=\"password\"]");
+    private WebElement name;
+    private WebElement surname;
+    private WebElement age;
+    private WebElement email;
+    private WebElement gender;
+    private WebElement password;
+
     private final By submitButtonPath = By.xpath("//*[@id=\"root\"]/div/div/div/form/div/div/div[8]/button");
 
     public SignUpPage(WebDriver driver) {
@@ -26,27 +27,27 @@ public class SignUpPage {
     }
 
     public WebElement getNameInput() {
-        return driver.findElement(nameInputPath);
+        return this.name;
     }
 
     public WebElement getSurnameInput() {
-        return driver.findElement(surnameInputPath);
+        return this.surname;
     }
 
     public WebElement getAgeInput() {
-        return driver.findElement(ageInputPath);
+        return this.age;
     }
 
     public WebElement getEmailInput() {
-        return driver.findElement(emailInputPath);
+        return this.email;
     }
 
     public WebElement getGenderButton() {
-        return driver.findElement(genderButtonPath);
+        return this.gender;
     }
 
     public WebElement getPasswordInput() {
-        return driver.findElement(passwordInputPath);
+        return this.password;
     }
 
     public WebElement getSubmitButton() {
