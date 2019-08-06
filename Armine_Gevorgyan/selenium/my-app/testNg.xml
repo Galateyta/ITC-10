@@ -1,0 +1,9 @@
+<!--<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >-->
+<!--<suite name="TestAll" parallel="tests">-->
+<!--    <test name="TestChrome">-->
+<!--        <parameter name="browser" value="chrome" />-->
+<!--        <classes>-->
+<!--            <class name="SignInPageTest" />-->
+<!--        </classes>-->
+<!--    </test>-->
+<!--</suite> -->
