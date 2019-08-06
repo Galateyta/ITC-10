@@ -2,16 +2,20 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class SeleniumTest extends WebDriverSetUp {
+
+
 
     FirstPage firstPage = new FirstPage();
     ChatPage chatPage = new ChatPage();
@@ -22,6 +26,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToPage(driver);
         String title = firstPage.getTitle(driver);
         Assert.assertEquals(title, "Socket.io Chat", "cheking page title failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function writes users name and go to chat page
@@ -30,7 +37,11 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToPage(driver);
         firstPage.writeName(driver, "Garik");
         firstPage.goToChat(driver);
+
         Assert.assertTrue(true, "goToChatWithName function failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
     // this function goes to chat page without writing users name
     @Test
@@ -39,6 +50,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToChat(driver);
         String className = chatPage.getClassName(driver);
         Assert.assertEquals(className,"chat-form", "goToChatWithoutName function failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page and checks the friends ui components text
@@ -48,6 +62,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToChat(driver);
         String friends = chatPage.getFriendsText(driver);
         Assert.assertEquals(friends, "Friends", "gotoChatAndCheckFriends function failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page and checks the postss ui components text
@@ -57,6 +74,8 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToChat(driver);
         String posts = chatPage.getPostsText(driver);
         Assert.assertEquals(posts, "Posts", "gotoChatAndCheckFriends function failed");
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page with users name and checks the name is correct or not
@@ -67,6 +86,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToChat(driver);
         String name = chatPage.getName(driver);
         Assert.assertEquals(name, "Garik", "gotoChatAndCheckName function failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page with users name,
@@ -80,6 +102,8 @@ public class SeleniumTest extends WebDriverSetUp {
         chatPage.sendMessage(driver);
         String message = chatPage.getMessageText(driver);
         Assert.assertEquals(message, "Garik: Hello", "goToChatAngSendMessage function failed");
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page with users name,
@@ -94,6 +118,9 @@ public class SeleniumTest extends WebDriverSetUp {
         String id = chatPage.getPostsId(driver);
         String expected = "publicMessages";
         Assert.assertEquals(id, expected, "goToChatAndAddPost function failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
     //this function goes to chat with username Garik, open private chat with john, switches to new tab goes to chat
     //with username john , send message to Garik , awitches to previous tab and check message text is correct or not
@@ -102,26 +129,28 @@ public class SeleniumTest extends WebDriverSetUp {
         ((JavascriptExecutor) driver).executeScript("window.open()");
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 
         firstPage.goToPage(driver);
         firstPage.writeName(driver, "Garik");
         firstPage.goToChat(driver);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
-        driver.findElement(By.id("john")).click();
         driver.switchTo().window(tabs.get(1));
         firstPage.goToPage(driver);
         firstPage.writeName(driver, "john");
         firstPage.goToChat(driver);
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
+        driver.switchTo().window(tabs.get(0));
+        driver.findElement(By.id("john")).click();
+        driver.switchTo().window(tabs.get(1));
         driver.findElement(By.id("Garik")).click();
         chatPage.writeMessage(driver, "vonces");
         chatPage.sendMessage(driver);
         driver.switchTo().window(tabs.get(0));
-        wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
         String message = driver.findElement(By.id("messages")).getText();
         String expected = "john: vonces";
         Assert.assertEquals(message, expected , "sendMessageToAnotherUser is failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
     // this function goes to chat page with username Garik, open chat with user john, switches to new tab goes to chat page with  username john,
@@ -132,16 +161,18 @@ public class SeleniumTest extends WebDriverSetUp {
         ((JavascriptExecutor) driver).executeScript("window.open()");
         List<String> tabs = new ArrayList<>(driver.getWindowHandles());
 
-        WebDriverWait wait = new WebDriverWait(driver, 1000);
+        WebDriverWait wait = new WebDriverWait(driver, 10);
 
         firstPage.goToPage(driver);
         firstPage.writeName(driver, "Garik");
         firstPage.goToChat(driver);
-        driver.findElement(By.id("john")).click();
         driver.switchTo().window(tabs.get(1));
         firstPage.goToPage(driver);
         firstPage.writeName(driver, "john");
         firstPage.goToChat(driver);
+        driver.switchTo().window(tabs.get(0));
+        driver.findElement(By.id("john")).click();
+        driver.switchTo().window(tabs.get(1));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
         driver.findElement(By.id("Garik")).click();
         chatPage.writeMessage(driver, "barev Garik");
@@ -157,6 +188,9 @@ public class SeleniumTest extends WebDriverSetUp {
         Dimension messages2 = driver.findElement(By.id("messages")).getSize();
         boolean isEqual = messages1.equals(messages2);
         Assert.assertEquals(isEqual, true, "privateChatBetWeenTwoUsers is failed");
+
+        chatPage.takeScreenshot(driver);
+
     }
 
 }

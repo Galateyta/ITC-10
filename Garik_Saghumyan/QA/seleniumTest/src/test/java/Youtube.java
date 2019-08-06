@@ -1,18 +1,19 @@
-import com.sun.corba.se.impl.protocol.giopmsgheaders.Message;
+import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import javax.mail.MessagingException;
 import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -22,10 +23,19 @@ public class Youtube {
 
     WebDriver driver;
     @BeforeClass
-    public void setDriver() {
-        System.setProperty("webdriver.chrome.driver", "src/resources/chromedriver");
-        driver  = new ChromeDriver();
+    public void setUp() throws MalformedURLException {
+        DesiredCapabilities cap = new DesiredCapabilities();
+
+        cap.setCapability("deviceName", "Galaxy J5 (2016)");
+        cap.setCapability("udid", "b005ec88");
+        cap.setCapability("platformName", "Android");
+        cap.setCapability("appPackage", "com.android.chrome");
+        cap.setCapability("appActivity", "com.google.android.apps.chrome.Main");
+        cap.setCapability("platformVersion","7.1.1");
+
+        driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), cap);
     }
+
     @Test
     public void search() throws MessagingException {
         driver.get("https://www.youtube.com");
@@ -37,7 +47,7 @@ public class Youtube {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        jsx.executeScript("window.scrollBy(0, 5000)");
+        jsx.executeScript("window4.scrollBy(0, 5000)");
         try {
             Thread.sleep(1000);
         } catch (InterruptedException e) {

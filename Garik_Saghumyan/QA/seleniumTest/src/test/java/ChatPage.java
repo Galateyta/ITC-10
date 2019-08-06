@@ -1,6 +1,11 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
+import org.testng.Reporter;
+
+import java.io.File;
+import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 public class ChatPage extends WebDriverSetUp {
 
@@ -8,7 +13,7 @@ public class ChatPage extends WebDriverSetUp {
     By friendsName =  By.xpath("/html/body/div/div/div[1]/div[1]/h3");
     By postsText = By.xpath("/html/body/div/div/div[1]/div[3]/h3");
     By name = By.id("uName");
-    By textarea = By.id("textarea");
+    By textarea = By.id("privateText");
     By send = By.xpath("/html/body/div/div/div[3]/div[2]/div/button");
     By message = By.xpath("//*[@id=\"messages\"]/li");
     By posts = By.id("publicText");
@@ -54,4 +59,24 @@ public class ChatPage extends WebDriverSetUp {
     public String getPostsId(WebDriver driver){
         return driver.findElement(id).getAttribute("id");
     }
+    public  void takeScreenshot(WebDriver driver ){
+        String timeStamp;
+        File screenShotName;
+        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+
+        timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+        screenShotName = new File("src/resources/Screenshots/"+timeStamp+".png");
+        try {
+            FileUtils.copyFile(scrFile, screenShotName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        String filePath = screenShotName.toString();
+        System.out.println(filePath);
+        String path = "<img src="+filePath+"/>";
+        Reporter.log(path);
+    }
+
 }
