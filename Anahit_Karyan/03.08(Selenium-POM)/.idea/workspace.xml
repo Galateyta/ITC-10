@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="3327c0d2-8bc4-4b4f-bf5c-dcb26298b931" name="Default Changelist" comment="" />
+    <list default="true" id="3327c0d2-8bc4-4b4f-bf5c-dcb26298b931" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/03.08(Selenium-POM).iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/META-INF/selenium.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/am/instigatembile/com/TestSignInPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/am/instigatembile/com/TestSignInPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/am/instigatembile/com/TestSignUpPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/am/instigatembile/com/TestSignUpPage.class" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -16,7 +30,9 @@
     </option>
   </component>
   <component name="ProjectId" id="1P2XX7QdedsUXUq2sAjEM1f4zm2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
@@ -42,7 +58,24 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="TestNG.TestSignUpPage">
+  <component name="RunManager" selected="TestNG.TestSignUpPage (1)">
+    <configuration name="TestSignInPage (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="03.08(Selenium-POM)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignInPage" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestSignInPage" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="selenium" />
       <extension name="coverage">
@@ -78,6 +111,23 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="TestSignUpPage (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="03.08(Selenium-POM)" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="TestSignUpPage" type="TestNG" temporary="true" nameIsGenerated="true">
       <module name="selenium" />
       <extension name="coverage">
@@ -97,6 +147,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.TestSignUpPage (1)" />
+        <item itemvalue="TestNG.TestSignInPage (1)" />
         <item itemvalue="TestNG.TestSignUpPage" />
         <item itemvalue="TestNG.TestSignInPage" />
         <item itemvalue="TestNG.TestSignInPage.test_Home_Page_Appear_Correct" />
@@ -114,10 +166,26 @@
       <option name="presentableId" value="Default" />
       <updated>1565073203579</updated>
       <workItem from="1565073224795" duration="11799000" />
+      <workItem from="1565100097777" duration="12000" />
+      <workItem from="1565100397157" duration="73000" />
+      <workItem from="1565101192527" duration="922000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

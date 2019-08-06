@@ -2,6 +2,8 @@ package am.instigatembile.com;
 
 import java.util.concurrent.TimeUnit;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
+
 import org.openqa.selenium.WebDriver;
 
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -34,7 +36,8 @@ public class TestSignUpPage {
     public void setup(){
 
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+        WebDriverManager.chromedriver().setup();
 
        // driver = new FirefoxDriver();
 
