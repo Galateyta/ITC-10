@@ -1,28 +1,41 @@
 package com.instigate.app;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Reporter;
 
-import java.util.Collection;
+import java.io.File;
+import java.io.IOException;
+
 import java.util.List;
 
 public class HomePage {
 
     private WebDriver driver;
+    By sendPost = By.xpath("/html/body/div/div/div[3]/div[3]/div/button");
+    By send = By.xpath("/html/body/div/div/div[3]/div[2]/div/button");
+    By chatClass = By.xpath("/html/body/div");
+    By privateText = By.id("privateText");
+    By id = By.id("publicMessages");
+    By friends = By.id("friends");
+    By message = By.id("messages");
+    By posts = By.id("publicText");
+    By name = By.id("uName");
+    By li = By.tagName("li");
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
 
     }
 
+
     public String getUserName() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("/html/body/div")));
-        return driver.findElement(By.id("uName")).getText();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(chatClass));
+        return driver.findElement(name).getText();
     }
 
     public String getFriendName(String name) {
@@ -34,15 +47,15 @@ public class HomePage {
 
     public void sendMessage(String message) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("privateText")));
-        driver.findElement(By.id("privateText")).sendKeys(message);
-        driver.findElement(By.xpath("/html/body/div/div/div[3]/div[2]/div/button")).click();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(privateText));
+        driver.findElement(privateText).sendKeys(message);
+        driver.findElement(send).click();
 
     }
 
     public void sendMessageFrom(String user, String message) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("friends")));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(friends));
         driver.findElement(By.id(user)).click();
         sendMessage(message);
 
@@ -51,33 +64,46 @@ public class HomePage {
     public String getMessage(String user) {
 
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("friends")));
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(friends));
         driver.findElement(By.id(user)).click();
-        WebElement ul = driver.findElement(By.id("messages"));
-        List<WebElement> links = ul.findElements(By.tagName("li"));
-        System.out.println("ssss" + links.get(links.size()-1).getText() +"ssss" );
-        return links.get(links.size()-1).getText();
+        WebElement ul = driver.findElement(message);
+        List<WebElement> links = ul.findElements(li);
+        return links.get(links.size() - 1).getText();
 
     }
 
-    public  void  addPost (String post) {
+    public void addPost(String post) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("publicText")));
-        driver.findElement(By.id("publicText")).sendKeys(post);
-        driver.findElement(By.xpath("/html/body/div/div/div[3]/div[3]/div/button")).click();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(posts));
+        driver.findElement(posts).sendKeys(post);
+        driver.findElement(sendPost).click();
 
     }
 
     public String getPost() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("publicMessages")));
-        WebElement ul = driver.findElement(By.id("publicMessages"));
-        List<WebElement> links = ul.findElements(By.tagName("li"));
-        return links.get(links.size()-1).getText();
+        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(id));
+        WebElement ul = driver.findElement(id);
+        List<WebElement> links = ul.findElements(li);
+        return links.get(links.size() - 1).getText();
 
     }
 
     public String getTitle() {
         return driver.getTitle();
     }
+
+    public  void captureScreenShot() {
+
+        File src = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
+        String path = "src/main/resources/screenshots/" + System.currentTimeMillis() + ".png";
+        try {
+            FileUtils.copyFile(src, new File(path));
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+        String filePath = "<img src=/ file://" + path + "/>";
+        Reporter.log(filePath);
+    }
+
 }
