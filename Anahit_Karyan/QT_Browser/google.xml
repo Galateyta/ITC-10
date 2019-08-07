@@ -1,0 +1,37 @@
+<body>
+    <div flex-direction="column">
+
+	    <div flex-direction="row" justify-content="right">
+	        <h5>Email</h5>
+	        <h5>Images</h5>
+	        <button style="color: #fff; border-radius:5px; background-color:blue">Sign In</button>	
+	    </div>
+
+	    <div flex-direction="column" justify-content="center">
+	        <img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+	        <input style="max-width: 600;border-radius: 5px;border: 1px solid gray; QLineEdit:hover { background-color:#E6E6FA;}"></input>  
+	       
+	    </div>
+
+	    <div flex-direction="row">
+		    <button style="background-position: bottom center">Search Google</button>
+		    <button style="background-position: bottom center">I`m sorry!</button>
+	    </div> 
+
+		<div flex-direction="column" justify-content="center">
+	    	<div flex-direction="row" justify-content="center">  		
+	            <button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/fac.png); min-width:50;min-height:50; margin:15px"></button>              
+	       		<button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/cloud.png); min-width:50;min-height:50; margin:15px"></button>  
+	       		<button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/g+.png); min-width:50;min-height:50; margin:15px"></button>                    
+	    	</div>  
+	    		<div flex-direction="row" justify-content="center">  		
+	            <button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/p.png); min-width:50;min-height:50; margin:15px"></button>              
+	       		<button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/twit.png); min-width:50;min-height:50; margin:15px"></button>  
+	       		<button style="border-image: url(/home/anahit/Desktop/QT_Browser/res/icons/vk.png); min-width:50;min-height:50; margin:15px"></button>                    
+	    	</div>  
+
+	    </div>
+
+    </div>
+</body>
+
