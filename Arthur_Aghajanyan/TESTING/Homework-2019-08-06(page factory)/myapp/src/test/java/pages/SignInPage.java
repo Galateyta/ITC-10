@@ -1,7 +1,6 @@
 package pages;
 import constants.SignInConstant;
 import helperFunctions.HelperFunctions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import tests.*;
@@ -34,7 +33,7 @@ public class SignInPage {
     }
 
     public WebElement getSignInText() {
-        return signInText = BasePage.driver.findElement(By.xpath(SignInConstant.signInText));
+        return signInText;
     }
 
     public void setSignInText(WebElement signInText) {
@@ -42,7 +41,7 @@ public class SignInPage {
     }
 
     public WebElement getForgotPasswordButton() {
-        return forgotPasswordButton = BasePage.driver.findElement(By.xpath(SignInConstant.forgotPasswordButton));
+        return forgotPasswordButton;
     }
 
     public void setForgotPasswordButton(WebElement forgotPasswordButton) {
@@ -50,7 +49,7 @@ public class SignInPage {
     }
 
     public WebElement getPassword() {
-        return password = BasePage.driver.findElement(By.id(SignInConstant.password));
+        return password;
     }
 
     public void setPassword(WebElement password) {

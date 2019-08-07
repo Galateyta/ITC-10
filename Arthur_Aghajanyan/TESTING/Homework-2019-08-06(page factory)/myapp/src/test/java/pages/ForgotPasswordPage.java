@@ -1,7 +1,6 @@
 package pages;
 import constants.ForgotPasswordConstants;
 import helperFunctions.HelperFunctions;
-import org.openqa.selenium.By;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import tests.*;
@@ -32,7 +31,7 @@ public class ForgotPasswordPage {
     }
 
     public WebElement getForgotPasswordText() {
-        return forgotPasswordText = BasePage.driver.findElement(By.xpath(ForgotPasswordConstants.forgotPasswordPageText));
+        return forgotPasswordText;
     }
 
     public void setForgotPasswordText(WebElement forgotPasswordText) {
@@ -40,7 +39,7 @@ public class ForgotPasswordPage {
     }
 
     public WebElement getResetButton() {
-        return resetButton = BasePage.driver.findElement(By.xpath(ForgotPasswordConstants.forgotPasswordPageResetButton));
+        return resetButton;
     }
 
     public void setResetButton(WebElement resetButton) {
@@ -48,7 +47,7 @@ public class ForgotPasswordPage {
     }
 
     public WebElement getEmailField() {
-        return emailField = BasePage.driver.findElement(By.xpath(ForgotPasswordConstants.forgotPasswordPageEmailInput));
+        return emailField;
     }
 
     public void setEmailField(WebElement emailField) {
