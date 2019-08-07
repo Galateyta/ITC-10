@@ -42,7 +42,7 @@ public class SeleniumTest extends WebDriverSetUp {
         FirstPage firstPage = PageFactory.initElements(driver, FirstPage.class);
         firstPage.goToPage(driver);
         firstPage.goToChat();
-        String className = chatPage.getClassName(driver);
+        String className = chatPage.getClassName();
         Assert.assertEquals(className,"chat-form", "goToChatWithoutName function failed");
 
     }
@@ -54,7 +54,7 @@ public class SeleniumTest extends WebDriverSetUp {
         ChatPage chatPage = PageFactory.initElements(driver, ChatPage.class);
         firstPage.goToPage(driver);
         firstPage.goToChat();
-        String friends = chatPage.getFriendsText(driver);
+        String friends = chatPage.getFriendsText();
         Assert.assertEquals(friends, "Friends", "gotoChatAndCheckFriends function failed");
     }
 
@@ -65,7 +65,7 @@ public class SeleniumTest extends WebDriverSetUp {
         ChatPage chatPage = PageFactory.initElements(driver, ChatPage.class);
         firstPage.goToPage(driver);
         firstPage.goToChat();
-        String posts = chatPage.getPostsText(driver);
+        String posts = chatPage.getPostsText();
         Assert.assertEquals(posts, "Posts", "gotoChatAndCheckFriends function failed");
     }
 
@@ -77,7 +77,7 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToPage(driver);
         firstPage.writeName( "Garik");
         firstPage.goToChat();
-        String name = chatPage.getName(driver);
+        String name = chatPage.getName();
         Assert.assertEquals(name, "Garik", "gotoChatAndCheckName function failed");
     }
 
@@ -90,9 +90,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToPage(driver);
         firstPage.writeName( "Garik");
         firstPage.goToChat();
-        chatPage.writeMessage(driver, "Hello");
-        chatPage.sendMessage(driver);
-        String message = chatPage.getMessageText(driver);
+        chatPage.writeMessage( "Hello");
+        chatPage.sendMessage();
+        String message = chatPage.getMessageText();
         Assert.assertEquals(message, "Garik: Hello", "goToChatAngSendMessage function failed");
 
     }
@@ -106,9 +106,9 @@ public class SeleniumTest extends WebDriverSetUp {
         firstPage.goToPage(driver);
         firstPage.writeName( "Garik");
         firstPage.goToChat();
-        chatPage.writePost(driver);
-        chatPage.sendPost(driver);
-        String id = chatPage.getPostsId(driver);
+        chatPage.writePost();
+        chatPage.sendPost();
+        String id = chatPage.getPostsId();
         String expected = "publicMessages";
         Assert.assertEquals(id, expected, "goToChatAndAddPost function failed");
         screenshot.takeScreenshot(driver);
@@ -136,8 +136,8 @@ public class SeleniumTest extends WebDriverSetUp {
         driver.findElement(By.id("john")).click();
         driver.switchTo().window(tabs.get(1));
         driver.findElement(By.id("Garik")).click();
-        chatPage.writeMessage(driver, "vonces");
-        chatPage.sendMessage(driver);
+        chatPage.writeMessage( "vonces");
+        chatPage.sendMessage();
         driver.switchTo().window(tabs.get(0));
         String message = driver.findElement(By.id("messages")).getText();
         String expected = "john: vonces";
@@ -171,13 +171,13 @@ public class SeleniumTest extends WebDriverSetUp {
         driver.switchTo().window(tabs.get(1));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
         driver.findElement(By.id("Garik")).click();
-        chatPage.writeMessage(driver, "barev Garik");
-        chatPage.sendMessage(driver);
+        chatPage.writeMessage( "barev Garik");
+        chatPage.sendMessage();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("messages")));
         driver.switchTo().window(tabs.get(0));
         wait.until(ExpectedConditions.elementToBeClickable(By.id("uName")));
-        chatPage.writeMessage(driver, "barev john");
-        chatPage.sendMessage(driver);
+        chatPage.writeMessage( "barev john");
+        chatPage.sendMessage();
         wait.until(ExpectedConditions.elementToBeClickable(By.id("messages")));
         Dimension messages1 = driver.findElement(By.id("messages")).getSize();
         driver.switchTo().window(tabs.get(1));

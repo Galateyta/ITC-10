@@ -24,40 +24,40 @@ public class ChatPage extends WebDriverSetUp {
     @FindBy(xpath = "//*[@id=\"publicMessages\"]")
     WebElement id;
 
-    public String getClassName(WebDriver driver){
+    public String getClassName(){
         return chatClass.getAttribute("class");
     }
 
-    public String getFriendsText(WebDriver driver){
+    public String getFriendsText(){
         return friendsName.getText();
     }
 
-    public String getPostsText(WebDriver driver){
+    public String getPostsText(){
         return postsText.getText();
     }
-    public String getName(WebDriver driver){
+    public String getName(){
         return name.getText();
     }
 
-    public void writeMessage(WebDriver driver, String message){
+    public void writeMessage( String message){
 
         textarea.sendKeys(message);
     }
-    public void sendMessage(WebDriver driver){
+    public void sendMessage(){
         send.click();
     }
 
-    public String getMessageText(WebDriver driver){
+    public String getMessageText(){
         return message.getText();
     }
 
-    public void writePost(WebDriver driver){
+    public void writePost(){
         posts.sendKeys("My current post");
     }
-    public void sendPost(WebDriver driver){
+    public void sendPost(){
         sendPost.click();
     }
-    public String getPostsId(WebDriver driver){
+    public String getPostsId(){
         return id.getAttribute("id");
     }
 
