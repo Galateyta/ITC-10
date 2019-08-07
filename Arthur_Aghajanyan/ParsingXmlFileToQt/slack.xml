@@ -1,0 +1,69 @@
+<div  flex-direction="column" style="background-color: white">
+    <div justify-content="left">
+        <img src="http://img.icons8.com/office/2x/slack--v1.png"></img>
+    </div>
+    <div flex-direction="row" justify-content="right"  style="color: #616061;">
+        
+        <button style="border: 2px solid #87CEEB">Product</button>
+        <button style="border: 2px solid #66CDAA">Pricing</button>
+        <button style="border: 2px solid #ADFF2F">Support</button>
+        <button style="border: 2px solid #E0FFFF">Create a new workspace</button>
+        <button style="border: 2px solid #F4A460">Find your workspace</button>
+        <button style="border: 2px solid #616061">Sign In</button>
+    </div>
+    <div flex-direction="column" justify-content="center">
+        <span style="border: 1px solid blue">You need to sign in to see this page.</span>
+        <h2>Sign in to itc-10</h2>
+        <h4>itc-10.slack.com</h4>
+        <h4>Enter your email address and password.</h4>
+        <input style="max-width: 400;max-height: 150;border-radius: 5px;border: 2px solid blue"></input>
+        <input style="max-width: 400;max-height: 100;border-radius: 5px;border: 2px solid blue"></input>
+        <button style="max-width: 400;max-height: 100;background-color: #2E8B57">Sign In </button>
+        <input type="checkbox">Remember me</input>
+        <span style="color: blue">Forgot password? · Forgot which email you used?</span>
+    </div>
+    <div flex-direction="column">
+        <div flex-direction="row">
+            <span>If you have an itc-10.com email address, you can you can</span>
+            <span style="color: blue">create an account.</span>
+        </div>
+        <div flex-direction="row">
+            <span>workspace?</span>
+            <span style="color: blue">Create a new workspace</span>
+        </div>
+    </div> 
+    <div flex-direction="row"  style="color: #616061;">
+        <ul>
+        <p>USING SLACK</p>        
+            <li>Product</li>
+            <li>Enterprise</li>
+            <li>Pricing</li>
+            <li>Support</li>
+            <li>Slack Guides</li>
+            <li>App Directory</li>
+            <li>API</li>
+        </ul>
+        <ul>
+            <li>Jobs</li>
+            <li>Customers</li>
+            <li>Developers</li>
+            <li>Events</li>
+            <li>Blog</li>
+            <li>Slack Shop</li>
+        </ul>
+        <ul>
+            <li>Privacy</li>
+            <li>Security</li>
+            <li>Terms of Service</li>
+            <li>Policies</li>
+        </ul>
+        <ul>
+            <li>Download desktop app</li>
+            <li>Download mobile app</li>
+            <li>Brand Guidelines</li>
+            <li>Slack at Work</li>
+            <li>Status</li>
+
+        </ul>
+    </div> 
+</div>
