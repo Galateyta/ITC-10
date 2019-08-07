@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [com.instigate.app.AppTest]" verbose="0">
+  <test thread-count="5" name="Command line test(failed)" verbose="0">
+    <classes>
+      <class name="com.instigate.app.AppTest">
+        <methods>
+          <include name="addUser"/>
+          <include name="sendEmptyMessageNegativeTest"/>
+          <include name="sendMessageNegativeTest"/>
+          <include name="signInNegativeTest"/>
+          <include name="exit"/>
+          <include name="setUp"/>
+          <include name="signInNegativeTsest"/>
+          <include name="signInTest"/>
+        </methods>
+      </class> <!-- com.instigate.app.AppTest -->
+    </classes>
+  </test> <!-- Command line test(failed) -->
+</suite> <!-- Failed suite [com.instigate.app.AppTest] -->

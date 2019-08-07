@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite parallel="tests" name="Failed suite [TestAll]" guice-stage="DEVELOPMENT" verbose="0">
+  <test thread-count="5" parallel="tests" name="TestFirefox(failed)" verbose="0">
+    <parameter name="browser" value="firefox"/>
+    <classes>
+      <class name="FirefoxSeleniumTest">
+        <methods>
+          <include name="closeBrowser"/>
+          <include name="goToChatAngSendMessage"/>
+          <include name="createDriver"/>
+        </methods>
+      </class> <!-- FirefoxSeleniumTest -->
+    </classes>
+  </test> <!-- TestFirefox(failed) -->
+</suite> <!-- Failed suite [TestAll] -->
