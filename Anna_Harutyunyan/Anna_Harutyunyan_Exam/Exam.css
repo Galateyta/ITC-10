@@ -1,0 +1,42 @@
+.paral {
+  min-height: 300px;
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+.paralsec {
+  background-image: url("ph1.png");
+}
+   
+.paralsec1 {
+   background-image: url("bg3.png");
+}   
+.paralsec2 {
+   background-image: url("bg2.png"); 
+}
+.paralsec3 {
+  background-image: url("bg1.png"); 
+}
+.jumbotron {
+   margin-bottom: 0;
+}
+.my-padd {
+  margin-top: 300px;
+}
+.my-btn {
+  width: 100%;
+  border-radius: 25px;
+  padding: 8px;
+}
+.my-bg {
+  background-color: #dfdfdf;
+}
+.my-btn1 {
+  width: 30%;
+  border-radius: 25px;
+  padding: 8px;
+}
+.my-footer {
+  background-color: black;
+  padding: 100px 0;
+}

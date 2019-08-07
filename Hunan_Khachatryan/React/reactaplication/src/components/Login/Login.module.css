@@ -1,0 +1,28 @@
+.App {
+    text-align: center;
+    background-image: url("../assets/1.jpg");
+    padding: 10em;
+  }
+  
+  .form {
+    
+    margin: 8em;
+    color: white;
+  }
+  input  {
+    border-radius: 7px;
+    height: 2em;
+    margin: 5px;
+  }
+  .signInButton{ 
+    border-radius: 3px;
+    background: rgb(16, 118, 214);
+    border: 0px;
+    margin: 5px;
+  }
+  .signUpButton{ 
+    background: rgb(3, 180, 18);
+    border-radius: 3px;
+    border: 0px;
+    margin: 5px;
+  }

@@ -1,0 +1,35 @@
+img {
+	margin: 0;
+	max-size: 80%;
+}
+
+body {
+	background-color: #ffffff;
+}
+
+#id1 {
+	padding-left: 50px;
+	text-align: center;
+	color: #7f4782;
+	width: 20%;
+}
+
+#id2 {
+	color: #7f4782;
+	text-align: right;
+	padding-right: 50px;
+	width: 80%;
+}
+
+#div {
+	display: flex;
+}
+
+a {
+	width: 100%;
+}
+
+button {
+	height: 100%;
+	background-color: #ffffff;
+}
