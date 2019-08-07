@@ -1,0 +1,112 @@
+import React from 'react';
+import './App.css';
+import List from './components/List.jsx'
+import {Button, Container, Form, FormGroup, Input, Row, Col } from 'reactstrap';
+
+class TodoApp extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {  items: [],
+                        name: '',
+                        date: '',
+                        priority: ''};
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+
+    }
+
+    render() {
+        return (
+          <Container>
+          <Form onSubmit = {this.handleSubmit}>
+              <Row form>
+                  <Col md={3}>
+                      <FormGroup>
+                          <Input type="text"
+                            id="name"
+                            placeholder = "Enter a name"
+                            onChange = {this.handleChange}
+                            value = {this.state.name}
+                            required
+                            />
+                      </FormGroup>
+                  </Col>
+                  <Col md={3}>
+                      <FormGroup>
+                              <Input type="date"
+                              id="date"
+                              onChange = {this.handleChange}
+                              value = {this.state.date}
+                              required
+                              />
+                      </FormGroup>
+                  </Col>
+                  <Col md={3}>
+                      <FormGroup>
+                          <Input type="select"
+                                 id="priority"
+                                 onChange = {this.handleChange}
+                                 value = {this.state.priority}
+                                 required>
+                              <option></option>
+                              <option>0</option>
+                              <option>1</option>
+                              <option>2</option>
+                          </Input>
+                      </FormGroup>
+                  </Col>
+                  <Col md={3}>
+                      <Button color="danger">
+                          ADD
+                      </Button>
+                  </Col>
+              </Row>
+          </Form>
+          <h2>TABLE</h2>
+
+          <List items={this.state.items} removeItem={this.removeItem} />
+          </Container>
+        );
+    }
+
+
+    handleChange(e) {
+        if (e.target.id === 'name') {
+            this.setState({ name: e.target.value });
+        } else if (e.target.id === 'date') {
+            this.setState({ date: e.target.value });
+        } else if (e.target.id === 'priority') {
+            this.setState({ priority: e.target.value });
+        }
+    }
+
+    handleSubmit(e) {
+        e.preventDefault();
+        if (!this.state.name.length) {
+            return;
+        }
+        const newItem = {
+            name: this.state.name,
+            date: this.state.date,
+            priority: this.state.priority,
+            id: Date.now()
+        };
+        this.setState((state) => {
+            state.items.push(newItem);
+            return {
+                name : '',
+                date : '',
+                priority: ''
+            }
+        });
+    }
+
+    removeItem = (indexItem) => {
+        const items = this.state.items;
+        items.splice(indexItem, 1);
+        this.setState({items});
+    }
+}
+
+
+export default TodoApp;
