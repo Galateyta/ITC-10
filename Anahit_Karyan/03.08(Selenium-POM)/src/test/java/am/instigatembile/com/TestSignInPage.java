@@ -37,11 +37,13 @@ public class TestSignInPage {
 
         //System.setProperty("webdriver.gecko.driver", "src/main/resources/geckodriver");
         //System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
-       // WebDriverManager.firefoxdriver().setup();
-        WebDriverManager.chromedriver().setup();
-        //driver = new FirefoxDriver();
 
-        driver = new ChromeDriver();
+        WebDriverManager.firefoxdriver().setup();
+        //WebDriverManager.chromedriver().setup();
+
+        driver = new FirefoxDriver();
+
+        //driver = new ChromeDriver();
 
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 

@@ -9,123 +9,24 @@
 <table>
 <tr><th>Test</th><th># Passed</th><th># Skipped</th><th># Failed</th><th>Time (ms)</th><th>Included Groups</th><th>Excluded Groups</th></tr>
 <tr><th colspan="7">Surefire suite</th></tr>
-<tr><td><a href="#t0">Surefire test</a></td><td class="num">0</td><td class="num attn">2</td><td class="num">0</td><td class="num">80,510</td><td></td><td></td></tr>
+<tr><td><a href="#t0">Surefire test</a></td><td class="num">8</td><td class="num">0</td><td class="num attn">2</td><td class="num">24,251</td><td></td><td></td></tr>
 </table>
-<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed (configuration methods)</th></tr><tr class="failedeven"><td rowspan="1">am.instigatembile.com.TestSignInPage</td><td><a href="#m0">setup</a></td><td rowspan="1">1565101515890</td><td rowspan="1">80463</td></tr><tr><th colspan="4">Surefire test &#8212; skipped (configuration methods)</th></tr><tr class="skippedeven"><td rowspan="3">am.instigatembile.com.TestSignInPage</td><td><a href="#m1">closeDriver</a></td><td rowspan="2">1565101596398</td><td rowspan="2">0</td></tr><tr class="skippedeven"><td><a href="#m2">closeDriver</a></td></tr><tr class="skippedeven"><td><a href="#m3">setup</a></td><td rowspan="1">1565101596364</td><td rowspan="1">0</td></tr><tr><th colspan="4">Surefire test &#8212; skipped</th></tr><tr class="skippedeven"><td rowspan="1">am.instigatembile.com.TestSignInPage</td><td><a href="#m4">test_Home_Page_Appear_Correct</a></td><td rowspan="1">1565101596396</td><td rowspan="1">0</td></tr><tr class="skippedodd"><td rowspan="1">am.instigatembile.com.TestSignUpPage</td><td><a href="#m5">test_Login_Page_Appear_Correct</a></td><td rowspan="1">1565101596393</td><td rowspan="1">0</td></tr></tbody>
+<table id='summary'><thead><tr><th>Class</th><th>Method</th><th>Start</th><th>Time (ms)</th></tr></thead><tbody><tr><th colspan="4">Surefire suite</th></tr></tbody><tbody id="t0"><tr><th colspan="4">Surefire test &#8212; failed</th></tr><tr class="failedeven"><td rowspan="2">am.instigatembile.com.TestSignUpPage</td><td><a href="#m0">test_Age_Is_Firs_Simbol_Check</a></td><td rowspan="1">1565136678331</td><td rowspan="1">666</td></tr><tr class="failedeven"><td><a href="#m1">test_SurName_Is_Firs_Simbol_Check</a></td><td rowspan="1">1565136681461</td><td rowspan="1">639</td></tr><tr><th colspan="4">Surefire test &#8212; passed</th></tr><tr class="passedeven"><td rowspan="1">am.instigatembile.com.TestSignInPage</td><td><a href="#m2">test_Home_Page_Appear_Correct</a></td><td rowspan="1">1565136676699</td><td rowspan="1">360</td></tr><tr class="passedodd"><td rowspan="7">am.instigatembile.com.TestSignUpPage</td><td><a href="#m3">testTakeScreenShot</a></td><td rowspan="1">1565136677062</td><td rowspan="1">327</td></tr><tr class="passedodd"><td><a href="#m4">test_Age_Emptyt</a></td><td rowspan="1">1565136677410</td><td rowspan="1">920</td></tr><tr class="passedodd"><td><a href="#m5">test_Name_Is_Emptyt</a></td><td rowspan="1">1565136679007</td><td rowspan="1">661</td></tr><tr class="passedodd"><td><a href="#m6">test_Name_Is_Firs_Simbol_Check</a></td><td rowspan="1">1565136679669</td><td rowspan="1">600</td></tr><tr class="passedodd"><td><a href="#m7">test_Page_Title_Correct</a></td><td rowspan="1">1565136677392</td><td rowspan="1">17</td></tr><tr class="passedodd"><td><a href="#m8">test_Password_Emptyt</a></td><td rowspan="1">1565136680270</td><td rowspan="1">633</td></tr><tr class="passedodd"><td><a href="#m9">test_SurName_Is_Emptyt</a></td><td rowspan="1">1565136680904</td><td rowspan="1">556</td></tr></tbody>
 </table>
-<h2>Surefire test</h2><h3 id="m0">am.instigatembile.com.TestSignInPage#setup</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.github.bonigarcia.wdm.WebDriverManagerException: java.net.SocketTimeoutException: Read timed out
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:725)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:722)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:260)
-	at am.instigatembile.com.TestSignInPage.setup(TestSignInPage.java:39)
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
-	at java.net.SocketInputStream.read(SocketInputStream.java:171)
-	at java.net.SocketInputStream.read(SocketInputStream.java:141)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:282)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:165)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:185)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at io.github.bonigarcia.wdm.HttpClient.execute(HttpClient.java:159)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:993)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:1003)
-	at io.github.bonigarcia.wdm.ChromeDriverManager.getDrivers(ChromeDriverManager.java:83)
-	at io.github.bonigarcia.wdm.WebDriverManager.filterCandidateUrls(WebDriverManager.java:741)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:534)
-	... 32 more
-... Removed 28 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m1">am.instigatembile.com.TestSignInPage#closeDriver</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m2">am.instigatembile.com.TestSignInPage#closeDriver</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m3">am.instigatembile.com.TestSignInPage#setup</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m4">am.instigatembile.com.TestSignInPage#test_Home_Page_Appear_Correct</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.github.bonigarcia.wdm.WebDriverManagerException: java.net.SocketTimeoutException: Read timed out
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:725)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:722)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:260)
-	at am.instigatembile.com.TestSignInPage.setup(TestSignInPage.java:39)
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
-	at java.net.SocketInputStream.read(SocketInputStream.java:171)
-	at java.net.SocketInputStream.read(SocketInputStream.java:141)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:282)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:165)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:185)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at io.github.bonigarcia.wdm.HttpClient.execute(HttpClient.java:159)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:993)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:1003)
-	at io.github.bonigarcia.wdm.ChromeDriverManager.getDrivers(ChromeDriverManager.java:83)
-	at io.github.bonigarcia.wdm.WebDriverManager.filterCandidateUrls(WebDriverManager.java:741)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:534)
-	... 32 more
-... Removed 28 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
-<h3 id="m5">am.instigatembile.com.TestSignUpPage#test_Login_Page_Appear_Correct</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">io.github.bonigarcia.wdm.WebDriverManagerException: java.net.SocketTimeoutException: Read timed out
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:725)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.handleException(WebDriverManager.java:722)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:548)
-	at io.github.bonigarcia.wdm.WebDriverManager.setup(WebDriverManager.java:260)
-	at am.instigatembile.com.TestSignInPage.setup(TestSignInPage.java:39)
-Caused by: java.net.SocketTimeoutException: Read timed out
-	at java.net.SocketInputStream.socketRead0(Native Method)
-	at java.net.SocketInputStream.socketRead(SocketInputStream.java:116)
-	at java.net.SocketInputStream.read(SocketInputStream.java:171)
-	at java.net.SocketInputStream.read(SocketInputStream.java:141)
-	at org.apache.http.impl.io.SessionInputBufferImpl.streamRead(SessionInputBufferImpl.java:137)
-	at org.apache.http.impl.io.SessionInputBufferImpl.fillBuffer(SessionInputBufferImpl.java:153)
-	at org.apache.http.impl.io.SessionInputBufferImpl.readLine(SessionInputBufferImpl.java:282)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:138)
-	at org.apache.http.impl.conn.DefaultHttpResponseParser.parseHead(DefaultHttpResponseParser.java:56)
-	at org.apache.http.impl.io.AbstractMessageParser.parse(AbstractMessageParser.java:259)
-	at org.apache.http.impl.DefaultBHttpClientConnection.receiveResponseHeader(DefaultBHttpClientConnection.java:163)
-	at org.apache.http.impl.conn.CPoolProxy.receiveResponseHeader(CPoolProxy.java:165)
-	at org.apache.http.protocol.HttpRequestExecutor.doReceiveResponse(HttpRequestExecutor.java:273)
-	at org.apache.http.protocol.HttpRequestExecutor.execute(HttpRequestExecutor.java:125)
-	at org.apache.http.impl.execchain.MainClientExec.execute(MainClientExec.java:272)
-	at org.apache.http.impl.execchain.ProtocolExec.execute(ProtocolExec.java:185)
-	at org.apache.http.impl.execchain.RetryExec.execute(RetryExec.java:89)
-	at org.apache.http.impl.execchain.RedirectExec.execute(RedirectExec.java:110)
-	at org.apache.http.impl.client.InternalHttpClient.doExecute(InternalHttpClient.java:185)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:83)
-	at org.apache.http.impl.client.CloseableHttpClient.execute(CloseableHttpClient.java:108)
-	at io.github.bonigarcia.wdm.HttpClient.execute(HttpClient.java:159)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:993)
-	at io.github.bonigarcia.wdm.WebDriverManager.getDriversFromMirror(WebDriverManager.java:1003)
-	at io.github.bonigarcia.wdm.ChromeDriverManager.getDrivers(ChromeDriverManager.java:83)
-	at io.github.bonigarcia.wdm.WebDriverManager.filterCandidateUrls(WebDriverManager.java:741)
-	at io.github.bonigarcia.wdm.WebDriverManager.manage(WebDriverManager.java:534)
-	... 32 more
-... Removed 28 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h2>Surefire test</h2><h3 id="m0">am.instigatembile.com.TestSignUpPage#test_Age_Is_Firs_Simbol_Check</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.lang.String.charAt(String.java:658)
+	at am.instigatembile.com.TestSignUpPage.test_Age_Is_Firs_Simbol_Check(TestSignUpPage.java:243)
+... Removed 29 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m1">am.instigatembile.com.TestSignUpPage#test_SurName_Is_Firs_Simbol_Check</h3><table class="result"><tr><th>Exception</th></tr><tr><td><div class="stacktrace">java.lang.AssertionError: expected [true] but found [false]
+	at am.instigatembile.com.TestSignUpPage.test_SurName_Is_Firs_Simbol_Check(TestSignUpPage.java:216)
+... Removed 33 stack frames</div></td></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m2">am.instigatembile.com.TestSignInPage#test_Home_Page_Appear_Correct</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m3">am.instigatembile.com.TestSignUpPage#testTakeScreenShot</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m4">am.instigatembile.com.TestSignUpPage#test_Age_Emptyt</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m5">am.instigatembile.com.TestSignUpPage#test_Name_Is_Emptyt</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m6">am.instigatembile.com.TestSignUpPage#test_Name_Is_Firs_Simbol_Check</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m7">am.instigatembile.com.TestSignUpPage#test_Page_Title_Correct</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m8">am.instigatembile.com.TestSignUpPage#test_Password_Emptyt</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
+<h3 id="m9">am.instigatembile.com.TestSignUpPage#test_SurName_Is_Emptyt</h3><table class="result"><tr><th class="invisible"/></tr></table><p class="totop"><a href="#summary">back to summary</a></p>
 </body>
 </html>

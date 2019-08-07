@@ -8,6 +8,8 @@ import org.openqa.selenium.support.FindBy;
 
 import org.openqa.selenium.support.PageFactory;
 
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 public class SignUpPage {
 	/*
      All WebElements are identified by @FindBy annotation
@@ -16,7 +18,7 @@ public class SignUpPage {
 	WebDriver driver;
 
 	@FindBy(id="name")
-	WebElement name;	
+	public WebElement name;
     @FindBy(id="surname")
     WebElement surname;
     @FindBy(id="age")
@@ -88,6 +90,44 @@ public class SignUpPage {
 
     }
 
+
+    //Get user name in textbox
+
+    public String getUserName(){
+
+        return name.getAttribute("value");
+    }
+
+    //Get user suname in textbox
+
+    public String getUserSurName(){
+
+        return surname.getAttribute("value");
+    }
+
+    //Get user age in textbox
+
+    public String getUserAge(){
+
+        return age.getAttribute("value");
+    }
+
+    //Get user email in textbox
+
+    public String getUserEmail(){
+
+        return email.getAttribute("value");
+    }
+
+    //Get password in password textbox
+
+    public String getPassword(){
+
+        return password.getAttribute("value");
+
+    }
+
+
     //Click on sign up button
 
     public void clickSignUp(){
@@ -154,7 +194,7 @@ public class SignUpPage {
 
         //Click signUp button
 
-        this.clickSignUp();           
+        //this.clickSignUp();
 
     }
 

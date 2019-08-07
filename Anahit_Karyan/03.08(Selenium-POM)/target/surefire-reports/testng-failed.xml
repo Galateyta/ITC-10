@@ -6,17 +6,11 @@
       <class name="am.instigatembile.com.TestSignUpPage">
         <methods>
           <include name="setup"/>
-          <include name="test_Login_Page_Appear_Correct"/>
           <include name="closeDriver"/>
+          <include name="test_Age_Is_Firs_Simbol_Check"/>
+          <include name="test_SurName_Is_Firs_Simbol_Check"/>
         </methods>
       </class> <!-- am.instigatembile.com.TestSignUpPage -->
-      <class name="am.instigatembile.com.TestSignInPage">
-        <methods>
-          <include name="setup"/>
-          <include name="test_Home_Page_Appear_Correct"/>
-          <include name="closeDriver"/>
-        </methods>
-      </class> <!-- am.instigatembile.com.TestSignInPage -->
     </classes>
   </test> <!-- Surefire test(failed) -->
 </suite> <!-- Failed suite [Surefire suite] -->
