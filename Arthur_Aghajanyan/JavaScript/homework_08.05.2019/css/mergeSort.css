@@ -1,0 +1,20 @@
+.my_stile_button {
+    height: 50px;
+    width: 150px;
+    background-color: blue;
+    position:relative;
+    left:45%;
+}
+.my_buttons {
+    height: 30px;
+    width: 30px;
+    background-color: yellow;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.div_position {
+    align-items: center;
+    position:relative;
+    left:35%;
+}

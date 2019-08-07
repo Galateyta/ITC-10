@@ -1,0 +1,77 @@
+* {
+    box-sizing: border-box;
+    background-color: #F5A9A7; 
+  }
+  
+  body {
+    font: 16px Arial;  
+  }
+  
+  .autocomplete {
+    position: relative;
+    display: inline-block;
+  }
+  
+  input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+  }
+  
+  input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+  }
+  
+  input[type=text]:hover {
+    background-color: #f1f1f1;
+    width: 100%;
+    opacity:0.9;
+  }
+  
+  input[type=submit] {
+    background-color: #590210;
+    color: #fff;
+    cursor: pointer;
+    borde-color: #590210;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #590210;
+    color: #fff;
+    cursor: pointer;
+    borde-color: #590210;
+    opacity: 0.7;
+  }
+  
+  .autocomplete-items {
+    position: absolute;
+    border: 1px solid #b6b3b3;
+    border-bottom: none;
+    border-top: none;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  div[class=autocomplete] {
+      width:300px;
+  }
+  
+  .autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+  }
+  
+  .autocomplete-items div:hover {
+    background-color: #BA0737;
+    opacity: 0.3;
+  }
+  
+  /*when navigating through the items using the arrow keys:*/
+  .autocomplete-active {
+    color: #ffffff; 
+  }

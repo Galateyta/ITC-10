@@ -1,0 +1,49 @@
+<div flex-direction="column" style="background-color: white">
+    <div flex-direction="row" justify-content="right">
+        <button href="file:///home/abul/Desktop/Artur_c++/ITC10/QT/browser/slack.xml" style="background-color: purple; color: white">Slack</button>   
+        <button href="file:///home/abul/Desktop/Artur_c++/ITC10/QT/browser/registration.xml" style="background-color:blue">Sign up</button>
+        <select style="background-color:Violet">
+            <option>facebook</option>
+            <option>twitter</option>
+            <option>youtube</option>
+            <option>github</option>
+        </select>
+        <button style="background-color:green">Enter</button>
+    </div>
+    <div flex-direction="column" justify-content="center">
+
+            <img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+            <input style="max-width: 600;border-radius: 5px;border: 1px solid gray"></input>
+
+        <div flex-direction="row">
+            <button style="background-position: bottom center;background-color: #f2f2f2;color: rgba(0,0,0,.54);" >Search Google</button>
+            <button style="background-position: bottom center;background-color: #f2f2f2; color: rgba(0,0,0,.54);">will bring luck</button>
+        </div>  
+    </div>
+
+    <div flex-direction="row">
+            <img src="http://img.icons8.com/doodle/2x/social.png"></img>
+            <img src="http://img.icons8.com/doodle/2x/old-twitter-logo.png"></img>
+            <img src="http://img.icons8.com/color/2x/google-plus-squared.png"></img>
+            <img src="http://img.icons8.com/doodle/2x/google-plus-circled.png"></img>
+            <img src="http://img.icons8.com/flat_round/2x/share.png"></img>
+            <img src="http://img.icons8.com/color/2x/youtube-squared.png"></img>
+    </div>
+<div flex-direction="row">
+            <img src="http://img.icons8.com/doodle/2x/social-octopus-.png"></img>
+            <img src="http://img.icons8.com/dusk/2x/pinterest.png"></img>
+            <img src="http://img.icons8.com/doodle/2x/digg.png"></img>
+            <img src="http://img.icons8.com/color/2x/whatsapp.png"></img>
+            <img src="http://img.icons8.com/color/2x/hbo-go.png"></img>
+            <img src="http://img.icons8.com/office/2x/user-group-man-woman--v1.png"></img>
+    </div>
+
+        <div flex-direction="row"  justify-content="left" style="color: rgba(0,0,0,.54)">
+            <span> Advertising </span>
+            <span> Business About </span>
+            <span> Google </span>
+            <span> How Search works </span>
+        </div>      
+ 
+</div>
+

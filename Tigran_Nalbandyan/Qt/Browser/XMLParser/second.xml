@@ -1,0 +1,18 @@
+<body style="background-color: white">
+	<div flex-direction="row" justify-content="left">
+		<div justify-content="top" height="300">
+		<img src="https://www.google.com/images/branding/googlelogo/2x/googlelogo_color_92x30dp.png"></img>
+	</div>
+		<div flex-direction="column" justify-content="left">
+			<input style="max-width: 600;border-radius: 5px;border: 0.5px solid gray"></input>
+			<h3>Site 1</h3>
+			<h3>Site 21</h3>
+			<h3>Site 31</h3>
+			<h3>Site 41</h3>
+			<h3>Site 31</h3>
+			<h3>Site 51</h3>
+			<h3>Site 61</h3>
+			<h3>Site 71</h3>
+		</div>
+	</div>
+</body>

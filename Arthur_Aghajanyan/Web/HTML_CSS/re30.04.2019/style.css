@@ -1,0 +1,237 @@
+body {
+    display: flex;
+    width: 100%;
+}
+.flex-container {
+    display: flex;
+    width: 100%;
+}
+/*LEFT part*/
+/*Left container*/
+.flex-container > .left {
+    width: 35%;
+    background-color: #96CBC8;
+    color: #000000;
+    font-family: 'Helvian', sans-serif;
+}
+/*Resume text view*/
+.font-resume {
+    font-weight: 500;
+    color:#fff;
+    text-align: center;
+}
+.info {
+    background-color: #EBEBED;
+    padding-bottom:1px;
+}
+.info img {
+    display: block;
+    width: 50%;
+    margin: auto;
+    padding-top: 7%;
+}
+/*Name text view*/
+.info h1 {
+    text-align: center;
+    font-weight: 500;
+}
+/*Data text view*/
+.info dl dt {
+    text-align: center;
+    font-weight: 500;
+}
+/*Skill tytle*/
+.skills-data {
+    padding-top: 4%;
+}
+/*Skill icon setting*/
+.skills-data img {
+    display: block;
+    margin: auto;
+    padding-left: 15%;
+    width: 100px;
+    height: 50px;
+}
+.skills-data h2 {
+    text-align: center;
+    font-weight: 500;
+    margin-top: 5px;
+}
+/*Skills text view*/
+.fontSkill {
+    font-weight: 500;
+}
+.skills-data dl dt {
+    font-size: 125%;
+    margin-top: 25px;
+}
+/*Skills setting*/
+.skills-data div {
+    width: 80%;
+    display: block;
+    margin:auto;
+    padding-left: 10%;
+    padding-bottom: 10%;
+}
+/*Skills range setting*/
+input[class=first-group-slider] {
+    margin: auto;
+    -webkit-appearance: none;
+    position: relative;
+    overflow: hidden;
+    height: 10px;
+    width: 90%;
+    cursor: pointer;
+    border-radius: 70px;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: black;
+}
+input[class=first-group-slider]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 10px;
+    height: 10px;
+    background: white;
+    box-shadow: -100vw 6vw 0 100vw white;
+    border-radius: 50%;
+}
+/*Message for icon setting*/
+.message-icon {
+    display: block;
+    margin: auto;
+    width: 50px;
+    height: 50px;
+}
+/*Lenguage text setting*/
+.left h2 {
+    text-align: center;
+    font-weight: 500;
+    margin-top:1%;
+    margin-bottom:0.5%;
+}
+.flex-container-second {
+    display: flex;
+    width: 100%;
+}
+/*Language rang setting*/
+input[class=second-group-slider] {
+    margin-top: 90%;
+    -webkit-appearance: none;
+    border: 1px solid white;
+    width: 150%;
+    -webkit-transform: rotate(270deg);
+}
+input[class=second-group-slider]::-webkit-slider-runnable-track {
+    height: 2px;
+    background: white;
+    border: none;
+    border-radius: 1px;
+}
+input[class=second-group-slider]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    background: #44918b;
+    margin-top: -7px;
+}
+/*Language range position*/
+.language-list {
+    margin-left:-12%;
+    padding-bottom: 35%;
+}
+.language-list p {
+    margin-left:45%
+}
+.language-list div {
+    margin-left: 5%;
+}
+/*RIHHT -----  part*/
+/*Right container*/
+.flex-container > .right {
+    width: 65%;
+    background-color: #fff;
+    font-family: 'Helvian', sans-serif;
+}
+.right h2 {
+    font-weight: 800;
+    color:#43938a;
+}
+/*User part*/
+.user-icon {
+    width: 25px;
+    height: 25px;
+    margin-left: 2%;
+    margin-top: 6%;
+}
+.about-me-text {
+    margin-left: 5.5%;
+    margin-right: 2.5%;
+}
+.right hr {
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    height: 2px;
+    background-color: #eae8e7;
+}
+/*Suitcase part and suitcaseText part*/
+.settings-icon {
+    width: 30px;
+    height: 30px;
+    margin-left: 2%;
+    margin-top: 2%;
+}
+/*Timeline part*/
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    position: absolute;
+    margin-top: 5px;
+    left: 29px;
+    width: 3px;
+    height: 70%;
+}
+ul.timeline > li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+ul.timeline > li:before {
+    content: ' ';
+    margin-top: 5px;
+    background: white;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    left: 27px;
+    width: 1px;
+    height: 1px;
+    z-index: 400;
+}
+.time {
+    margin-left:2px;
+    margin-right:20px;
+}
+.setting-other-text p {
+    margin-left: 120px;
+}
+.company {
+    margin-left: 15%;
+    margin-top: 1px;
+}
+.certificates-info dl dt {
+    margin-left: 6%;
+    font-size: 125%;
+    margin-bottom: 20px;
+    color: #717171;
+}
+.other-class-for-inline {
+    display: inline;
+}
