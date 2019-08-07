@@ -1,9 +1,12 @@
 package app;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.*;
 
+//import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;
 
 public class AppTest {
@@ -11,15 +14,19 @@ public class AppTest {
     private MessagePage home;
 
     @BeforeClass
-    public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "src/main/resources/chromedriver");
+    public void setUp() throws InterruptedException {
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.get("http://localhost:4000");
 
-        this.driver.navigate().refresh();
+        driver.navigate().refresh();
         LogIn user = new LogIn(driver);
-        MessagePage home2 = user.sign("Second");
+        home = user.sign("Narek");
+
+        this.driver.navigate().refresh();
+        LogIn userSecond = new LogIn(driver);
+        MessagePage home2 = userSecond.sign("Second");
     }
 
     @AfterClass
@@ -28,24 +35,11 @@ public class AppTest {
     }
 
 
-    @BeforeMethod
-    public void logIn() {
-        driver.navigate().refresh();
-        LogIn user = new LogIn(driver);
-        home = user.sign("Narek");
-    }
-
-        // check title
+    // check title
     @Test
     public void checkTitle() {
         String title = home.getTitle();
         Assert.assertEquals(title, "Socket.io Chat", "cheking page title failed");
-    }
-
-    // login and check username
-    @Test
-    public void signIn() {
-        Assert.assertTrue(home.getUserName().contains("Narek"));
     }
 
     //login and check friend name

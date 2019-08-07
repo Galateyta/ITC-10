@@ -3,6 +3,9 @@ package app;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -12,14 +15,26 @@ public class MessagePage {
 
     private WebDriver driver;
 
-    public MessagePage(WebDriver driver) {
-        this.driver = driver;
-    }
+    public  static final String privateTextXpath = "/html/body/div/div/div[3]/div[2]/div/button";
+    public  static final String publicTextXpath = "/html/body/div/div/div[3]/div[3]/div/button";
 
-    public String getUserName() {
-        WebDriverWait wait = new WebDriverWait(driver, 10);
-        wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("/html/body/div")));
-        return driver.findElement(By.id("uName")).getText();
+    @FindBy(how= How.ID, id="privateText")
+    WebElement privateTextArea;
+    @FindBy(xpath = privateTextXpath)
+    WebElement privateText;
+    @FindBy(how= How.ID, id="messages")
+    WebElement message;
+    @FindBy(how= How.ID, id="publicText")
+    WebElement publicTextArea;
+    @FindBy(xpath = publicTextXpath)
+    WebElement publicText;
+    @FindBy(how= How.ID, id="publicMessages")
+    WebElement publicMessage;
+
+
+    public MessagePage(WebDriver driver) throws InterruptedException {
+        this.driver = driver;
+        PageFactory.initElements(driver, this);
     }
 
     public String getFriendName(String name) {
@@ -31,8 +46,8 @@ public class MessagePage {
     public void sendMessage(String message) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("privateText")));
-        driver.findElement(By.id("privateText")).sendKeys(message);
-        driver.findElement(By.xpath("/html/body/div/div/div[3]/div[2]/div/button")).click();
+        privateTextArea.sendKeys(message);
+        privateText.click();
     }
 
     public void sendMessageFrom(String user, String message) {
@@ -46,23 +61,21 @@ public class MessagePage {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("friends")));
         driver.findElement(By.id(user)).click();
-        WebElement ul = driver.findElement(By.id("messages"));
-        List<WebElement> links = ul.findElements(By.tagName("li"));
+        List<WebElement> links = message.findElements(By.tagName("li"));
         return links.get(links.size()-1).getText();
     }
 
     public  void  addPost (String post) {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("publicText")));
-        driver.findElement(By.id("publicText")).sendKeys(post);
-        driver.findElement(By.xpath("/html/body/div/div/div[3]/div[3]/div/button")).click();
+        publicTextArea.sendKeys(post);
+        publicText.click();
     }
 
     public String getPost() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.id("publicMessages")));
-        WebElement ul = driver.findElement(By.id("publicMessages"));
-        List<WebElement> links = ul.findElements(By.tagName("li"));
+        List<WebElement> links = publicMessage.findElements(By.tagName("li"));
         return links.get(links.size()-1).getText();
     }
 
