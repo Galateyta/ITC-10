@@ -1,12 +1,6 @@
-import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.FindBy;
-import org.testng.Reporter;
 
-import java.io.File;
-import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 
 public class ChatPage extends WebDriverSetUp {
     @FindBy(xpath="/html/body/div")
@@ -17,7 +11,7 @@ public class ChatPage extends WebDriverSetUp {
     WebElement postsText;
     @FindBy(id = "uName")
     WebElement name;
-    @FindBy(id = "textarea")
+    @FindBy(id = "privateText")
     WebElement textarea;
     @FindBy(xpath = "/html/body/div/div/div[3]/div[2]/div/button")
     WebElement send;
@@ -66,24 +60,6 @@ public class ChatPage extends WebDriverSetUp {
     public String getPostsId(WebDriver driver){
         return id.getAttribute("id");
     }
-    public  void takeScreenshot(WebDriver driver ){
-        String timeStamp;
-        File screenShotName;
-        File scrFile = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 
-        timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-        screenShotName = new File("src/resources/Screenshots/"+timeStamp+".png");
-        try {
-            FileUtils.copyFile(scrFile, screenShotName);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
-        String filePath = screenShotName.toString();
-        System.out.println(filePath);
-        String path = "<img src="+filePath+"/>";
-        Reporter.log(path);
-    }
 
 }

@@ -14,6 +14,7 @@ import java.util.List;
 
 
 public class SeleniumTest extends WebDriverSetUp {
+    Screenshot screenshot = new Screenshot();
 
     // this function goes to page and check page title
     @Test
@@ -110,7 +111,7 @@ public class SeleniumTest extends WebDriverSetUp {
         String id = chatPage.getPostsId(driver);
         String expected = "publicMessages";
         Assert.assertEquals(id, expected, "goToChatAndAddPost function failed");
-        chatPage.takeScreenshot(driver);
+        screenshot.takeScreenshot(driver);
 
     }
     //this function goes to chat with username Garik, open private chat with john, switches to new tab goes to chat
@@ -142,7 +143,7 @@ public class SeleniumTest extends WebDriverSetUp {
         String expected = "john: vonces";
         Assert.assertNotEquals(message, expected , "sendMessageToAnotherUser is failed");
 
-        chatPage.takeScreenshot(driver);
+        screenshot.takeScreenshot(driver);
 
     }
 
@@ -183,7 +184,7 @@ public class SeleniumTest extends WebDriverSetUp {
         Dimension messages2 = driver.findElement(By.id("messages")).getSize();
         boolean isEqual = messages1.equals(messages2);
         Assert.assertEquals(isEqual, true, "privateChatBetWeenTwoUsers is failed");
-        chatPage.takeScreenshot(driver);
+        screenshot.takeScreenshot(driver);
 
     }
 
