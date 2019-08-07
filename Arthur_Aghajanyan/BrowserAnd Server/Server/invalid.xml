@@ -1,0 +1,12 @@
+<div flex-direction="column" justify-content="center" style="background-color: white">
+    <div flex-direction="row">      
+        <img src = "ITC://localhost/images/invalid.png" style = "max-height: 200px;max-width: 150px"></img>
+    </div>
+    <h2>This site can't be reached</h2>
+    <h3>Invalid protocol</h3>
+    <div flex-direction="row">    
+        <p>Use</p>
+        <p style="color: red">ITC</p>
+        <p>protocol.</p>
+    </div>
+</div>

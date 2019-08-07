@@ -1,0 +1,10 @@
+<div flex-direction="row" justify-content="left" style="background-color: white">
+    <div flex-direction="column">        
+        <img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+        <h1 style="color: red">ENTERED A NON_EXISTENT ADDRESS</h1>
+    </div>
+    <div>
+        <img src="ITC://localhost/images/404-error.jpg" style = "max-height: 430px;max-width: 832px"></img>
+    </div>
+	
+</div>
