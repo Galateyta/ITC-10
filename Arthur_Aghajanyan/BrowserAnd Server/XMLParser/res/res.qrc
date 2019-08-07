@@ -1,0 +1,15 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/refresh.png</file>
+        <file>icons/Translate.png</file>
+        <file>icons/search.png</file>
+        <file>icons/calendar.png</file>
+        <file>icons/gmail.png</file>
+        <file>icons/drive.png</file>
+        <file>icons/photos.png</file>
+        <file>icons/slack.png</file>
+        
+
+    </qresource>
+</RCC>
+
