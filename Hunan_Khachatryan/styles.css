@@ -1,0 +1,304 @@
+* {
+	margin:0px;
+	padding:0px;
+}
+
+.flex-container {
+	display: flex;
+	min-width:768px;
+}
+
+.left-part {
+	background-color: #94cccd;
+	width: 25%;
+	text-align: center;
+}
+
+.rigth-part {
+	background-color:#FFFFFF;
+	width: 75%;
+	margin-left:15px;
+	padding-top:15px;
+}
+
+h3:first-child {
+	padding-top:20px;
+	color:white;
+}
+
+.silver_background{
+	margin-top: 25px;
+	margin-bottom: 25px;
+	padding-top: 1px;
+	padding-bottom:15px;
+	background-color:#d4d9df;
+} 	
+
+.image{
+	width: 50%;
+	padding-bottom: 150px;
+	margin-top:15px;
+	margin-left:20%;
+	background-position: center;
+	background-repeat: no-repeat;
+	border-radius: 50%;
+	background-size: cover;
+	background-image:url(https://cdn1.iconfinder.com/data/icons/user-pictures/101/malecostume-512.png);
+
+}
+
+.fa-cogs {
+	color: #FFFFFF; 
+	float: center;
+	margin-top:15px
+}
+
+.empty-part    {
+	width: 90%;
+	height: 20px;
+	border-radius: 15px;
+	background-color: #4c5445;
+	margin-left: 15px;
+	padding: 0;
+	margin: 0px;
+}
+
+.full-part {
+	height: 20px;
+	border-radius: 25px;
+	background-color: #ffffff;
+}
+
+.skills{
+	text-align: left;
+	margin: 15px
+	margin-bottom:60px;
+	padding-bottom:30px;  
+}
+
+.skills p {
+	padding-bottom:10px;
+	margin-top:10px;
+}
+
+.fa-commenting {
+	color: #FFFFFF; 
+	float: center;
+	margin-top:15px
+}
+
+ul.timeline {
+	list-style-type: none;
+	position: relative;
+}
+
+ul.timeline:before {
+	content: ' ';
+	background: #d4d9df;
+	display: inline-block;
+	position: absolute;
+	margin-top: 5px;
+	left: 29px;
+	width: 3px;
+	height: 73%;
+	z-index: 400;
+}
+
+ul.timeline > li {
+	font-family: 'Helvian', sans-serif;
+	margin: 20px 0;
+	padding-left: 20px;
+}
+
+ul.timeline > li:before {
+	content: ' ';
+	margin-top: 5px;
+	background: white;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	border: 3px solid #000000;
+	left: 27px;
+	width: 1px;
+	height: 1px;
+	z-index: 400;
+}
+
+.time {
+	font-family: 'Helvian', sans-serif;
+	margin-left:2px;
+	margin-right:20px;
+}
+
+.slidecontainer {
+	margin-top:40px;
+}
+
+.slide {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	text-align: center;
+	max-width: 33.33%
+}
+
+input[type=range].range {
+	cursor: pointer;
+	margin-top:55px;
+	margin-bottom:55px;   
+	margin-left: -20px;
+	width: 100px !important;
+	-webkit-appearance: none;
+	z-index: 200;
+	background-color: #e6e6e6;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e6e6e6), to(#d2d2d2));
+	background-image: -webkit-linear-gradient(right, #e6e6e6, #d2d2d2);
+	background-image: -moz-linear-gradient(right, #e6e6e6, #d2d2d2);
+	background-image: -ms-linear-gradient(right, #e6e6e6, #d2d2d2);
+	background-image: -o-linear-gradient(right, #e6e6e6, #d2d2d2)
+}
+
+input[type=range].range:focus {
+	border: 0 !important;
+	outline: 0 !important
+}
+
+input[type=range].range::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	width: 10px;
+	height: 10px;
+	background-color: #555;
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#4ddbff), to(#0cf));
+	background-image: -webkit-linear-gradient(right, #4ddbff, #0cf);
+	background-image: -moz-linear-gradient(right, #4ddbff, #0cf);
+	background-image: -ms-linear-gradient(right, #4ddbff, #0cf);
+	background-image: -o-linear-gradient(right, #4ddbff, #0cf)
+}
+
+input[type=range].round {
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px
+}
+
+input[type=range].round::-webkit-slider-thumb {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	-o-border-radius: 5px
+}
+
+.vertical-lowest-first {
+	-webkit-transform: rotate(90deg);
+	-moz-transform: rotate(90deg);
+	-o-transform: rotate(90deg);
+	-ms-transform: rotate(90deg);
+	transform: rotate(90deg)
+}
+
+.vertical-heighest-first {
+	-webkit-transform: rotate(270deg);
+	-moz-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+	transform: rotate(270deg)
+}
+
+.rigth-part h3 {
+	color:#94cccd;
+	text-align:start;
+}
+
+.about-me {
+	margin-top:5px;
+	margin-left:20px;
+}
+
+.fa-user {
+	color: #4c9793; 
+	font-size: 20px;
+}
+
+.fa-suitcase {
+	margin-top:15px;
+	color: #4c9793;
+}
+
+hr {
+	margin-top:20px;
+}
+
+ul.timeline {
+	list-style-type: none;
+	position: relative;
+}
+
+ul.timeline:before {
+	content: ' ';
+	background: #d4d9df;
+	display: inline-block;
+	position: absolute;
+	margin-top: 5px;
+	left: 29px;
+	width: 3px;
+	height: 73%;
+	z-index: 400;
+}
+
+ul.timeline > li {
+	font-family: 'Helvian', sans-serif;
+	margin: 20px 0;
+	padding-left: 20px;
+}
+
+ul.timeline > li:before {
+	content: '';
+	margin-top: 5px;
+	background: white;
+	display: inline-block;
+	position: absolute;
+	border-radius: 50%;
+	border: 3px solid #000000;
+	left: 27px;
+	width: 1px;
+	height: 1px;
+	z-index: 400;
+}
+
+.time {
+	font-family: 'Helvian', sans-serif;
+	margin-left:20px;
+	margin-right:20px;
+}
+
+.company {
+	margin-left: 125px;
+	margin-top:0px;
+}
+
+.otherTextFirst{
+	margin-top: 5px;
+	margin-left: 125px;
+}
+
+.otherText {
+	color: #717171;
+	margin-top: 15px;
+	margin-left: 15px;
+}
+
+.otherClassForInline {
+	display: inline;
+}
+
+.fa-graduation-cap {
+	color: #4c9793;
+}
+
+.fa-trophy{
+	color: #4c9793;
+}
+
+.rigth-part dl {
+	margin-left:25px;
+	padding-top:15px;
+}

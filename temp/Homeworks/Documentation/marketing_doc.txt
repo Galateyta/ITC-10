@@ -1,0 +1,7 @@
+
+This is a program without a miss, 
+calculate the ratio between two numbers.
+This program works very quickly,
+does not take up much space, 
+does not load the device,
+sees a precise result.

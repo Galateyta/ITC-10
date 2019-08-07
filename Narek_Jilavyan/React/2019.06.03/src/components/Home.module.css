@@ -1,0 +1,42 @@
+.NavItem {
+    height: 50px;
+    padding: 20px;
+}
+.profile {
+    height: 250px;
+    color: black;
+    text-align: center
+}
+
+.LogOut {
+    margin-top: 50px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.NavLink {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+#sideNav {
+    background-color: rgb(255, 221, 153)
+}
+.container {
+    margin-top: 5px;
+    width: 80%;
+    padding-left: 0;
+    padding-right: 0;
+}
+.jumbotron {
+    padding-top: 40px;
+    display: flex;
+    justify-content: center;
+}
+.sliderimage {
+    width: 100%;
+    height: 500px;
+}

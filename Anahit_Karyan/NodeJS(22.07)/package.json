@@ -1,0 +1,24 @@
+{
+  "name": "school-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "school-server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "nodemon": "./node_modules/nodemon/bin/nodemon.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "debug": "^4.1.1",
+    "dotenv": "^8.0.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.1.1",
+    "forever": "^1.0.0",
+    "mongoose": "^5.6.6",
+    "mysql": "^2.17.1",
+    "nodemon": "^1.19.1",
+    "winston": "^3.2.1"
+  }
+}
