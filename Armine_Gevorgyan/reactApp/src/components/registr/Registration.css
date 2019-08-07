@@ -1,0 +1,53 @@
+
+#reg {
+ text-align: center;
+}
+
+#butonn {
+  width:100px;
+  height:25px;
+margin : 20px;
+}
+
+#regDiv {
+  text-align: center;
+
+}
+
+#registration {
+  margin: 20px 0 0 0;
+    text-align: center
+}
+
+
+#regDiv input{
+    width:  16vw;
+    height: 20px;
+    margin: 0 0 10px 0;
+}
+
+#radio input{
+  width:  200px;
+  height: 20px;
+}
+
+#gender {
+  margin: 0 0 0 20px;
+  text-align:center;
+  margin: 0;
+}
+
+#radio1 {
+  text-align:center;
+}
+
+ #hhh {
+   text-align:center;
+   margin: 20px
+ }
+#gend input{
+    text-align: center;
+  width:  20px;
+  height: 20px;
+  margin: 0 0 0 20px
+}

@@ -1,0 +1,19 @@
+<body style="background-color: white">
+	<div flex-direction="column">
+		<div flex-direction="row" justify-content="right">
+			<div flex-direction="row" style="color: darkslategrey; font-size: 16px">
+				<span>Gmail</span>
+				<span>Images</span>
+			</div>
+			<button style="background-color: #4285f4; color: white; border-radius: 2px; height: 30px; font-size: 16px"> Sign In </button>
+		</div>
+		<div flex-direction="column" justify-content="center">
+			<img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>
+			<input style="max-width: 600;border-radius: 5px;border: 0.5px solid gray"></input>
+			<div flex-direction="row" style="background-color: #f8f8f8">
+				<button style="background-position: bottom center" href="file:///C:/Users/Admin/Documents/Qt%20projects/XMLParser/second.xml">Search Google</button>
+				<button style="background-position: bottom center">I'm Feeling Lucky</button>
+			</div>
+		</div>
+	</div>
+</body>

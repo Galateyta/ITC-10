@@ -1,0 +1,15 @@
+<div flex-direction="column" justify-content="center">
+    <div flex-direction="row">      
+        <img src = "ITC://localhost/images/invalid.png" style = "max-height: 200px;max-width: 150px"></img>
+    </div>
+    <div lex-direction="row">
+        <h2 style="qproperty-alignment: AlignCenter">This site can't be reached</h2>
+        <h3 style="qproperty-alignment: AlignCenter">Invalid protocol</h3>
+    </div>
+    
+    <div flex-direction="row">    
+        <p>Use</p>
+        <p style="color: red">ITC</p>
+        <p>protocol.</p>
+    </div>
+</div>

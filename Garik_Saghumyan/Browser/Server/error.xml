@@ -1,0 +1,6 @@
+<div  justify-content="center" flex-direction="column" style="max-height: 800;">
+	<div style="max-width: 800; max-height: 500">
+		<p style="font-size: 80pt">ERROR 404</p>
+		<p style= "font-size: 20pt;qproperty-alignment:AlignCenter">Woops.Looks like this page doesn't exist.</p>
+	</div>
+</div>
