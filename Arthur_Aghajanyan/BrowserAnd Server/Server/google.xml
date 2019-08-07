@@ -1,0 +1,48 @@
+<div flex-direction="column" style="background-color: white">
+    <div flex-direction="row" justify-content="right">
+        <button href="ITC://localhost/slack.xml" style="background-color: purple; color: white;width=200;height=200">Slack</button>
+        <button href="ITC://localhost/googleReg.xml" style="background-color:blue">Sign up</button>
+        <select style="background-color:Violet">
+            <option>facebook</option>
+            <option>twitter</option>
+            <option>youtube</option>
+            <option>github</option>
+        </select>
+        <button style="background-color:green">Enter</button>
+    </div>
+    <div flex-direction="column" justify-content="center">
+
+            <img src="ITC://localhost/images/google.png"></img>
+            <input style="max-width: 600;border-radius: 5px;border: 1px solid gray"></input>
+
+        <div flex-direction="row">
+            <button style="background-position: bottom center;background-color: #f2f2f2;color: rgba(0,0,0,.54);" >Search Google</button>
+            <button style="background-position: bottom center;background-color: #f2f2f2; color: rgba(0,0,0,.54);">will bring luck</button>
+        </div>
+    </div>
+
+    <div flex-direction="row">
+            <img src="ITC://localhost/images/social.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/old-twitter-logo.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/google-plus-squared.png"  style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/google-plus-circled.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/share.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/youtube-squared.png" style = "max-height: 100px;max-width: 100px"></img>
+    </div>
+    <div flex-direction="row">
+            <img src="ITC://localhost/images/social-octopus.png"  style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/pinterest.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/digg.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/whatsapp.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/hbo-go.png" style = "max-height: 100px;max-width: 100px"></img>
+            <img src="ITC://localhost/images/user-group-man-woman--v1.png" style = "max-height: 100px;max-width: 100px"></img>
+    </div>
+
+        <div flex-direction="row"  justify-content="left" style="color: rgba(0,0,0,.54)">
+            <span> Advertising </span>
+            <span> Business About </span>
+            <span> Google </span>
+            <span> How Search works </span>
+        </div>
+
+</div>

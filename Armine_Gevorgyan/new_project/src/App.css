@@ -1,0 +1,72 @@
+.App {
+  text-align: center;
+}
+
+.nav {
+	float: left;
+	width: 40%;
+	background-color: red;
+}
+
+.content {
+	float: left;
+	width: 60%;
+	background-color: green;
+}
+
+.remember {
+  background-color: red;
+  color:'red';
+}
+
+.button {
+  font-size: 16px;
+  display: inline-block;
+  margin: 20px;
+  width: 70px;
+  height: 40px;
+  cursor: pointer;
+  border-radius: 30%;
+  background-color: blue;
+  box-shadow: 0 3px 20px rgba(0,0,0,.25),
+  inset 0 2px 0 rgba(255,255,255,.6),
+  0 2px 0 rgba(0,0,0,.1),
+  inset 0 0 20px rgba(0,0,0,.1);
+}
+
+#reg {
+ text-align: left;
+}
+#photo{
+	width:80%;
+	margin: 0 auto;
+}
+
+#photo img {
+	width:80%;
+	padding-bottom:0%;
+	background-position:center;
+	background-repeat:no-repeat;
+	border-radius:50%;
+	background-size:cover;
+	padding:25px;
+}
+/*img {
+  width: 100px;
+  height: 70px;
+}*/
+#regDiv {
+	margin: 20px;
+}
+
+
+.login  {
+    text-align: center;
+    text-decoration :none;
+
+}
+
+
+.login input {
+    margin: 5px 0 20px 0;
+}

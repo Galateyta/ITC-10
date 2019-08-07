@@ -1,0 +1,27 @@
+
+.login  {
+    text-align: center;
+    text-decoration :none;
+
+}
+
+.login input {
+  width:  16vw;
+  height: 30px;
+  margin: 0 0 20px 0;
+}
+
+#headr {
+  margin: 20px 0 0 0;
+}
+
+#lab {
+text-align: left;
+margin: 0 0 0 42vw;
+}
+
+#remember_me {
+width: 20px;
+height: 20px;
+margin: 0 35px 0 0;
+}
