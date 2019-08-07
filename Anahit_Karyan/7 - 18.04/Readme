@@ -1,3 +1,0 @@
-Pre-commit is does the as following:
-
-Grep the staged files with .sh extensions and check for the existence of 'This is a script' usage . Existence of these strings results in exit 1 thus aborting the commit

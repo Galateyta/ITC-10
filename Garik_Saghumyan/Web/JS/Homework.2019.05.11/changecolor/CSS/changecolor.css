@@ -1,0 +1,15 @@
+#out {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    background-color: red;
+}
+#in {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    margin-top: 50px;
+}

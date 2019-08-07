@@ -1,0 +1,448 @@
+//xar,xach,qarpich,sirt
+let cards = [   '1c', '2c', '3c', '4c', '5c', '6c', '7c', '8c', '9c',
+                '1p', '2p', '3p', '4p', '5p', '6p', '7p', '8p', '9p', 
+                '1k', '2k', '3k', '4k', '5k', '6k', '7k', '8k', '9k',
+                '1b', '2b', '3b', '4b', '5b', '6b', '7b', '8b', '9b',
+			];//all cards
+						
+let kozrs = new Array();//kozrs
+let passage = 1;//who need do passage 1 => gamer1, 2 => gamer2
+
+let gamer1 = new Array();
+let gamer1Cnt = 0; //number cards of gamer1
+let gamer1Defeat = false;//gamer1 defeat gamer2
+
+let gamer2 = new Array();
+let gamer2Cnt = 0; //number cards of gamer2
+let gamer2Defeat = false;//gamer2 defeat gamer1
+
+let caloda = new Array();
+let colodaCnt = 0; //number cards of caloda
+
+let lastCard = -1; //last card
+let kozr = -1; 
+
+let tableCaloda = new Array();
+let tableCnt = 0;
+
+let cardsNumber = 36;
+
+let indexArr = [];
+console.log(cards);
+
+let currentPassage = 1;
+//genarate cards for  gamers (called 2* )
+function generateCard(){
+	let indexID=[];
+	let tmpArr = [];
+	let cardNumber = 0;
+	while(cardNumber !== 6) {
+		//alert('while');
+		let index = Math.floor(Math.random()* (35) + 1);
+		
+		if(indexArr.indexOf(index) === -1) {
+			indexArr.push(index);
+			indexID.push(index);
+			tmpArr.push(cards[index]);
+			//console.log('index',index);
+			//console.log('gg',tmpArr);
+			cardNumber++;
+		} else {
+			//console.log('krknvuma');
+		}		
+	}
+	let size;
+	if(passage === 1) {
+		size = gamer1Cnt;
+	} else {
+		size = gamer2Cnt;
+	}
+	for(let k = 0; k < size; k++) {
+		let button1 = document.createElement('button');		
+		let text = document.createTextNode(tmpArr[k]);
+		button1.style.margin = '-10px';
+		button1.style.width = '5vw';
+		if(passage === 1) {
+			var idd = tmpArr[k];
+			button1.id = idd;
+			let img = document.createElement('IMG');
+			img.id=tmpArr[k];
+			var s ="http://www.softholm.com/igry/durak/img/" +indexID[k]+ ".gif";
+			img.src=s;
+			img.addEventListener('click',xod);
+    
+			button1.appendChild(img);
+			document.getElementById('div11').appendChild(button1);
+			
+		} else {
+			var idd = tmpArr[k];
+			button1.id = idd;
+			let img = document.createElement('IMG');
+			img.id=tmpArr[k];
+			var s ="http://www.softholm.com/igry/durak/img/" +indexID[k]+ ".gif";
+			img.src=s;
+			img.addEventListener('click',xod);
+			button1.appendChild(img);
+			document.getElementById('div4').appendChild(button1);
+		}
+	}
+	passage++;
+	
+	return tmpArr;
+}
+
+//genarate Kozer
+function genarateKozr(){
+	let kozrFlag = false;//Kozer undefineed
+	let indexKozr;
+	while(!kozrFlag) {
+		indexKozr = Math.floor(Math.random()* (35) + 1);
+		if(indexArr.indexOf(indexKozr) === -1){
+			kozr = cards[indexKozr];
+			indexArr.push(indexKozr);
+			kozrFlag = true;
+		}
+	}
+	let button1 = document.createElement('button');
+	button1.id = 'k';
+	let text = document.createTextNode(kozr);
+	button1.style.margin = '5px 20px 5px 20px';
+	button1.style.width = '5vw';
+	let img = document.createElement('IMG');
+	img.id = kozr;
+	var s ="http://www.softholm.com/igry/durak/img/" + indexKozr + ".gif";
+	img.src=s;
+	button1.appendChild(img);
+	document.getElementById('div2_2').appendChild(button1);
+}
+
+//genarate Calod
+function generateCalod(){
+	for(let i = 0; i < cardsNumber; ++i) {
+		if(indexArr.indexOf(i) === -1){
+			caloda.push(cards[i]);
+		}
+	}	
+	calodaCnt = caloda.length;
+	//for(let k = 0; k < 6; k++) {
+		let button1 = document.createElement('button');
+		let text = document.createTextNode(caloda[k]);
+		button1.style.margin = '-45px';
+		button1.style.width = '5vw';
+		button1.id = 'c'+ k;
+		document.getElementById('div2_2').appendChild(button1);
+		var idd = '1'+ k;
+		button1.id = idd;
+		let img = document.createElement('IMG');
+		img.id="im1";
+		img.src="http://www.softholm.com/igry/durak/img/back.gif";
+		button1.appendChild(img);
+		document.getElementById('div2_2').appendChild(button1);
+	//}
+}
+
+function isKozer(card) {
+	if(card[1] === kozr[1]) {
+		return true;
+	} else {
+		return false;
+	}
+	console.log('card is koser',card[1]);
+}
+
+function mast(card1,card2) {
+	
+	//card is koser ?
+	//if(passage === 1) {
+		if(isKozer(card1)){
+			if(isKozer(card2)) {
+				if(card2[0] > card1[0]) {
+					console.log('2 ne kozr u cackecin irar');
+					return true;
+
+				} else {
+					console.log('2rdi kozr@ cacra chi kara cacki');
+					return false;
+					
+				}
+			} else {
+				console.log('2rd@ kozr chi chi kara cacki');
+				return false;
+			}
+		} else {
+			if(isKozer(card2)) {
+				console.log('2rd@ kozra kccacki');
+				return true;				
+			} else if (card2[0] > card1[0] && card2[1] === card1[1]) {
+				console.log('voch mek kozr chi 2rd@ kcacki arajinin');
+				return true;
+			} else {
+				console.log('voch mek kozr chi  2rd@ cacra chi kara cacki');
+				return false;
+			}
+		}
+
+}
+
+function newCardForGamer(){
+	let flag = false;
+	let newCard;
+	while(!flag) {
+		let indexNewCard = Math.floor(Math.random()* (calodaCnt) + 1);
+		if(indexArr.indexOf(indexNewCard) === -1) {
+			indexArr.push(indexNewCard);
+			calodaCnt--;
+			flag = true;
+			newCard = caloda[indexNewCard];
+			//caloda.splice(indexNewCard, 1);//delete card in caloda
+		} else {
+			//console.log('krknvuma');
+		}		
+	}
+	return newCard;
+}
+
+
+function bita() {
+	tableCaloda = [];
+	tableCnt = 0;
+	if(passage === 1) {
+		passage++;
+	}else {
+		passage--;
+	}
+	var element = document.getElementById("div2_1");
+	while (element.firstChild) {
+		element.removeChild(element.firstChild);
+	}
+
+}
+
+function xod() {
+	
+	const eventId = event.target.id ;
+		let index ;
+		let indexG;
+		if(tableCnt === 0) {
+			
+			tableCaloda.push(eventId);
+			index = cards.indexOf(eventId);//number card for gamer1
+			//alert(eventId);
+			if(gamer1.indexOf(eventId) !== -1) {
+				indexG = gamer1.indexOf(eventId);
+			} else {
+				indexG = gamer2.indexOf(eventId);
+			}
+			let button1 = document.createElement('button');	
+			button1.style.margin = '-10px';
+			button1.style.width = '5vw';
+			let img = document.createElement('IMG');
+			img.id = eventId;
+			var s ="http://www.softholm.com/igry/durak/img/" + index + ".gif";
+			img.src=s;
+			if(gamer1.indexOf(eventId)) {
+				gamer1.splice(indexG, 1);//delete card
+			} else {
+				gamer2.splice(indexG, 1);//delete card
+			}
+			button1.appendChild(img);
+			document.getElementById('div2_1').appendChild(button1);
+			tableCnt++;
+			currentPassage++;
+			console.log(gamer1);
+		}else if(tableCnt < 12){
+			let masts;
+			tableCaloda.push(eventId);
+		//	//alert(tableCnt);
+			if(tableCnt %2 === 0){
+				function addCardTable() {
+					let count = tableCnt;
+					while(count > 0){
+						if(tableCaloda[tableCnt][0] == tableCaloda[count - 1][0]) {
+							if(tableCaloda[tableCnt][1] == tableCaloda[count - 1][1]){
+								masts = false;
+							} else {
+								masts = true;
+							}
+						} 
+						count--;
+					}
+				}
+				addCardTable();
+					
+			} else {
+				let count = tableCnt;
+				masts = true;
+				while(count > 0){
+					if((tableCaloda[tableCnt][0] == tableCaloda[count - 1][0]) && (tableCaloda[tableCnt][1] == tableCaloda[count - 1][1])){
+						masts = false;
+					} 
+					count--;
+				}
+				if(masts) {
+					masts = mast(tableCaloda[tableCnt-1],tableCaloda[tableCnt]);				}
+				}
+			
+				//alert(masts);
+				if(masts) {
+					//(gamer1.indexOf(eventId)   orr passage === 1                ///////////////////////////////////
+					if(gamer1.indexOf(eventId) !== -1) {
+						indexG = gamer1.indexOf(eventId);
+						currentPassage++;
+					} else {
+						indexG = gamer2.indexOf(eventId);
+						currentPassage--;
+					}
+					index = cards.indexOf(eventId);
+					let button1 = document.createElement('button');	
+					button1.style.margin = '-10px';
+					button1.style.width = '5vw';
+					let img = document.createElement('IMG');
+					img.id = eventId;
+					var s ="http://www.softholm.com/igry/durak/img/" + index + ".gif";
+					img.src=s;
+					//arr.splice(indexG, 1);
+					button1.appendChild(img);
+					document.getElementById('div2_1').appendChild(button1);
+					tableCnt++;
+					//passage++;
+					console.log(gamer1);
+					
+					if(gamer1.indexOf(eventId) !== -1) {
+						gamer1.splice(indexG, 1);//delete card
+					} else {
+						gamer2.splice(indexG, 1);//delete card
+					}
+				
+				}//else if(){
+				//stugum
+			//}
+			else {
+				tableCaloda.pop();
+				//alert('urish qar ');
+			}
+			if(tableCnt === 12){
+				//alert("bitaaa");
+				bita();
+				
+			}
+		} else {
+			//alert("bita");
+		}
+}
+
+function getCards() {//alert('get');
+	var element = document.getElementById("div2_1");
+	let size1;
+	while (element.firstChild) {
+		element.removeChild(element.firstChild);
+	}
+	
+	if(passage === 1) {
+		currentPassage --;
+		for(let j = 0; j < tableCnt; ++j) {
+				gamer2.push(tableCaloda[j]);
+		}
+		var element = document.getElementById("div4");
+		while (element.firstChild) {
+			element.removeChild(element.firstChild);
+		}
+		
+		size1 = gamer2.length;
+	}else {
+		;currentPassage ++;
+		for(let j = 0; j < tableCnt; ++j) {
+			gamer1.push(tableCaloda[j]);
+		}
+		var element = document.getElementById("div11");
+		while (element.firstChild) {
+			element.removeChild(element.firstChild);
+		}
+		
+		size1 = gamer1.length;
+	}
+	
+	for(let k = 0; k < size1; k++) {
+		let button1 = document.createElement('button');	
+		button1.style.margin = '-10px';
+		button1.style.width = '5vw';
+		if(passage === 1) {
+			let text = document.createTextNode(gamer2[k]);
+			
+			let indexid = cards.indexOf(gamer2[k]);
+			var idd = gamer2[k];
+			button1.id = idd;
+			let img = document.createElement('IMG');
+			img.id = gamer2[k];
+			var s ="http://www.softholm.com/igry/durak/img/" + indexid + ".gif";
+			img.src = s;
+			img.addEventListener('click',xod);
+    
+			button1.appendChild(img);
+			document.getElementById('div4').appendChild(button1);
+			
+		} else {
+			let text = document.createTextNode(gamer1[k]);
+			let indexid = cards.indexOf(gamer1[k]);
+			var idd = gamer1[k];
+			button1.id = idd;
+			let img = document.createElement('IMG');
+			img.id =  gamer1[k];
+			var s ="http://www.softholm.com/igry/durak/img/" + indexid + ".gif";
+			img.src = s;
+			img.addEventListener('click',xod);
+			button1.appendChild(img);
+			document.getElementById('div11').appendChild(button1);
+		}
+	}
+}
+
+function start() {
+	gamer1Cnt = 6;
+	gamer2Cnt = 6;
+	
+
+	//genarate cards for first gamer
+	gamer1 = generateCard();
+	console.log('gamer1',gamer1);
+	
+	//genarate cards for second gamer
+	gamer2 = generateCard();
+	console.log('gamer2',gamer2);
+	
+	passage = 1;
+	
+	//genarate korz
+	genarateKozr();
+	console.log('kozr', kozr);
+	
+	//genarate Calods
+	generateCalod();
+	console.log('caloda',caloda);
+		
+	for (let i = 0; i < 2; i++){
+		let text1;
+		let button2 = document.createElement('button');
+		if(i === 0) {
+			text1 = document.createTextNode('bita');
+			button2.style.margin = '100px';button2.addEventListener('click',bita);
+		} else {
+			text1 = document.createTextNode('get');button2.addEventListener('click',getCards);
+			//button2.style.margin = '50px';
+		}
+		button2.style.background = 'lightblue';			
+		button2.style.width = '5vw';
+		button2.appendChild(text1);
+		document.getElementById('div2_2').appendChild(button2);
+	}
+}
+
+
+
+isKozer('6c');
+
+
+
+
+start();
+

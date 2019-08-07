@@ -1,0 +1,12 @@
+.Register {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    background-color: rgb(9, 50, 60)
+  }
+
+.form {
+    padding: 20px;
+    background-color: rgb(85, 108, 114)
+}

@@ -1,0 +1,90 @@
+.game {
+    width: 720px;
+    border: solid 1px #ddd;
+    margin: 0 auto;
+    background: #f3abe7;
+    border: solid 10px;
+    text-align:center;
+    min-height:600px;
+}
+.btn{
+    border:none;
+    padding: 10px 30px;
+    border-radius:10px;
+    cursor:pointer;
+}
+.btn:hover, .take:hover{
+    background:rgb(137, 80, 139);
+}
+.game h3 {
+    padding: 10px;
+    background:black;
+    color:white;
+}
+.game .game-body {
+    padding: 20px;
+}
+.game .game-options {
+    text-align:center;
+}
+.game .card {
+    width: 50px;
+    height: 80px;
+    padding: 10px;
+    border: solid 1px #808080;
+    background-color: white;
+    display: inline-block;
+    border-radius: 10px;
+    font-size: 10pt;
+    text-align: center;
+    margin: 3px;
+    border:solid 3px;
+}
+.players {
+    text-align: center;
+}
+#player_1  {
+    width: 600px;
+    margin-top: 170px;
+}
+#player_0 {
+    width: 600px;
+}
+.player {
+    width: 40%;
+    border: solid 5px #f5f5f5;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 1%;
+    vertical-align: top;
+    background:#f5f5f5;
+}
+.player.active {
+    border: solid 5px #222;
+}
+.deck {
+    float:left;
+    background: white;
+    color:#222;
+    padding: 10px;
+    border-radius:10px;
+    border: double 5px;
+    margin-top: 200px;
+}
+.btn {
+    background:#222;
+    color:white;
+    border-radius:0px;
+    outline: none;
+}
+.take {
+    margin-top: 210px;
+    float: right;
+    padding: 10px;
+    background:black;
+    color:white;
+    width: 100px;
+    outline: none;
+    border: none;
+}
+
