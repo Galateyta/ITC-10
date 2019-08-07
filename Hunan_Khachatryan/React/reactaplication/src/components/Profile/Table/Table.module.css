@@ -1,0 +1,11 @@
+.input {
+    border: 2px ;
+    padding: 12px 20px;
+    margin-right: 2em;
+  }
+  .table {
+    padding-top: 3em;
+    padding-bottom: 3em;
+    border-radius: 5px;
+    
+  }

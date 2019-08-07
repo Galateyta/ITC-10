@@ -1,0 +1,322 @@
+h1.title-resume {
+	color: white;
+	padding-top: 10px;
+}
+h1 {
+	text-align: center;
+	margin: 7px;
+	font-weight: normal;
+	font-family: sans-serif;
+	font-size: 30px;
+}
+
+ h2 {
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 10px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+ h3 {
+	text-align: center;
+	margin: 0px;
+	margin-bottom: 5px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+ h4 {
+	margin: 0px;
+	font-weight: normal;
+	font-family: sans-serif;
+}
+
+ h5 {
+	text-align: center;
+	margin: 0px;
+	font-weight: bold;
+	font-family: sans-serif;
+}
+
+ .div-circle {
+	padding: 20px;
+	padding-bottom: 10px;
+}
+
+ img {
+	border-radius: 50%;
+}
+
+ p {
+	font-size: 16px;
+	font-family: sans-serif;
+	margin: 0px;
+}
+
+ th {
+	font-family: sans-serif;
+	margin-bottom: 4px;
+	color: #59595b;
+}
+
+ li {
+	margin-bottom: 6px;
+}
+
+ i {
+	color: #FFFFFF;
+	text-align: center;
+	font-size: 20px!important;
+	margin-top: 5px;
+	margin-bottom: 7px;
+	width: 100%;
+}
+
+ #block-right i {
+	text-align: left;
+	width: 24px;
+	margin: 0px;
+}
+
+ div.main-container {
+	display: flex;
+	justify-content: flex-start;
+}
+
+ #block-left {
+	width: 26%
+}
+
+ #block-right {
+	margin: 10px;
+	width: 70%;
+}
+
+ div.profile-info {
+	padding-bottom: 20px;
+	background-color: #e7e7e9;
+}
+
+ div.profile-info span {
+	margin: 0px;
+	font-weight: normal;
+	font-family: sans-serif;
+	display: block;
+}
+
+ div.profile-info h1 {
+	margin: 0px;
+}
+
+ div.light-green-div {
+	display: grid;
+	background-color: #94cccd;
+}
+
+ #skills-bars {
+	padding: 1px 10% 1px 10%;
+	text-align: left;
+}
+
+ #skills-bars span {
+	font-family: sans-serif;
+}
+
+ #languages {
+	margin-top: 20px;
+	padding-bottom: 25px;
+	align-content: center;
+	justify-content: center;
+}
+
+ .header-about {
+	color: #4c9793; 
+	font-weight: 600;
+	text-align: start;
+	margin-top: 10px;
+}
+
+ #vertical-ranges {
+	display: flex;
+}
+
+ .div-range {
+	display: inline-block;
+	text-align: center;
+	justify-content: space-around;
+}
+
+ .div-range span {
+    font-size: 14px;
+	font-family: sans-serif;
+}
+
+ .left-bordered {
+	border-left: 2px solid black;
+	padding-left: 1vw;
+	margin-left: 1%;
+}
+
+ .end-bordered {
+    padding-block-end: 20px;
+    border-block-end: 1px solid #bdbcc1
+}
+
+ .w3-blue {
+	color: #4c5447!important;
+    background-color: #fefdeb!important;
+}
+
+ .w3-container{
+    padding: 0.01em 2px;
+    height: 10px;
+}
+
+ .w3-round-xlarge {
+    border-radius: 16px;
+}
+
+ .w3-light-grey {
+    color: #fefdeb!important;
+    background-color: #4c5447!important;
+    margin-bottom: 14px;
+    margin-top: 4px;
+    width: 100%;
+}
+
+ .right-list::before{
+    content: " ";
+    border-left: 1px solid #000;
+    position: absolute;
+    z-index: 99;
+    left: 0;
+    top: 5%;
+    height: 67%;
+}
+
+ .right-list {
+    position:relative;
+    padding-left: 14px;
+}
+
+ .left_part {
+    float:left;
+    width:26%;
+    background-color:#8bcaca
+}
+
+ .list-text {
+    font-weight: inherit
+}
+
+ #first-right-text {
+    margin-left: 30px
+}
+
+ .list-head {
+    width: 20%
+}
+
+ .text {
+    display: flex;
+    font-size: 14px;
+    font-family: sans-serif;
+    color: #59595b;
+}
+
+ .right-part {
+    display: inline-block;
+    width:70%;
+    padding-left: 2%;
+}
+
+ #first-right-div {
+    border-block-end: 1px solid #bdbcc1
+}
+
+ .right-icons {
+    color: #4c9793
+}
+
+ .slider-wrapper {
+  display: inline-block;
+  width: 20px;
+  height: 150px;
+  padding: 0px;
+  margin-right: 8px;
+  margin-top: -20px;
+  transform-origin: 75px 75px;
+  -webkit-transform: rotate(270deg);
+  -moz-transform: rotate(270deg);
+  -o-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg)
+}
+
+ .divider {
+	height: 2px;
+	background-color: #bdbcc1;
+	margin-left: 1%;
+	margin-right: 1%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /* For working in Chrome 
+	By AnnaHarutyunyan10 - github.com/AnnaHarutyunyan10
+	Thank you! 
+*/
+.vertical-range {
+    -webkit-appearance: none;
+    width: 120px;
+    margin: auto;
+    display: block;
+    height: 7.5px;
+    outline: none;
+    border-radius: 18px;
+    margin: 10px;
+
+ }
+.vertical-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background-color: #4c9793;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+ .vertical-range::-moz-range-thumb {
+    -webkit-appearance: none;
+    background-color: #4c9793;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 0;
+}
+
+ .vertical-range1 {
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 85%, #4c5447 85%, #4c5447 100%);
+}
+.vertical-range2 {
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 45%, #4c5447 45%, #4c5447 100%);
+}
+.vertical-range3 {
+    background: -webkit-linear-gradient(left, #fefdeb 0%, #fefdeb 65%, #4c5447 65%, #4c5447 100%);
+}
+/* End -chrome-*/
+
