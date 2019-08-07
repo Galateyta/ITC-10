@@ -1,0 +1,12 @@
+<div flex-direction="column"  justify-content="center" style="color:red">
+
+  
+	<img src="http://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png"></img>       
+	<input style="max-width: 600;border-radius: 5px;border: 1px solid gray"></input>  
+	<div flex-direction="row">
+	    <button style="background-position: bottom center">Search Google</button>
+	    <button style="background-position: bottom center">I`m sorry!</button>
+	</div>  
+</div>
+    
+
