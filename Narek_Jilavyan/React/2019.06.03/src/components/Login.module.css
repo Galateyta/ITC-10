@@ -1,0 +1,13 @@
+
+.Login {
+  display: flex;
+  width: 200px; 
+  margin-left: 50px;
+  margin-top: 50px;
+  text-align: center;
+  background-color: rgba(230, 153,60, 0.3);
+}
+
+.form {
+    padding: 20px;
+}

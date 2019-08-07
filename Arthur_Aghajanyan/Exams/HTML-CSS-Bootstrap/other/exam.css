@@ -1,0 +1,39 @@
+.switcher-bar {
+    background: #333;
+    border-bottom: 1px solid #444;
+    max-height: 60px;
+    position: relative;
+    z-index: 22;
+}
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+    display: block;
+}
+* {
+    box-sizing: border-box;
+}
+body, h1, h2, h3, h4, h5, h6 {
+    font-family: 'Open Sans', sans-serif;
+}
+body {
+    
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #333;
+    background-color: #fff;
+}
+.pull-left {
+    float: left;
+}
+.logo {
+    border-right: 1px solid #444;
+}
+.product-switcher {
+    position: relative;
+    background: #222;
+}
+.left {
+	weight:50%;
+}
+.right {
+	weight:50%;
+}

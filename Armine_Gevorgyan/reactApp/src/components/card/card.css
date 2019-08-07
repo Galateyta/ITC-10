@@ -1,0 +1,15 @@
+.cardBody {
+  float : left;
+}
+
+.cardDiv {
+  float: left;
+  width: 22%;
+  margin: 0 0 0 20px;
+}
+
+.cardDiv img {
+  float:left;
+  width: 80%;
+  height: 30vh;
+}

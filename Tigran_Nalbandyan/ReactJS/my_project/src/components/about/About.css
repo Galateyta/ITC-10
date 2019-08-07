@@ -1,0 +1,8 @@
+.card {
+  max-width: 30%;
+  padding: 10px;
+}
+
+#cards {
+  margin: 0 50px;
+}

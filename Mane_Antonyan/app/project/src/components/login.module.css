@@ -1,0 +1,95 @@
+* {
+    text-align: center;
+}
+
+.form {
+    display: block;
+    width: 400px;
+    height: 600px;
+    background-color: grey;
+    opacity: 0.5;
+    color: white;
+    margin: auto;
+    margin-top: 40px;
+    padding: auto;
+    padding-top: 30px;
+}
+  
+.p {
+    text-align: center;
+}
+  
+.input {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    height: 40px;
+    border-radius: 0;
+    border: 0.5px solid white;
+}
+  
+.chack {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 18%;
+    height: 15px;
+    border-radius: 0;
+    border: 0.5px solid white;
+}
+
+.button {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    height: 40px;
+    border-radius: 0;
+    border: 0.5px solid white;
+    background-color: grey;
+    color: white;
+    margin-top: 20px;
+}
+  
+.button:hover  {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    height: 40px;
+    border-radius: 0;
+    border: 0.5px solid gray;
+    background-color: white;
+    color: gray;
+    margin-top: 20px;
+}
+  
+.register {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    height: 40px;
+    border-radius: 0;
+    background-color: grey;
+    color: white;
+    margin-top: 20px;
+    border: None;
+}
+
+.register:hover  {
+    margin: auto;
+    margin-bottom: 30px;
+    width: 90%;
+    height: 40px;
+    border-radius: 0;
+    border: 0.5px solid gray;
+    background-color: white;
+    color: gray;
+    margin-top: 20px;
+}
+  
+.small {
+    font-size: smaller;
+    
+}
+  
+.lable {
+    margin-left: 0;
+}

@@ -1,1 +1,0 @@
-To run animation after committing paste the "post-commit" file in the .git/hooks folder in a local git repository
