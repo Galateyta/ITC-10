@@ -1,0 +1,95 @@
+* {
+  margin: 0;
+  padding: 0;
+  background-color: cornflowerblue;
+}
+
+div {
+  display: flex;
+}
+form {
+  display: block;
+}
+
+.left {
+  min-width: 50%;
+  display: block;
+}
+
+h1 {
+  text-align: center;
+  color: darkblue;
+}
+
+.button {
+  width: 120px;
+  height: 40px;
+  border: 2px solid darkblue;
+  border-radius: 10px;
+  background-color: white;
+  color: darkblue;
+  font-size: larger;
+  margin: 20px auto auto 20px;;
+}
+
+.button:hover {
+  width: 120px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background-color: darkblue;
+  color: white;
+  font-size: larger;
+  margin: 20px auto auto 20px;
+  opacity: 0.8;
+}
+
+.name {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: darkblue;
+  font-size: larger;
+  margin: 20px auto auto 20px;
+  padding: 5px;
+}
+
+.body {
+  background-color: white;
+  color: darkblue;
+  width: 250px;
+  height: 200px;
+  border: none;
+  border-radius: 10px;
+  font-size: larger;
+  margin: 20px auto auto 20px;
+  padding: 5px;
+}
+
+.date, .prioraty {
+  width: 250px;
+  height: 30px;
+  border: none;
+  border-radius: 10px;
+  background-color: white;
+  color: darkblue;
+  font-size: larger;
+  margin: 20px auto auto 20px;
+  padding: 5px;
+}
+
+.text {
+  color: darkblue;
+  margin: auto;
+}
+
+.left{
+  border-right: 1px solid darkblue;
+  display: block;
+}
+
+#block {
+  
+}

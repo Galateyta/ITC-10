@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+        <script type="text/javascript">
+
+            function otherCheck() {
+                if (document.getElementById('otherField').checked) {
+                    document.getElementById('options').style.visibility = 'visible';
+                }else {
+                    document.getElementById('options').style.visibility = 'hidden';
+                    document.getElementById('newField').style.visibility = 'hidden';
+                    document.getElementById("options").selectedIndex = "1";
+                }
+            }
+
+            function changed() {
+                var option = document.getElementById("options");
+                var selectedItems = option.options[option.selectedIndex].value;
+                if (selectedItems == "3") {
+                    document.getElementById('newField').style.visibility = 'visible';
+                }else {
+                    document.getElementById('newField').style.visibility = 'hidden';
+                }
+
+            }
+        </script>
+
+
+        <form action="/action_page.php">
+            <fieldset>
+                <legend>Sign up:</legend>
+                <p>Email:
+                    <input type="email" name="mail" value="" title="example - john.@mail.com" required><br></p>
+                </p>
+                <p>Phone:
+                    + <input type="tel" placeholder="3 number" pattern="[0-9]{3}" style="height:20px; width:70px;" title="example 257" required>
+                    - <input type="tel" placeholder="2-3 number" pattern="[0-9]{2,3}" style="height:20px; width:70px;" title="example 27 or 257" required>
+                    - <input type="tel" placeholder="2-3 number" pattern="[0-9]{2,3}" style="height:20px; width:70px;" title="example 27 or 257" required>
+                    - <input type="tel" placeholder="2 number" pattern="[0-9]{2}" style="height:20px; width:70px;" title="example 27" required>
+                    - <input type="tel" placeholder="2 number" pattern="[0-9]{2}" style="height:20px; width:70px;" title="example 27" required>
+                </p>
+                <p>Name:
+                    <input type="text" name="name"  placeholder="name" title="It is preferred that the first letter be in upper case" required> <br>
+                </p>
+                <p>Password:
+                    <input type="password" name="pass" value="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*"
+                    title="Lowercase and uppercase Latin letters, numbers, special characters. Minimum 8 characters" required><br>
+                </p>
+
+
+
+                <input type="radio" onclick="javascript:otherCheck();" id="maleField" name="checkedField" checked >Male<br>
+                <input type="radio" onclick="javascript:otherCheck();" id="femaleField" name="checkedField">Female<br>
+                <input type="radio" onclick="javascript:otherCheck();" id="otherField" name="checkedField">Other
+
+
+                <select name="enter" id="options" style="visibility:hidden" onchange=changed()>
+                    <option disabled>All versions</option>
+                    <option value="1" checked >Badmen1</option>
+                    <option value="2">Badmen2</option>
+                    <option value="3">Your version</option>
+                </select>
+
+                <br><input type="text" id="newField" style="visibility:hidden" required><br>
+
+
+                <br><input type="reset" value="Cancel">
+                <input type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </body>
+</html>

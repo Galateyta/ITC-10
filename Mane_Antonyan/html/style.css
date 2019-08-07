@@ -1,0 +1,228 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.main {
+    display: flex;
+}
+
+.left {
+    width: 35%;
+    background-color: #94cccd;
+}
+
+.resume {
+    width: 100%;
+    background-color: #94cccd;
+}
+
+.info {
+    width: 100%;
+    background-color: #efe7e9;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.skills {
+    width: 100%;
+    background-color: #94cccd;
+    text-align: center;
+    padding-top: 20px;
+    padding-bottom: 10px;	
+}
+
+i {
+    color: #FFFFFF;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.right {
+    float: left;
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 65%;
+    background-color: #ffffff;
+    text-align: left;
+}
+
+.text {
+    margin-right: 13%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-weight: lighter;
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 100%;
+    line-height: 50%;
+}
+
+.skill {
+    text-align: left;
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.main img {
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width:100%;
+}
+
+.black_text {
+    color: #000000;
+}
+
+.white_text {
+    color: #ffffff;
+}
+
+.bolt {
+    width: 90%;
+    height: 20px;
+    border-radius: 25px;
+    background-color: #4c5445;
+    margin: 10px;
+}
+
+.cursor {
+    height: 20px;
+    border-radius: 25px;
+    background-color: #ffffff;
+}
+
+/* Timeline part */
+/* Thanks Artur for your code) */
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+}
+
+ul.timeline:before {
+    content: ' ';
+    background: #d4d9df;
+    display: inline-block;
+    position: absolute;
+    margin-top: 5px;
+    left: 29px;
+    width: 3px;
+    height: 73%;
+    z-index: 400;
+}
+
+ul.timeline > li {
+    font-family: 'Helvian', sans-serif;
+
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+ul.timeline > li:before {
+    content: ' ';
+    margin-top: 5px;
+    background: white;
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    left: 27px;
+    width: 1px;
+    height: 1px;
+    z-index: 400;
+}
+
+.time {
+    font-family: 'Helvian', sans-serif;
+    margin-left: 2px;
+    margin-right: 20px;
+}
+
+.icon {
+    color: #4c9793;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.big_text {
+    text-align: inherit;
+    color: #4c9793;
+    margin: 10px;
+    margin-bottom: 20px;
+    margin-top: 30px;
+}
+
+.line {
+    margin-top: 30px;	
+    margin-bottom: 30px;
+    margin-left: 20px;
+    opacity: 0.4;
+    max-width: 90%;
+}
+
+.information {
+    margin-left: 30px;	
+    max-width: 90%;
+    font-size: medium;
+    opacity: 0.65;
+    font-weight: lighter;
+    opacity: 0.8;
+}
+
+.bolt_text {
+    margin-top: 10px;
+    margin-left: 30px;	
+    max-width: 70%;
+    font-size: large;
+    opacity: 0.7;
+    font-weight: 600;
+}
+
+.head {
+    display: flex;
+}
+
+.left_block {
+    width: 30%;
+    margin-left: 30px;
+    margin-right: 0px;
+    font-weight: 600%;
+    line-height: 800%;
+    opacity: 0.8;
+}
+
+.right_block {
+    width: 70%;
+    margin-right: 0px;
+    display: block;
+    opacity: 0.8;
+}
+
+.small {
+    margin: 20px;
+    margin-left: 0px;
+}
+
+.verticalLine {
+    border-left: thick solid black;
+    opacity: 0.7;
+    padding: 10px;
+    border-width: 3px;
+    border-height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+input[type=range][orient=vertical] {
+    margin-right: 20%;
+    margin-top: 20px;
+    appearance: slider-vertical;
+    width: 50px;
+    height: 200px;
+    padding: 0;
+}

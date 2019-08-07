@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    text-align: center;
+    font-size: xx-large;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+#head {
+    background-color: #39002D;
+    width: 100%;
+    height: auto;
+    opacity: 0.6;
+}
+
+#rightLine {
+    width: 60px;
+    background-color: #F5FFFA;
+    transform: skewY(220deg);
+    border: 1px solid #F5FFFA;
+    margin: 16px 0px 0px 28px;
+}
+
+#leftLine {
+    width: 60px;
+    background-color: #F5FFFA;
+    transform: skewY(318deg);
+    border: 1px solid #F5FFFA;
+    margin: 16px 26px 0px 0px;
+    float: right;
+}
+
+body {
+    background-color: #821B36;
+}
+
+.root {
+    margin: 20px;
+    background-color:	#F5FFFA;
+    width: 100px;
+    height: 100px;
+    margin:0 auto;
+    border-radius: 50%;
+    opacity: 0.6;
+}
+
+h1 {
+    padding-top: 20px;
+    color:	#F5FFFA;
+    text-align: center;
+    font-weight: lighter;
+    margin-bottom: 20px;
+    padding: 20px;
+    opacity: 1;
+    font-style: italic;
+}
+
+.main {
+    margin: auto;
+    width: 100%;
+    display: inline-block;
+}
+
+.leftNode {
+    float: left;
+    width: 50%;
+}
+.rightNode {
+    width: 50%;
+    float: right;
+}
+
+.crcleLeft {
+    background-color:	#F5FFFA;
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    border-radius: 50%;
+    opacity: 0.6;
+    float: right;
+}
+
+.circleRight {
+    background-color:	#F5FFFA;
+    width: 100px;
+    height: 100px;
+    margin:0 auto;
+    border-radius: 50%;
+    float: left;
+    opacity: 0.6;
+}

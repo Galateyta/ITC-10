@@ -1,0 +1,10 @@
+
+.App{
+  background-color: #fefbd8;
+  text-align: center;
+}
+input {
+  border: 2px solid blue;
+  padding: 12px 20px;
+  margin-right: 2em;
+}
