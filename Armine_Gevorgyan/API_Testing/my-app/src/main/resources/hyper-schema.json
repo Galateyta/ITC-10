@@ -33,7 +33,7 @@
          },
        "age": {
            "$id": "#/properties/age",
-           "type": "number",
+           "type": "string",
            "title": "The Age Schema",
            "default": "",
            "examples": [
