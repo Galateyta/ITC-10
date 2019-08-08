@@ -1,0 +1,207 @@
+<div flex-direction="column" style="background-color:#fff"  >
+  <div flex-direction="row" style="max-width:1250px">
+    <div flex-direction="row" style="max-width:300px">
+        <img src="http://img.icons8.com/material-sharp/24/000000/menu.png" style="margin: 0 15px 0 0"/>
+      <img src="http://img.icons8.com/color/25/000000/youtube-play.png"/>
+      <h4>YouTube</h4>
+    </div>
+    <div flex-direction="row" style="max-width:600px;border: 1px solid gray">
+      <input style="background-color:#fff;max-width:450px;margin:0 0 0 50px;min-height:30px" placeholder="Search"/>
+      <img src="http://img.icons8.com/material-rounded/24/000000/search.png" style="max-height:30px"/>
+
+  </div>
+    <div flex-direction="row" style="max-width:300px">
+      <img src="http://img.icons8.com/material/24/000000/video-message.png" style="margin : 0 15px 0 50px"> </img>
+      <img src="http://img.icons8.com/material/24/000000/squared-menu.png" style="margin : 0 15px 0 0"> </img>
+      <img src="http://img.icons8.com/metro/26/000000/response.png" style="margin : 0 15px 0 0"> </img>
+      <img src="http://img.icons8.com/material/24/000000/menu-2.png" style="margin : 0 15px 0 0"> </img>
+    </div>
+    <div flex-direction="row" style="max-width:120px">
+      <img src="http://img.icons8.com/ios/24/000000/user-male-circle.png" style="color:blue;border: 1px solid;border-color:  blue white blue blue;min-height:30px;min-width:30px"/>
+      <button style="color:blue;background-color:#fff;border: 1px solid;border-color:  blue blue blue white;min-height:30px">SIGN IN</button>
+    </div>
+
+  </div>
+
+
+
+  <div flex-direction="row" style="background-color:#fff;" >
+
+    <div flex-direction="column"  style="min-width:200px">
+      <div flex-direction="column">
+        <div flex-direction="row"  style="max-height:50px;" >
+          <img src="http://img.icons8.com/android/24/000000/dog-house.png" style="min-width:40px;"> </img>
+          <p>Home</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/android/24/000000/gas.png" style="min-width:40px" />
+          <p>Trending</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;border: 1px solid;border-color:  white white grey white ">
+          <img src="http://img.icons8.com/windows/32/000000/youtube-play.png" style="min-width:40px"  />
+          <p>Subscriptions</p>
+        </div>
+      </div>
+
+      <div>
+        <div flex-direction="row"  style="max-height:50px;">
+          <img src="http://img.icons8.com/material/24/000000/folder-invoices.png" style="min-width:40px"/>
+          <p>Library</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;border: 1px solid;border-color:  white white grey white">
+          <img src="http://img.icons8.com/material-outlined/24/000000/time-machine.png" style="min-width:40px"/>
+          <p>History</p>
+        </div>
+      </div>
+
+      <div flex-direction="column" style="max-width:250px;">
+        <div>
+          <p>Sign in to like videos, comment, and subscribe</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;border: 1px solid;border-color:  white white grey white" >
+          <img src="http://img.icons8.com/ios/24/000000/user-male-circle.png" style="color:blue;border: 1px solid;border-color:  blue white blue blue;min-height:30px;min-width:30px;"/>
+        <button style="min-width:60px;min-height:30px;color:blue;background-color:#fff;border: 1px solid;border-color:  blue blue blue white;"> SIGN IN  </button>
+        </div>
+      </div>
+      <div flex-direction="column">
+        <h4 style="color:#363636">Best of YouTube</h4>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/ios-glyphs/30/000000/apple-music.png" style="min-width:40px"/>
+          <p>Music</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/metro/26/000000/football2.png" style="min-width:40px"/>
+          <p>Sports</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/windows/32/000000/controller.png" style="min-width:40px"/>
+          <p>Gaming</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/metro/26/000000/google-news.png" style="min-width:40px"/>
+          <p>News</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/material/24/000000/online.png" style="min-width:40px"/>
+          <p>Live</p>
+        </div>
+        <div flex-direction="row" style="max-height:50px;">
+          <img src="http://img.icons8.com/small/16/000000/panorama.png" style="min-width:40px"/>
+          <p>360 Video</p>
+        </div>
+      </div>
+
+
+    </div>
+
+<div flex-direction="column" style="max-height:800px;min-width:900px;margin: 0 0 0 35px">
+
+  <div  flex-direction="row" >
+    <h4 >YouTube Mixes</h4>
+  </div >
+
+  <div  flex-direction="row" >
+
+    <div flex-direction="column" >
+      <img   src="http://armenia.im/media/k2/items/cache/2e2c1711fe12b24ae23d95c35bfd21c2_M.jpg"  setScaledContent="true"  style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6>Arthur Meschyan - Im Tariner</h6>
+      <p style="color:#808080">meschian </p>
+      <p style="color:#808080">7.3K - 9 years ago </p>
+    </div>
+
+    <div flex-direction="column" >
+      <img src="http://araratnews.am/wp-content/uploads/2018/10/f5bb2107a27b07_5bb2107a27b45.thumb_-588x329.jpg"  setScaledContent="true"  style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6>Charles Aznavour - La Boheme</h6>
+      <p style="color:#808080">Jack McHammer</p>
+      <p style="color:#808080">14.1M - 7 years ago</p>
+    </div>
+
+    <div flex-direction="column" >
+      <img  src="http://www.megalyrics.ru/uploads/artist_foto/66/51f9936613b9bd587a000001/247464.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6>The Beautified Project-Kilikia</h6>
+      <p style="color:#808080">The Beautified Project</p>
+      <p style="color:#808080">1.1M - 8 years ago</p>
+    </div>
+
+    <div flex-direction="column" >
+      <img src="http://i.ytimg.com/vi/fwK7ggA3-bU/maxresdefault.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6>Maroon 5 - One More Night</h6>
+      <p style="color:#808080">Maroon 5</p>
+      <p style="color:#808080">811.2M - 7 years ago</p>
+    </div>
+
+  </div>
+
+  <div  flex-direction="row" style="min-width:400px;max-width:400px">
+    <h4>Recommended</h4>
+  </div >
+
+    <div  flex-direction="row" >
+
+      <div flex-direction="column">
+        <img  src="http://factmag-images.s3.amazonaws.com/wp-content/uploads/2012/11/Rihanna-Diamonds-video-11.9.2012.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+        <h6>Rihanna - Diamonds</h6>
+        <p style="color:#808080">Rihanna</p>
+        <p style="color:#808080">1.3B - 7 years ago</p>
+      </div>
+
+      <div flex-direction="column" >
+        <img src="http://i.ytimg.com/vi/papuvlVeZg8/maxresdefault.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+        <h6>Clean Bandit - Rockabye</h6>
+        <p style="color:#808080">Clean Bandit</p>
+        <p style="color:#808080">2.1B - 3 years ago</p>
+      </div>
+
+      <div flex-direction="column" >
+        <img src="http://images.mtvnn.com/89598af95d96d838f4728daa0fd2d6a9/960x540.jpg"  setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+        <h6>DJ Snake - Let Me Love</h6>
+        <p style="color:#808080">DJ Snake</p>
+        <p style="color:#808080">739.8M - 3 years ago</p>
+      </div>
+
+      <div flex-direction="column" >
+        <img src="http://i.ytimg.com/vi/wnJ6LuUFpMo/maxresdefault.jpg" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+        <h6> Willy William - Mi Gente</h6>
+        <p style="color:#808080"> J Balvin, </p>
+        <p style="color:#808080"> 2.4B  - 2 years ago</p>
+      </div>
+
+  </div>
+
+
+  <div  flex-direction="row" >
+
+    <div flex-direction="column">
+      <img  src="http://i.ytimg.com/vi/YqeW9_5kURI/hqdefault.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6>Major Lazer - Lean On</h6>
+      <p style="color:#808080"> Major Lazer </p>
+      <p style="color:#808080"> 2.6B  - 4 years ago</p>
+    </div>
+
+        <div flex-direction="column">
+          <img src="http://clubtone.net/_ld/4729/472944.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+          <h6>Sean Paul - No Lie</h6>
+          <p style="color:#808080"> Sean Paul </p>
+          <p style="color:#808080"> 567.8M  - 2 years ago</p>
+        </div>
+
+
+        <div flex-direction="column">
+          <img src="http://i.ytimg.com/vi/_WaDcCb6p5U/hqdefault.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+          <h6>Charlie Puth - Attention</h6>
+          <p style="color:#808080"> Charlie Puth </p>
+          <p style="color:#808080"> 966M  - 2 years ago</p>
+        </div>
+
+
+    <div flex-direction="column" >
+      <img src="http://i.ytimg.com/vi/k2qgadSvNyU/hqdefault.jpg" setScaledContent="true" style="max-width:180px;max-height:120px;min-width:180px;min-height:120px"/>
+      <h6> Dua Lipa - New Rules</h6>
+      <p style="color:#808080"> Dua Lipa </p>
+      <p style="color:#808080"> 1.8B  - 2 years ago</p>
+    </div>
+
+  </div>
+
+
+</div>
