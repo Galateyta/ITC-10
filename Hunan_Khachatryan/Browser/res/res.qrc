@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/refresh.png</file>
+        <file>icons/facebook.png</file>
+        <file>icons/git.png</file>
+        <file>icons/gmail.png</file>
+        <file>icons/mail.png</file>
+        <file>icons/youtube.png</file>
+    </qresource>
+</RCC>

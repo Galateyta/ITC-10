@@ -3,6 +3,7 @@
 *.swo
 ./temp
 node_modules/
+
 package-lock.json
 
 .idea/
@@ -12,3 +13,4 @@ out/
 log/
 target/
 
+package-lock.json

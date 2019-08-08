@@ -1,0 +1,58 @@
+<div flex-direction="column" justify-content="center" style="background-color: rgb(11, 94, 103)">
+	<div justify-content="center" style=" color: white">
+		<h1 >REGISTRATION FORM</h1>	
+		</div>
+	
+	<div flex-direction="column" style="max-width:500; background-color: white">
+
+		
+		<div flex-direction="row" style="">
+			<p style="min-width: 85; background-color: rgb(11, 94, 103); color: white; font-size: 20px" >Firstname</p>
+			<input style="min-height: 30; border-radius: 10px;border: 1px solid gray"></input>
+		</div>
+		<div flex-direction="row" >
+			<p style="min-width: 85; background-color: rgb(11, 94, 103); color: white; font-size: 20px ">Lastname</p>
+			<input style="min-height: 30; border-radius: 10px;border: 1px solid gray"></input>
+		</div>
+		<div flex-direction="row" >
+			<p style="min-width: 95; background-color: rgb(11, 94, 103); color: white; font-size: 20px ">Email</p>
+			<input style="min-height: 30; border-radius: 10px;border: 1px solid gray"></input>
+		</div>
+		<div flex-direction="row" >
+			<p style="min-width: 85; background-color: rgb(11, 94, 103); color: white; font-size: 20px ">Company</p>
+			<input style="min-height: 30; border-radius: 10px;border: 1px solid gray"></input>
+		</div>
+		<div flex-direction="row" justify-content="center">
+			<p style="background-color: rgb(11, 94, 103); color: white; font-size: 20px; ">Gender</p>
+			<div flex-direction="column">
+				<input type="radio">male</input>
+				<input type="radio">female</input>
+			</div>
+				
+		</div>
+		<div flex-direction="row" justify-content="center" >
+			<p style="min-width: 70; background-color: rgb(11, 94, 103); color: white; font-size: 20px">Subject</p>
+			<select>
+                <option value="0">Programmin skill</option>
+                <option value="1">Java</option>
+                <option value="2">C++</option>
+                <option value="3">JavaScript</option>
+                <option value="4">Python</option>
+
+        </select>	
+		</div>
+		<div flex-direction="column" style="max-height: 100">
+			<p style="background-color: rgb(11, 94, 103); color: white; font-size: 20px">About</p>
+			<textarea></textarea>
+		</div>
+		<div flex-direction="column" justify-content="left" style="background-color: white" >
+			<input type="checkbox" style="color: white">Accept terms and policies </input>
+		</div>
+		<div  flex-direction="row" style="">
+			<button style="color: white; background-color: green; min-height: 30;">Register</button>
+			<button style="color: white; background-color: red; min-height: 30;">Cancel</button>
+		
+		</div>
+	</div>
+	
+</div>

@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="TestAll">
+    <test name="TestNg">
+        <parameter name="param" value="ITC10" />
+        <groups>
+            <run>
+                <include name="positive" />
+                <include name="negative" />
+            </run>
+        </groups>
+
+        <classes>
+            <class name="am.instigate.app.TestNg" />
+        </classes>
+    </test>
+
+</suite>
