@@ -1,6 +1,8 @@
 package app;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,31 +30,15 @@ public class HttpConnection {
             while (scan.hasNext())
                 response += scan.nextLine();
 
-            System.out.println("Response : " + response);
+            System.out.println("get employees array status : " + conn.getResponseCode());
 
             scan.close();
 
             obj = new JSONObject("{\"response\": " + response + " }");
 
             JSONArray arr = obj.getJSONArray("response");
-            for (int i = 0; i < arr.length(); i++) {
-
-                String id = arr.getJSONObject(i).getString("id");
-                String employee_name = arr.getJSONObject(i).getString("employee_name");
-                String employee_salary = arr.getJSONObject(i).getString("employee_salary");
-                String employee_age = arr.getJSONObject(i).getString("employee_age");
-                String profile_image = arr.getJSONObject(i).getString("profile_image");
-
-//                System.out.println("id : " + id);
-//                System.out.println("employee_name : " + employee_name);
-//                System.out.println("employee_salary : " + employee_salary);
-//                System.out.println("employee_age : " + employee_age);
-//                System.out.println("profile_image : " + profile_image);
-
-            }
 
             conn.disconnect();
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
 
@@ -79,72 +65,54 @@ public class HttpConnection {
             while (scan.hasNext())
                 response += scan.nextLine();
 
-            System.out.println("status : " + conn.getResponseCode());
+            System.out.println("get employee status : " + conn.getResponseCode());
 
-            System.out.println("Response : " + response);
+            try{
+                employee = new JSONObject(response);
+            } catch(Exception e) {
+                employee = new JSONObject("{\"response\" : " + response + "}");
+            }
 
             scan.close();
-
-            employee = new JSONObject(response);
-
-            String employe_id = employee.getString("id");
-            String employee_name = employee.getString("employee_name");
-            String employee_salary = employee.getString("employee_salary");
-            String employee_age = employee.getString("employee_age");
-            String profile_image = employee.getString("profile_image");
-
-            System.out.println("id : " + employe_id);
-            System.out.println("employee_name : " + employee_name);
-            System.out.println("employee_salary : " + employee_salary);
-            System.out.println("employee_age : " + employee_age);
-            System.out.println("profile_image : " + profile_image);
-
-
             conn.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-
         } catch (IOException e) {
 
             e.printStackTrace();
-
         }
         return employee;
     }
 
-    public String deleteEmployee(String id) {
-        String response = "error";
+    public JSONObject deleteEmployee(String id) {
+        JSONObject employee = null;
         try {
             URL url = new URL("http://dummy.restapiexample.com/api/v1/delete/" + id);
-            System.out.println(url.toString());
             HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setDoOutput(true);
+            conn.setRequestProperty("Content-Type", "application/x-www-form-urlencoded" );
             conn.setRequestMethod("DELETE");
-            conn.setRequestProperty("Accept", "application/json");
+            conn.connect();
 
-            Scanner scan = new Scanner(url.openStream());
-            response = new String();
-            while (scan.hasNext())
-                response += scan.nextLine();
+            if (conn.getResponseCode() != 200) {
+                throw new RuntimeException(" HTTP error code : " + conn.getResponseCode());
+            }
+            System.out.println("delete response status : " + conn.getResponseCode());
 
-            System.out.println("status : " + conn.getResponseCode());
-
-            System.out.println("Response : " + response);
-
-//            if (conn.getResponseCode() != 200) {
-//                throw new RuntimeException(" HTTP error code : " + conn.getResponseCode());
-//            }
-
-            scan.close();
+            BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            StringBuffer response = new StringBuffer();
+            String readLine = null;
+            while ((readLine = in .readLine()) != null) {
+                response.append(readLine);
+            } in .close();
+            employee = new JSONObject(response.toString());
 
             conn.disconnect();
         } catch (MalformedURLException e) {
             e.printStackTrace();
-
         } catch (IOException e) {
-
             e.printStackTrace();
-
         }
-        return response;
+        return employee;
     }
 }

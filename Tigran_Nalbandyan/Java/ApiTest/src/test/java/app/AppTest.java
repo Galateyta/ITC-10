@@ -32,7 +32,16 @@ public class AppTest {
     public void checkDeleteEmployee() {
         JSONObject employeeData = myConnection.getEmployees();
         String id = employeeData.getJSONArray("response").getJSONObject(0).get("id").toString();
-        String response = myConnection.deleteEmployee(id);
-        Assert.assertTrue(response != null);
+        JSONObject response = myConnection.deleteEmployee(id);
+        Assert.assertEquals(response.getJSONObject("success").get("text").toString(),"successfully! deleted Records");
+    }
+
+    @Test
+    public void checkDeleteEmployeeIntegration() {
+        JSONObject employeeData = myConnection.getEmployees();
+        String id = employeeData.getJSONArray("response").getJSONObject(0).get("id").toString();
+        JSONObject response = myConnection.deleteEmployee(id);
+        JSONObject getEmployeRes = myConnection.getEmployee(id);
+        Assert.assertTrue( getEmployeRes.get("response").toString() == "false");
     }
 }
