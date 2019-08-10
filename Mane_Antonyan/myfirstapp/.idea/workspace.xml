@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c78ef7be-2264-4309-aa74-a9daa8ba78bf" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1P2SOdJuk1OhTnVaSJtcx6TUu3d" />
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="TestNG.Youtube (1)">
+    <configuration name="Youtube (1)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="my-first-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="firstPro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="firstPro" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Youtube (2)" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="my-first-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="firstPro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="firstPro" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Youtube" type="TestNG" nameIsGenerated="true">
+      <module name="myfirstapp" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Youtube.correctMessageSent" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="my-first-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="firstPro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="firstPro" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="METHOD_NAME" value="correctMessageSent" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Youtube.correctMessageSentAndPrint" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="my-first-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="firstPro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="firstPro" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="METHOD_NAME" value="correctMessageSentAndPrint" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Youtube.paralelWorkTest" type="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="my-first-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="firstPro.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="firstPro" />
+      <option name="MAIN_CLASS_NAME" value="firstPro.Youtube" />
+      <option name="METHOD_NAME" value="paralelWorkTest" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.Youtube (1)" />
+        <item itemvalue="TestNG.Youtube.paralelWorkTest" />
+        <item itemvalue="TestNG.Youtube (2)" />
+        <item itemvalue="TestNG.Youtube.correctMessageSentAndPrint" />
+        <item itemvalue="TestNG.Youtube.correctMessageSent" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c78ef7be-2264-4309-aa74-a9daa8ba78bf" name="Default Changelist" comment="" />
+      <created>1565070666543</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565070666543</updated>
+      <workItem from="1565070670245" duration="9709000" />
+      <workItem from="1565097997158" duration="3952000" />
+      <workItem from="1565105046059" duration="9899000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
