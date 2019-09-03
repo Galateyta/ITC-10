@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite1" verbose="1">
+
+    <test name="samplePage Test">
+        <groups>
+            <run>
+                <include name="positive"/>
+                <include name="negative"/>
+                <include name="negative-message"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.instigate.app.ChatTest">
+            </class>
+        </classes>
+    </test>
+
+</suite>
