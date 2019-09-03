@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite thread-count="1" verbose="0" name="Failed suite [Surefire suite]">
+  <test thread-count="1" verbose="0" name="Surefire test(failed)">
+    <classes>
+      <class name="am.instigatembile.com.TestSignUpPage">
+        <methods>
+          <include name="setup"/>
+          <include name="closeDriver"/>
+          <include name="test_Age_Is_Firs_Simbol_Check"/>
+          <include name="test_SurName_Is_Firs_Simbol_Check"/>
+        </methods>
+      </class> <!-- am.instigatembile.com.TestSignUpPage -->
+    </classes>
+  </test> <!-- Surefire test(failed) -->
+</suite> <!-- Failed suite [Surefire suite] -->

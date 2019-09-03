@@ -1,0 +1,17 @@
+-------------------------------------------------------------------------------
+Test set: TestSuite
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 24.689 sec <<< FAILURE! - in TestSuite
+test_Age_Is_Firs_Simbol_Check(am.instigatembile.com.TestSignUpPage)  Time elapsed: 0.674 sec  <<< FAILURE!
+java.lang.StringIndexOutOfBoundsException: String index out of range: 0
+	at java.lang.String.charAt(String.java:658)
+	at am.instigatembile.com.TestSignUpPage.test_Age_Is_Firs_Simbol_Check(TestSignUpPage.java:243)
+
+test_SurName_Is_Firs_Simbol_Check(am.instigatembile.com.TestSignUpPage)  Time elapsed: 0.64 sec  <<< FAILURE!
+java.lang.AssertionError: expected [true] but found [false]
+	at org.testng.Assert.fail(Assert.java:96)
+	at org.testng.Assert.failNotEquals(Assert.java:776)
+	at org.testng.Assert.assertTrue(Assert.java:44)
+	at org.testng.Assert.assertTrue(Assert.java:54)
+	at am.instigatembile.com.TestSignUpPage.test_SurName_Is_Firs_Simbol_Check(TestSignUpPage.java:216)
+

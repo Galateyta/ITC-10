@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="3327c0d2-8bc4-4b4f-bf5c-dcb26298b931" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/selenium.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/pages/SignUpPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/pages/SignUpPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="TestSignUpPage.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="3060">
+              <caret line="252" column="78" lean-forward="true" selection-start-line="252" selection-start-column="78" selection-end-line="252" selection-end-column="78" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SignUpPage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/pages/SignUpPage.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="300">
+              <caret line="125" column="46" selection-start-line="125" selection-start-column="46" selection-end-line="125" selection-end-column="46" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java" />
+        <option value="$PROJECT_DIR$/src/main/java/pages/SignUpPage.java" />
+        <option value="$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="80" />
+    <option name="y" value="395" />
+    <option name="width" value="919" />
+    <option name="height" value="371" />
+  </component>
+  <component name="ProjectId" id="1P2XX7QdedsUXUq2sAjEM1f4zm2" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="03.08(Selenium-POM)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03.08(Selenium-POM)" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="03.08(Selenium-POM)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03.08(Selenium-POM)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="03.08(Selenium-POM)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03.08(Selenium-POM)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="03.08(Selenium-POM)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03.08(Selenium-POM)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="03.08(Selenium-POM)" type="b2602c69:ProjectViewProjectNode" />
+              <item name="03.08(Selenium-POM)" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="screenshots" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src/test/java" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="TestNG.TestSignUpPage.test_Password_Emptyt">
+    <configuration name="TestSignUpPage.test_Age_Is_Firs_Simbol_Check" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="METHOD_NAME" value="test_Age_Is_Firs_Simbol_Check" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="TestSignUpPage.test_Name_Is_Firs_Simbol_Check" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="METHOD_NAME" value="test_Name_Is_Firs_Simbol_Check" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="TestSignUpPage.test_Password_Emptyt" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="METHOD_NAME" value="test_Password_Emptyt" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="TestSignUpPage.test_SurName_Is_Emptyt" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="METHOD_NAME" value="test_SurName_Is_Emptyt" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="TestSignUpPage.test_SurName_Is_Firs_Simbol_Check" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="selenium" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="am.instigatembile.com.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="am.instigatembile.com" />
+      <option name="MAIN_CLASS_NAME" value="am.instigatembile.com.TestSignUpPage" />
+      <option name="METHOD_NAME" value="test_SurName_Is_Firs_Simbol_Check" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <list>
+      <item itemvalue="TestNG.TestSignUpPage.test_Name_Is_Firs_Simbol_Check" />
+      <item itemvalue="TestNG.TestSignUpPage.test_SurName_Is_Firs_Simbol_Check" />
+      <item itemvalue="TestNG.TestSignUpPage.test_SurName_Is_Emptyt" />
+      <item itemvalue="TestNG.TestSignUpPage.test_Age_Is_Firs_Simbol_Check" />
+      <item itemvalue="TestNG.TestSignUpPage.test_Password_Emptyt" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="TestNG.TestSignUpPage.test_Password_Emptyt" />
+        <item itemvalue="TestNG.TestSignUpPage.test_Age_Is_Firs_Simbol_Check" />
+        <item itemvalue="TestNG.TestSignUpPage.test_SurName_Is_Emptyt" />
+        <item itemvalue="TestNG.TestSignUpPage.test_SurName_Is_Firs_Simbol_Check" />
+        <item itemvalue="TestNG.TestSignUpPage.test_Name_Is_Firs_Simbol_Check" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3327c0d2-8bc4-4b4f-bf5c-dcb26298b931" name="Default Changelist" comment="" />
+      <created>1565073203579</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1565073203579</updated>
+      <workItem from="1565073224795" duration="11799000" />
+      <workItem from="1565100097777" duration="12000" />
+      <workItem from="1565100397157" duration="73000" />
+      <workItem from="1565101192527" duration="922000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="TestSignUpPage_test_Name_Is_Firs_Simbol_Check - 2019.08.07 at 03h 52m 17s.xml">
+      <configuration name="TestSignUpPage.test_Name_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_Name_Is_Firs_Simbol_Check - 2019.08.07 at 03h 53m 23s.xml">
+      <configuration name="TestSignUpPage.test_Name_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_SurName_Is_Firs_Simbol_Check - 2019.08.07 at 03h 55m 57s.xml">
+      <configuration name="TestSignUpPage.test_SurName_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_SurName_Is_Firs_Simbol_Check - 2019.08.07 at 03h 56m 27s.xml">
+      <configuration name="TestSignUpPage.test_SurName_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_SurName_Is_Emptyt - 2019.08.07 at 03h 56m 47s.xml">
+      <configuration name="TestSignUpPage.test_SurName_Is_Emptyt" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_SurName_Is_Emptyt - 2019.08.07 at 03h 57m 18s.xml">
+      <configuration name="TestSignUpPage.test_SurName_Is_Emptyt" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_Age_Is_Firs_Simbol_Check - 2019.08.07 at 04h 04m 33s.xml">
+      <configuration name="TestSignUpPage.test_Age_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_Age_Is_Firs_Simbol_Check - 2019.08.07 at 04h 04m 58s.xml">
+      <configuration name="TestSignUpPage.test_Age_Is_Firs_Simbol_Check" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_Password_Emptyt - 2019.08.07 at 04h 07m 34s.xml">
+      <configuration name="TestSignUpPage.test_Password_Emptyt" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="TestSignUpPage_test_Password_Emptyt - 2019.08.07 at 04h 08m 14s.xml">
+      <configuration name="TestSignUpPage.test_Password_Emptyt" configurationId="TestNG" />
+    </history-entry>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="65" y="24" width="959" height="744" extended-state="6" />
+    <layout>
+      <window_info anchor="right" id="Palette" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Messages" weight="0.3298193" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info id="Image Layers" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="right" id="Maven Projects" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3298193" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info id="Capture Tool" />
+      <window_info id="Designer" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.19290929" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info id="UI Designer" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java</url>
+          <line>38</line>
+          <properties />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java</url>
+          <line>236</line>
+          <properties class="am.instigatembile.com.TestSignUpPage" method="test_Age_Is_Firs_Simbol_Check">
+            <option name="EMULATED" value="true" />
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/test/java/TestHomePage.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignInPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/pages/SignUpPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="125" column="46" selection-start-line="125" selection-start-column="46" selection-end-line="125" selection-end-column="46" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/am/instigatembile/com/TestSignUpPage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3060">
+          <caret line="252" column="78" lean-forward="true" selection-start-line="252" selection-start-column="78" selection-end-line="252" selection-end-column="78" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>
